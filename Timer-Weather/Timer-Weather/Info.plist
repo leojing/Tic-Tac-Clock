@@ -21,13 +21,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>request for location</string>
+	<string>We need your location to fetch your current weather.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>request for location</string>
+	<string>We need your location to fetch your current weather.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>request for location</string>
+	<string>We need your location to fetch your current weather.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>request for location</string>
+	<string>We need your location to fetch your current weather.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

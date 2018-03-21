@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class MainViewController: UIViewController {
 
@@ -16,6 +17,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var daysWeatherTableView: UITableView!
     
+    @IBOutlet weak var cityNameLabel: UILabel!
+
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel? {
         didSet {
@@ -26,21 +29,24 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
         viewModel = MainViewModel(APIClient())
+        
+        circleTimerView.isHidden = true
+    }
+    
+    fileprivate func setupTableView() {
+        daysWeatherTableView.estimatedRowHeight = 30
+        daysWeatherTableView.rowHeight = UITableViewAutomaticDimension
+        daysWeatherTableView.register(DailyTableViewCell.nib(), forCellReuseIdentifier: DailyTableViewCell.reuseId())
     }
 
     // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {
         
-//        viewModel?.cityName.asObservable()
-//            .bind(to: self.cityLabel.rx.text)
-//            .disposed(by: disposeBag)
         viewModel?.cityName.asObservable()
-            .filter { $0.count > 0 }
-            .subscribe(onNext: { name in
-                NSLog("Current city name is \(name)")
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-        .disposed(by: disposeBag)
+            .bind(to: self.cityNameLabel.rx.text)
+            .disposed(by: disposeBag)
         
         // MARK: bind Top info view and background theme color by currently weather data
         viewModel?.weather.asObservable()
@@ -54,11 +60,11 @@ class MainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // MARK: bind daily data with dailyTableview
-//        viewModel?.dailyData.asObservable()
-//            .bind(to: daysWeatherTableView.rx.items(cellIdentifier: DailyTableViewCell.reuseId(), cellType: DailyTableViewCell.self)) { (row, element, cell) in
-//                cell.configureCell(element)
-//            }
-//            .disposed(by: disposeBag)
+        viewModel?.dailyData.asObservable()
+            .bind(to: daysWeatherTableView.rx.items(cellIdentifier: DailyTableViewCell.reuseId(), cellType: DailyTableViewCell.self)) { (row, element, cell) in
+                cell.configureCell(element)
+            }
+            .disposed(by: disposeBag)
         
        // MARK: show error message
         viewModel?.alertMessage.asObservable()
@@ -70,6 +76,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Actions
+    
     fileprivate func showAlert( _ message: String ) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
@@ -78,4 +85,3 @@ class MainViewController: UIViewController {
         }
     }
 }
-

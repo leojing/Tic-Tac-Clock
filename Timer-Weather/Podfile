@@ -9,6 +9,7 @@ end
 
 target "Timer-Weather" do
     shared_Timer_Weather
+    pod 'RxCocoa'
     pod 'Alamofire'
     pod 'ObjectMapper'
     pod 'SwiftIcons'

@@ -2,6 +2,8 @@ PODS:
   - Alamofire (4.7.0)
   - HGCircularSlider (2.0.0)
   - ObjectMapper (3.1.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
   - SwiftIcons (2.0.1)
 
@@ -9,6 +11,7 @@ DEPENDENCIES:
   - Alamofire
   - HGCircularSlider
   - ObjectMapper
+  - RxCocoa
   - RxSwift
   - SwiftIcons
 
@@ -16,9 +19,10 @@ SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   HGCircularSlider: 92e2ee098c814709f455b8f46cd9008147f6a869
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftIcons: e475a56ae2c2da40672dbf16061ca5dd5cee7dbb
 
-PODFILE CHECKSUM: 69113e9b8f864168b54bc7b3494e8e0896b59b92
+PODFILE CHECKSUM: 9c4e55046580271753195f75071b9de4ceec5eb1
 
 COCOAPODS: 1.4.0
