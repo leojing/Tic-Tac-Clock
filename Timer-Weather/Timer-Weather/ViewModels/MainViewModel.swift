@@ -17,11 +17,15 @@ class MainViewModel: NSObject {
     private var locationManager: CLLocationManager?
     fileprivate var currentLocation: CLLocation?
     fileprivate var apiservice: APIService?
+    fileprivate var timer: Timer?
     
     var weather = Variable<Weather?>(nil)
     var dailyData = Variable<[WeatherDetail]>([])
     var cityName = Variable<String>("")
     var alertMessage = Variable<String>("")
+    
+    var currentDigitalTime = Variable<String>(Date().timeOfCounter() ?? "")
+    var currentCircularTime = Variable<String>(Date().timeOfHour() ?? "")
     
     init(_ apiService: APIService) {
         super.init()
@@ -29,6 +33,13 @@ class MainViewModel: NSObject {
         apiservice = apiService
         setupLocationManager()
         bindDailyData()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+            self.currentDigitalTime.value = Date().timeOfCounter() ?? ""
+            if self.currentCircularTime.value != Date().timeOfHour() {
+                self.currentCircularTime.value = Date().timeOfHour() ?? ""
+            }
+        })
     }
     
     fileprivate func setupLocationManager() {
