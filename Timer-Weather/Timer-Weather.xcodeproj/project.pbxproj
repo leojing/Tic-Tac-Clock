@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247B89E4206BB5E70084D7CE /* AnalogClockView.swift */; };
 		24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */; };
 		24ED089D2061197000DCF838 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089C2061197000DCF838 /* MainViewController.swift */; };
 		24ED08AB20611C9700DCF838 /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089F20611C9600DCF838 /* Currently.swift */; };
@@ -55,6 +56,7 @@
 		02F59D577421DB99B73B4A41 /* Pods_Timer_WeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer_WeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		054E442230A88C6C3AE00FDC /* Pods_Timer_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C03A6989E6C56C7D6982325 /* Pods-Timer-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timer-Weather/Pods-Timer-Weather.release.xcconfig"; sourceTree = "<group>"; };
+		247B89E4206BB5E70084D7CE /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
 		24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		24ED089C2061197000DCF838 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		24ED089F20611C9600DCF838 /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				24ED08BA20626E0B00DCF838 /* DailyTableViewCell.xib */,
 				24ED08BB20626E0B00DCF838 /* DailyTableViewCell.swift */,
+				247B89E4206BB5E70084D7CE /* AnalogClockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				24ED08C120626EBE00DCF838 /* String+Customise.swift in Sources */,
 				24ED08B82061234100DCF838 /* LocationService.swift in Sources */,
 				24ED08BD20626E0B00DCF838 /* DailyTableViewCell.swift in Sources */,
+				247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */,
 				24F7883B205FCE2A00712C0C /* AppDelegate.swift in Sources */,
 				24ED08C220626EBE00DCF838 /* Date+Customise.swift in Sources */,
 				24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */,

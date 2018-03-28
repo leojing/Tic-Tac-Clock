@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,113 +58,53 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8C-vK-0ct">
-                                        <rect key="frame" x="0.0" y="110.5" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="110.5" width="375" height="200"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_indicators" translatesAutoresizingMaskIntoConstraints="NO" id="Plf-vK-HgW">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7b-bj-Gx8" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
+                                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chronography face" translatesAutoresizingMaskIntoConstraints="NO" id="850-MX-Srq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hours" translatesAutoresizingMaskIntoConstraints="NO" id="7vr-2n-ZKx">
+                                                        <rect key="frame" x="90" y="57" width="20" height="85"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Minutes" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-fh-urC">
+                                                        <rect key="frame" x="90" y="30.5" width="20" height="138"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seconds" translatesAutoresizingMaskIntoConstraints="NO" id="o1P-a7-617">
+                                                        <rect key="frame" x="92.5" y="18" width="14" height="163"/>
+                                                    </imageView>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="7g1-Hn-K6U"/>
-                                                    <constraint firstAttribute="width" secondItem="Plf-vK-HgW" secondAttribute="height" multiplier="1:1" id="vHb-Zx-qdB"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="yaY-zr-XyW"/>
+                                                    <constraint firstItem="7vr-2n-ZKx" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="4j0-kz-P8g"/>
+                                                    <constraint firstAttribute="trailing" secondItem="850-MX-Srq" secondAttribute="trailing" id="Apt-MR-jhR"/>
+                                                    <constraint firstItem="SIp-fh-urC" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="CKF-BE-hey"/>
+                                                    <constraint firstItem="850-MX-Srq" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="INy-5y-EQz"/>
+                                                    <constraint firstItem="850-MX-Srq" firstAttribute="leading" secondItem="e7b-bj-Gx8" secondAttribute="leading" id="Ina-dq-0d8"/>
+                                                    <constraint firstItem="SIp-fh-urC" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="OQw-YV-xsQ"/>
+                                                    <constraint firstItem="o1P-a7-617" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="PPN-gi-6LG"/>
+                                                    <constraint firstItem="o1P-a7-617" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="X1m-pd-zwd"/>
+                                                    <constraint firstAttribute="width" constant="200" id="YIy-eG-V0J"/>
+                                                    <constraint firstAttribute="bottom" secondItem="850-MX-Srq" secondAttribute="bottom" id="ozA-AV-alb"/>
+                                                    <constraint firstAttribute="width" secondItem="e7b-bj-Gx8" secondAttribute="height" multiplier="1:1" id="qie-s3-0At"/>
+                                                    <constraint firstItem="7vr-2n-ZKx" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="sNA-AU-q2d"/>
                                                 </constraints>
-                                            </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaW-CN-ynB" customClass="CircularSlider" customModule="HGCircularSlider">
-                                                <rect key="frame" x="0.0" y="7" width="135" height="135"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="IaW-CN-ynB" secondAttribute="height" multiplier="1:1" id="ZD6-7m-QAO"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                                        <color key="value" red="0.87450980389999999" green="0.80000000000000004" blue="0.22352941179999999" alpha="0.79496228449999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbTintColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="hourHand" destination="7vr-2n-ZKx" id="dRW-hT-vgU"/>
+                                                    <outlet property="minuteHand" destination="SIp-fh-urC" id="vxT-0P-0c7"/>
+                                                    <outlet property="secondHand" destination="o1P-a7-617" id="7Ry-jA-y7E"/>
+                                                </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjB-Er-dKB" customClass="CircularSlider" customModule="HGCircularSlider">
-                                                <rect key="frame" x="0.0" y="14.5" width="120" height="120"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="fjB-Er-dKB" secondAttribute="height" multiplier="1:1" id="7bm-HD-1gh"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                                        <color key="value" red="0.87450980389999999" green="0.80000000000000004" blue="0.22352941179999999" alpha="0.79496228449999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbTintColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06:30" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKe-mo-nEb">
-                                                <rect key="frame" x="0.0" y="65" width="60" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="MKe-mo-nEb" firstAttribute="width" secondItem="Plf-vK-HgW" secondAttribute="width" multiplier="0.4" id="4rA-fL-eTX"/>
-                                            <constraint firstItem="Plf-vK-HgW" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="H8R-76-0Qx"/>
-                                            <constraint firstItem="fjB-Er-dKB" firstAttribute="centerY" secondItem="s8C-vK-0ct" secondAttribute="centerY" id="SDa-Xf-M1d"/>
-                                            <constraint firstItem="MKe-mo-nEb" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="WIU-BR-YqA"/>
-                                            <constraint firstItem="MKe-mo-nEb" firstAttribute="centerY" secondItem="s8C-vK-0ct" secondAttribute="centerY" id="WtF-6t-UBd"/>
-                                            <constraint firstItem="Plf-vK-HgW" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="bvc-yt-cnD"/>
-                                            <constraint firstAttribute="bottom" secondItem="Plf-vK-HgW" secondAttribute="bottom" id="gfy-Zh-47h"/>
-                                            <constraint firstItem="IaW-CN-ynB" firstAttribute="centerY" secondItem="s8C-vK-0ct" secondAttribute="centerY" id="gq8-fw-smL"/>
-                                            <constraint firstItem="IaW-CN-ynB" firstAttribute="width" secondItem="Plf-vK-HgW" secondAttribute="width" multiplier="0.9" id="m2M-ev-cXr"/>
-                                            <constraint firstItem="fjB-Er-dKB" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="pr3-79-Fsh"/>
-                                            <constraint firstItem="IaW-CN-ynB" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="rXr-TU-6YL"/>
-                                            <constraint firstItem="fjB-Er-dKB" firstAttribute="width" secondItem="Plf-vK-HgW" secondAttribute="width" multiplier="0.8" id="xnl-k6-Hbe"/>
+                                            <constraint firstItem="e7b-bj-Gx8" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="W1D-YQ-xlt"/>
+                                            <constraint firstItem="e7b-bj-Gx8" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="hII-k1-aGg"/>
+                                            <constraint firstAttribute="bottom" secondItem="e7b-bj-Gx8" secondAttribute="bottom" id="kcq-xg-1SN"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYI-hs-erd">
-                                        <rect key="frame" x="0.0" y="270.5" width="375" height="107"/>
+                                        <rect key="frame" x="0.0" y="320.5" width="375" height="107"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oit-1d-486">
                                                 <rect key="frame" x="5" y="5" width="365" height="97"/>
@@ -200,14 +139,14 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rIg-zu-78W">
-                                        <rect key="frame" x="0.0" y="387.5" width="375" height="215.5"/>
+                                        <rect key="frame" x="0.0" y="437.5" width="375" height="165.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.52558986995625601" green="0.7818165435337312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VNq-sD-bbo" secondAttribute="bottom" id="Gjk-LG-FUk"/>
                             <constraint firstItem="VNq-sD-bbo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MSe-7t-d6l"/>
@@ -226,13 +165,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="circleTimerView" destination="s8C-vK-0ct" id="6jf-gI-wk9"/>
-                        <outlet property="circularTimerLabel" destination="MKe-mo-nEb" id="0zq-UY-sO9"/>
                         <outlet property="cityNameLabel" destination="GGB-1k-F3R" id="zaB-Ml-t3g"/>
                         <outlet property="daysWeatherTableView" destination="rIg-zu-78W" id="htr-Y5-YSv"/>
                         <outlet property="digitalTimerLabel" destination="57w-m7-uaL" id="Y8s-oi-OK5"/>
                         <outlet property="digitalTimerView" destination="f5N-cF-hYx" id="DGZ-Hg-YUQ"/>
-                        <outlet property="hourCircularSlider" destination="fjB-Er-dKB" id="l97-MZ-ElF"/>
-                        <outlet property="minuteCircularSlider" destination="IaW-CN-ynB" id="Mpm-VO-Y7X"/>
                         <outlet property="weatherView" destination="MYI-hs-erd" id="b22-PE-Y0D"/>
                     </connections>
                 </viewController>
@@ -479,6 +415,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="time_indicators" width="301" height="300"/>
+        <image name="Chronography face" width="270" height="270"/>
+        <image name="Hours" width="20" height="85"/>
+        <image name="Minutes" width="20" height="138"/>
+        <image name="Seconds" width="14" height="163"/>
     </resources>
 </document>
