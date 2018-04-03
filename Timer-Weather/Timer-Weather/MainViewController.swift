@@ -17,11 +17,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var digitalTimerLabel: UILabel!
     
     @IBOutlet weak var circleTimerView: UIView!
+    @IBOutlet weak var clockView: AnalogClockView!
     
-    @IBOutlet weak var minuteCircularSlider: CircularSlider!
-    @IBOutlet weak var hourCircularSlider: CircularSlider!
-    @IBOutlet weak var circularTimerLabel: UILabel!
-
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var daysWeatherTableView: UITableView!
     
@@ -39,9 +36,6 @@ class MainViewController: UIViewController {
         
         setupTableView()
         viewModel = MainViewModel(APIClient())
-        
-        circleTimerView.isHidden = false
-        setupSliders()
     }
     
     fileprivate func setupTableView() {
@@ -50,19 +44,6 @@ class MainViewController: UIViewController {
         daysWeatherTableView.register(DailyTableViewCell.nib(), forCellReuseIdentifier: DailyTableViewCell.reuseId())
     }
 
-    fileprivate func setupSliders() {
-        let date = Date().timeOfHour() ?? ""
-        // hours
-        hourCircularSlider.minimumValue = 0
-        hourCircularSlider.maximumValue = 12
-        hourCircularSlider.endPointValue = getHourDigital(date)
-        
-        // minutes
-        minuteCircularSlider.minimumValue = 0
-        minuteCircularSlider.maximumValue = 60
-        minuteCircularSlider.endPointValue = getMinDigital(date)
-    }
-    
     // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {
         
@@ -70,18 +51,10 @@ class MainViewController: UIViewController {
         .bind(to: self.digitalTimerLabel.rx.text)
         .disposed(by: disposeBag)
         
-        viewModel?.currentCircularTime.asObservable()
-            .bind(to: self.circularTimerLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel?.currentCircularTime.asObservable()
+        viewModel?.currentDate.asObservable()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { timer in
-                self.circularTimerLabel.text = timer
-                
-                self.hourCircularSlider.endPointValue = self.getHourDigital(timer)
-                self.minuteCircularSlider.endPointValue = self.getMinDigital(timer)
-
+            .subscribe(onNext: { date in
+                self.clockView.setTimeToDate(date, true)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
@@ -94,7 +67,6 @@ class MainViewController: UIViewController {
             .filter{$0 != nil}
             .subscribe(onNext: { w in
                 NSLog("Weather info is \(String(describing: w?.currently?.summary))")
-//                self.updateUIBySelectedIndexPath(self.selectedIndex)
             }, onError: { error in
                 print(error.localizedDescription)
             }, onCompleted: nil, onDisposed: nil)

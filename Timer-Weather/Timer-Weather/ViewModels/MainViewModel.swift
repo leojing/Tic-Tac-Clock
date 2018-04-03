@@ -25,7 +25,7 @@ class MainViewModel: NSObject {
     var alertMessage = Variable<String>("")
     
     var currentDigitalTime = Variable<String>(Date().timeOfCounter() ?? "")
-    var currentCircularTime = Variable<String>(Date().timeOfHour() ?? "")
+    var currentDate = Variable<Date>(Date())
     
     init(_ apiService: APIService) {
         super.init()
@@ -36,9 +36,7 @@ class MainViewModel: NSObject {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
             self.currentDigitalTime.value = Date().timeOfCounter() ?? ""
-            if self.currentCircularTime.value != Date().timeOfHour() {
-                self.currentCircularTime.value = Date().timeOfHour() ?? ""
-            }
+            self.currentDate.value = Date()
         })
     }
     

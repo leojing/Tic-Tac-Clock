@@ -21,6 +21,8 @@ class AnalogClockView : UIView {
     @IBOutlet weak var minuteHand: UIImageView!
     @IBOutlet weak var secondHand: UIImageView!
 
+    fileprivate var oldHandAngles: HandAngles?
+    
     fileprivate func calculateHandAnglesForDate(_ date: Date) -> HandAngles {
         var result = HandAngles()
         
@@ -33,10 +35,10 @@ class AnalogClockView : UIView {
         
         if let minute = minute, let second = second {
             let fractionalHours = hour + minute/60
-            result.hourHandAngle = .pi * 2 * CGFloat(fractionalHours/12)
-            result.minuteHandAngle = .pi * 2 * CGFloat(minute/60)
-            result.secondHandAngle = .pi * 2 * CGFloat(second/60)
-            result.smallSecondHandAngle = .pi * 2 * CGFloat(smallSecond/30)
+            result.hourHandAngle = .pi * 2 * CGFloat(fractionalHours)/12.0
+            result.minuteHandAngle = .pi * 2 * CGFloat(minute)/60.0
+            result.secondHandAngle = .pi * 2 * CGFloat(second)/60.0
+            result.smallSecondHandAngle = .pi * 2 * CGFloat(smallSecond)/30.0
         }
         
         return result
@@ -45,7 +47,42 @@ class AnalogClockView : UIView {
     func setTimeToDate(_ date: Date, _ animated: Bool) {
         let theHandAngles = calculateHandAnglesForDate(date)
         if !animated {
-            
+            hourHand.transform = CGAffineTransform(rotationAngle: theHandAngles.hourHandAngle!)
+            minuteHand.transform = CGAffineTransform(rotationAngle: theHandAngles.minuteHandAngle!)
+            secondHand.transform = CGAffineTransform(rotationAngle: theHandAngles.secondHandAngle!)
+            return
         }
+        
+        if let second = theHandAngles.secondHandAngle, let oldSecond = oldHandAngles?.secondHandAngle {
+            let big_change = fabs(second - oldSecond) > .pi/4
+            let duration = big_change ? 0.6 : 0.3
+            animateHandView(secondHand, second, CGFloat(duration))
+        }
+        self.performBlockOnMainQueue({
+            if let minute = theHandAngles.minuteHandAngle, let oldMinute = self.oldHandAngles?.minuteHandAngle {
+                let big_change = fabs(minute - oldMinute) > .pi/4
+                let duration = big_change ? 0.6 : 0.3
+                self.animateHandView(self.minuteHand, minute, CGFloat(duration))
+            }
+            
+            if let hour = theHandAngles.hourHandAngle, let oldHour = self.oldHandAngles?.hourHandAngle {
+                let big_change = fabs(hour - oldHour) > .pi/4
+                let duration = big_change ? 0.6 : 0.3
+                self.animateHandView(self.hourHand, hour, CGFloat(duration))
+            }
+        }, 0.05)
+        
+        oldHandAngles = theHandAngles
+    }
+    
+    fileprivate func animateHandView(_ theHandView: UIImageView, _ toAngle: CGFloat, _ duration: CGFloat) {
+        var damping = 0.2
+        if duration > 0.4 {
+            damping = 0.6
+        }
+        
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0, usingSpringWithDamping: CGFloat(damping), initialSpringVelocity: 0.8, options: UIViewAnimationOptions(rawValue: 0), animations: {
+            theHandView.transform = CGAffineTransform(rotationAngle: toAngle)
+        }, completion: nil)
     }
 }

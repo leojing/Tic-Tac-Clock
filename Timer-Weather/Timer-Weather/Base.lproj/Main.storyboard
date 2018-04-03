@@ -66,26 +66,30 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chronography face" translatesAutoresizingMaskIntoConstraints="NO" id="850-MX-Srq">
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                     </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hours" translatesAutoresizingMaskIntoConstraints="NO" id="7vr-2n-ZKx">
-                                                        <rect key="frame" x="90" y="57" width="20" height="85"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hour" translatesAutoresizingMaskIntoConstraints="NO" id="7vr-2n-ZKx">
+                                                        <rect key="frame" x="-35" y="0.0" width="270" height="200"/>
                                                     </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Minutes" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-fh-urC">
-                                                        <rect key="frame" x="90" y="30.5" width="20" height="138"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="min" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-fh-urC">
+                                                        <rect key="frame" x="-35" y="0.0" width="270" height="200"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seconds" translatesAutoresizingMaskIntoConstraints="NO" id="o1P-a7-617">
-                                                        <rect key="frame" x="92.5" y="18" width="14" height="163"/>
+                                                        <rect key="frame" x="93" y="18" width="14" height="163"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="7vr-2n-ZKx" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="4j0-kz-P8g"/>
+                                                    <constraint firstAttribute="bottom" secondItem="SIp-fh-urC" secondAttribute="bottom" id="Abh-U1-ZEB"/>
                                                     <constraint firstAttribute="trailing" secondItem="850-MX-Srq" secondAttribute="trailing" id="Apt-MR-jhR"/>
                                                     <constraint firstItem="SIp-fh-urC" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="CKF-BE-hey"/>
+                                                    <constraint firstItem="7vr-2n-ZKx" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="DNZ-cI-5HX"/>
                                                     <constraint firstItem="850-MX-Srq" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="INy-5y-EQz"/>
                                                     <constraint firstItem="850-MX-Srq" firstAttribute="leading" secondItem="e7b-bj-Gx8" secondAttribute="leading" id="Ina-dq-0d8"/>
                                                     <constraint firstItem="SIp-fh-urC" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="OQw-YV-xsQ"/>
                                                     <constraint firstItem="o1P-a7-617" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="PPN-gi-6LG"/>
                                                     <constraint firstItem="o1P-a7-617" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="X1m-pd-zwd"/>
                                                     <constraint firstAttribute="width" constant="200" id="YIy-eG-V0J"/>
+                                                    <constraint firstAttribute="bottom" secondItem="7vr-2n-ZKx" secondAttribute="bottom" id="gPj-yE-X9l"/>
+                                                    <constraint firstItem="SIp-fh-urC" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="jAl-01-Fmg"/>
                                                     <constraint firstAttribute="bottom" secondItem="850-MX-Srq" secondAttribute="bottom" id="ozA-AV-alb"/>
                                                     <constraint firstAttribute="width" secondItem="e7b-bj-Gx8" secondAttribute="height" multiplier="1:1" id="qie-s3-0At"/>
                                                     <constraint firstItem="7vr-2n-ZKx" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="sNA-AU-q2d"/>
@@ -166,6 +170,7 @@
                     <connections>
                         <outlet property="circleTimerView" destination="s8C-vK-0ct" id="6jf-gI-wk9"/>
                         <outlet property="cityNameLabel" destination="GGB-1k-F3R" id="zaB-Ml-t3g"/>
+                        <outlet property="clockView" destination="e7b-bj-Gx8" id="2T8-X8-3ET"/>
                         <outlet property="daysWeatherTableView" destination="rIg-zu-78W" id="htr-Y5-YSv"/>
                         <outlet property="digitalTimerLabel" destination="57w-m7-uaL" id="Y8s-oi-OK5"/>
                         <outlet property="digitalTimerView" destination="f5N-cF-hYx" id="DGZ-Hg-YUQ"/>
@@ -416,8 +421,8 @@
     </scenes>
     <resources>
         <image name="Chronography face" width="270" height="270"/>
-        <image name="Hours" width="20" height="85"/>
-        <image name="Minutes" width="20" height="138"/>
         <image name="Seconds" width="14" height="163"/>
+        <image name="hour" width="270" height="270"/>
+        <image name="min" width="270" height="270"/>
     </resources>
 </document>
