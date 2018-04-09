@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
         
         setupCollectionView()
         viewModel = MainViewModel(APIClient())
+        digitalTimerView.isHidden = true
     }
     
     fileprivate func setupCollectionView() {

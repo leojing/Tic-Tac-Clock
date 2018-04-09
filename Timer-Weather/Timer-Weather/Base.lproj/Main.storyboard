@@ -167,6 +167,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="ZNh-6c-Fjr" secondAttribute="bottom" constant="30" id="38l-J7-ybL"/>
+                                            <constraint firstAttribute="height" constant="200" id="Eza-86-Ryz"/>
                                             <constraint firstItem="ZNh-6c-Fjr" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="Fjc-Gg-bTC"/>
                                             <constraint firstItem="x9h-KW-5ZO" firstAttribute="centerY" secondItem="s8C-vK-0ct" secondAttribute="centerY" id="Loj-fd-IcA"/>
                                             <constraint firstItem="e7b-bj-Gx8" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="W1D-YQ-xlt"/>
@@ -176,7 +177,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5N-cF-hYx">
-                                        <rect key="frame" x="0.0" y="210" width="375" height="237"/>
+                                        <rect key="frame" x="0.0" y="210" width="375" height="120"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:25:34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57w-m7-uaL">
                                                 <rect key="frame" x="10" y="18" width="355" height="48"/>
@@ -197,7 +198,11 @@
                                             <constraint firstItem="57w-m7-uaL" firstAttribute="leading" secondItem="f5N-cF-hYx" secondAttribute="leading" constant="10" id="ELZ-dB-428"/>
                                             <constraint firstItem="HY6-cm-Qmn" firstAttribute="centerX" secondItem="f5N-cF-hYx" secondAttribute="centerX" id="Tzd-DI-QH8"/>
                                             <constraint firstItem="57w-m7-uaL" firstAttribute="top" secondItem="f5N-cF-hYx" secondAttribute="topMargin" constant="10" id="WEu-By-Bp6"/>
+                                            <constraint firstAttribute="height" constant="120" id="dFn-IT-IUb"/>
                                         </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6p-md-uOP">
+                                        <rect key="frame" x="0.0" y="340" width="375" height="107"/>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uzH-Dc-aZ6">
                                         <rect key="frame" x="0.0" y="457" width="375" height="150"/>
