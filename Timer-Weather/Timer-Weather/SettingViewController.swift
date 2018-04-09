@@ -26,6 +26,10 @@ class SettingViewController: UITableViewController {
     
     // MARK: Actions
     
+    @IBAction func backAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func showWeatherAction(_ sender: UISwitch) {
         delegate?.showWeather(sender.isOn)
     }

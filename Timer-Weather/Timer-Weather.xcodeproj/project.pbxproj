@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		241DD8E52073B987008B760F /* UIView+performBlockAfterDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */; };
+		24797B38207B9A7400E83634 /* DailyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */; };
 		247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247B89E4206BB5E70084D7CE /* AnalogClockView.swift */; };
 		24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */; };
 		24ED089D2061197000DCF838 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089C2061197000DCF838 /* MainViewController.swift */; };
@@ -22,8 +23,6 @@
 		24ED08B420611C9700DCF838 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08AA20611C9600DCF838 /* ApiClient.swift */; };
 		24ED08B6206120F600DCF838 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08B5206120F600DCF838 /* MainViewModel.swift */; };
 		24ED08B82061234100DCF838 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08B72061234000DCF838 /* LocationService.swift */; };
-		24ED08BC20626E0B00DCF838 /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24ED08BA20626E0B00DCF838 /* DailyTableViewCell.xib */; };
-		24ED08BD20626E0B00DCF838 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08BB20626E0B00DCF838 /* DailyTableViewCell.swift */; };
 		24ED08C120626EBE00DCF838 /* String+Customise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08BF20626EBE00DCF838 /* String+Customise.swift */; };
 		24ED08C220626EBE00DCF838 /* Date+Customise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08C020626EBE00DCF838 /* Date+Customise.swift */; };
 		24F7883B205FCE2A00712C0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7883A205FCE2A00712C0C /* AppDelegate.swift */; };
@@ -58,6 +57,7 @@
 		054E442230A88C6C3AE00FDC /* Pods_Timer_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C03A6989E6C56C7D6982325 /* Pods-Timer-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timer-Weather/Pods-Timer-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+performBlockAfterDelay.swift"; sourceTree = "<group>"; };
+		24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewCell.swift; sourceTree = "<group>"; };
 		247B89E4206BB5E70084D7CE /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
 		24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		24ED089C2061197000DCF838 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +72,6 @@
 		24ED08AA20611C9600DCF838 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		24ED08B5206120F600DCF838 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		24ED08B72061234000DCF838 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		24ED08BA20626E0B00DCF838 /* DailyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTableViewCell.xib; sourceTree = "<group>"; };
-		24ED08BB20626E0B00DCF838 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		24ED08BF20626EBE00DCF838 /* String+Customise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Customise.swift"; sourceTree = "<group>"; };
 		24ED08C020626EBE00DCF838 /* Date+Customise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Customise.swift"; sourceTree = "<group>"; };
 		24F78837205FCE2A00712C0C /* Timer-Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Timer-Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,9 +162,8 @@
 		24ED08B920626E0B00DCF838 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				24ED08BA20626E0B00DCF838 /* DailyTableViewCell.xib */,
-				24ED08BB20626E0B00DCF838 /* DailyTableViewCell.swift */,
 				247B89E4206BB5E70084D7CE /* AnalogClockView.swift */,
+				24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,7 +362,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F78845205FCE2A00712C0C /* LaunchScreen.storyboard in Resources */,
-				24ED08BC20626E0B00DCF838 /* DailyTableViewCell.xib in Resources */,
 				24F78842205FCE2A00712C0C /* Assets.xcassets in Resources */,
 				24F78840205FCE2A00712C0C /* Main.storyboard in Resources */,
 			);
@@ -511,7 +507,6 @@
 			files = (
 				24ED08C120626EBE00DCF838 /* String+Customise.swift in Sources */,
 				24ED08B82061234100DCF838 /* LocationService.swift in Sources */,
-				24ED08BD20626E0B00DCF838 /* DailyTableViewCell.swift in Sources */,
 				247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */,
 				24F7883B205FCE2A00712C0C /* AppDelegate.swift in Sources */,
 				24ED08C220626EBE00DCF838 /* Date+Customise.swift in Sources */,
@@ -519,6 +514,7 @@
 				24ED08B020611C9700DCF838 /* WeatherDetail.swift in Sources */,
 				24ED08AD20611C9700DCF838 /* Daily.swift in Sources */,
 				24ED089D2061197000DCF838 /* MainViewController.swift in Sources */,
+				24797B38207B9A7400E83634 /* DailyCollectionViewCell.swift in Sources */,
 				24ED08B320611C9700DCF838 /* APIService.swift in Sources */,
 				241DD8E52073B987008B760F /* UIView+performBlockAfterDelay.swift in Sources */,
 				24ED08B6206120F600DCF838 /* MainViewModel.swift in Sources */,

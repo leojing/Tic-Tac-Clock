@@ -18,11 +18,12 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var circleTimerView: UIView!
     @IBOutlet weak var clockView: AnalogClockView!
+    @IBOutlet weak var smallClockView: AnalogClockView!
+    @IBOutlet weak var dateLabel: UILabel!
+
+    @IBOutlet weak var daysWeatherCollectionView: UICollectionView!
     
-    @IBOutlet weak var weatherView: UIView!
-    @IBOutlet weak var daysWeatherTableView: UITableView!
-    
-    @IBOutlet weak var cityNameLabel: UILabel!
+//    @IBOutlet weak var cityNameLabel: UILabel!
 
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel? {
@@ -34,14 +35,15 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
+        setupCollectionView()
         viewModel = MainViewModel(APIClient())
     }
     
-    fileprivate func setupTableView() {
-        daysWeatherTableView.estimatedRowHeight = 30
-        daysWeatherTableView.rowHeight = UITableViewAutomaticDimension
-        daysWeatherTableView.register(DailyTableViewCell.nib(), forCellReuseIdentifier: DailyTableViewCell.reuseId())
+    fileprivate func setupCollectionView() {
+        if let layout = daysWeatherCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.itemSize = CGSize(width: daysWeatherCollectionView.frame.size.width/6, height: daysWeatherCollectionView.frame.size.height/2)
+            layout.minimumLineSpacing = 1.0
+        }
     }
 
     // MARK: Bind ViewModel
@@ -54,13 +56,14 @@ class MainViewController: UIViewController {
         viewModel?.currentDate.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { date in
-                self.clockView.setTimeToDate(date, true)
+                self.clockView.setTimeToDate(date, false)
+                self.smallClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
-        viewModel?.cityName.asObservable()
-        .bind(to: self.cityNameLabel.rx.text)
-        .disposed(by: disposeBag)
+//        viewModel?.cityName.asObservable()
+//        .bind(to: self.cityNameLabel.rx.text)
+//        .disposed(by: disposeBag)
         
         // MARK: bind Top info view and background theme color by currently weather data
         viewModel?.weather.asObservable()
@@ -72,9 +75,10 @@ class MainViewController: UIViewController {
             }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
         
-        // MARK: bind daily data with dailyTableview
+        // MARK: bind daily data with daysWeatherCollectionView
         viewModel?.dailyData.asObservable()
-            .bind(to: daysWeatherTableView.rx.items(cellIdentifier: DailyTableViewCell.reuseId(), cellType: DailyTableViewCell.self)) { (row, element, cell) in
+            .bind(to: daysWeatherCollectionView.rx.items(cellIdentifier: DailyCollectionViewCell.reuseId(), cellType: DailyCollectionViewCell.self)) { (row, element, cell) in
+                cell.layoutIfNeeded()
                 cell.configureCell(element)
             }
             .disposed(by: disposeBag)

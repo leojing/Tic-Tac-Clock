@@ -81,7 +81,7 @@ class MainViewModel: NSObject {
         weather.asObservable()
             .subscribe(onNext: { w in
                 if let weatherData = w?.daily?.data {
-                    self.dailyData.value = weatherData
+                    self.dailyData.value = Array(weatherData.prefix(1))
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)

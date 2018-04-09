@@ -70,7 +70,7 @@ class AnalogClockView : UIView {
                 let duration = big_change ? 0.6 : 0.3
                 self.animateHandView(self.hourHand, hour, CGFloat(duration))
             }
-        }, 0.05)
+        }, 0.0)
         
         oldHandAngles = theHandAngles
     }
