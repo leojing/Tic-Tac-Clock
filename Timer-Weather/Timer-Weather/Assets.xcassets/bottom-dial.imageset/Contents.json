@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Seconds.png",
+      "filename" : "bottom-dial.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Seconds@2x.png",
+      "filename" : "bottom-dial@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Seconds@3x.png",
+      "filename" : "bottom-dial@3x.png",
       "scale" : "3x"
     }
   ],

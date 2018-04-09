@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TeL-WR-vh0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TeL-WR-vh0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -61,9 +61,16 @@
                                         <rect key="frame" x="0.0" y="110.5" width="375" height="200"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7b-bj-Gx8" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
-                                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chronography face" translatesAutoresizingMaskIntoConstraints="NO" id="850-MX-Srq">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upper-dial" translatesAutoresizingMaskIntoConstraints="NO" id="Y7W-Ae-a37">
+                                                        <rect key="frame" x="70" y="30" width="60" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="Zgi-S1-vxD"/>
+                                                            <constraint firstAttribute="width" secondItem="Y7W-Ae-a37" secondAttribute="height" multiplier="1:1" id="wba-om-kBI"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chronography-black" translatesAutoresizingMaskIntoConstraints="NO" id="850-MX-Srq">
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hour" translatesAutoresizingMaskIntoConstraints="NO" id="7vr-2n-ZKx">
@@ -72,32 +79,80 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="min" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-fh-urC">
                                                         <rect key="frame" x="-35" y="0.0" width="270" height="200"/>
                                                     </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seconds" translatesAutoresizingMaskIntoConstraints="NO" id="o1P-a7-617">
-                                                        <rect key="frame" x="93" y="18" width="14" height="163"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uDz-E3-v1L">
+                                                        <rect key="frame" x="100" y="0.0" width="0.0" height="200"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" id="SzA-jK-11t"/>
+                                                        </constraints>
                                                     </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sec" translatesAutoresizingMaskIntoConstraints="NO" id="o1P-a7-617">
+                                                        <rect key="frame" x="-35" y="0.0" width="270" height="200"/>
+                                                    </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-6c-Fjr" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
+                                                        <rect key="frame" x="70.5" y="110" width="60" height="60"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-dial" translatesAutoresizingMaskIntoConstraints="NO" id="Svs-cE-PL3">
+                                                                <rect key="frame" x="-0.5" y="-0.5" width="60" height="60"/>
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAJ-Cf-bjV">
+                                                                <rect key="frame" x="-90.5" y="-34.5" width="240" height="128"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfx-TU-SCW">
+                                                                <rect key="frame" x="-90.5" y="-34.5" width="240" height="128"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-dial-second" translatesAutoresizingMaskIntoConstraints="NO" id="ilT-QC-CNN">
+                                                                <rect key="frame" x="-8.5" y="0.0" width="76" height="60"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="Svs-cE-PL3" secondAttribute="trailing" id="2wJ-Yr-aan"/>
+                                                            <constraint firstItem="Svs-cE-PL3" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="5bE-Yz-8Dc"/>
+                                                            <constraint firstItem="Svs-cE-PL3" firstAttribute="leading" secondItem="ZNh-6c-Fjr" secondAttribute="leading" id="9i9-aJ-qLn"/>
+                                                            <constraint firstItem="ilT-QC-CNN" firstAttribute="centerX" secondItem="ZNh-6c-Fjr" secondAttribute="centerX" id="KYE-8J-BbW"/>
+                                                            <constraint firstAttribute="width" secondItem="ZNh-6c-Fjr" secondAttribute="height" multiplier="1:1" id="WNg-7A-rI4"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Svs-cE-PL3" secondAttribute="bottom" id="Xp3-C6-r4J"/>
+                                                            <constraint firstAttribute="width" constant="60" id="YRy-de-whn"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ilT-QC-CNN" secondAttribute="bottom" id="Z78-5w-3CI"/>
+                                                            <constraint firstItem="ilT-QC-CNN" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="kMu-W6-DJk"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="secondHand" destination="ilT-QC-CNN" id="8AP-Kw-GHv"/>
+                                                        </connections>
+                                                    </view>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="7vr-2n-ZKx" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="4j0-kz-P8g"/>
                                                     <constraint firstAttribute="bottom" secondItem="SIp-fh-urC" secondAttribute="bottom" id="Abh-U1-ZEB"/>
                                                     <constraint firstAttribute="trailing" secondItem="850-MX-Srq" secondAttribute="trailing" id="Apt-MR-jhR"/>
+                                                    <constraint firstItem="o1P-a7-617" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="C5E-iL-7AT"/>
                                                     <constraint firstItem="SIp-fh-urC" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="CKF-BE-hey"/>
                                                     <constraint firstItem="7vr-2n-ZKx" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="DNZ-cI-5HX"/>
                                                     <constraint firstItem="850-MX-Srq" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="INy-5y-EQz"/>
                                                     <constraint firstItem="850-MX-Srq" firstAttribute="leading" secondItem="e7b-bj-Gx8" secondAttribute="leading" id="Ina-dq-0d8"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZNh-6c-Fjr" secondAttribute="bottom" constant="30" id="Kds-Ia-vPZ"/>
                                                     <constraint firstItem="SIp-fh-urC" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="OQw-YV-xsQ"/>
                                                     <constraint firstItem="o1P-a7-617" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="PPN-gi-6LG"/>
+                                                    <constraint firstItem="ZNh-6c-Fjr" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="URQ-Ug-KOT"/>
+                                                    <constraint firstItem="Y7W-Ae-a37" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="VlI-yU-xYN"/>
                                                     <constraint firstItem="o1P-a7-617" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="X1m-pd-zwd"/>
                                                     <constraint firstAttribute="width" constant="200" id="YIy-eG-V0J"/>
+                                                    <constraint firstAttribute="bottom" secondItem="o1P-a7-617" secondAttribute="bottom" id="dTa-rV-jUl"/>
                                                     <constraint firstAttribute="bottom" secondItem="7vr-2n-ZKx" secondAttribute="bottom" id="gPj-yE-X9l"/>
+                                                    <constraint firstItem="Y7W-Ae-a37" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" constant="30" id="hoQ-tV-bv0"/>
+                                                    <constraint firstItem="uDz-E3-v1L" firstAttribute="centerX" secondItem="e7b-bj-Gx8" secondAttribute="centerX" id="hzj-XJ-Xj8"/>
+                                                    <constraint firstItem="uDz-E3-v1L" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="iVO-sh-VXX"/>
                                                     <constraint firstItem="SIp-fh-urC" firstAttribute="top" secondItem="e7b-bj-Gx8" secondAttribute="top" id="jAl-01-Fmg"/>
                                                     <constraint firstAttribute="bottom" secondItem="850-MX-Srq" secondAttribute="bottom" id="ozA-AV-alb"/>
                                                     <constraint firstAttribute="width" secondItem="e7b-bj-Gx8" secondAttribute="height" multiplier="1:1" id="qie-s3-0At"/>
+                                                    <constraint firstAttribute="bottom" secondItem="uDz-E3-v1L" secondAttribute="bottom" id="rXx-zf-k8z"/>
                                                     <constraint firstItem="7vr-2n-ZKx" firstAttribute="centerY" secondItem="e7b-bj-Gx8" secondAttribute="centerY" id="sNA-AU-q2d"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="hourHand" destination="7vr-2n-ZKx" id="dRW-hT-vgU"/>
                                                     <outlet property="minuteHand" destination="SIp-fh-urC" id="vxT-0P-0c7"/>
-                                                    <outlet property="secondHand" destination="o1P-a7-617" id="7Ry-jA-y7E"/>
+                                                    <outlet property="secondHand" destination="uDz-E3-v1L" id="hNe-Ld-Tly"/>
                                                 </connections>
                                             </view>
                                         </subviews>
@@ -420,9 +475,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chronography face" width="270" height="270"/>
-        <image name="Seconds" width="14" height="163"/>
+        <image name="bottom-dial" width="76" height="76"/>
+        <image name="bottom-dial-second" width="76" height="76"/>
+        <image name="chronography-black" width="270" height="270"/>
         <image name="hour" width="270" height="270"/>
         <image name="min" width="270" height="270"/>
+        <image name="sec" width="270" height="270"/>
+        <image name="upper-dial" width="76" height="76"/>
     </resources>
 </document>
