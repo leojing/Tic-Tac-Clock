@@ -21,6 +21,8 @@ class MainViewModel: NSObject {
     
     var weather = Variable<Weather?>(nil)
     var dailyData = Variable<[WeatherDetail]>([])
+    var singleDaysData = Variable<[WeatherDetail]>([])
+    var mutipleDaysData = Variable<[WeatherDetail]>([])
     var cityName = Variable<String>("")
     var alertMessage = Variable<String>("")
     
@@ -81,7 +83,15 @@ class MainViewModel: NSObject {
         weather.asObservable()
             .subscribe(onNext: { w in
                 if let weatherData = w?.daily?.data {
-                    self.dailyData.value = Array(weatherData.prefix(5))
+                    self.singleDaysData.value = Array(weatherData.prefix(1))
+                    self.mutipleDaysData.value = Array(weatherData.prefix(5))
+                    if let isShow5DaysWeather = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
+                        if isShow5DaysWeather {
+                            self.dailyData.value = self.mutipleDaysData.value
+                        } else {
+                            self.dailyData.value = self.singleDaysData.value
+                        }
+                    }
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)

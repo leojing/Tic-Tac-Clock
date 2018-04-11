@@ -37,7 +37,26 @@ class MainViewController: UIViewController {
         
         setupCollectionView()
         viewModel = MainViewModel(APIClient())
-        digitalTimerView.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
+            digitalTimerView.isHidden = !isShowDate
+        }
+        
+        if let isShowWeather = SettingsViewModel.sharedInstance.getShowWeather() {
+            daysWeatherCollectionView.isHidden = !isShowWeather
+        }
+        
+        if let isShow5DaysWeather = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
+            if isShow5DaysWeather, let data = viewModel?.mutipleDaysData.value {
+                viewModel?.dailyData.value = data
+            } else if !isShow5DaysWeather, let data = viewModel?.singleDaysData.value {
+                viewModel?.dailyData.value = data
+            }
+        }
     }
     
     fileprivate func setupCollectionView() {
