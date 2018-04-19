@@ -12,19 +12,25 @@ import RxCocoa
 import HGCircularSlider
 
 class MainViewController: UIViewController {
-
-    @IBOutlet weak var digitalTimerView: UIView!
-    @IBOutlet weak var digitalTimerLabel: UILabel!
     
     @IBOutlet weak var circleTimerView: UIView!
+    @IBOutlet weak var circleTimerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var clockView: AnalogClockView!
     @IBOutlet weak var smallClockView: AnalogClockView!
+    @IBOutlet weak var dateInWatchLabel: UILabel!
+    
+    @IBOutlet weak var digitalTimerView: UIView!
+    @IBOutlet weak var digitalTimerLabel: UILabel!
+    @IBOutlet weak var digitalTimerHeightConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dateLabelHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var daysWeatherCollectionView: UICollectionView!
+    @IBOutlet weak var weatherCollectionHeightConstraint: NSLayoutConstraint!
     
-//    @IBOutlet weak var cityNameLabel: UILabel!
-
+    @IBOutlet weak var cityNameLabel: UILabel!
+    
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel? {
         didSet {
@@ -32,22 +38,35 @@ class MainViewController: UIViewController {
         }
     }
 
+    private enum Constants {
+        static let digitalTimerHeight = 120
+        static let circleTimerHeight = 200
+        static let dateLabelHeight = 30
+        static let weatherCollectionHeight = 80
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCollectionView()
         viewModel = MainViewModel(APIClient())
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
-            digitalTimerView.isHidden = !isShowDate
+            digitalTimerHeightConstraint.constant = CGFloat(isShowDate ? Constants.digitalTimerHeight : 0)
+            dateLabelHeightConstraint.constant = CGFloat(isShowDate ? Constants.dateLabelHeight : 0)
+            
+            circleTimerHeightConstraint.constant = CGFloat(!isShowDate ? Constants.circleTimerHeight : 0)
+            circleTimerView.isHidden = isShowDate
         }
         
         if let isShowWeather = SettingsViewModel.sharedInstance.getShowWeather() {
-            daysWeatherCollectionView.isHidden = !isShowWeather
+            weatherCollectionHeightConstraint.constant = CGFloat(isShowWeather ? Constants.weatherCollectionHeight : 0)
         }
         
         if let isShow5DaysWeather = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
@@ -81,9 +100,9 @@ class MainViewController: UIViewController {
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
-//        viewModel?.cityName.asObservable()
-//        .bind(to: self.cityNameLabel.rx.text)
-//        .disposed(by: disposeBag)
+        viewModel?.cityName.asObservable()
+        .bind(to: self.cityNameLabel.rx.text)
+        .disposed(by: disposeBag)
         
         // MARK: bind Top info view and background theme color by currently weather data
         viewModel?.weather.asObservable()
@@ -120,6 +139,11 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @objc
+    fileprivate func triggleTimer() {
+        viewModel?.currentDate.value = Date()
     }
 }
 
