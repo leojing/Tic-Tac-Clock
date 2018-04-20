@@ -20,7 +20,7 @@ class MainViewModel: NSObject {
     fileprivate var timer: Timer?
     
     var weather = Variable<Weather?>(nil)
-    var dailyData = Variable<[WeatherDetail]>([])
+    var dailyData = Variable<[WeatherDetail?]>([])
     var singleDaysData = Variable<[WeatherDetail]>([])
     var mutipleDaysData = Variable<[WeatherDetail]>([])
     var cityName = Variable<String>("")
@@ -89,7 +89,7 @@ class MainViewModel: NSObject {
                         if isShow5DaysWeather {
                             self.dailyData.value = self.mutipleDaysData.value
                         } else {
-                            self.dailyData.value = self.singleDaysData.value
+                            self.dailyData.value = [nil, nil, self.singleDaysData.value.first, nil, nil]
                         }
                     }
                 }

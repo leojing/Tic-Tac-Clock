@@ -1,7 +1,7 @@
 //
 //	Data.swift
 //
-//	Create by Jing Luo on 26/1/2018
+//	Create by Jing Luo on 20/4/2018
 //	Copyright © 2018. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
@@ -19,7 +19,6 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
 	var apparentTemperatureMaxTime : Int?
 	var apparentTemperatureMin : Float?
 	var apparentTemperatureMinTime : Int?
-	var cloudCover : Float?
 	var dewPoint : Float?
 	var humidity : Float?
 	var icon : String?
@@ -45,11 +44,13 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
 	var time : Int?
 	var uvIndex : Int?
 	var uvIndexTime : Int?
+	var visibility : Float?
 	var windBearing : Int?
 	var windGust : Float?
 	var windGustTime : Int?
 	var windSpeed : Float?
 	var apparentTemperature : Float?
+	var cloudCover : Float?
 	var temperature : Float?
 
 
@@ -95,11 +96,15 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
 		time <- map["time"]
 		uvIndex <- map["uvIndex"]
 		uvIndexTime <- map["uvIndexTime"]
+		visibility <- map["visibility"]
 		windBearing <- map["windBearing"]
 		windGust <- map["windGust"]
 		windGustTime <- map["windGustTime"]
 		windSpeed <- map["windSpeed"]
 		apparentTemperature <- map["apparentTemperature"]
+		cloudCover <- map["cloudCover"]
+		precipIntensity <- map["precipIntensity"]
+		precipProbability <- map["precipProbability"]
 		temperature <- map["temperature"]
 		
 	}
@@ -144,11 +149,15 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
          time = aDecoder.decodeObject(forKey: "time") as? Int
          uvIndex = aDecoder.decodeObject(forKey: "uvIndex") as? Int
          uvIndexTime = aDecoder.decodeObject(forKey: "uvIndexTime") as? Int
+         visibility = aDecoder.decodeObject(forKey: "visibility") as? Float
          windBearing = aDecoder.decodeObject(forKey: "windBearing") as? Int
          windGust = aDecoder.decodeObject(forKey: "windGust") as? Float
          windGustTime = aDecoder.decodeObject(forKey: "windGustTime") as? Int
          windSpeed = aDecoder.decodeObject(forKey: "windSpeed") as? Float
          apparentTemperature = aDecoder.decodeObject(forKey: "apparentTemperature") as? Float
+         cloudCover = aDecoder.decodeObject(forKey: "cloudCover") as? Float
+         precipIntensity = aDecoder.decodeObject(forKey: "precipIntensity") as? Float
+         precipProbability = aDecoder.decodeObject(forKey: "precipProbability") as? Float
          temperature = aDecoder.decodeObject(forKey: "temperature") as? Float
 
 	}
@@ -261,6 +270,9 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
 		if uvIndexTime != nil{
 			aCoder.encode(uvIndexTime, forKey: "uvIndexTime")
 		}
+		if visibility != nil{
+			aCoder.encode(visibility, forKey: "visibility")
+		}
 		if windBearing != nil{
 			aCoder.encode(windBearing, forKey: "windBearing")
 		}
@@ -276,6 +288,15 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
 		if apparentTemperature != nil{
 			aCoder.encode(apparentTemperature, forKey: "apparentTemperature")
 		}
+		if cloudCover != nil{
+			aCoder.encode(cloudCover, forKey: "cloudCover")
+		}
+		if precipIntensity != nil{
+			aCoder.encode(precipIntensity, forKey: "precipIntensity")
+		}
+		if precipProbability != nil{
+			aCoder.encode(precipProbability, forKey: "precipProbability")
+		}
 		if temperature != nil{
 			aCoder.encode(temperature, forKey: "temperature")
 		}
@@ -283,3 +304,9 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
 	}
 
 }
+
+
+
+
+
+

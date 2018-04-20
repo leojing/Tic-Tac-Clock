@@ -192,28 +192,26 @@
                                 <rect key="frame" x="0.0" y="300" width="375" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="13" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57w-m7-uaL">
-                                        <rect key="frame" x="0.0" y="16" width="375" height="49.5"/>
+                                        <rect key="frame" x="155.5" y="16" width="64.5" height="49.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="64"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HY6-cm-Qmn">
-                                        <rect key="frame" x="0.0" y="70.5" width="375" height="49.5"/>
+                                        <rect key="frame" x="131" y="70.5" width="89" height="49.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="64"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="57w-m7-uaL" secondAttribute="trailing" id="9II-LE-AAC"/>
                                     <constraint firstItem="HY6-cm-Qmn" firstAttribute="top" secondItem="57w-m7-uaL" secondAttribute="bottom" constant="5" id="BUG-ZG-FVK"/>
-                                    <constraint firstItem="57w-m7-uaL" firstAttribute="leading" secondItem="f5N-cF-hYx" secondAttribute="leading" id="ELZ-dB-428"/>
                                     <constraint firstAttribute="bottom" secondItem="HY6-cm-Qmn" secondAttribute="bottom" id="Gqw-LE-dVU"/>
-                                    <constraint firstItem="HY6-cm-Qmn" firstAttribute="leading" secondItem="f5N-cF-hYx" secondAttribute="leading" id="Q4a-cQ-QGR"/>
+                                    <constraint firstItem="57w-m7-uaL" firstAttribute="centerX" secondItem="f5N-cF-hYx" secondAttribute="centerX" id="SGX-hh-6cL"/>
                                     <constraint firstItem="57w-m7-uaL" firstAttribute="top" secondItem="f5N-cF-hYx" secondAttribute="topMargin" constant="8" id="WEu-By-Bp6"/>
                                     <constraint firstAttribute="height" constant="120" id="dFn-IT-IUb"/>
                                     <constraint firstItem="HY6-cm-Qmn" firstAttribute="height" secondItem="57w-m7-uaL" secondAttribute="height" id="qR7-9a-JSj"/>
-                                    <constraint firstAttribute="trailing" secondItem="HY6-cm-Qmn" secondAttribute="trailing" id="tt0-OH-Kai"/>
+                                    <constraint firstItem="57w-m7-uaL" firstAttribute="trailing" secondItem="HY6-cm-Qmn" secondAttribute="trailing" id="u9b-0Z-cXv"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, 23 April" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="284-3f-JdY">
@@ -317,7 +315,8 @@
                         <outlet property="dateLabelHeightConstraint" destination="0aZ-uv-EEs" id="w8K-4q-tri"/>
                         <outlet property="daysWeatherCollectionView" destination="uzH-Dc-aZ6" id="epC-Ug-B4Q"/>
                         <outlet property="digitalTimerHeightConstraint" destination="dFn-IT-IUb" id="adE-nv-at6"/>
-                        <outlet property="digitalTimerLabel" destination="57w-m7-uaL" id="Y8s-oi-OK5"/>
+                        <outlet property="digitalTimerHourLabel" destination="57w-m7-uaL" id="Ea1-J7-uLS"/>
+                        <outlet property="digitalTimerMinLabel" destination="HY6-cm-Qmn" id="eCG-NX-Oqo"/>
                         <outlet property="digitalTimerView" destination="f5N-cF-hYx" id="DGZ-Hg-YUQ"/>
                         <outlet property="smallClockView" destination="ZNh-6c-Fjr" id="cYZ-Mk-RnG"/>
                         <outlet property="weatherCollectionHeightConstraint" destination="pr3-3Z-g2v" id="2XM-sw-Khi"/>
@@ -357,7 +356,7 @@
                         <sections>
                             <tableViewSection id="134-xD-bv9">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mHg-lh-dhS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="mHg-lh-dhS">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mHg-lh-dhS" id="unT-Us-HFd">
@@ -372,9 +371,6 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ha-bs-fjA">
                                                     <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="showWeather:" destination="ItR-oB-99o" eventType="valueChanged" id="aax-QP-7Zv"/>
-                                                    </connections>
                                                 </switch>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvi-na-IkF">
                                                     <rect key="frame" x="0.0" y="43" width="375" height="1"/>
@@ -396,7 +392,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HMb-hU-Hrr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="HMb-hU-Hrr">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HMb-hU-Hrr" id="by6-hu-Jix">
@@ -411,9 +407,6 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLp-lg-xFx">
                                                     <rect key="frame" x="306" y="6.5" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="show5DaysWeather:" destination="ItR-oB-99o" eventType="valueChanged" id="iUu-Rj-gQB"/>
-                                                    </connections>
                                                 </switch>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbu-QY-0gr">
                                                     <rect key="frame" x="0.0" y="43" width="375" height="1"/>
@@ -439,7 +432,7 @@
                             </tableViewSection>
                             <tableViewSection id="cx4-Pg-xqU">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KA2-kx-a5c">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="KA2-kx-a5c">
                                         <rect key="frame" x="0.0" y="168" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KA2-kx-a5c" id="7qd-NQ-MQA">
@@ -454,9 +447,6 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3hE-uV-6dO">
                                                     <rect key="frame" x="306" y="6" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="showDate:" destination="ItR-oB-99o" eventType="valueChanged" id="sB8-hY-1fO"/>
-                                                    </connections>
                                                 </switch>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-jU-wr8">
                                                     <rect key="frame" x="0.0" y="43" width="375" height="1"/>
@@ -478,7 +468,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hvb-2t-uKN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="hvb-2t-uKN">
                                         <rect key="frame" x="0.0" y="212" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hvb-2t-uKN" id="uWg-sn-CkT">
@@ -522,7 +512,7 @@
                             </tableViewSection>
                             <tableViewSection id="liT-t4-Ub0">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LNd-XY-Axz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="LNd-XY-Axz">
                                         <rect key="frame" x="0.0" y="292" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LNd-XY-Axz" id="AUy-cg-Rwl">
@@ -562,7 +552,7 @@
                                             <segue destination="UCp-dd-rRS" kind="show" id="232-gL-Kbe"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mCq-7e-1Em">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="mCq-7e-1Em">
                                         <rect key="frame" x="0.0" y="336" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCq-7e-1Em" id="sTN-Ix-VAQ">

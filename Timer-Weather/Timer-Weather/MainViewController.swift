@@ -20,7 +20,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dateInWatchLabel: UILabel!
     
     @IBOutlet weak var digitalTimerView: UIView!
-    @IBOutlet weak var digitalTimerLabel: UILabel!
+    @IBOutlet weak var digitalTimerHourLabel: UILabel!
+    @IBOutlet weak var digitalTimerMinLabel: UILabel!
     @IBOutlet weak var digitalTimerHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var dateLabel: UILabel!
@@ -89,12 +90,19 @@ class MainViewController: UIViewController {
     fileprivate func setupViewModelBinds() {
         
         viewModel?.currentDigitalTime.asObservable()
-        .bind(to: self.digitalTimerLabel.rx.text)
+            .subscribe(onNext: { timer in
+                var index = timer.index(timer.startIndex, offsetBy: 2)
+                self.digitalTimerHourLabel.text = String(timer.prefix(upTo: index))
+                index = timer.index(timer.endIndex, offsetBy: -2)
+                self.digitalTimerMinLabel.text = ":\(String(timer.suffix(from: index)))"
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
         viewModel?.currentDate.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { date in
+                self.dateInWatchLabel.text = date.dayOfWeekShort()?.uppercased()
+                self.dateLabel.text = date.dayOfWeekLong()
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
@@ -117,7 +125,6 @@ class MainViewController: UIViewController {
         // MARK: bind daily data with daysWeatherCollectionView
         viewModel?.dailyData.asObservable()
             .bind(to: daysWeatherCollectionView.rx.items(cellIdentifier: DailyCollectionViewCell.reuseId(), cellType: DailyCollectionViewCell.self)) { (row, element, cell) in
-                cell.layoutIfNeeded()
                 cell.configureCell(element)
             }
             .disposed(by: disposeBag)

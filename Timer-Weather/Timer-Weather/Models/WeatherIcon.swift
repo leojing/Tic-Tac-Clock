@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftIcons
 
-enum ThemeColor {
+enum WeatherIcon {
     case rain
     case cloudy
     case partlyCloudyNight
@@ -21,7 +21,7 @@ enum ThemeColor {
     case sleet
     case fog
     
-    static func fromDescription(_ des: String) -> ThemeColor? {
+    static func fromDescription(_ des: String) -> WeatherIcon? {
         switch des {
         case "rain":
             return .rain
@@ -80,34 +80,34 @@ enum ThemeColor {
         }
     }
     
-    func convertToIcon() -> FontType {
+    func convertToIcon() -> UIImage {
         switch self {
         case .rain:
-            return .weather(.rain)
+            return UIImage(named: "rain")!
             
         case .cloudy:
-            return .weather(.cloudy)
+            return UIImage(named: "cloudy")!
             
         case .partlyCloudyNight:
-            return .weather(.nightPartlyCloudy)
+            return UIImage(named: "cloudy")!
             
         case .wind:
-            return .weather(.windy)
+            return UIImage(named: "windy")!
             
         case .snow:
-            return .weather(.snow)
+            return UIImage(named: "snowing")!
             
         case .clearDay:
-            return .weather(.wuClear)
+            return UIImage(named: "sunny")!
             
         case .clearNight:
-            return .weather(.nightClear)
+            return UIImage(named: "cloudy")!
             
         case .sleet:
-            return .weather(.sleet)
+            return UIImage(named: "thunderstorm")!
             
         case .fog:
-            return .weather(.fog)
+            return UIImage(named: "cloudy")!
         }
     }
 

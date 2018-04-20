@@ -11,10 +11,13 @@ import RxSwift
 import RxCocoa
 
 class SettingViewController: UITableViewController {
+    
     @IBOutlet weak var showWeatherSwitch: UISwitch!
     @IBOutlet weak var show5DaysWeatherSwitch: UISwitch!
     @IBOutlet weak var showDateSwitch: UISwitch!
     
+    fileprivate let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +30,27 @@ class SettingViewController: UITableViewController {
         if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
             showDateSwitch.isOn = isShowDate
         }
+        
+        showWeatherSwitch.rx.isOn.asObservable()
+            .subscribe(onNext: { isOn in
+                if !isOn {
+                    self.show5DaysWeatherSwitch.isOn = false
+                }
+                SettingsViewModel.sharedInstance.setShowWeather(isOn)
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
+
+        show5DaysWeatherSwitch.rx.isOn.asObservable()
+            .subscribe(onNext: { isOn in
+                SettingsViewModel.sharedInstance.setShow5DaysWeather(isOn)
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+        .disposed(by: disposeBag)
+        
+        showDateSwitch.rx.isOn.asObservable()
+            .subscribe(onNext: { isOn in
+                SettingsViewModel.sharedInstance.setShowDate(isOn)
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
     }
     
     // MARK: Actions
@@ -34,20 +58,23 @@ class SettingViewController: UITableViewController {
     @IBAction func backAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-    
-    @IBAction func showWeather(_ sender: Any) {
-        let isShow = (sender as! UISwitch).isOn
-        SettingsViewModel.sharedInstance.setShowWeather(isShow)
-    }
-    
-    @IBAction func show5DaysWeather(_ sender: Any) {
-        let isShow = (sender as! UISwitch).isOn
-        SettingsViewModel.sharedInstance.setShow5DaysWeather(isShow)
-    }
-    
-    @IBAction func showDate(_ sender: Any) {
-        let isShow = (sender as! UISwitch).isOn
-        SettingsViewModel.sharedInstance.setShowDate(isShow)
-    }
+//
+//    @IBAction func showWeather(_ sender: Any) {
+//        let isShow = (sender as! UISwitch).isOn
+//
+//        if !isShow {
+//            show5DaysWeatherSwitch.isOn = false
+//        }
+//    }
+//
+//    @IBAction func show5DaysWeather(_ sender: Any) {
+//        let isShow = (sender as! UISwitch).isOn
+//        SettingsViewModel.sharedInstance.setShow5DaysWeather(isShow)
+//    }
+//
+//    @IBAction func showDate(_ sender: Any) {
+//        let isShow = (sender as! UISwitch).isOn
+//        SettingsViewModel.sharedInstance.setShowDate(isShow)
+//    }
 
 }

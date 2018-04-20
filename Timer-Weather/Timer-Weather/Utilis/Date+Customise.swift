@@ -10,10 +10,16 @@ import Foundation
 
 extension Date {
     
-    func dayOfWeek() -> String? {
-        let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        let index = Calendar.current.component(.weekday, from: self)
-        return weekDays[index - 1]
+    func dayOfWeekShort() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE d"
+        return dateFormatter.string(from: self)
+    }
+    
+    func dayOfWeekLong() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, d MMMM"
+        return dateFormatter.string(from: self)
     }
     
     func timeOfHour() -> String? {
@@ -24,7 +30,7 @@ extension Date {
     
     func timeOfCounter() -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
 }

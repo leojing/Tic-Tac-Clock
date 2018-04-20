@@ -1,7 +1,7 @@
 //
 //	Flag.swift
 //
-//	Create by Jing Luo on 26/1/2018
+//	Create by Jing Luo on 20/4/2018
 //	Copyright © 2018. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
