@@ -33,16 +33,21 @@ class SettingViewController: UITableViewController {
         
         showWeatherSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
+                SettingsViewModel.sharedInstance.setShowWeather(isOn)
                 if !isOn {
                     self.show5DaysWeatherSwitch.isOn = false
+                    SettingsViewModel.sharedInstance.setShow5DaysWeather(false)
                 }
-                SettingsViewModel.sharedInstance.setShowWeather(isOn)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
 
         show5DaysWeatherSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
                 SettingsViewModel.sharedInstance.setShow5DaysWeather(isOn)
+                if isOn {
+                    self.showWeatherSwitch.isOn = true
+                    SettingsViewModel.sharedInstance.setShowWeather(true)
+                }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         

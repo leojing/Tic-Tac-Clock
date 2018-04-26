@@ -26,10 +26,10 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dateLabelHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var daysWeatherCollectionView: UICollectionView!
-    @IBOutlet weak var weatherCollectionHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var weatherStackView: UIStackView!
+    @IBOutlet var dailyViews: [DailyCollectionViewCell]!
+
     @IBOutlet weak var cityNameLabel: UILabel!
     
     fileprivate let disposeBag = DisposeBag()
@@ -43,15 +43,15 @@ class MainViewController: UIViewController {
         static let digitalTimerHeight = 120
         static let circleTimerHeight = 200
         static let dateLabelHeight = 30
-        static let weatherCollectionHeight = 80
+        static let weatherCollectionWidth = 70
+        static let weatherCollectionHeight = 70
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCollectionView()
         viewModel = MainViewModel(APIClient())
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
@@ -67,22 +67,21 @@ class MainViewController: UIViewController {
         }
         
         if let isShowWeather = SettingsViewModel.sharedInstance.getShowWeather() {
-            weatherCollectionHeightConstraint.constant = CGFloat(isShowWeather ? Constants.weatherCollectionHeight : 0)
+            weatherStackView.isHidden = !isShowWeather
         }
         
         if let isShow5DaysWeather = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
             if isShow5DaysWeather, let data = viewModel?.mutipleDaysData.value {
                 viewModel?.dailyData.value = data
+                dailyViews.forEach({ view in
+                    view.isHidden = false
+                })
             } else if !isShow5DaysWeather, let data = viewModel?.singleDaysData.value {
                 viewModel?.dailyData.value = data
+                dailyViews.enumerated().forEach({ (index, view) in
+                    view.isHidden = !(index == 0)
+                })
             }
-        }
-    }
-    
-    fileprivate func setupCollectionView() {
-        if let layout = daysWeatherCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: daysWeatherCollectionView.frame.size.width/6, height: daysWeatherCollectionView.frame.size.height/2)
-            layout.minimumLineSpacing = 1.0
         }
     }
 
@@ -101,7 +100,10 @@ class MainViewController: UIViewController {
         viewModel?.currentDate.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { date in
-                self.dateInWatchLabel.text = date.dayOfWeekShort()?.uppercased()
+                let attributedString = NSMutableAttributedString(string: (date.dayOfWeekShort()?.uppercased())!)
+                attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
+                self.dateInWatchLabel.attributedText = attributedString
+
                 self.dateLabel.text = date.dayOfWeekLong()
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
@@ -124,10 +126,13 @@ class MainViewController: UIViewController {
         
         // MARK: bind daily data with daysWeatherCollectionView
         viewModel?.dailyData.asObservable()
-            .bind(to: daysWeatherCollectionView.rx.items(cellIdentifier: DailyCollectionViewCell.reuseId(), cellType: DailyCollectionViewCell.self)) { (row, element, cell) in
-                cell.configureCell(element)
-            }
-            .disposed(by: disposeBag)
+            .subscribe(onNext: { data in
+                data.enumerated().forEach({ (index, detail) in
+                    let dailyView = self.dailyViews[index]
+                    dailyView.configureCell(detail)
+                })
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+        .disposed(by: disposeBag)
         
        // MARK: show error message
         viewModel?.alertMessage.asObservable()
