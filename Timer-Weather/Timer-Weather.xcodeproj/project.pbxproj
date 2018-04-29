@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2403762F2095E80900818D83 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2403762E2095E80900818D83 /* SelectionViewController.swift */; };
 		241DD8E52073B987008B760F /* UIView+performBlockAfterDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */; };
 		246BC26D207E33F70051A258 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BC26C207E33F70051A258 /* SettingsViewModel.swift */; };
+		246DFB312095F569002F9D73 /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */; };
+		246DFB33209603D9002F9D73 /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */; };
+		246DFB3520960B66002F9D73 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB3420960B66002F9D73 /* BaseViewController.swift */; };
 		24797B38207B9A7400E83634 /* DailyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */; };
 		247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247B89E4206BB5E70084D7CE /* AnalogClockView.swift */; };
 		24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */; };
@@ -57,8 +61,12 @@
 		02F59D577421DB99B73B4A41 /* Pods_Timer_WeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer_WeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		054E442230A88C6C3AE00FDC /* Pods_Timer_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C03A6989E6C56C7D6982325 /* Pods-Timer-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timer-Weather/Pods-Timer-Weather.release.xcconfig"; sourceTree = "<group>"; };
+		2403762E2095E80900818D83 /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+performBlockAfterDelay.swift"; sourceTree = "<group>"; };
 		246BC26C207E33F70051A258 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
+		246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
+		246DFB3420960B66002F9D73 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewCell.swift; sourceTree = "<group>"; };
 		247B89E4206BB5E70084D7CE /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
 		24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 			children = (
 				247B89E4206BB5E70084D7CE /* AnalogClockView.swift */,
 				24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */,
+				246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +186,7 @@
 				24ED08BF20626EBE00DCF838 /* String+Customise.swift */,
 				24ED08C020626EBE00DCF838 /* Date+Customise.swift */,
 				241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */,
+				246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";
@@ -212,8 +222,10 @@
 				24ED08A620611C9600DCF838 /* ViewModels */,
 				24ED08B920626E0B00DCF838 /* Views */,
 				24F7883A205FCE2A00712C0C /* AppDelegate.swift */,
+				246DFB3420960B66002F9D73 /* BaseViewController.swift */,
 				24ED089C2061197000DCF838 /* MainViewController.swift */,
 				24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */,
+				2403762E2095E80900818D83 /* SelectionViewController.swift */,
 				24F7883E205FCE2A00712C0C /* Main.storyboard */,
 				24F78841205FCE2A00712C0C /* Assets.xcassets */,
 				24F78843205FCE2A00712C0C /* LaunchScreen.storyboard */,
@@ -513,6 +525,8 @@
 				247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */,
 				24F7883B205FCE2A00712C0C /* AppDelegate.swift in Sources */,
 				24ED08C220626EBE00DCF838 /* Date+Customise.swift in Sources */,
+				246DFB3520960B66002F9D73 /* BaseViewController.swift in Sources */,
+				246DFB33209603D9002F9D73 /* UIColor+HexValue.swift in Sources */,
 				24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */,
 				24ED08B020611C9700DCF838 /* WeatherDetail.swift in Sources */,
 				24ED08AD20611C9700DCF838 /* Daily.swift in Sources */,
@@ -521,6 +535,8 @@
 				24ED08B320611C9700DCF838 /* APIService.swift in Sources */,
 				241DD8E52073B987008B760F /* UIView+performBlockAfterDelay.swift in Sources */,
 				24ED08B6206120F600DCF838 /* MainViewModel.swift in Sources */,
+				2403762F2095E80900818D83 /* SelectionViewController.swift in Sources */,
+				246DFB312095F569002F9D73 /* SelectionTableViewCell.swift in Sources */,
 				24ED08B120611C9700DCF838 /* Flag.swift in Sources */,
 				24ED08AB20611C9700DCF838 /* Currently.swift in Sources */,
 				246BC26D207E33F70051A258 /* SettingsViewModel.swift in Sources */,

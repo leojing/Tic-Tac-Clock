@@ -12,6 +12,8 @@ import RxCocoa
 
 class SettingViewController: UITableViewController {
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
+
     @IBOutlet weak var showWeatherSwitch: UISwitch!
     @IBOutlet weak var show5DaysWeatherSwitch: UISwitch!
     @IBOutlet weak var showDateSwitch: UISwitch!
@@ -21,6 +23,48 @@ class SettingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpInitialData()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let colorString = SettingsViewModel.sharedInstance.getBackground() {
+            let bgColor = UIColor().hexStringToUIColor(hex: colorString)
+            navigationBar.barTintColor = bgColor
+            self.tableView.backgroundColor = bgColor
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! SelectionViewController
+        switch segue.identifier {
+        case "showDateFormat":
+            vc.selectionType = .dateFormat
+
+        case "showWatchFace":
+            vc.selectionType = .watchFace
+            
+        case "showBackground":
+            vc.selectionType = .background
+        
+        default:
+            break
+        }
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func backAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: Setup Initial data
+    fileprivate func setUpInitialData() {
         if let isShowWeather = SettingsViewModel.sharedInstance.getShowWeather() {
             showWeatherSwitch.isOn = isShowWeather
         }
@@ -40,7 +84,7 @@ class SettingViewController: UITableViewController {
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
-
+        
         show5DaysWeatherSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
                 SettingsViewModel.sharedInstance.setShow5DaysWeather(isOn)
@@ -49,7 +93,7 @@ class SettingViewController: UITableViewController {
                     SettingsViewModel.sharedInstance.setShowWeather(true)
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
         
         showDateSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
@@ -57,29 +101,4 @@ class SettingViewController: UITableViewController {
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
-    
-    // MARK: Actions
-    
-    @IBAction func backAction(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-//
-//    @IBAction func showWeather(_ sender: Any) {
-//        let isShow = (sender as! UISwitch).isOn
-//
-//        if !isShow {
-//            show5DaysWeatherSwitch.isOn = false
-//        }
-//    }
-//
-//    @IBAction func show5DaysWeather(_ sender: Any) {
-//        let isShow = (sender as! UISwitch).isOn
-//        SettingsViewModel.sharedInstance.setShow5DaysWeather(isShow)
-//    }
-//
-//    @IBAction func showDate(_ sender: Any) {
-//        let isShow = (sender as! UISwitch).isOn
-//        SettingsViewModel.sharedInstance.setShowDate(isShow)
-//    }
-
 }

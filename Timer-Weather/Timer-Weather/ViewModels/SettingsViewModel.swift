@@ -16,6 +16,7 @@ class SettingsViewModel: NSObject {
         case showDate = "showDate"
         case dateFormat = "dateFormat"
         case watchFace = "watchFace"
+        case background = "background"
     }
     
     static let sharedInstance = SettingsViewModel()
@@ -68,5 +69,14 @@ class SettingsViewModel: NSObject {
     
     func getWatchFace() -> String? {
         return userDefaults.value(forKey: SettingOption.watchFace.rawValue) as? String
+    }
+    
+    // MARK: set & get for background
+    func setBackground(_ color: String?) {
+        userDefaults.setValue(color, forKey: SettingOption.background.rawValue)
+    }
+    
+    func getBackground() -> String? {
+        return userDefaults.value(forKey: SettingOption.background.rawValue) as? String
     }
 }

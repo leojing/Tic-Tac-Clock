@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import HGCircularSlider
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     
     @IBOutlet weak var circleTimerView: UIView!
     @IBOutlet weak var circleTimerHeightConstraint: NSLayoutConstraint!
@@ -58,6 +58,10 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if let bgColor = SettingsViewModel.sharedInstance.getBackground() {
+            self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
+        }
+
         if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
             digitalTimerHeightConstraint.constant = CGFloat(isShowDate ? Constants.digitalTimerHeight : 0)
             dateLabelHeightConstraint.constant = CGFloat(isShowDate ? Constants.dateLabelHeight : 0)

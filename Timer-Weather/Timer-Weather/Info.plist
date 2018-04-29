@@ -20,13 +20,13 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We need your location to fetch your current weather.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We need your location to fetch your current weather.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need your location to fetch your current weather.</string>
 	<key>NSLocationUsageDescription</key>
+	<string>We need your location to fetch your current weather.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location to fetch your current weather.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -36,6 +36,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
