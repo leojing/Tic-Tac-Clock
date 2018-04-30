@@ -11,7 +11,7 @@ import UIKit
 enum SelectionType: String {
     case dateFormat = "Date Fromat"
     case watchFace = "Watch Face"
-    case background = "Background"
+    case background = "Background Colour"
 }
 
 class SelectionViewController: BaseViewController {
@@ -96,12 +96,12 @@ extension SelectionType {
     func getContentList() -> [String?] {
         switch self {
         case .background:
-            return ["Lemonade", "Respberry", "Denim Blue", "White", "Blue cobalt",
-                    "Dark Olive", "Rose Red", "Ultra violet", "Flash", "Spicy orange",
-                    "Cosmos blue", "Midnight blue", "Pink sand", "Black", "Red",
-                    "Bright Orange", "Spring yellow", "Electric blue", "Soft pink",
+            return ["Black", "Red respberry", "Denim blue", "Blue cobalt",
+                    "Dark olive", "Rose red", "Ultra violet", "Spicy orange",
+                    "Cosmos blue", "Midnight blue", "Red",
+                    "Bright orange", "Electric blue", "Soft pink",
                     "Taupe", "Charcoal grey", "Dark aubergine", "Cosmos blue", "Pink fuchsia",
-                    "Midnight blue - 2", "Saddle brown", "black - 2"]
+                    "Saddle brown"]
             
         case .dateFormat:
             return ["2018/09/08", "2018/09/08, Saturday", "2018-09-08", "2018-09-08, Saturday",
@@ -115,11 +115,12 @@ extension SelectionType {
     
     func getbackgroundColors() -> [String]? {
         if self == .background {
-            return [/*"#efe389"*/"F6E652", "#c96167", "#637fa1", "#f6f5f3", "#4c5c77", "#5a574f",
-                    "#a44459", "#4b3b7d", "#fbf87f", "#e37c5a", "#3d4d57", "#4a4d5d",
-                    "#dac9c7", "#404143", "#a3262a", "#d96646", "#e4d162", "#4869a9",
-                    "#dda69c", "#888078", "#494844", "#362d39", "#3a4d5b", "#a74f63",
-                    "#3f4659", "#986448", "#363636"]
+            return ["#000000", "#c96167", "#637fa1", "#4c5c77",
+                    "#5a574f", "#a44459", "#4b3b7d", "#e37c5a",
+                    "#3d4d57", "#4a4d5d", "#a3262a",
+                    "#d96646", "#4869a9", "#dda69c",
+                    "#888078", "#494844", "#362d39", "#3a4d5b", "#a74f63",
+                    "#986448"]
         }
         return nil
     }
