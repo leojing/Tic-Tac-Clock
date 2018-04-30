@@ -62,14 +62,20 @@ class MainViewController: BaseViewController {
             self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
         }
 
-        if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
-            digitalTimerHeightConstraint.constant = CGFloat(isShowDate ? Constants.digitalTimerHeight : 0)
-            dateLabelHeightConstraint.constant = CGFloat(isShowDate ? Constants.dateLabelHeight : 0)
-            
-            circleTimerHeightConstraint.constant = CGFloat(!isShowDate ? Constants.circleTimerHeight : 0)
-            circleTimerView.isHidden = isShowDate
+        if let watchfaceIndex = SettingsViewModel.sharedInstance.getWatchFace(), watchfaceIndex == 0 {
+            circleTimerHeightConstraint.constant = CGFloat(Constants.circleTimerHeight)
+            digitalTimerHeightConstraint.constant = CGFloat(0)
+            circleTimerView.isHidden = false
+            dateLabelHeightConstraint.constant = CGFloat(0)
+        } else {
+            digitalTimerHeightConstraint.constant = CGFloat(Constants.digitalTimerHeight)
+            circleTimerHeightConstraint.constant = CGFloat(0)
+            circleTimerView.isHidden = true
+
+            if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
+                dateLabelHeightConstraint.constant = CGFloat(isShowDate ? Constants.dateLabelHeight : 0)
+            }
         }
-        
         if let isShowWeather = SettingsViewModel.sharedInstance.getShowWeather() {
             weatherStackView.isHidden = !isShowWeather
         }
@@ -108,7 +114,7 @@ class MainViewController: BaseViewController {
                 attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
                 self.dateInWatchLabel.attributedText = attributedString
 
-                self.dateLabel.text = date.dayOfWeekLong()
+                self.dateLabel.text = date.dayOfWeek(SettingsViewModel.sharedInstance.getDateFormat())
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)

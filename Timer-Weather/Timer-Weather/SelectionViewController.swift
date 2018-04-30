@@ -32,7 +32,7 @@ class SelectionViewController: BaseViewController {
         
         if let colors = selectionType?.getbackgroundColors() {
             let selectedIndex = getSelectedIndexPath(selectionType)
-            SettingsViewModel.sharedInstance.setBackground(colors[selectedIndex.row])
+            SettingsViewModel.sharedInstance.setBackground(colors[selectedIndex])
         }
         
         self.navigationBar.items?.first?.title = selectionType?.rawValue
@@ -40,7 +40,10 @@ class SelectionViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        updateViewsBackgroundColor()
+    }
+    
+    fileprivate func updateViewsBackgroundColor() {
         if let colorString = SettingsViewModel.sharedInstance.getBackground() {
             let bgColor = UIColor().hexStringToUIColor(hex: colorString)
             navigationBar.barTintColor = bgColor
@@ -50,15 +53,15 @@ class SelectionViewController: BaseViewController {
     
     // MARK: set & get for selected index of data
     
-    func setSelectedIndexPath(_ index: IndexPath, _ selectiontype: SelectionType?) {
+    func setSelectedIndexPath(_ index: Int, _ selectiontype: SelectionType?) {
         userDefaults.setValue(index, forKey: "index of \(selectiontype.debugDescription)")
     }
     
-    func getSelectedIndexPath( _ selectiontype: SelectionType?) -> IndexPath {
+    func getSelectedIndexPath( _ selectiontype: SelectionType?) -> Int {
         if let index = userDefaults.value(forKey: "index of \(selectiontype.debugDescription)") {
-            return index as! IndexPath
+            return index as! Int
         }
-        return IndexPath(row: 0, section: 0)
+        return 0
     }
 
     // MARK: Actions
@@ -85,9 +88,35 @@ extension SelectionViewController: UITableViewDelegate {
         
         cell.indexPath = indexPath
         let selectedIndex = getSelectedIndexPath(selectionType)
-        cell.configureCell(selectionType, selectionType?.getContentList()[indexPath.row], isSelected: (selectedIndex == indexPath))
+        cell.configureCell(selectionType, selectionType?.getContentList()[indexPath.row], isSelected: (selectedIndex == indexPath.row))
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let type = selectionType else {
+            return
+        }
+    
+        switch type {
+        case .background:
+            if let colors = type.getbackgroundColors() {
+                SettingsViewModel.sharedInstance.setBackground(colors[indexPath.row])
+            }
+            updateViewsBackgroundColor()
+
+        case .dateFormat:
+            if let formats = type.getDateFormats() {
+                SettingsViewModel.sharedInstance.setDateFormat(formats[indexPath.row])
+            }
+            
+        case .watchFace:
+            SettingsViewModel.sharedInstance.setWatchFace(indexPath.row)
+        }
+        
+        let selectedIndex = getSelectedIndexPath(selectionType)
+        setSelectedIndexPath(indexPath.row, selectionType)
+        tableView.reloadRows(at: [IndexPath(row: selectedIndex, section: 0), indexPath], with: .none)
     }
 }
 
@@ -109,7 +138,7 @@ extension SelectionType {
                     "09-08", "09-08, Saturday"]
             
         case .watchFace:
-            return [nil, "10\n:10"]
+            return [nil, "10\n\n:10"]
         }
     }
     
@@ -121,6 +150,15 @@ extension SelectionType {
                     "#d96646", "#4869a9", "#dda69c",
                     "#888078", "#494844", "#362d39", "#3a4d5b", "#a74f63",
                     "#986448"]
+        }
+        return nil
+    }
+    
+    func getDateFormats() -> [String]? {
+        if self == .dateFormat {
+            return ["YYYY/MM/dd", "YYYY/MM/dd, EEEE", "YYYY-MM-dd", "YYYY-MM-dd, EEEE",
+                    "dd MMM YYYY", "dd MMM YYYY, EEEE", "MMM dd", "MMM dd, EEEE",
+                    "MM-dd", "MM-dd, EEEE"]
         }
         return nil
     }

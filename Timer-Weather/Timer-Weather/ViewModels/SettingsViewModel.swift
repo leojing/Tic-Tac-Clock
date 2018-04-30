@@ -54,8 +54,8 @@ class SettingsViewModel: NSObject {
     }
     
     // MARK: set & get for date format data
-    func setDateFormat(_ isShow: Bool?) {
-        userDefaults.setValue(isShow, forKey: SettingOption.dateFormat.rawValue)
+    func setDateFormat(_ format: String?) {
+        userDefaults.setValue(format, forKey: SettingOption.dateFormat.rawValue)
     }
     
     func getDateFormat() -> String? {
@@ -63,12 +63,12 @@ class SettingsViewModel: NSObject {
     }
 
     // MARK: set & get for watch face data
-    func setWatchFace(_ isShow: Bool?) {
-        userDefaults.setValue(isShow, forKey: SettingOption.watchFace.rawValue)
+    func setWatchFace(_ index: Int?) {
+        userDefaults.setValue(index, forKey: SettingOption.watchFace.rawValue)
     }
     
-    func getWatchFace() -> String? {
-        return userDefaults.value(forKey: SettingOption.watchFace.rawValue) as? String
+    func getWatchFace() -> Int? {
+        return userDefaults.value(forKey: SettingOption.watchFace.rawValue) as? Int
     }
     
     // MARK: set & get for background

@@ -38,6 +38,12 @@ class SettingViewController: UITableViewController {
             navigationBar.barTintColor = bgColor
             self.tableView.backgroundColor = bgColor
         }
+        
+        if let watchfaceIndex = SettingsViewModel.sharedInstance.getWatchFace(), watchfaceIndex == 0 {
+            showDateSwitch.isEnabled = false
+        } else {
+            showDateSwitch.isEnabled = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

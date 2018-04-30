@@ -30,9 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SettingsViewModel.sharedInstance.setShow5DaysWeather(true)
             return false
         }
-        
     
-
         return true
     }
 }

@@ -12,13 +12,19 @@ extension Date {
     
     func dayOfWeekShort() -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EE d"
+        dateFormatter.dateFormat = "EE dd"
         return dateFormatter.string(from: self)
     }
     
     func dayOfWeekLong() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, d MMMM"
+        dateFormatter.dateFormat = "EEEE, dd MMMM"
+        return dateFormatter.string(from: self)
+    }
+    
+    func dayOfWeek(_ format: String?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format ?? "EEEE, dd MMMM"
         return dateFormatter.string(from: self)
     }
     
