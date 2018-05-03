@@ -31,6 +31,7 @@ class MainViewController: BaseViewController {
     @IBOutlet var dailyViews: [DailyCollectionViewCell]!
 
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var spinnerView: UIActivityIndicatorView!
     
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel? {
@@ -134,9 +135,20 @@ class MainViewController: BaseViewController {
             }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
         
+        // MARK: bind spinner view
+        viewModel?.isLoading.asObservable()
+            .subscribe(onNext: { loading in
+                DispatchQueue.main.async {
+                    self.weatherStackView.isHidden = loading
+                    loading ? self.spinnerView.startAnimating() : self.spinnerView.stopAnimating()
+                }
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+        .disposed(by: disposeBag)
+        
         // MARK: bind daily data with daysWeatherCollectionView
         viewModel?.dailyData.asObservable()
             .subscribe(onNext: { data in
+                
                 data.enumerated().forEach({ (index, detail) in
                     let dailyView = self.dailyViews[index]
                     dailyView.configureCell(detail)

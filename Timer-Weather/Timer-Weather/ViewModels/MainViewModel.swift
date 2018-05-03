@@ -25,6 +25,7 @@ class MainViewModel: NSObject {
     var mutipleDaysData = Variable<[WeatherDetail]>([])
     var cityName = Variable<String>("")
     var alertMessage = Variable<String>("")
+    var isLoading = Variable<Bool>(true)
     
     var currentDigitalTime = Variable<String>(Date().timeOfCounter() ?? "")
     var currentDate = Variable<Date>(Date())
@@ -59,8 +60,10 @@ class MainViewModel: NSObject {
     }
     
     fileprivate func fetchWeatherInfo(_ apiService: APIService) {
+        isLoading.value = true
         apiService.fetchWeatherInfo(APIConfig.weather(((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!)))
             .subscribe(onNext: { status in
+                self.isLoading.value = false
                 switch status {
                 case .success(let weather):
                     self.weather.value = weather as? Weather
@@ -89,7 +92,7 @@ class MainViewModel: NSObject {
                         if isShow5DaysWeather {
                             self.dailyData.value = self.mutipleDaysData.value
                         } else {
-                            self.dailyData.value = [nil, nil, self.singleDaysData.value.first, nil, nil]
+                            self.dailyData.value = [self.singleDaysData.value.first, nil, nil, nil, nil]
                         }
                     }
                 }

@@ -54,7 +54,7 @@ extension APIConfig {
     var path: String {
         switch self {
         case .weather(let location):
-            return "/forecast/\(APIConfig.API_KEY)/\(location.0),\(location.1)"
+            return "/forecast/\(APIConfig.API_KEY)/\(location.0),\(location.1)?units=si"
         }
     }
     

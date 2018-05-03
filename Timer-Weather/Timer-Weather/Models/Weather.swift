@@ -15,8 +15,8 @@ class Weather : NSObject, NSCoding, Mappable{
 	var daily : Daily?
 	var flags : Flag?
 	var hourly : Daily?
-	var latitude : Float?
-	var longitude : Float?
+	var latitude : Double?
+	var longitude : Double?
 	var offset : Int?
 	var timezone : String?
 
@@ -50,8 +50,8 @@ class Weather : NSObject, NSCoding, Mappable{
          daily = aDecoder.decodeObject(forKey: "daily") as? Daily
          flags = aDecoder.decodeObject(forKey: "flags") as? Flag
          hourly = aDecoder.decodeObject(forKey: "hourly") as? Daily
-         latitude = aDecoder.decodeObject(forKey: "latitude") as? Float
-         longitude = aDecoder.decodeObject(forKey: "longitude") as? Float
+         latitude = aDecoder.decodeObject(forKey: "latitude") as? Double
+         longitude = aDecoder.decodeObject(forKey: "longitude") as? Double
          offset = aDecoder.decodeObject(forKey: "offset") as? Int
          timezone = aDecoder.decodeObject(forKey: "timezone") as? String
 

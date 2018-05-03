@@ -11,47 +11,47 @@ import ObjectMapper
 
 class WeatherDetail : NSObject, NSCoding, Mappable{
 
-	var apparentTemperatureHigh : Float?
+	var apparentTemperatureHigh : Double?
 	var apparentTemperatureHighTime : Int?
-	var apparentTemperatureLow : Float?
+	var apparentTemperatureLow : Double?
 	var apparentTemperatureLowTime : Int?
-	var apparentTemperatureMax : Float?
+	var apparentTemperatureMax : Double?
 	var apparentTemperatureMaxTime : Int?
-	var apparentTemperatureMin : Float?
+	var apparentTemperatureMin : Double?
 	var apparentTemperatureMinTime : Int?
-	var dewPoint : Float?
-	var humidity : Float?
+	var dewPoint : Double?
+	var humidity : Double?
 	var icon : String?
-	var moonPhase : Float?
-	var ozone : Float?
-	var precipIntensity : Float?
-	var precipIntensityMax : Float?
+	var moonPhase : Double?
+	var ozone : Double?
+	var precipIntensity : Double?
+	var precipIntensityMax : Double?
 	var precipIntensityMaxTime : Int?
-	var precipProbability : Float?
+	var precipProbability : Double?
 	var precipType : String?
-	var pressure : Float?
+	var pressure : Double?
 	var summary : String?
 	var sunriseTime : Int?
 	var sunsetTime : Int?
-	var temperatureHigh : Float?
+	var temperatureHigh : Double?
 	var temperatureHighTime : Int?
-	var temperatureLow : Float?
+	var temperatureLow : Double?
 	var temperatureLowTime : Int?
-	var temperatureMax : Float?
+	var temperatureMax : Double?
 	var temperatureMaxTime : Int?
-	var temperatureMin : Float?
+	var temperatureMin : Double?
 	var temperatureMinTime : Int?
 	var time : Int?
 	var uvIndex : Int?
 	var uvIndexTime : Int?
-	var visibility : Float?
+	var visibility : Double?
 	var windBearing : Int?
-	var windGust : Float?
+	var windGust : Double?
 	var windGustTime : Int?
-	var windSpeed : Float?
-	var apparentTemperature : Float?
-	var cloudCover : Float?
-	var temperature : Float?
+	var windSpeed : Double?
+	var apparentTemperature : Double?
+	var cloudCover : Double?
+	var temperature : Double?
 
 
 	class func newInstance(map: Map) -> Mappable?{
@@ -115,50 +115,50 @@ class WeatherDetail : NSObject, NSCoding, Mappable{
     */
     @objc required init(coder aDecoder: NSCoder)
 	{
-         apparentTemperatureHigh = aDecoder.decodeObject(forKey: "apparentTemperatureHigh") as? Float
+         apparentTemperatureHigh = aDecoder.decodeObject(forKey: "apparentTemperatureHigh") as? Double
          apparentTemperatureHighTime = aDecoder.decodeObject(forKey: "apparentTemperatureHighTime") as? Int
-         apparentTemperatureLow = aDecoder.decodeObject(forKey: "apparentTemperatureLow") as? Float
+         apparentTemperatureLow = aDecoder.decodeObject(forKey: "apparentTemperatureLow") as? Double
          apparentTemperatureLowTime = aDecoder.decodeObject(forKey: "apparentTemperatureLowTime") as? Int
-         apparentTemperatureMax = aDecoder.decodeObject(forKey: "apparentTemperatureMax") as? Float
+         apparentTemperatureMax = aDecoder.decodeObject(forKey: "apparentTemperatureMax") as? Double
          apparentTemperatureMaxTime = aDecoder.decodeObject(forKey: "apparentTemperatureMaxTime") as? Int
-         apparentTemperatureMin = aDecoder.decodeObject(forKey: "apparentTemperatureMin") as? Float
+         apparentTemperatureMin = aDecoder.decodeObject(forKey: "apparentTemperatureMin") as? Double
          apparentTemperatureMinTime = aDecoder.decodeObject(forKey: "apparentTemperatureMinTime") as? Int
-         cloudCover = aDecoder.decodeObject(forKey: "cloudCover") as? Float
-         dewPoint = aDecoder.decodeObject(forKey: "dewPoint") as? Float
-         humidity = aDecoder.decodeObject(forKey: "humidity") as? Float
+         cloudCover = aDecoder.decodeObject(forKey: "cloudCover") as? Double
+         dewPoint = aDecoder.decodeObject(forKey: "dewPoint") as? Double
+         humidity = aDecoder.decodeObject(forKey: "humidity") as? Double
          icon = aDecoder.decodeObject(forKey: "icon") as? String
-         moonPhase = aDecoder.decodeObject(forKey: "moonPhase") as? Float
-         ozone = aDecoder.decodeObject(forKey: "ozone") as? Float
-         precipIntensity = aDecoder.decodeObject(forKey: "precipIntensity") as? Float
-         precipIntensityMax = aDecoder.decodeObject(forKey: "precipIntensityMax") as? Float
+         moonPhase = aDecoder.decodeObject(forKey: "moonPhase") as? Double
+         ozone = aDecoder.decodeObject(forKey: "ozone") as? Double
+         precipIntensity = aDecoder.decodeObject(forKey: "precipIntensity") as? Double
+         precipIntensityMax = aDecoder.decodeObject(forKey: "precipIntensityMax") as? Double
          precipIntensityMaxTime = aDecoder.decodeObject(forKey: "precipIntensityMaxTime") as? Int
-         precipProbability = aDecoder.decodeObject(forKey: "precipProbability") as? Float
+         precipProbability = aDecoder.decodeObject(forKey: "precipProbability") as? Double
          precipType = aDecoder.decodeObject(forKey: "precipType") as? String
-         pressure = aDecoder.decodeObject(forKey: "pressure") as? Float
+         pressure = aDecoder.decodeObject(forKey: "pressure") as? Double
          summary = aDecoder.decodeObject(forKey: "summary") as? String
          sunriseTime = aDecoder.decodeObject(forKey: "sunriseTime") as? Int
          sunsetTime = aDecoder.decodeObject(forKey: "sunsetTime") as? Int
-         temperatureHigh = aDecoder.decodeObject(forKey: "temperatureHigh") as? Float
+         temperatureHigh = aDecoder.decodeObject(forKey: "temperatureHigh") as? Double
          temperatureHighTime = aDecoder.decodeObject(forKey: "temperatureHighTime") as? Int
-         temperatureLow = aDecoder.decodeObject(forKey: "temperatureLow") as? Float
+         temperatureLow = aDecoder.decodeObject(forKey: "temperatureLow") as? Double
          temperatureLowTime = aDecoder.decodeObject(forKey: "temperatureLowTime") as? Int
-         temperatureMax = aDecoder.decodeObject(forKey: "temperatureMax") as? Float
+         temperatureMax = aDecoder.decodeObject(forKey: "temperatureMax") as? Double
          temperatureMaxTime = aDecoder.decodeObject(forKey: "temperatureMaxTime") as? Int
-         temperatureMin = aDecoder.decodeObject(forKey: "temperatureMin") as? Float
+         temperatureMin = aDecoder.decodeObject(forKey: "temperatureMin") as? Double
          temperatureMinTime = aDecoder.decodeObject(forKey: "temperatureMinTime") as? Int
          time = aDecoder.decodeObject(forKey: "time") as? Int
          uvIndex = aDecoder.decodeObject(forKey: "uvIndex") as? Int
          uvIndexTime = aDecoder.decodeObject(forKey: "uvIndexTime") as? Int
-         visibility = aDecoder.decodeObject(forKey: "visibility") as? Float
+         visibility = aDecoder.decodeObject(forKey: "visibility") as? Double
          windBearing = aDecoder.decodeObject(forKey: "windBearing") as? Int
-         windGust = aDecoder.decodeObject(forKey: "windGust") as? Float
+         windGust = aDecoder.decodeObject(forKey: "windGust") as? Double
          windGustTime = aDecoder.decodeObject(forKey: "windGustTime") as? Int
-         windSpeed = aDecoder.decodeObject(forKey: "windSpeed") as? Float
-         apparentTemperature = aDecoder.decodeObject(forKey: "apparentTemperature") as? Float
-         cloudCover = aDecoder.decodeObject(forKey: "cloudCover") as? Float
-         precipIntensity = aDecoder.decodeObject(forKey: "precipIntensity") as? Float
-         precipProbability = aDecoder.decodeObject(forKey: "precipProbability") as? Float
-         temperature = aDecoder.decodeObject(forKey: "temperature") as? Float
+         windSpeed = aDecoder.decodeObject(forKey: "windSpeed") as? Double
+         apparentTemperature = aDecoder.decodeObject(forKey: "apparentTemperature") as? Double
+         cloudCover = aDecoder.decodeObject(forKey: "cloudCover") as? Double
+         precipIntensity = aDecoder.decodeObject(forKey: "precipIntensity") as? Double
+         precipProbability = aDecoder.decodeObject(forKey: "precipProbability") as? Double
+         temperature = aDecoder.decodeObject(forKey: "temperature") as? Double
 
 	}
 

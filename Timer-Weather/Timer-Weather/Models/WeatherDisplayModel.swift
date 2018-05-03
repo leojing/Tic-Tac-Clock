@@ -13,5 +13,5 @@ struct WeatherDisplayModel {
     
     let city: String?
     let summary: String?
-    let temperature: Float?
+    let temperature: Double?
 }

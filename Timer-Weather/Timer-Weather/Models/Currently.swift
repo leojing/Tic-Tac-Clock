@@ -11,23 +11,23 @@ import ObjectMapper
 
 class Currently : NSObject, NSCoding, Mappable{
 
-	var apparentTemperature : Float?
-	var cloudCover : Float?
-	var dewPoint : Float?
-	var humidity : Float?
+	var apparentTemperature : Double?
+	var cloudCover : Double?
+	var dewPoint : Double?
+	var humidity : Double?
 	var icon : String?
-	var ozone : Float?
+	var ozone : Double?
 	var precipIntensity : Int?
 	var precipProbability : Int?
-	var pressure : Float?
+	var pressure : Double?
 	var summary : String?
-	var temperature : Float?
+	var temperature : Double?
 	var time : Int?
 	var uvIndex : Int?
-	var visibility : Float?
+	var visibility : Double?
 	var windBearing : Int?
-	var windGust : Float?
-	var windSpeed : Float?
+	var windGust : Double?
+	var windSpeed : Double?
 
 
 	class func newInstance(map: Map) -> Mappable?{
@@ -64,23 +64,23 @@ class Currently : NSObject, NSCoding, Mappable{
     */
     @objc required init(coder aDecoder: NSCoder)
 	{
-         apparentTemperature = aDecoder.decodeObject(forKey: "apparentTemperature") as? Float
-         cloudCover = aDecoder.decodeObject(forKey: "cloudCover") as? Float
-         dewPoint = aDecoder.decodeObject(forKey: "dewPoint") as? Float
-         humidity = aDecoder.decodeObject(forKey: "humidity") as? Float
+         apparentTemperature = aDecoder.decodeObject(forKey: "apparentTemperature") as? Double
+         cloudCover = aDecoder.decodeObject(forKey: "cloudCover") as? Double
+         dewPoint = aDecoder.decodeObject(forKey: "dewPoint") as? Double
+         humidity = aDecoder.decodeObject(forKey: "humidity") as? Double
          icon = aDecoder.decodeObject(forKey: "icon") as? String
-         ozone = aDecoder.decodeObject(forKey: "ozone") as? Float
+         ozone = aDecoder.decodeObject(forKey: "ozone") as? Double
          precipIntensity = aDecoder.decodeObject(forKey: "precipIntensity") as? Int
          precipProbability = aDecoder.decodeObject(forKey: "precipProbability") as? Int
-         pressure = aDecoder.decodeObject(forKey: "pressure") as? Float
+         pressure = aDecoder.decodeObject(forKey: "pressure") as? Double
          summary = aDecoder.decodeObject(forKey: "summary") as? String
-         temperature = aDecoder.decodeObject(forKey: "temperature") as? Float
+         temperature = aDecoder.decodeObject(forKey: "temperature") as? Double
          time = aDecoder.decodeObject(forKey: "time") as? Int
          uvIndex = aDecoder.decodeObject(forKey: "uvIndex") as? Int
-         visibility = aDecoder.decodeObject(forKey: "visibility") as? Float
+         visibility = aDecoder.decodeObject(forKey: "visibility") as? Double
          windBearing = aDecoder.decodeObject(forKey: "windBearing") as? Int
-         windGust = aDecoder.decodeObject(forKey: "windGust") as? Float
-         windSpeed = aDecoder.decodeObject(forKey: "windSpeed") as? Float
+         windGust = aDecoder.decodeObject(forKey: "windGust") as? Double
+         windSpeed = aDecoder.decodeObject(forKey: "windSpeed") as? Double
 
 	}
 

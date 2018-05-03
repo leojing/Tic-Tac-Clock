@@ -31,8 +31,15 @@ class DailyCollectionViewCell: UICollectionViewCell {
         }
         
         DispatchQueue.main.async {
-            self.weatherImageView.image = UIImage(named: "rain")
-            self.tempLabel.text = "\(String.fromInt(Int((weather.temperature ?? 0))))℃"
+            self.weatherImageView.image = WeatherIcon.fromDescription(weather.icon ?? "clear-day")?.convertToIcon()
+            var temp = weather.temperature
+            if temp == nil {
+                temp = weather.apparentTemperatureHigh
+            }
+            if temp == nil {
+                temp = weather.temperatureHigh
+            }
+            self.tempLabel.text = "\(String.fromInt(Int(temp ?? 0)))℃"
         }
     }
 }
