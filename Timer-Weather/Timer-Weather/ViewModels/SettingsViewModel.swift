@@ -26,6 +26,13 @@ class SettingsViewModel: NSObject {
         super.init()
     }
     
+    func resetDefaults() {
+        let dictionary = userDefaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            userDefaults.removeObject(forKey: key)
+        }
+    }
+    
     // MARK: set & get for Show Weather data
     func setShowWeather(_ isShow: Bool?) {
         userDefaults.setValue(isShow, forKey: SettingOption.showWeather.rawValue)

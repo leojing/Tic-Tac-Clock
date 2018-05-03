@@ -16,21 +16,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        guard let _ = SettingsViewModel.sharedInstance.getShowDate() else {
+//        SettingsViewModel.sharedInstance.resetDefaults()
+        
+        if let _ = SettingsViewModel.sharedInstance.getShowDate() {
+        } else {
             SettingsViewModel.sharedInstance.setShowDate(false)
-            return false
         }
         
-        guard let _ = SettingsViewModel.sharedInstance.getShowWeather() else {
+        if let _ = SettingsViewModel.sharedInstance.getShowWeather() {
+        } else {
             SettingsViewModel.sharedInstance.setShowWeather(true)
-            return false
         }
 
-        guard let _ = SettingsViewModel.sharedInstance.getShow5DaysWeather() else {
+        if let _ = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
+        } else {
             SettingsViewModel.sharedInstance.setShow5DaysWeather(true)
-            return false
         }
-    
+
+        if let _ = SettingsViewModel.sharedInstance.getWatchFace() {
+        } else {
+            SettingsViewModel.sharedInstance.setWatchFace(0)
+        }
+
+        if let _ = SettingsViewModel.sharedInstance.getBackground() {
+        } else {
+            SettingsViewModel.sharedInstance.setBackground("#000000")
+        }
+
+        if let _ = SettingsViewModel.sharedInstance.getDateFormat() {
+        } else {
+            SettingsViewModel.sharedInstance.setDateFormat("YYYY/MM/dd")
+        }
+
         return true
     }
 }

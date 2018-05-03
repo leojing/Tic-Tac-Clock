@@ -138,7 +138,7 @@ extension SelectionType {
                     "09-08", "09-08, Saturday"]
             
         case .watchFace:
-            return [nil, "10\n\n:10"]
+            return [nil, "10:10"]
         }
     }
     
