@@ -51,69 +51,6 @@
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8C-vK-0ct">
                                 <rect key="frame" x="0.0" y="110" width="375" height="200"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-6c-Fjr" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
-                                        <rect key="frame" x="157" y="110" width="60" height="60"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-dial" translatesAutoresizingMaskIntoConstraints="NO" id="Svs-cE-PL3">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eAJ-Cf-bjV">
-                                                <rect key="frame" x="30.666666666666657" y="0.0" width="0.0" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" id="G88-pY-17R"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dfx-TU-SCW">
-                                                <rect key="frame" x="30.666666666666657" y="0.0" width="0.0" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" id="eHl-gg-Bad"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-dial-second" translatesAutoresizingMaskIntoConstraints="NO" id="ilT-QC-CNN">
-                                                <rect key="frame" x="-8" y="0.0" width="76" height="60"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Svs-cE-PL3" secondAttribute="trailing" id="2wJ-Yr-aan"/>
-                                            <constraint firstItem="Svs-cE-PL3" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="5bE-Yz-8Dc"/>
-                                            <constraint firstItem="Svs-cE-PL3" firstAttribute="leading" secondItem="ZNh-6c-Fjr" secondAttribute="leading" id="9i9-aJ-qLn"/>
-                                            <constraint firstItem="ilT-QC-CNN" firstAttribute="centerX" secondItem="ZNh-6c-Fjr" secondAttribute="centerX" id="KYE-8J-BbW"/>
-                                            <constraint firstItem="dfx-TU-SCW" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="PBk-f1-Nn9"/>
-                                            <constraint firstItem="eAJ-Cf-bjV" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="SBY-YY-r4r"/>
-                                            <constraint firstAttribute="width" secondItem="ZNh-6c-Fjr" secondAttribute="height" multiplier="1:1" id="WNg-7A-rI4"/>
-                                            <constraint firstAttribute="bottom" secondItem="dfx-TU-SCW" secondAttribute="bottom" id="XS9-B4-Qvb"/>
-                                            <constraint firstAttribute="bottom" secondItem="Svs-cE-PL3" secondAttribute="bottom" id="Xp3-C6-r4J"/>
-                                            <constraint firstAttribute="width" constant="60" id="YRy-de-whn"/>
-                                            <constraint firstAttribute="bottom" secondItem="ilT-QC-CNN" secondAttribute="bottom" id="Z78-5w-3CI"/>
-                                            <constraint firstItem="eAJ-Cf-bjV" firstAttribute="centerX" secondItem="ZNh-6c-Fjr" secondAttribute="centerX" id="eb9-Ej-NKO"/>
-                                            <constraint firstItem="ilT-QC-CNN" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="kMu-W6-DJk"/>
-                                            <constraint firstAttribute="bottom" secondItem="eAJ-Cf-bjV" secondAttribute="bottom" id="yQ9-bB-4Fk"/>
-                                            <constraint firstItem="dfx-TU-SCW" firstAttribute="centerX" secondItem="ZNh-6c-Fjr" secondAttribute="centerX" id="zqs-tt-Czm"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="hourHand" destination="eAJ-Cf-bjV" id="xLu-Jq-VLN"/>
-                                            <outlet property="minuteHand" destination="dfx-TU-SCW" id="hjS-VE-NwV"/>
-                                            <outlet property="secondHand" destination="ilT-QC-CNN" id="8AP-Kw-GHv"/>
-                                        </connections>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9h-KW-5ZO">
-                                        <rect key="frame" x="214" y="90" width="49" height="20.333333333333329"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="FRI">
-                                                <attributes>
-                                                    <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" metaFont="system" size="17"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" 23">
-                                                <attributes>
-                                                    <color key="NSColor" red="1" green="0.57752577130966254" blue="0.42650210142085432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" metaFont="system" size="17"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7b-bj-Gx8" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="88" y="0.0" width="200" height="200"/>
                                         <subviews>
@@ -174,6 +111,69 @@
                                             <outlet property="secondHand" destination="uDz-E3-v1L" id="hNe-Ld-Tly"/>
                                         </connections>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-6c-Fjr" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
+                                        <rect key="frame" x="157" y="110" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-dial" translatesAutoresizingMaskIntoConstraints="NO" id="Svs-cE-PL3">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eAJ-Cf-bjV">
+                                                <rect key="frame" x="30.666666666666657" y="0.0" width="0.0" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" id="G88-pY-17R"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dfx-TU-SCW">
+                                                <rect key="frame" x="30.666666666666657" y="0.0" width="0.0" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" id="eHl-gg-Bad"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-dial-second" translatesAutoresizingMaskIntoConstraints="NO" id="ilT-QC-CNN">
+                                                <rect key="frame" x="-8" y="0.0" width="76" height="60"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Svs-cE-PL3" secondAttribute="trailing" id="2wJ-Yr-aan"/>
+                                            <constraint firstItem="Svs-cE-PL3" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="5bE-Yz-8Dc"/>
+                                            <constraint firstItem="Svs-cE-PL3" firstAttribute="leading" secondItem="ZNh-6c-Fjr" secondAttribute="leading" id="9i9-aJ-qLn"/>
+                                            <constraint firstItem="ilT-QC-CNN" firstAttribute="centerX" secondItem="ZNh-6c-Fjr" secondAttribute="centerX" id="KYE-8J-BbW"/>
+                                            <constraint firstItem="dfx-TU-SCW" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="PBk-f1-Nn9"/>
+                                            <constraint firstItem="eAJ-Cf-bjV" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="SBY-YY-r4r"/>
+                                            <constraint firstAttribute="width" secondItem="ZNh-6c-Fjr" secondAttribute="height" multiplier="1:1" id="WNg-7A-rI4"/>
+                                            <constraint firstAttribute="bottom" secondItem="dfx-TU-SCW" secondAttribute="bottom" id="XS9-B4-Qvb"/>
+                                            <constraint firstAttribute="bottom" secondItem="Svs-cE-PL3" secondAttribute="bottom" id="Xp3-C6-r4J"/>
+                                            <constraint firstAttribute="width" constant="60" id="YRy-de-whn"/>
+                                            <constraint firstAttribute="bottom" secondItem="ilT-QC-CNN" secondAttribute="bottom" id="Z78-5w-3CI"/>
+                                            <constraint firstItem="eAJ-Cf-bjV" firstAttribute="centerX" secondItem="ZNh-6c-Fjr" secondAttribute="centerX" id="eb9-Ej-NKO"/>
+                                            <constraint firstItem="ilT-QC-CNN" firstAttribute="top" secondItem="ZNh-6c-Fjr" secondAttribute="top" id="kMu-W6-DJk"/>
+                                            <constraint firstAttribute="bottom" secondItem="eAJ-Cf-bjV" secondAttribute="bottom" id="yQ9-bB-4Fk"/>
+                                            <constraint firstItem="dfx-TU-SCW" firstAttribute="centerX" secondItem="ZNh-6c-Fjr" secondAttribute="centerX" id="zqs-tt-Czm"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="hourHand" destination="eAJ-Cf-bjV" id="xLu-Jq-VLN"/>
+                                            <outlet property="minuteHand" destination="dfx-TU-SCW" id="hjS-VE-NwV"/>
+                                            <outlet property="secondHand" destination="ilT-QC-CNN" id="8AP-Kw-GHv"/>
+                                        </connections>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9h-KW-5ZO">
+                                        <rect key="frame" x="222" y="92.333333333333343" width="41" height="16.333333333333329"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="FRI">
+                                                <attributes>
+                                                    <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="14" name="SFCompactText-Medium"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" 23">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.57752577130966254" blue="0.42650210142085432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="14" name="SFCompactText-Medium"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ZNh-6c-Fjr" secondAttribute="bottom" constant="30" id="38l-J7-ybL"/>
