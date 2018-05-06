@@ -130,7 +130,7 @@ extension SelectionType {
                     "Cosmos blue", "Midnight blue", "Red",
                     "Bright orange", "Electric blue", "Soft pink",
                     "Taupe", "Charcoal grey", "Dark aubergine", "Cosmos blue", "Pink fuchsia",
-                    "Saddle brown"]
+                    "Saddle brown", "Pink", "Purple", "Blue", "Teal blue", "Green"]
             
         case .dateFormat:
             return ["2018/09/08", "2018/09/08, Saturday", "2018-09-08", "2018-09-08, Saturday",
@@ -149,7 +149,7 @@ extension SelectionType {
                     "#3d4d57", "#4a4d5d", "#a3262a",
                     "#d96646", "#4869a9", "#dda69c",
                     "#888078", "#494844", "#362d39", "#3a4d5b", "#a74f63",
-                    "#986448"]
+                    "#986448", "#ff2d55", "#5856d6", "#007aff", "#5ac8fa", "#4cd964"]
         }
         return nil
     }
