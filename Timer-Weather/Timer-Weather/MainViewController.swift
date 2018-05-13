@@ -32,13 +32,16 @@ class MainViewController: BaseViewController {
 
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
-    
+    @IBOutlet weak var refreshButton: UIButton!
+
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel? {
         didSet {
             setupViewModelBinds()
         }
     }
+    fileprivate let apiService = APIClient()
+    fileprivate var timer = Timer()
     
     fileprivate var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
@@ -57,7 +60,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = MainViewModel(APIClient())
+        viewModel = MainViewModel(apiService)
 
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
@@ -67,6 +70,12 @@ class MainViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        viewModel?.fetchWeatherInfo(apiService)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 2*60*60, repeats: true) { _ in
+            self.viewModel?.fetchWeatherInfo(self.apiService)
+        }
+
         if let bgColor = Preferences.sharedInstance.getBackground() {
             self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
         }
@@ -103,6 +112,12 @@ class MainViewController: BaseViewController {
                 })
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer.invalidate()
     }
     
     // MARK: UI update
@@ -161,7 +176,10 @@ class MainViewController: BaseViewController {
         viewModel?.isLoading.asObservable()
             .subscribe(onNext: { loading in
                 DispatchQueue.main.async {
-                    self.weatherStackView.isHidden = loading
+                    if loading {
+                        self.weatherStackView.isHidden = true
+                        self.refreshButton.isHidden = true
+                    }
                     loading ? self.spinnerView.startAnimating() : self.spinnerView.stopAnimating()
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
@@ -169,8 +187,12 @@ class MainViewController: BaseViewController {
         
         // MARK: bind daily data with daysWeatherCollectionView
         viewModel?.dailyData.asObservable()
+            .filter { $0.count > 0 }
             .subscribe(onNext: { data in
-                
+                DispatchQueue.main.async {
+                    self.weatherStackView.isHidden = false
+                    self.refreshButton.isHidden = true
+                }
                 data.enumerated().forEach({ (index, detail) in
                     let dailyView = self.dailyViews[index]
                     dailyView.configureCell(detail)
@@ -182,7 +204,10 @@ class MainViewController: BaseViewController {
         viewModel?.alertMessage.asObservable()
             .filter { $0.count > 0 }
             .subscribe(onNext: { errorMessage in
-                self.showAlert(errorMessage)
+                DispatchQueue.main.async {
+                    self.weatherStackView.isHidden = true
+                    self.refreshButton.isHidden = false
+                }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
@@ -195,6 +220,15 @@ class MainViewController: BaseViewController {
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func refreshAction(_ sender: Any) {
+        if (cityNameLabel.text?.isEmpty)! {
+            viewModel?.setupLocationManager()
+        } else {
+            viewModel?.fetchWeatherInfo(apiService)
+        }
+        refreshButton.isHidden = true
     }
     
     @objc

@@ -43,7 +43,7 @@ class MainViewModel: NSObject {
         })
     }
     
-    fileprivate func setupLocationManager() {
+    func setupLocationManager() {
         locationManager = CLLocationManager()
         guard let locationManager = locationManager else {
             return
@@ -59,21 +59,28 @@ class MainViewModel: NSObject {
         locationManager.startUpdatingLocation()
     }
     
-    fileprivate func fetchWeatherInfo(_ apiService: APIService) {
+    func fetchWeatherInfo(_ apiService: APIService) {
         isLoading.value = true
-        apiService.fetchWeatherInfo(APIConfig.weather(((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!)))
-            .subscribe(onNext: { status in
-                self.isLoading.value = false
-                switch status {
-                case .success(let weather):
-                    self.weather.value = weather as? Weather
-                    
-                case .fail(let error):
-                    let errorMessage = error.errorDescription ?? "Faild to load weather data"
-                    self.alertMessage.value = errorMessage
-                }
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
+        singleDaysData.value = []
+        mutipleDaysData.value = []
+        if let lat = currentLocation?.coordinate.latitude, let lng = currentLocation?.coordinate.longitude {
+            apiService.fetchWeatherInfo(APIConfig.weather((lat, lng)))
+                .subscribe(onNext: { status in
+                    self.isLoading.value = false
+                    switch status {
+                    case .success(let weather):
+                        self.weather.value = weather as? Weather
+                        
+                    case .fail(let error):
+                        let errorMessage = error.errorDescription ?? "Faild to load weather data"
+                        self.alertMessage.value = errorMessage
+                    }
+                }, onError: nil, onCompleted: nil, onDisposed: nil)
+                .disposed(by: disposeBag)
+        } else {
+            isLoading.value = false
+            self.alertMessage.value = "Can not find location"
+        }
     }
     
     fileprivate func fetchCityName(_ locationService: LocationService) {
@@ -85,7 +92,7 @@ class MainViewModel: NSObject {
     fileprivate func bindDailyData() {
         weather.asObservable()
             .subscribe(onNext: { w in
-                if let weatherData = w?.daily?.data {
+                if let weatherData = w?.daily?.data, weatherData.count > 0 {
                     self.singleDaysData.value = Array(weatherData.prefix(1))
                     self.mutipleDaysData.value = Array(weatherData.prefix(5))
                     if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
@@ -95,6 +102,8 @@ class MainViewModel: NSObject {
                             self.dailyData.value = [self.singleDaysData.value.first, nil, nil, nil, nil]
                         }
                     }
+                } else {
+                    self.alertMessage.value = "Empty data"
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)

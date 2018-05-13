@@ -382,6 +382,15 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bjY-11-cDb">
                                 <rect key="frame" x="169" y="670" width="37" height="37"/>
                             </activityIndicatorView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8O-0Z-udF">
+                                <rect key="frame" x="160.66666666666666" y="670" width="53" height="30"/>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CgF-OM-bVx"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sydney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feB-Tt-kv4">
                                 <rect key="frame" x="0.0" y="738" width="375" height="30"/>
                                 <constraints>
@@ -396,6 +405,7 @@
                         <constraints>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5PD-mU-h4h"/>
                             <constraint firstItem="284-3f-JdY" firstAttribute="top" secondItem="f5N-cF-hYx" secondAttribute="bottom" constant="20" id="AwJ-TT-TkX"/>
+                            <constraint firstItem="Z8O-0Z-udF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B1q-t7-zYy"/>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Bpn-QX-UQB"/>
                             <constraint firstItem="gQs-YC-Q3E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ere-3I-SKJ"/>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="bottom" id="H2U-4f-d61"/>
@@ -411,6 +421,7 @@
                             <constraint firstItem="feB-Tt-kv4" firstAttribute="top" secondItem="gQs-YC-Q3E" secondAttribute="bottom" constant="8" id="eRo-h4-ZzW"/>
                             <constraint firstItem="gQs-YC-Q3E" firstAttribute="top" secondItem="bjY-11-cDb" secondAttribute="top" constant="-20" id="jmz-UO-Gx1"/>
                             <constraint firstItem="s8C-vK-0ct" firstAttribute="top" secondItem="CTD-kx-lA0" secondAttribute="bottom" constant="30" id="k0e-IG-k8Q"/>
+                            <constraint firstItem="Z8O-0Z-udF" firstAttribute="top" secondItem="gQs-YC-Q3E" secondAttribute="top" constant="20" id="ket-Im-9yo"/>
                             <constraint firstItem="284-3f-JdY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mub-MJ-hwZ"/>
                             <constraint firstItem="s8C-vK-0ct" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tfG-UZ-uPj"/>
                             <constraint firstItem="feB-Tt-kv4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yOe-E6-FUK"/>
@@ -432,6 +443,7 @@
                         <outlet property="digitalTimerHourLabel" destination="57w-m7-uaL" id="Ea1-J7-uLS"/>
                         <outlet property="digitalTimerMinLabel" destination="HY6-cm-Qmn" id="eCG-NX-Oqo"/>
                         <outlet property="digitalTimerView" destination="f5N-cF-hYx" id="DGZ-Hg-YUQ"/>
+                        <outlet property="refreshButton" destination="Z8O-0Z-udF" id="eNw-qo-iD7"/>
                         <outlet property="smallClockView" destination="ZNh-6c-Fjr" id="cYZ-Mk-RnG"/>
                         <outlet property="spinnerView" destination="bjY-11-cDb" id="pBy-30-scn"/>
                         <outlet property="weatherStackView" destination="gQs-YC-Q3E" id="2bN-ZS-YcX"/>

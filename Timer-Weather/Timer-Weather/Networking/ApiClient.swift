@@ -57,7 +57,12 @@ class APIClient: APIService {
     func networkRequest(_ config: APIConfig, completionHandler: @escaping CompletionHandler) {
         URLCache.shared.removeAllCachedResponses()
         
-        Alamofire.request(config.getFullURLStr())
+        var mutableURLRequest = URLRequest(url: URL(string: config.getFullURLStr())!)
+        mutableURLRequest.httpMethod = "GET"
+        mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        mutableURLRequest.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
+
+        Alamofire.request(mutableURLRequest)
             .responseJSON(queue: DispatchQueue.global(qos: .background), options: .allowFragments) { response in
                 switch response.result {
                 case .success(_):
@@ -89,4 +94,6 @@ class APIClient: APIService {
         completionHandler(nil, RequestError(ResponseStatusCode.parseInfoFailed.rawValue, error.localizedDescription))
     }
 }
+
+
 
