@@ -70,10 +70,10 @@ class MainViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel?.fetchWeatherInfo(apiService)
+        refreshAction(nil)
         
         timer = Timer.scheduledTimer(withTimeInterval: 2*60*60, repeats: true) { _ in
-            self.viewModel?.fetchWeatherInfo(self.apiService)
+            self.refreshAction(nil)
         }
 
         if let bgColor = Preferences.sharedInstance.getBackground() {
@@ -222,7 +222,7 @@ class MainViewController: BaseViewController {
         }
     }
     
-    @IBAction func refreshAction(_ sender: Any) {
+    @IBAction func refreshAction(_ sender: Any?) {
         if (cityNameLabel.text?.isEmpty)! {
             viewModel?.setupLocationManager()
         } else {
@@ -234,6 +234,7 @@ class MainViewController: BaseViewController {
     @objc
     fileprivate func triggleTimer() {
         viewModel?.currentDate.value = Date()
+        refreshAction(nil)
     }
 }
 
