@@ -32,7 +32,7 @@ class SelectionViewController: BaseViewController {
         
         if let colors = selectionType?.getbackgroundColors() {
             let selectedIndex = getSelectedIndexPath(selectionType)
-            SettingsViewModel.sharedInstance.setBackground(colors[selectedIndex])
+            Preferences.sharedInstance.setBackground(colors[selectedIndex])
         }
         
         self.navigationBar.items?.first?.title = selectionType?.rawValue
@@ -44,7 +44,7 @@ class SelectionViewController: BaseViewController {
     }
     
     fileprivate func updateViewsBackgroundColor() {
-        if let colorString = SettingsViewModel.sharedInstance.getBackground() {
+        if let colorString = Preferences.sharedInstance.getBackground() {
             let bgColor = UIColor().hexStringToUIColor(hex: colorString)
             navigationBar.barTintColor = bgColor
             self.view.backgroundColor = bgColor
@@ -101,17 +101,17 @@ extension SelectionViewController: UITableViewDelegate {
         switch type {
         case .background:
             if let colors = type.getbackgroundColors() {
-                SettingsViewModel.sharedInstance.setBackground(colors[indexPath.row])
+                Preferences.sharedInstance.setBackground(colors[indexPath.row])
             }
             updateViewsBackgroundColor()
 
         case .dateFormat:
             if let formats = type.getDateFormats() {
-                SettingsViewModel.sharedInstance.setDateFormat(formats[indexPath.row])
+                Preferences.sharedInstance.setDateFormat(formats[indexPath.row])
             }
             
         case .watchFace:
-            SettingsViewModel.sharedInstance.setWatchFace(indexPath.row)
+            Preferences.sharedInstance.setWatchFace(indexPath.row)
         }
         
         let selectedIndex = getSelectedIndexPath(selectionType)

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2403762F2095E80900818D83 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2403762E2095E80900818D83 /* SelectionViewController.swift */; };
 		241DD8E52073B987008B760F /* UIView+performBlockAfterDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */; };
-		246BC26D207E33F70051A258 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BC26C207E33F70051A258 /* SettingsViewModel.swift */; };
+		246BC26D207E33F70051A258 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BC26C207E33F70051A258 /* Preferences.swift */; };
 		246DFB312095F569002F9D73 /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */; };
 		246DFB33209603D9002F9D73 /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */; };
 		246DFB3520960B66002F9D73 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB3420960B66002F9D73 /* BaseViewController.swift */; };
@@ -63,7 +63,7 @@
 		1C03A6989E6C56C7D6982325 /* Pods-Timer-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timer-Weather/Pods-Timer-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		2403762E2095E80900818D83 /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+performBlockAfterDelay.swift"; sourceTree = "<group>"; };
-		246BC26C207E33F70051A258 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		246BC26C207E33F70051A258 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
 		246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
 		246DFB3420960B66002F9D73 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				24ED08B5206120F600DCF838 /* MainViewModel.swift */,
-				246BC26C207E33F70051A258 /* SettingsViewModel.swift */,
+				246BC26C207E33F70051A258 /* Preferences.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -539,7 +539,7 @@
 				246DFB312095F569002F9D73 /* SelectionTableViewCell.swift in Sources */,
 				24ED08B120611C9700DCF838 /* Flag.swift in Sources */,
 				24ED08AB20611C9700DCF838 /* Currently.swift in Sources */,
-				246BC26D207E33F70051A258 /* SettingsViewModel.swift in Sources */,
+				246BC26D207E33F70051A258 /* Preferences.swift in Sources */,
 				24ED08AE20611C9700DCF838 /* Weather.swift in Sources */,
 				24ED08AF20611C9700DCF838 /* WeatherIcon.swift in Sources */,
 				24ED08AC20611C9700DCF838 /* WeatherDisplayModel.swift in Sources */,

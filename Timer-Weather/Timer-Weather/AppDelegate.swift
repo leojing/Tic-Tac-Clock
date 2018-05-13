@@ -18,34 +18,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        SettingsViewModel.sharedInstance.resetDefaults()
         
-        if let _ = SettingsViewModel.sharedInstance.getShowDate() {
+        if let _ = Preferences.sharedInstance.getShowDate() {
         } else {
-            SettingsViewModel.sharedInstance.setShowDate(false)
+            Preferences.sharedInstance.setShowDate(false)
         }
         
-        if let _ = SettingsViewModel.sharedInstance.getShowWeather() {
+        if let _ = Preferences.sharedInstance.getShowWeather() {
         } else {
-            SettingsViewModel.sharedInstance.setShowWeather(true)
+            Preferences.sharedInstance.setShowWeather(true)
         }
 
-        if let _ = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
+        if let _ = Preferences.sharedInstance.getShow5DaysWeather() {
         } else {
-            SettingsViewModel.sharedInstance.setShow5DaysWeather(true)
+            Preferences.sharedInstance.setShow5DaysWeather(true)
         }
 
-        if let _ = SettingsViewModel.sharedInstance.getWatchFace() {
+        if let _ = Preferences.sharedInstance.getWatchFace() {
         } else {
-            SettingsViewModel.sharedInstance.setWatchFace(0)
+            Preferences.sharedInstance.setWatchFace(0)
         }
 
-        if let _ = SettingsViewModel.sharedInstance.getBackground() {
+        if let _ = Preferences.sharedInstance.getBackground() {
         } else {
-            SettingsViewModel.sharedInstance.setBackground("#000000")
+            Preferences.sharedInstance.setBackground("#000000")
         }
 
-        if let _ = SettingsViewModel.sharedInstance.getDateFormat() {
+        if let _ = Preferences.sharedInstance.getDateFormat() {
         } else {
-            SettingsViewModel.sharedInstance.setDateFormat("YYYY/MM/dd")
+            Preferences.sharedInstance.setDateFormat("YYYY/MM/dd")
         }
 
         return true

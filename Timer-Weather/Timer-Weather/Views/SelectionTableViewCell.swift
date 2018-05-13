@@ -32,7 +32,7 @@ class SelectionTableViewCell: UITableViewCell {
         if type == .background, let colors = type?.getbackgroundColors() {
             contentView.backgroundColor = UIColor().hexStringToUIColor(hex: colors[indexPath.row])
         } else {
-            if let bgColor = SettingsViewModel.sharedInstance.getBackground() {
+            if let bgColor = Preferences.sharedInstance.getBackground() {
                 self.contentView.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
             }
         }

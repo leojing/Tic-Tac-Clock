@@ -39,11 +39,17 @@ class MainViewController: BaseViewController {
             setupViewModelBinds()
         }
     }
+    
+    fileprivate var isPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
 
     private enum Constants {
-        static let digitalTimerHeight = 120
+        static let digitalTimerHeightForPhone = 120
+        static let digitalTimerHeightForPad = 190
         static let circleTimerHeight = 200
-        static let dateLabelHeight = 30
+        static let dateLabelHeightForPhone = 30
+        static let dateLabelHeightForPad = 40
         static let weatherCollectionWidth = 70
         static let weatherCollectionHeight = 70
     }
@@ -54,34 +60,37 @@ class MainViewController: BaseViewController {
         viewModel = MainViewModel(APIClient())
 
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        
+        adjustFontByDevice(isPad)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let bgColor = SettingsViewModel.sharedInstance.getBackground() {
+        if let bgColor = Preferences.sharedInstance.getBackground() {
             self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
         }
 
-        if let watchfaceIndex = SettingsViewModel.sharedInstance.getWatchFace(), watchfaceIndex == 0 {
+        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex == 0 {
             circleTimerHeightConstraint.constant = CGFloat(Constants.circleTimerHeight)
             digitalTimerHeightConstraint.constant = CGFloat(0)
             circleTimerView.isHidden = false
             dateLabelHeightConstraint.constant = CGFloat(0)
         } else {
-            digitalTimerHeightConstraint.constant = CGFloat(Constants.digitalTimerHeight)
+            digitalTimerHeightConstraint.constant = CGFloat(isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
             circleTimerHeightConstraint.constant = CGFloat(0)
             circleTimerView.isHidden = true
 
-            if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
-                dateLabelHeightConstraint.constant = CGFloat(isShowDate ? Constants.dateLabelHeight : 0)
+            if let isShowDate = Preferences.sharedInstance.getShowDate() {
+                let height = isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
+                dateLabelHeightConstraint.constant = CGFloat(isShowDate ? height : 0)
             }
         }
-        if let isShowWeather = SettingsViewModel.sharedInstance.getShowWeather() {
+        if let isShowWeather = Preferences.sharedInstance.getShowWeather() {
             weatherStackView.isHidden = !isShowWeather
         }
         
-        if let isShow5DaysWeather = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
+        if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
             if isShow5DaysWeather, let data = viewModel?.mutipleDaysData.value {
                 viewModel?.dailyData.value = data
                 dailyViews.forEach({ view in
@@ -93,6 +102,19 @@ class MainViewController: BaseViewController {
                     view.isHidden = !(index == 0)
                 })
             }
+        }
+    }
+    
+    // MARK: UI update
+    fileprivate func adjustFontByDevice(_ isPad: Bool) {
+        if isPad {
+            digitalTimerMinLabel.font = UIFont(name: "Courier New", size: 110)
+            digitalTimerHourLabel.font = UIFont(name: "Courier New", size: 110)
+            dateLabel.font = UIFont.systemFont(ofSize: 30, weight: .light)
+        } else {
+            digitalTimerMinLabel.font = UIFont(name: "Courier New", size: 64)
+            digitalTimerHourLabel.font = UIFont(name: "Courier New", size: 64)
+            dateLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
         }
     }
 
@@ -115,7 +137,7 @@ class MainViewController: BaseViewController {
                 attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
                 self.dateInWatchLabel.attributedText = attributedString
 
-                self.dateLabel.text = date.dayOfWeek(SettingsViewModel.sharedInstance.getDateFormat())
+                self.dateLabel.text = date.dayOfWeek(Preferences.sharedInstance.getDateFormat())
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)

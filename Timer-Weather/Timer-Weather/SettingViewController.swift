@@ -33,13 +33,13 @@ class SettingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let colorString = SettingsViewModel.sharedInstance.getBackground() {
+        if let colorString = Preferences.sharedInstance.getBackground() {
             let bgColor = UIColor().hexStringToUIColor(hex: colorString)
             navigationBar.barTintColor = bgColor
             self.tableView.backgroundColor = bgColor
         }
         
-        if let watchfaceIndex = SettingsViewModel.sharedInstance.getWatchFace(), watchfaceIndex == 0 {
+        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex == 0 {
             showDateSwitch.isEnabled = false
         } else {
             showDateSwitch.isEnabled = true
@@ -71,39 +71,39 @@ class SettingViewController: UITableViewController {
     
     // MARK: Setup Initial data
     fileprivate func setUpInitialData() {
-        if let isShowWeather = SettingsViewModel.sharedInstance.getShowWeather() {
+        if let isShowWeather = Preferences.sharedInstance.getShowWeather() {
             showWeatherSwitch.isOn = isShowWeather
         }
-        if let isShow5DaysWeather = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
+        if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
             show5DaysWeatherSwitch.isOn = isShow5DaysWeather
         }
-        if let isShowDate = SettingsViewModel.sharedInstance.getShowDate() {
+        if let isShowDate = Preferences.sharedInstance.getShowDate() {
             showDateSwitch.isOn = isShowDate
         }
         
         showWeatherSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
-                SettingsViewModel.sharedInstance.setShowWeather(isOn)
+                Preferences.sharedInstance.setShowWeather(isOn)
                 if !isOn {
                     self.show5DaysWeatherSwitch.isOn = false
-                    SettingsViewModel.sharedInstance.setShow5DaysWeather(false)
+                    Preferences.sharedInstance.setShow5DaysWeather(false)
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
         
         show5DaysWeatherSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
-                SettingsViewModel.sharedInstance.setShow5DaysWeather(isOn)
+                Preferences.sharedInstance.setShow5DaysWeather(isOn)
                 if isOn {
                     self.showWeatherSwitch.isOn = true
-                    SettingsViewModel.sharedInstance.setShowWeather(true)
+                    Preferences.sharedInstance.setShowWeather(true)
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
         
         showDateSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
-                SettingsViewModel.sharedInstance.setShowDate(isOn)
+                Preferences.sharedInstance.setShowDate(isOn)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }

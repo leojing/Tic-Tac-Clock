@@ -8,9 +8,9 @@
 
 import Foundation
 
-class SettingsViewModel: NSObject {
+class Preferences: NSObject {
     
-    enum SettingOption: String {
+    enum PreferenceOptions: String {
         case showWeather = "showWeather"
         case show5DaysWeather = "show5DaysWeather"
         case showDate = "showDate"
@@ -19,7 +19,7 @@ class SettingsViewModel: NSObject {
         case background = "background"
     }
     
-    static let sharedInstance = SettingsViewModel()
+    static let sharedInstance = Preferences()
     private let userDefaults = UserDefaults.standard
     
     override init() {
@@ -35,55 +35,55 @@ class SettingsViewModel: NSObject {
     
     // MARK: set & get for Show Weather data
     func setShowWeather(_ isShow: Bool?) {
-        userDefaults.setValue(isShow, forKey: SettingOption.showWeather.rawValue)
+        userDefaults.setValue(isShow, forKey: PreferenceOptions.showWeather.rawValue)
     }
     
     func getShowWeather() -> Bool? {
-        return userDefaults.value(forKey: SettingOption.showWeather.rawValue) as? Bool
+        return userDefaults.value(forKey: PreferenceOptions.showWeather.rawValue) as? Bool
     }
     
     // MARK: set & get for Show 5 days weather data
     func setShow5DaysWeather(_ isShow: Bool?) {
-        userDefaults.setValue(isShow, forKey: SettingOption.show5DaysWeather.rawValue)
+        userDefaults.setValue(isShow, forKey: PreferenceOptions.show5DaysWeather.rawValue)
     }
     
     func getShow5DaysWeather() -> Bool? {
-        return userDefaults.value(forKey: SettingOption.show5DaysWeather.rawValue) as? Bool
+        return userDefaults.value(forKey: PreferenceOptions.show5DaysWeather.rawValue) as? Bool
     }
 
     // MARK: set & get for Show date data
     func setShowDate(_ isShow: Bool?) {
-        userDefaults.setValue(isShow, forKey: SettingOption.showDate.rawValue)
+        userDefaults.setValue(isShow, forKey: PreferenceOptions.showDate.rawValue)
     }
     
     func getShowDate() -> Bool? {
-        return userDefaults.value(forKey: SettingOption.showDate.rawValue) as? Bool
+        return userDefaults.value(forKey: PreferenceOptions.showDate.rawValue) as? Bool
     }
     
     // MARK: set & get for date format data
     func setDateFormat(_ format: String?) {
-        userDefaults.setValue(format, forKey: SettingOption.dateFormat.rawValue)
+        userDefaults.setValue(format, forKey: PreferenceOptions.dateFormat.rawValue)
     }
     
     func getDateFormat() -> String? {
-        return userDefaults.value(forKey: SettingOption.dateFormat.rawValue) as? String
+        return userDefaults.value(forKey: PreferenceOptions.dateFormat.rawValue) as? String
     }
 
     // MARK: set & get for watch face data
     func setWatchFace(_ index: Int?) {
-        userDefaults.setValue(index, forKey: SettingOption.watchFace.rawValue)
+        userDefaults.setValue(index, forKey: PreferenceOptions.watchFace.rawValue)
     }
     
     func getWatchFace() -> Int? {
-        return userDefaults.value(forKey: SettingOption.watchFace.rawValue) as? Int
+        return userDefaults.value(forKey: PreferenceOptions.watchFace.rawValue) as? Int
     }
     
     // MARK: set & get for background
     func setBackground(_ color: String?) {
-        userDefaults.setValue(color, forKey: SettingOption.background.rawValue)
+        userDefaults.setValue(color, forKey: PreferenceOptions.background.rawValue)
     }
     
     func getBackground() -> String? {
-        return userDefaults.value(forKey: SettingOption.background.rawValue) as? String
+        return userDefaults.value(forKey: PreferenceOptions.background.rawValue) as? String
     }
 }

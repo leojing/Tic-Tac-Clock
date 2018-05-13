@@ -88,7 +88,7 @@ class MainViewModel: NSObject {
                 if let weatherData = w?.daily?.data {
                     self.singleDaysData.value = Array(weatherData.prefix(1))
                     self.mutipleDaysData.value = Array(weatherData.prefix(5))
-                    if let isShow5DaysWeather = SettingsViewModel.sharedInstance.getShow5DaysWeather() {
+                    if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
                         if isShow5DaysWeather {
                             self.dailyData.value = self.mutipleDaysData.value
                         } else {
