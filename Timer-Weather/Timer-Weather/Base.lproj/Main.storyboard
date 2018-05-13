@@ -143,40 +143,44 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9h-KW-5ZO">
-                                        <rect key="frame" x="222" y="92.333333333333343" width="41" height="16.333333333333329"/>
+                                        <rect key="frame" x="221.66666666666666" y="92" width="41.333333333333343" height="17"/>
                                         <attributedString key="attributedText">
                                             <fragment content="FRI">
                                                 <attributes>
                                                     <color key="NSColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" size="14" name="SFCompactText-Medium"/>
+                                                    <font key="NSFont" metaFont="system" size="14"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" 23">
                                                 <attributes>
                                                     <color key="NSColor" red="1" green="0.57752577130966254" blue="0.42650210142085432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="14" name="SFCompactText-Medium"/>
+                                                    <font key="NSFont" metaFont="system" size="14"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hour" translatesAutoresizingMaskIntoConstraints="NO" id="7vr-2n-ZKx">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hour" translatesAutoresizingMaskIntoConstraints="NO" id="7vr-2n-ZKx">
                                         <rect key="frame" x="52" y="0.0" width="270" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="min" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-fh-urC">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="min" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-fh-urC">
                                         <rect key="frame" x="52" y="0.0" width="270" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ZNh-6c-Fjr" secondAttribute="bottom" constant="30" id="38l-J7-ybL"/>
+                                    <constraint firstItem="7vr-2n-ZKx" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="8yy-Gs-Yai"/>
+                                    <constraint firstItem="SIp-fh-urC" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="DBY-ko-RHW"/>
                                     <constraint firstAttribute="height" constant="200" id="Eza-86-Ryz"/>
                                     <constraint firstItem="ZNh-6c-Fjr" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="Fjc-Gg-bTC"/>
+                                    <constraint firstAttribute="bottom" secondItem="7vr-2n-ZKx" secondAttribute="bottom" id="LLH-BK-ccM"/>
                                     <constraint firstItem="x9h-KW-5ZO" firstAttribute="centerY" secondItem="s8C-vK-0ct" secondAttribute="centerY" id="Loj-fd-IcA"/>
                                     <constraint firstItem="e7b-bj-Gx8" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="W1D-YQ-xlt"/>
+                                    <constraint firstItem="SIp-fh-urC" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="ax5-oQ-Iez"/>
                                     <constraint firstItem="e7b-bj-Gx8" firstAttribute="trailing" secondItem="x9h-KW-5ZO" secondAttribute="trailing" constant="25" id="daW-JR-x0e"/>
                                     <constraint firstItem="e7b-bj-Gx8" firstAttribute="centerX" secondItem="s8C-vK-0ct" secondAttribute="centerX" id="hII-k1-aGg"/>
+                                    <constraint firstAttribute="bottom" secondItem="SIp-fh-urC" secondAttribute="bottom" id="hZp-Hd-PGZ"/>
+                                    <constraint firstItem="7vr-2n-ZKx" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="hoj-Ho-M2y"/>
                                     <constraint firstItem="x9h-KW-5ZO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s8C-vK-0ct" secondAttribute="leading" constant="20" symbolic="YES" id="kVK-ha-ert"/>
                                     <constraint firstAttribute="bottom" secondItem="e7b-bj-Gx8" secondAttribute="bottom" id="kcq-xg-1SN"/>
                                 </constraints>
