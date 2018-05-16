@@ -74,7 +74,7 @@ class SelectionViewController: BaseViewController {
 extension SelectionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = selectionType?.getContentList().count {
+        if let count = selectionType?.getContentList()?.count {
             return count
         }
         return 0
@@ -88,8 +88,9 @@ extension SelectionViewController: UITableViewDelegate {
         
         cell.indexPath = indexPath
         let selectedIndex = getSelectedIndexPath(selectionType)
-        cell.configureCell(selectionType, selectionType?.getContentList()[indexPath.row], isSelected: (selectedIndex == indexPath.row))
-        
+        if let list = selectionType?.getContentList() {
+            cell.configureCell(selectionType, list[indexPath.row], isSelected: (selectedIndex == indexPath.row))
+        }
         return cell
     }
     
@@ -122,7 +123,7 @@ extension SelectionViewController: UITableViewDelegate {
 
 extension SelectionType {
     
-    func getContentList() -> [String?] {
+    func getContentList() -> [String?]? {
         switch self {
         case .background:
             return ["Black", "Red respberry", "Denim blue", "Blue cobalt",
@@ -135,13 +136,19 @@ extension SelectionType {
                     "2012", "2011", "2010"]
             
         case .dateFormat:
-            return ["2018/09/08", "2018/09/08, Saturday", "2018-09-08", "2018-09-08, Saturday",
-                    "08 Sep 2018", "08 Sep 2018, Saturday", "Sep 08", "Sep 08, Saturday",
-                    "09-08", "09-08, Saturday"]
+            return getCurrentDateWithFormat()
             
         case .watchFace:
             return [nil, "10:10"]
         }
+    }
+    
+    private func getCurrentDateWithFormat() -> [String]? {
+        let date = Date()
+        let formats = getDateFormats()
+        return formats?.map { format in
+                return date.dayOfWeek(format)
+            }
     }
     
     func getbackgroundColors() -> [String]? {
