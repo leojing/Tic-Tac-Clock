@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        application.isIdleTimerDisabled = true
         if UIDevice.current.batteryState == .charging {
             application.isIdleTimerDisabled = true
         }
