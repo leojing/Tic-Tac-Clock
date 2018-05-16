@@ -223,11 +223,7 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func refreshAction(_ sender: Any?) {
-        if (cityNameLabel.text?.isEmpty)! {
-            viewModel?.setupLocationManager()
-        } else {
-            viewModel?.fetchWeatherInfo(apiService)
-        }
+        viewModel?.setupLocationManager()
         refreshButton.isHidden = true
     }
     
