@@ -114,6 +114,10 @@ class MainViewController: BaseViewController {
                 })
             }
         }
+        
+        if let isShowLocation = Preferences.sharedInstance.getShowLocation() {
+            cityNameLabel.isHidden = !isShowLocation
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

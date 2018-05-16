@@ -19,38 +19,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UIDevice.current.batteryState == .charging {
             application.isIdleTimerDisabled = true
         }
+    
+        initialPreferences()
+        
+        return true
+    }
+    
+    fileprivate func initialPreferences() {
+        if let _ = Preferences.sharedInstance.getShowWeather() {
+        } else {
+            Preferences.sharedInstance.setShowWeather(true)
+        }
+        
+        if let _ = Preferences.sharedInstance.getShow5DaysWeather() {
+        } else {
+            Preferences.sharedInstance.setShow5DaysWeather(true)
+        }
+        
+        if let _ = Preferences.sharedInstance.getShowLocation() {
+        } else {
+            Preferences.sharedInstance.setShowDate(true)
+        }
         
         if let _ = Preferences.sharedInstance.getShowDate() {
         } else {
             Preferences.sharedInstance.setShowDate(false)
         }
         
-        if let _ = Preferences.sharedInstance.getShowWeather() {
-        } else {
-            Preferences.sharedInstance.setShowWeather(true)
-        }
-
-        if let _ = Preferences.sharedInstance.getShow5DaysWeather() {
-        } else {
-            Preferences.sharedInstance.setShow5DaysWeather(true)
-        }
-
         if let _ = Preferences.sharedInstance.getWatchFace() {
         } else {
             Preferences.sharedInstance.setWatchFace(0)
         }
-
+        
         if let _ = Preferences.sharedInstance.getBackground() {
         } else {
             Preferences.sharedInstance.setBackground("#000000")
         }
-
+        
         if let _ = Preferences.sharedInstance.getDateFormat() {
         } else {
             Preferences.sharedInstance.setDateFormat("YYYY/MM/dd")
         }
-
-        return true
     }
 }
 

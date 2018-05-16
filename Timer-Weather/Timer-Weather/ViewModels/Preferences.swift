@@ -13,6 +13,7 @@ class Preferences: NSObject {
     enum PreferenceOptions: String {
         case showWeather = "showWeather"
         case show5DaysWeather = "show5DaysWeather"
+        case showLocation = "showLocation"
         case showDate = "showDate"
         case dateFormat = "dateFormat"
         case watchFace = "watchFace"
@@ -49,6 +50,15 @@ class Preferences: NSObject {
     
     func getShow5DaysWeather() -> Bool? {
         return userDefaults.value(forKey: PreferenceOptions.show5DaysWeather.rawValue) as? Bool
+    }
+
+    // MARK: set & get for Show location data
+    func setShowLocation(_ isShow: Bool?) {
+        userDefaults.setValue(isShow, forKey: PreferenceOptions.showLocation.rawValue)
+    }
+    
+    func getShowLocation() -> Bool? {
+        return userDefaults.value(forKey: PreferenceOptions.showLocation.rawValue) as? Bool
     }
 
     // MARK: set & get for Show date data

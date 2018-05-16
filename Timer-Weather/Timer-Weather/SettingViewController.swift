@@ -16,6 +16,7 @@ class SettingViewController: UITableViewController {
 
     @IBOutlet weak var showWeatherSwitch: UISwitch!
     @IBOutlet weak var show5DaysWeatherSwitch: UISwitch!
+    @IBOutlet weak var showLocationSwitch: UISwitch!
     @IBOutlet weak var showDateSwitch: UISwitch!
     
     fileprivate let disposeBag = DisposeBag()
@@ -77,6 +78,9 @@ class SettingViewController: UITableViewController {
         if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
             show5DaysWeatherSwitch.isOn = isShow5DaysWeather
         }
+        if let isShowLocation = Preferences.sharedInstance.getShowLocation() {
+            showLocationSwitch.isOn = isShowLocation
+        }
         if let isShowDate = Preferences.sharedInstance.getShowDate() {
             showDateSwitch.isOn = isShowDate
         }
@@ -101,6 +105,12 @@ class SettingViewController: UITableViewController {
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
         
+        showLocationSwitch.rx.isOn.asObservable()
+            .subscribe(onNext: { isOn in
+                Preferences.sharedInstance.setShowLocation(isOn)
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
+
         showDateSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
                 Preferences.sharedInstance.setShowDate(isOn)
