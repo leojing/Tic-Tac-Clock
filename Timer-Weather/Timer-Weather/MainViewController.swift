@@ -62,6 +62,8 @@ class MainViewController: BaseViewController {
         
         viewModel = MainViewModel(apiService)
 
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         adjustFontByDevice(isPad)
@@ -255,5 +257,11 @@ extension MainViewController {
         let offset2Index = date.index(startIndex, offsetBy: 2)
         let subStringToMin = String(date[startIndex..<offset2Index])
         return CGFloat(Double(subStringToMin) ?? 0)
+    }
+}
+
+extension MainViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
