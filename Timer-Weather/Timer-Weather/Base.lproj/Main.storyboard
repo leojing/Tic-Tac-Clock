@@ -48,6 +48,20 @@
                                     <segue destination="ItR-oB-99o" kind="show" id="dH6-cC-vFq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe7-Tq-fSp">
+                                <rect key="frame" x="0.0" y="20" width="80" height="60"/>
+                                <accessibility key="accessibilityConfiguration" label="Share"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="ZPg-BN-he1"/>
+                                    <constraint firstAttribute="height" constant="60" id="wwM-cd-e8S"/>
+                                </constraints>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A0E-nF-nZp"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8C-vK-0ct">
                                 <rect key="frame" x="0.0" y="110" width="375" height="200"/>
                                 <subviews>
@@ -410,6 +424,7 @@
                             <constraint firstItem="gQs-YC-Q3E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ere-3I-SKJ"/>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="bottom" id="H2U-4f-d61"/>
                             <constraint firstItem="284-3f-JdY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IFk-lj-hDM"/>
+                            <constraint firstItem="CTD-kx-lA0" firstAttribute="bottom" secondItem="fe7-Tq-fSp" secondAttribute="bottom" id="INK-m6-07C"/>
                             <constraint firstItem="gQs-YC-Q3E" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="IbM-YS-YNt"/>
                             <constraint firstItem="bjY-11-cDb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LaY-w6-a88"/>
                             <constraint firstItem="CTD-kx-lA0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="OnA-X2-ivF"/>
@@ -424,7 +439,9 @@
                             <constraint firstItem="Z8O-0Z-udF" firstAttribute="top" secondItem="gQs-YC-Q3E" secondAttribute="top" constant="20" id="ket-Im-9yo"/>
                             <constraint firstItem="284-3f-JdY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mub-MJ-hwZ"/>
                             <constraint firstItem="s8C-vK-0ct" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tfG-UZ-uPj"/>
+                            <constraint firstItem="fe7-Tq-fSp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uk2-lk-DmC"/>
                             <constraint firstItem="feB-Tt-kv4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yOe-E6-FUK"/>
+                            <constraint firstItem="CTD-kx-lA0" firstAttribute="top" secondItem="fe7-Tq-fSp" secondAttribute="top" id="zCB-XW-5Wn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

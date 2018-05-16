@@ -227,6 +227,12 @@ class MainViewController: BaseViewController {
         refreshButton.isHidden = true
     }
     
+    @IBAction func shareAction(_ sender: Any?) {
+        let appURL = URL(string: "https://itunes.apple.com/us/app/tic-tac-clock/id1312810639?mt=8&ign-mpt=uo%3D2")!
+        let vc = UIActivityViewController(activityItems: [appURL], applicationActivities: [])
+        present(vc, animated: true)
+    }
+    
     @objc
     fileprivate func triggleTimer() {
         viewModel?.currentDate.value = Date()
