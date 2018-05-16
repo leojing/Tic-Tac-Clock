@@ -41,7 +41,8 @@
                                     <constraint firstAttribute="width" constant="80" id="O8s-uw-Ijy"/>
                                     <constraint firstAttribute="height" constant="60" id="hGx-Uk-E7Q"/>
                                 </constraints>
-                                <state key="normal" image="white">
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="setting">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -55,7 +56,7 @@
                                     <constraint firstAttribute="width" constant="80" id="ZPg-BN-he1"/>
                                     <constraint firstAttribute="height" constant="60" id="wwM-cd-e8S"/>
                                 </constraints>
-                                <state key="normal" title="Share">
+                                <state key="normal" image="share">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -396,9 +397,9 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bjY-11-cDb">
                                 <rect key="frame" x="169" y="670" width="37" height="37"/>
                             </activityIndicatorView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8O-0Z-udF">
-                                <rect key="frame" x="160.66666666666666" y="670" width="53" height="30"/>
-                                <state key="normal" title="Refresh">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8O-0Z-udF">
+                                <rect key="frame" x="174.33333333333334" y="670" width="26" height="30"/>
+                                <state key="normal" image="refresh">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -942,9 +943,11 @@
         <image name="left_arrow" width="9" height="16"/>
         <image name="min" width="270" height="270"/>
         <image name="rain" width="49" height="48"/>
+        <image name="refresh" width="26" height="30"/>
         <image name="sec" width="270" height="270"/>
+        <image name="setting" width="20" height="20"/>
+        <image name="share" width="20" height="20"/>
         <image name="upper-dial" width="76" height="76"/>
-        <image name="white" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="obr-jB-1vk"/>
