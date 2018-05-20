@@ -15,11 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-        if UIDevice.current.batteryState == .charging {
-            application.isIdleTimerDisabled = true
-        }
-    
+        
         initialPreferences()
         
         return true
@@ -44,6 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let _ = Preferences.sharedInstance.getShowDate() {
         } else {
             Preferences.sharedInstance.setShowDate(false)
+        }
+        
+        if let _ = Preferences.sharedInstance.getDisabelIdleTimer() {
+        } else {
+            Preferences.sharedInstance.setDisabelIdleTimer(true)
         }
         
         if let _ = Preferences.sharedInstance.getWatchFace() {

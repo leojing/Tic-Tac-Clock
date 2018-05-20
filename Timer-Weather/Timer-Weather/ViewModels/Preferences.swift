@@ -15,6 +15,7 @@ class Preferences: NSObject {
         case show5DaysWeather = "show5DaysWeather"
         case showLocation = "showLocation"
         case showDate = "showDate"
+        case disableIdleTimer = "disableIdleTimer"
         case dateFormat = "dateFormat"
         case watchFace = "watchFace"
         case background = "background"
@@ -77,6 +78,15 @@ class Preferences: NSObject {
     
     func getDateFormat() -> String? {
         return userDefaults.value(forKey: PreferenceOptions.dateFormat.rawValue) as? String
+    }
+    
+    // MARK: set & get for disable IdleTimerdata
+    func setDisabelIdleTimer(_ enable: Bool?) {
+        userDefaults.setValue(enable, forKey: PreferenceOptions.disableIdleTimer.rawValue)
+    }
+    
+    func getDisabelIdleTimer() -> Bool? {
+        return userDefaults.value(forKey: PreferenceOptions.disableIdleTimer.rawValue) as? Bool
     }
 
     // MARK: set & get for watch face data

@@ -77,6 +77,10 @@ class MainViewController: BaseViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 2*60*60, repeats: true) { _ in
             self.refreshAction(nil)
         }
+        
+        if let isDisable = Preferences.sharedInstance.getDisabelIdleTimer() {
+            UIApplication.shared.isIdleTimerDisabled = isDisable
+        }
 
         if let bgColor = Preferences.sharedInstance.getBackground() {
             self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)

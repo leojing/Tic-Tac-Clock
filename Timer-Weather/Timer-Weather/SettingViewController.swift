@@ -18,7 +18,8 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var show5DaysWeatherSwitch: UISwitch!
     @IBOutlet weak var showLocationSwitch: UISwitch!
     @IBOutlet weak var showDateSwitch: UISwitch!
-    
+    @IBOutlet weak var disableIdleTimerSwitch: UISwitch!
+
     fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -84,6 +85,9 @@ class SettingViewController: UITableViewController {
         if let isShowDate = Preferences.sharedInstance.getShowDate() {
             showDateSwitch.isOn = isShowDate
         }
+        if let isEnable = Preferences.sharedInstance.getDisabelIdleTimer() {
+            disableIdleTimerSwitch.isOn = isEnable
+        }
         
         showWeatherSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
@@ -114,6 +118,12 @@ class SettingViewController: UITableViewController {
         showDateSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in
                 Preferences.sharedInstance.setShowDate(isOn)
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
+        
+        disableIdleTimerSwitch.rx.isOn.asObservable()
+            .subscribe(onNext: { isOn in
+                Preferences.sharedInstance.setDisabelIdleTimer(isOn)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
