@@ -9,9 +9,9 @@
 import UIKit
 
 enum SelectionType: String {
-    case dateFormat = "Date Fromat"
+    case dateFormat = "Date Format"
     case watchFace = "Watch Face"
-    case background = "Background Colour"
+    case background = "Background Color"
 }
 
 class SelectionViewController: BaseViewController {
@@ -35,7 +35,9 @@ class SelectionViewController: BaseViewController {
             Preferences.sharedInstance.setBackground(colors[selectedIndex])
         }
         
-        self.navigationBar.items?.first?.title = selectionType?.rawValue
+        if let title = selectionType?.rawValue {
+            self.navigationBar.items?.first?.title = NSLocalizedString(title, comment: title)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,7 +141,7 @@ extension SelectionType {
             return getCurrentDateWithFormat()
             
         case .watchFace:
-            return ["chronography-black", "chronography-brown", "chronography-green", "chronography-grey", "chronography-light-blue", "chronography-light-grey", "chronography-light-transparent", "chronography-light-yellow", "10:10"]
+            return ["chronography-black", "chronography-brown", "chronography-green", "chronography-grey", "chronography-light-blue", "chronography-light-grey", "chronography-light-transparent", "chronography-light-yellow", Date().timeOfCounter() ?? "09:28"]
         }
     }
     

@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Timer-Weather
+
+  Created by JINGLUO on 20/5/18.
+  Copyright © 2018 JINGLUO. All rights reserved.
+*/
+
+
+"Date Format" = "日期格式";
+"Watch Face" = "表盘格式";
+"Background Color" = "背景颜色";

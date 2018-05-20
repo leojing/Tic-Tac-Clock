@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Timer-Weather
+
+  Created by JINGLUO on 20/5/18.
+  Copyright © 2018 JINGLUO. All rights reserved.
+*/
+
+CFBundleDisplayName = "滴答滴";

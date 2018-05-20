@@ -1,0 +1,69 @@
+
+/* Class = "UILabel"; text = "Monday, 23 April"; ObjectID = "284-3f-JdY"; */
+"284-3f-JdY.text" = "Monday, 23 April";
+
+/* Class = "UILabel"; text = "13"; ObjectID = "57w-m7-uaL"; */
+"57w-m7-uaL.text" = "13";
+
+/* Class = "UILabel"; text = "-℃"; ObjectID = "9F0-j4-aZl"; */
+"9F0-j4-aZl.text" = "-℃";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EvC-Hb-4P4"; */
+"EvC-Hb-4P4.text" = "Label";
+
+/* Class = "UILabel"; text = "-℃"; ObjectID = "FqR-0R-ZRm"; */
+"FqR-0R-ZRm.text" = "-℃";
+
+/* Class = "UILabel"; text = ":24"; ObjectID = "HY6-cm-Qmn"; */
+"HY6-cm-Qmn.text" = ":24";
+
+/* Class = "UILabel"; text = "-℃"; ObjectID = "Sj0-v1-cpn"; */
+"Sj0-v1-cpn.text" = "-℃";
+
+/* Class = "UILabel"; text = "Disable IdleTimer"; ObjectID = "UbC-le-fKU"; */
+"UbC-le-fKU.text" = "保持屏幕常亮";
+
+/* Class = "UILabel"; text = "Show date"; ObjectID = "YGQ-HY-Jjp"; */
+"YGQ-HY-Jjp.text" = "显示日期";
+
+/* Class = "UILabel"; text = "Show 5 days weather"; ObjectID = "cq2-Wl-rEw"; */
+"cq2-Wl-rEw.text" = "显示5天天气";
+
+/* Class = "UILabel"; text = "Show location"; ObjectID = "dfq-Bl-moD"; */
+"dfq-Bl-moD.text" = "显示地理位置";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "e76-5k-rtX"; */
+"e76-5k-rtX.title" = "设置";
+
+/* Class = "UILabel"; text = "Date format"; ObjectID = "f9v-6Z-Bvw"; */
+"f9v-6Z-Bvw.text" = "日期格式";
+
+/* Class = "UILabel"; text = "Watch face"; ObjectID = "fFw-Sb-Wo5"; */
+"fFw-Sb-Wo5.text" = "表盘格式";
+
+/* Class = "UIButton"; accessibilityLabel = "Share"; ObjectID = "fe7-Tq-fSp"; */
+"fe7-Tq-fSp.accessibilityLabel" = "Share";
+
+/* Class = "UILabel"; text = "Sydney"; ObjectID = "feB-Tt-kv4"; */
+"feB-Tt-kv4.text" = "Sydney";
+
+/* Class = "UILabel"; text = "Show weather"; ObjectID = "jEE-yH-fvw"; */
+"jEE-yH-fvw.text" = "显示天气";
+
+/* Class = "UINavigationItem"; title = "Date fromat"; ObjectID = "qQB-Ii-KTk"; */
+"qQB-Ii-KTk.title" = "日期格式";
+
+/* Class = "UIBarButtonItem"; title = "Setting"; ObjectID = "uAM-B2-uSP"; */
+"uAM-B2-uSP.title" = "设置";
+
+/* Class = "UILabel"; text = "-℃"; ObjectID = "v0i-bl-bb4"; */
+"v0i-bl-bb4.text" = "-℃";
+
+/* Class = "UILabel"; text = "-℃"; ObjectID = "vOo-rq-RiX"; */
+"vOo-rq-RiX.text" = "-℃";
+
+/* Class = "UILabel"; text = "Made with ♥, in Sydney, Australia"; ObjectID = "w0q-le-DDn"; */
+"w0q-le-DDn.text" = "Made with ♥, in Sydney, Australia";
+
+/* Class = "UILabel"; text = "Background Color"; ObjectID = "wDG-ci-rfw"; */
+"wDG-ci-rfw.text" = "背景颜色";

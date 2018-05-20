@@ -12,6 +12,7 @@ extension Date {
     
     func dayOfWeekShort() -> String? {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en")
         dateFormatter.dateFormat = "EE dd"
         return dateFormatter.string(from: self)
     }
