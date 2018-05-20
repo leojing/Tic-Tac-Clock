@@ -86,21 +86,26 @@ class MainViewController: BaseViewController {
             self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
         }
 
-        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex == 0 {
-            circleTimerHeightConstraint.constant = CGFloat(Constants.circleTimerHeight)
-            digitalTimerHeightConstraint.constant = CGFloat(0)
-            circleTimerView.isHidden = false
-            dateLabelHeightConstraint.constant = CGFloat(0)
-        } else {
+        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex == 8 {
             digitalTimerHeightConstraint.constant = CGFloat(isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
             circleTimerHeightConstraint.constant = CGFloat(0)
             circleTimerView.isHidden = true
-
+            
             if let isShowDate = Preferences.sharedInstance.getShowDate() {
                 let height = isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
                 dateLabelHeightConstraint.constant = CGFloat(isShowDate ? height : 0)
             }
+        } else {
+            circleTimerHeightConstraint.constant = CGFloat(Constants.circleTimerHeight)
+            digitalTimerHeightConstraint.constant = CGFloat(0)
+            circleTimerView.isHidden = false
+            dateLabelHeightConstraint.constant = CGFloat(0)
+            let watchFaces = SelectionType.getContentList(.watchFace)
+            if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
+                clockView.backgroundImageView.image = UIImage(named: watchFaces()![watchfaceIndex]!)
+            }
         }
+        
         if let isShowWeather = Preferences.sharedInstance.getShowWeather() {
             weatherStackView.isHidden = !isShowWeather
         }

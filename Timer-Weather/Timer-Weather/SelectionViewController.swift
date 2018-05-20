@@ -27,7 +27,7 @@ class SelectionViewController: BaseViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.estimatedRowHeight = 30
+        tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         
         if let colors = selectionType?.getbackgroundColors() {
@@ -139,7 +139,7 @@ extension SelectionType {
             return getCurrentDateWithFormat()
             
         case .watchFace:
-            return [nil, "10:10"]
+            return ["chronography-black", "chronography-brown", "chronography-green", "chronography-grey", "chronography-light-blue", "chronography-light-grey", "chronography-light-transparent", "chronography-light-yellow", "10:10"]
         }
     }
     

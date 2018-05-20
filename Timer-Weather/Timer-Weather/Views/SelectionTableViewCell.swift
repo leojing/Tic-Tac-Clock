@@ -12,7 +12,7 @@ class SelectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var checkImageView: UIImageView!
-    @IBOutlet weak var colockImageView: UIImageView!
+    @IBOutlet weak var clockView: AnalogClockView!
     
     var indexPath = IndexPath()
     
@@ -37,13 +37,24 @@ class SelectionTableViewCell: UITableViewCell {
             }
         }
         checkImageView.isHidden = !isSelected
+        clockView.isHidden = true
+
         if let content = content {
             contentLabel.text = content
             contentLabel.isHidden = false
         } else {
             contentLabel.isHidden = true
         }
-        colockImageView.isHidden = !(type == .watchFace && indexPath.row == 0)
+        
+        if type == .watchFace {
+            if indexPath.row == 8 {
+                clockView.isHidden = true
+            } else if let content = content {
+                contentLabel.isHidden = true
+                clockView.isHidden = false
+                clockView.backgroundImageView.image = UIImage(named: content)
+            }
+        }
     }
 }
 
