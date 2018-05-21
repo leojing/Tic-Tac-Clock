@@ -103,6 +103,13 @@ class MainViewController: BaseViewController {
             let watchFaces = SelectionType.getContentList(.watchFace)
             if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
                 clockView.backgroundImageView.image = UIImage(named: watchFaces()![watchfaceIndex]!)
+                if watchfaceIndex > 3  && watchfaceIndex < 8 {
+                    clockView.smallialImageView?.image = UIImage(named: "upper-dial-light")
+                    smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial-light")
+                } else {
+                    clockView.smallialImageView?.image = UIImage(named: "upper-dial")
+                    smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial")
+                }
             }
         }
         

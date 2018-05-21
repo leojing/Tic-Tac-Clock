@@ -111,6 +111,7 @@
                                             <outlet property="hourHand" destination="7vr-2n-ZKx" id="dRW-hT-vgU"/>
                                             <outlet property="minuteHand" destination="SIp-fh-urC" id="vxT-0P-0c7"/>
                                             <outlet property="secondHand" destination="uDz-E3-v1L" id="hNe-Ld-Tly"/>
+                                            <outlet property="smallialImageView" destination="Y7W-Ae-a37" id="TTM-o3-x1K"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-6c-Fjr" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
@@ -156,6 +157,7 @@
                                             <outlet property="hourHand" destination="eAJ-Cf-bjV" id="xLu-Jq-VLN"/>
                                             <outlet property="minuteHand" destination="dfx-TU-SCW" id="hjS-VE-NwV"/>
                                             <outlet property="secondHand" destination="ilT-QC-CNN" id="8AP-Kw-GHv"/>
+                                            <outlet property="smallialImageView" destination="Svs-cE-PL3" id="Wp9-Yu-Q4C"/>
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9h-KW-5ZO">

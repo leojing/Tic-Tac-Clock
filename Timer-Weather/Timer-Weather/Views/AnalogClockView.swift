@@ -18,6 +18,7 @@ struct HandAngles {
 class AnalogClockView : UIView {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var smallialImageView: UIImageView?
 
     @IBOutlet weak var hourHand: UIImageView!
     @IBOutlet weak var minuteHand: UIImageView!
