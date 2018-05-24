@@ -172,9 +172,17 @@ class MainViewController: BaseViewController {
             .subscribe(onNext: { date in
                 let attributedString = NSMutableAttributedString(string: (date.dayOfWeekShort()?.uppercased())!)
                 attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
+                if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
+                    if watchfaceIndex < 5 {
+                        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: 3))
+                    } else {
+                        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
+                    }
+                }
                 self.dateInWatchLabel.attributedText = attributedString
 
                 self.dateLabel.text = date.dayOfWeek(Preferences.sharedInstance.getDateFormat())
+
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
