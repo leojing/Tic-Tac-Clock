@@ -41,7 +41,7 @@ class SettingViewController: UITableViewController {
             self.tableView.backgroundColor = bgColor
         }
         
-        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex == 8 {
+        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex >= 8 {
             showDateSwitch.isEnabled = true
         } else {
             showDateSwitch.isEnabled = false

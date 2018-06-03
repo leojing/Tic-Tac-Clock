@@ -13,7 +13,8 @@ class SelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var clockView: AnalogClockView!
-    
+    @IBOutlet weak var flipClockView: FlipClockView!
+
     var indexPath = IndexPath()
     
     override func awakeFromNib() {
@@ -38,6 +39,7 @@ class SelectionTableViewCell: UITableViewCell {
         }
         checkImageView.isHidden = !isSelected
         clockView.isHidden = true
+        flipClockView.isHidden = true
 
         if let content = content {
             contentLabel.text = content
@@ -49,9 +51,16 @@ class SelectionTableViewCell: UITableViewCell {
         if type == .watchFace {
             if indexPath.row == 8 {
                 clockView.isHidden = true
+                flipClockView.isHidden = true
+            } else if indexPath.row == 9 {
+                contentLabel.isHidden = true
+                clockView.isHidden = true
+                flipClockView.isHidden = false
+                flipClockView.setTimeToDate(Date(), false)
             } else if let content = content {
                 contentLabel.isHidden = true
                 clockView.isHidden = false
+                flipClockView.isHidden = true
                 clockView.backgroundImageView.image = UIImage(named: content)
             }
         }

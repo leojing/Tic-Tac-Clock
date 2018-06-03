@@ -13,8 +13,9 @@ import HGCircularSlider
 
 class MainViewController: BaseViewController {
     
+    @IBOutlet weak var flipClockView: FlipClockView!
+
     @IBOutlet weak var circleTimerView: UIView!
-    @IBOutlet weak var circleTimerHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var clockViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var clockView: AnalogClockView!
@@ -92,33 +93,75 @@ class MainViewController: BaseViewController {
             self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
         }
 
-        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex == 8 {
-            digitalTimerHeightConstraint.constant = CGFloat(isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
-            circleTimerHeightConstraint.constant = CGFloat(0)
-            circleTimerView.isHidden = true
-            
-            if let isShowDate = Preferences.sharedInstance.getShowDate() {
+        updateWatchFace()
+        updateWeather()
+        
+        if let isShowLocation = Preferences.sharedInstance.getShowLocation() {
+            cityNameLabel.isHidden = !isShowLocation
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        rotateDevice()
+    }
+    
+    private func rotateDevice() {
+        if isPad { return }
+        
+        if UIDevice.current.orientation.isLandscape {
+            clockViewTopConstraint.constant = -70
+        } else {
+            clockViewTopConstraint.constant = 30
+        }
+        view.layoutIfNeeded()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer.invalidate()
+    }
+    
+    // MARK: UI update
+    fileprivate func updateWatchFace() {
+        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
+            if let isShowDate = Preferences.sharedInstance.getShowDate(), watchfaceIndex >= 8 {
                 let height = isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
                 dateLabelHeightConstraint.constant = CGFloat(isShowDate ? height : 0)
+            } else {
+                dateLabelHeightConstraint.constant = CGFloat(0)
             }
-        } else {
-            circleTimerHeightConstraint.constant = CGFloat(Constants.circleTimerHeight)
-            digitalTimerHeightConstraint.constant = CGFloat(0)
-            circleTimerView.isHidden = false
-            dateLabelHeightConstraint.constant = CGFloat(0)
-            let watchFaces = SelectionType.getContentList(.watchFace)
-            if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
-                clockView.backgroundImageView.image = UIImage(named: watchFaces()![watchfaceIndex]!)
-                if watchfaceIndex > 4  && watchfaceIndex < 8 {
-                    clockView.smallialImageView?.image = UIImage(named: "upper-dial-light")
-                    smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial-light")
+            
+            if watchfaceIndex == 8 {
+                digitalTimerHeightConstraint.constant = CGFloat(isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
+                circleTimerView.isHidden = true
+                flipClockView.isHidden = true
+                digitalTimerView.isHidden = false
+            } else {
+                digitalTimerView.isHidden = true
+                if watchfaceIndex == 9 {
+                    flipClockView.isHidden = false
+                    circleTimerView.isHidden = true
                 } else {
-                    clockView.smallialImageView?.image = UIImage(named: "upper-dial")
-                    smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial")
+                    circleTimerView.isHidden = false
+                    flipClockView.isHidden = true
+                }
+                let watchFaces = SelectionType.getContentList(.watchFace)
+                if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
+                    clockView.backgroundImageView.image = UIImage(named: watchFaces()![watchfaceIndex]!)
+                    if watchfaceIndex > 4  && watchfaceIndex < 8 {
+                        clockView.smallialImageView?.image = UIImage(named: "upper-dial-light")
+                        smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial-light")
+                    } else {
+                        clockView.smallialImageView?.image = UIImage(named: "upper-dial")
+                        smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial")
+                    }
                 }
             }
         }
-        
+    }
+    
+    fileprivate func updateWeather() {
         if let isShowWeather = Preferences.sharedInstance.getShowWeather() {
             weatherStackView.isHidden = !isShowWeather
         }
@@ -136,32 +179,8 @@ class MainViewController: BaseViewController {
                 })
             }
         }
-        
-        if let isShowLocation = Preferences.sharedInstance.getShowLocation() {
-            cityNameLabel.isHidden = !isShowLocation
-        }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        rotateDevice()
-    }
-    
-    private func rotateDevice() {
-        if UIDevice.current.orientation.isLandscape {
-            clockViewTopConstraint.constant = -70
-        } else {
-            clockViewTopConstraint.constant = 30
-        }
-        view.layoutIfNeeded()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        timer.invalidate()
-    }
-    
-    // MARK: UI update
     fileprivate func adjustFontByDevice(_ isPad: Bool) {
         if isPad {
             digitalTimerMinLabel.font = UIFont(name: "Courier New", size: 110)
@@ -204,6 +223,8 @@ class MainViewController: BaseViewController {
 
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
+                
+                self.flipClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
