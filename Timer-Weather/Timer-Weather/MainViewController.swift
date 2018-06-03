@@ -83,6 +83,9 @@ class MainViewController: BaseViewController {
         
         if let isDisable = Preferences.sharedInstance.getDisabelIdleTimer() {
             UIApplication.shared.isIdleTimerDisabled = isDisable
+            Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+                UIScreen.main.brightness = 0.5
+            }
         }
 
         if let bgColor = Preferences.sharedInstance.getBackground() {
