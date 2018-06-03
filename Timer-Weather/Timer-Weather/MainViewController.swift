@@ -15,6 +15,8 @@ class MainViewController: BaseViewController {
     
     @IBOutlet weak var circleTimerView: UIView!
     @IBOutlet weak var circleTimerHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var clockViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var clockView: AnalogClockView!
     @IBOutlet weak var smallClockView: AnalogClockView!
     @IBOutlet weak var dateInWatchLabel: UILabel!
@@ -73,6 +75,7 @@ class MainViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         refreshAction(nil)
+        rotateDevice()
         
         timer = Timer.scheduledTimer(withTimeInterval: 2*60*60, repeats: true) { _ in
             self.refreshAction(nil)
@@ -134,6 +137,19 @@ class MainViewController: BaseViewController {
         if let isShowLocation = Preferences.sharedInstance.getShowLocation() {
             cityNameLabel.isHidden = !isShowLocation
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        rotateDevice()
+    }
+    
+    private func rotateDevice() {
+        if UIDevice.current.orientation.isLandscape {
+            clockViewTopConstraint.constant = -70
+        } else {
+            clockViewTopConstraint.constant = 30
+        }
+        view.layoutIfNeeded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

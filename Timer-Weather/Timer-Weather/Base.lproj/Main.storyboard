@@ -240,10 +240,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQs-YC-Q3E">
-                                <rect key="frame" x="12.666666666666657" y="650" width="350" height="80"/>
+                                <rect key="frame" x="12.666666666666657" y="670" width="350" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob2-PV-2XO" customClass="DailyCollectionViewCell" customModule="Timer_Weather" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="ogZ-uy-Qm6">
                                                 <rect key="frame" x="17" y="5" width="36" height="36"/>
@@ -272,7 +272,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awe-mW-cxA" customClass="DailyCollectionViewCell" customModule="Timer_Weather" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="0.0" width="70" height="80"/>
+                                        <rect key="frame" x="70" y="0.0" width="70" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="h2m-IH-gKz">
                                                 <rect key="frame" x="17" y="5" width="36" height="36"/>
@@ -301,7 +301,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-N8-de4" customClass="DailyCollectionViewCell" customModule="Timer_Weather" customModuleProvider="target">
-                                        <rect key="frame" x="140" y="0.0" width="70" height="80"/>
+                                        <rect key="frame" x="140" y="0.0" width="70" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="ftL-Ws-bT1">
                                                 <rect key="frame" x="17" y="5" width="36" height="36"/>
@@ -330,7 +330,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Far-Yh-yTG" customClass="DailyCollectionViewCell" customModule="Timer_Weather" customModuleProvider="target">
-                                        <rect key="frame" x="210" y="0.0" width="70" height="80"/>
+                                        <rect key="frame" x="210" y="0.0" width="70" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="Tli-nF-iXe">
                                                 <rect key="frame" x="17" y="5" width="36" height="36"/>
@@ -359,7 +359,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmU-kd-7DM" customClass="DailyCollectionViewCell" customModule="Timer_Weather" customModuleProvider="target">
-                                        <rect key="frame" x="280" y="0.0" width="70" height="80"/>
+                                        <rect key="frame" x="280" y="0.0" width="70" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="prm-FO-8YI">
                                                 <rect key="frame" x="17" y="5" width="36" height="36"/>
@@ -391,17 +391,17 @@
                                 <constraints>
                                     <constraint firstItem="Far-Yh-yTG" firstAttribute="width" secondItem="ob2-PV-2XO" secondAttribute="width" id="3vo-gf-e4T"/>
                                     <constraint firstItem="dmU-kd-7DM" firstAttribute="width" secondItem="ob2-PV-2XO" secondAttribute="width" id="Pwf-4q-C0b"/>
-                                    <constraint firstAttribute="height" constant="80" id="QoX-0T-h1u"/>
+                                    <constraint firstAttribute="height" constant="60" id="QoX-0T-h1u"/>
                                     <constraint firstAttribute="width" constant="350" id="dLB-uv-JY0"/>
                                     <constraint firstItem="awe-mW-cxA" firstAttribute="width" secondItem="ob2-PV-2XO" secondAttribute="width" id="eGc-6u-TzA"/>
                                     <constraint firstItem="S1T-N8-de4" firstAttribute="width" secondItem="ob2-PV-2XO" secondAttribute="width" id="vwm-DE-Tmr"/>
                                 </constraints>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bjY-11-cDb">
-                                <rect key="frame" x="169" y="670" width="37" height="37"/>
+                                <rect key="frame" x="169" y="690" width="37" height="37"/>
                             </activityIndicatorView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8O-0Z-udF">
-                                <rect key="frame" x="174.33333333333334" y="670" width="26" height="30"/>
+                                <rect key="frame" x="174.33333333333334" y="690" width="26" height="30"/>
                                 <state key="normal" image="refresh">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -457,6 +457,7 @@
                         <outlet property="circleTimerView" destination="s8C-vK-0ct" id="6jf-gI-wk9"/>
                         <outlet property="cityNameLabel" destination="feB-Tt-kv4" id="nsR-iu-GHi"/>
                         <outlet property="clockView" destination="e7b-bj-Gx8" id="2T8-X8-3ET"/>
+                        <outlet property="clockViewTopConstraint" destination="k0e-IG-k8Q" id="LL3-7Q-aMz"/>
                         <outlet property="dateInWatchLabel" destination="x9h-KW-5ZO" id="fTo-n2-q15"/>
                         <outlet property="dateLabel" destination="284-3f-JdY" id="ZNk-VL-DcR"/>
                         <outlet property="dateLabelHeightConstraint" destination="0aZ-uv-EEs" id="w8K-4q-tri"/>
