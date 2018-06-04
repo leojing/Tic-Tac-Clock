@@ -152,9 +152,11 @@ class MainViewController: BaseViewController {
                     if watchfaceIndex > 4  && watchfaceIndex < 8 {
                         clockView.smallialImageView?.image = UIImage(named: "upper-dial-light")
                         smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial-light")
+                        smallClockView.secondHand.image = UIImage(named: "bottom-dial-second-light")
                     } else {
                         clockView.smallialImageView?.image = UIImage(named: "upper-dial")
                         smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial")
+                        smallClockView.secondHand.image = UIImage(named: "bottom-dial-second")
                     }
                 }
             }
