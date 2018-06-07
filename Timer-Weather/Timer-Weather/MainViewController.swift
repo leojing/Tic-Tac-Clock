@@ -28,6 +28,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var digitalTimerHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dateLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var dateLabelHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var weatherStackView: UIStackView!
@@ -124,6 +125,7 @@ class MainViewController: BaseViewController {
     
     // MARK: UI update
     fileprivate func updateWatchFace() {
+        
         if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
             if let isShowDate = Preferences.sharedInstance.getShowDate(), watchfaceIndex >= 8 {
                 let height = isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
@@ -137,14 +139,19 @@ class MainViewController: BaseViewController {
                 circleTimerView.isHidden = true
                 flipClockView.isHidden = true
                 digitalTimerView.isHidden = false
+                dateLabelTopConstraint.constant = 20
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
             } else {
                 digitalTimerView.isHidden = true
                 if watchfaceIndex == 9 {
                     flipClockView.isHidden = false
                     circleTimerView.isHidden = true
+                    dateLabelTopConstraint.constant = 230
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
                 } else {
                     circleTimerView.isHidden = false
                     flipClockView.isHidden = true
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
                 }
                 let watchFaces = SelectionType.getContentList(.watchFace)
                 if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {

@@ -12,13 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    private var allowRotation = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         initialPreferences()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "AllowRotation"), object: nil, queue: .main) { notification in
+            self.allowRotation = true
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil, queue: .main) { notification in
+            self.allowRotation = false
+        }
         
         return true
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return allowRotation ? UIInterfaceOrientationMask.all : UIInterfaceOrientationMask.portrait
     }
     
     fileprivate func initialPreferences() {
