@@ -35,8 +35,17 @@ class SelectionViewController: BaseViewController {
             Preferences.sharedInstance.setBackground(colors[selectedIndex])
         }
         
-        if let title = selectionType?.rawValue {
-            self.navigationBar.items?.first?.title = NSLocalizedString(title, comment: title)
+        if let type = selectionType {
+            switch type {
+            case .dateFormat:
+                self.navigationBar.items?.first?.title = Localizable.dateFormat
+
+            case .watchFace:
+                self.navigationBar.items?.first?.title = Localizable.watchFace
+
+            case .background:
+                self.navigationBar.items?.first?.title = Localizable.backgroundColor
+            }
         }
     }
     
