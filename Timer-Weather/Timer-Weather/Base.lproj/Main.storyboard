@@ -465,9 +465,17 @@
                                     <action selector="shareAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A0E-nF-nZp"/>
                                 </connections>
                             </button>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-Jh-924">
+                                <rect key="frame" x="0.0" y="439" width="375" height="231"/>
+                                <connections>
+                                    <segue destination="fRr-LH-QwK" kind="embed" id="9wj-EH-hr1"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="fYq-Jh-924" firstAttribute="top" secondItem="vfq-T5-Q8A" secondAttribute="bottom" id="2BR-dO-8gc"/>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5PD-mU-h4h"/>
                             <constraint firstItem="284-3f-JdY" firstAttribute="top" secondItem="f5N-cF-hYx" secondAttribute="bottom" constant="20" id="AwJ-TT-TkX"/>
                             <constraint firstItem="Z8O-0Z-udF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B1q-t7-zYy"/>
@@ -479,10 +487,13 @@
                             <constraint firstItem="gQs-YC-Q3E" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="IbM-YS-YNt"/>
                             <constraint firstItem="bjY-11-cDb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LaY-w6-a88"/>
                             <constraint firstItem="CTD-kx-lA0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="OnA-X2-ivF"/>
+                            <constraint firstItem="fYq-Jh-924" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="P8z-pK-EGO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gQs-YC-Q3E" secondAttribute="trailing" constant="10" id="PEg-ea-2W5"/>
                             <constraint firstItem="feB-Tt-kv4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QEO-zZ-e06"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vfq-T5-Q8A" secondAttribute="trailing" id="QW7-0p-AOc"/>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="S1H-Ol-wnv"/>
+                            <constraint firstItem="gQs-YC-Q3E" firstAttribute="top" secondItem="fYq-Jh-924" secondAttribute="bottom" id="TVa-Oa-deP"/>
+                            <constraint firstItem="fYq-Jh-924" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U1O-5k-mmO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="feB-Tt-kv4" secondAttribute="bottom" constant="10" id="UqQ-aX-vb1"/>
                             <constraint firstItem="s8C-vK-0ct" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VAe-9A-rab"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CTD-kx-lA0" secondAttribute="trailing" id="X3C-PC-9fH"/>
@@ -498,6 +509,9 @@
                             <constraint firstItem="CTD-kx-lA0" firstAttribute="top" secondItem="fe7-Tq-fSp" secondAttribute="top" id="zCB-XW-5Wn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="vic-1d-Vok" appends="YES" id="mv4-oK-AdO"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="1B7-Gj-IDP">
                         <barButtonItem key="rightBarButtonItem" title="Setting" id="uAM-B2-uSP"/>
@@ -507,6 +521,7 @@
                         <outlet property="cityNameLabel" destination="feB-Tt-kv4" id="nsR-iu-GHi"/>
                         <outlet property="clockView" destination="e7b-bj-Gx8" id="2T8-X8-3ET"/>
                         <outlet property="clockViewTopConstraint" destination="k0e-IG-k8Q" id="LL3-7Q-aMz"/>
+                        <outlet property="countDownTimerView" destination="fYq-Jh-924" id="FaL-Ct-CeR"/>
                         <outlet property="dateInWatchLabel" destination="x9h-KW-5ZO" id="fTo-n2-q15"/>
                         <outlet property="dateLabel" destination="284-3f-JdY" id="ZNk-VL-DcR"/>
                         <outlet property="dateLabelHeightConstraint" destination="0aZ-uv-EEs" id="w8K-4q-tri"/>
@@ -528,8 +543,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="vic-1d-Vok">
+                    <connections>
+                        <action selector="swipeGestureAction:" destination="BYZ-38-t0r" id="YP5-06-qxc"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-372" y="124.58770614692655"/>
+            <point key="canvasLocation" x="-372" y="124.13793103448276"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="wbW-d9-qtA">
@@ -1120,6 +1140,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KTg-Us-kTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328.8" y="124.8768472906404"/>
+        </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="RnO-UD-sPQ">
+            <objects>
+                <viewController id="fRr-LH-QwK" customClass="TimerViewController" customModule="Timer_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ITP-dy-EkI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="231"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddh-TJ-9R7">
+                                <rect key="frame" x="147" y="75" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="20y-Vx-MQS"/>
+                                    <constraint firstAttribute="height" constant="80" id="TlT-ey-fdz"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDg-4L-lWH">
+                                <rect key="frame" x="63" y="94" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wDg-4L-lWH" secondAttribute="height" multiplier="1:1" id="nIz-S2-whc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="-1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdA-A7-Lbt">
+                                <rect key="frame" x="267" y="94" width="44" height="44"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="+1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wDg-4L-lWH" secondAttribute="trailing" symbolic="YES" id="1eU-1P-cYy"/>
+                            <constraint firstItem="wDg-4L-lWH" firstAttribute="centerY" secondItem="ITP-dy-EkI" secondAttribute="centerY" id="41y-lX-m20"/>
+                            <constraint firstAttribute="trailing" secondItem="UdA-A7-Lbt" secondAttribute="trailing" constant="64" id="4tl-de-oXe"/>
+                            <constraint firstItem="UdA-A7-Lbt" firstAttribute="top" secondItem="wDg-4L-lWH" secondAttribute="top" id="AAq-ur-GbR"/>
+                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="centerY" secondItem="ITP-dy-EkI" secondAttribute="centerY" id="EyX-Vs-sad"/>
+                            <constraint firstItem="UdA-A7-Lbt" firstAttribute="width" secondItem="wDg-4L-lWH" secondAttribute="width" id="MDC-F4-NXi"/>
+                            <constraint firstItem="wDg-4L-lWH" firstAttribute="leading" secondItem="ITP-dy-EkI" secondAttribute="leading" constant="63" id="Oah-xB-YtS"/>
+                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="centerX" secondItem="ITP-dy-EkI" secondAttribute="centerX" id="Tb7-hm-y1s"/>
+                            <constraint firstItem="UdA-A7-Lbt" firstAttribute="height" secondItem="wDg-4L-lWH" secondAttribute="height" id="V9o-Re-MJZ"/>
+                            <constraint firstItem="UdA-A7-Lbt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ddh-TJ-9R7" secondAttribute="trailing" symbolic="YES" id="hPq-8h-0Ts"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hmc-KS-BsA"/>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="UdA-A7-Lbt" id="J7s-3a-abv"/>
+                        <outlet property="minusButton" destination="wDg-4L-lWH" id="OLz-73-Nsy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SbG-Wc-rje" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370" y="642"/>
         </scene>
     </scenes>
     <resources>

@@ -38,6 +38,8 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
     @IBOutlet weak var refreshButton: UIButton!
 
+    @IBOutlet weak var countDownTimerView: UIView!
+    
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel? {
         didSet {
@@ -292,6 +294,10 @@ class MainViewController: BaseViewController {
     }
     
     // MARK: Actions
+    
+    @IBAction func swipeGestureAction(_ sender: Any) {
+        countDownTimerView.isHidden = !countDownTimerView.isHidden
+    }
     
     fileprivate func showAlert( _ message: String ) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)

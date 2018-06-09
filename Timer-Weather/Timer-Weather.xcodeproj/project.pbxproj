@@ -21,6 +21,8 @@
 		24797B38207B9A7400E83634 /* DailyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */; };
 		247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247B89E4206BB5E70084D7CE /* AnalogClockView.swift */; };
 		24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */; };
+		24EBB24720CC2129005801F4 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBB24620CC2129005801F4 /* TimerViewController.swift */; };
+		24EBB24920CC2741005801F4 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBB24820CC2741005801F4 /* CircleProgressBar.swift */; };
 		24ED089D2061197000DCF838 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089C2061197000DCF838 /* MainViewController.swift */; };
 		24ED08AB20611C9700DCF838 /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089F20611C9600DCF838 /* Currently.swift */; };
 		24ED08AC20611C9700DCF838 /* WeatherDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08A020611C9600DCF838 /* WeatherDisplayModel.swift */; };
@@ -89,6 +91,8 @@
 		24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewCell.swift; sourceTree = "<group>"; };
 		247B89E4206BB5E70084D7CE /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
 		24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		24EBB24620CC2129005801F4 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		24EBB24820CC2741005801F4 /* CircleProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		24ED089C2061197000DCF838 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		24ED089F20611C9600DCF838 /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
 		24ED08A020611C9600DCF838 /* WeatherDisplayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDisplayModel.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		24ED08B920626E0B00DCF838 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				24EBB24820CC2741005801F4 /* CircleProgressBar.swift */,
 				247B89E4206BB5E70084D7CE /* AnalogClockView.swift */,
 				24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */,
 				246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */,
@@ -245,6 +250,7 @@
 				24F7883A205FCE2A00712C0C /* AppDelegate.swift */,
 				246DFB3420960B66002F9D73 /* BaseViewController.swift */,
 				24ED089C2061197000DCF838 /* MainViewController.swift */,
+				24EBB24620CC2129005801F4 /* TimerViewController.swift */,
 				24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */,
 				2403762E2095E80900818D83 /* SelectionViewController.swift */,
 				24F7883E205FCE2A00712C0C /* Main.storyboard */,
@@ -566,6 +572,7 @@
 			files = (
 				24ED08C120626EBE00DCF838 /* String+Customise.swift in Sources */,
 				24ED08B82061234100DCF838 /* LocationService.swift in Sources */,
+				24EBB24920CC2741005801F4 /* CircleProgressBar.swift in Sources */,
 				247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */,
 				24F7883B205FCE2A00712C0C /* AppDelegate.swift in Sources */,
 				24ED08C220626EBE00DCF838 /* Date+Customise.swift in Sources */,
@@ -574,6 +581,7 @@
 				24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */,
 				24ED08B020611C9700DCF838 /* WeatherDetail.swift in Sources */,
 				24ED08AD20611C9700DCF838 /* Daily.swift in Sources */,
+				24EBB24720CC2129005801F4 /* TimerViewController.swift in Sources */,
 				24ED089D2061197000DCF838 /* MainViewController.swift in Sources */,
 				24797B38207B9A7400E83634 /* DailyCollectionViewCell.swift in Sources */,
 				24ED08B320611C9700DCF838 /* APIService.swift in Sources */,
