@@ -73,8 +73,6 @@ class MainViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         adjustFontByDevice(isPad)
-        
-        countDownTimerView.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
