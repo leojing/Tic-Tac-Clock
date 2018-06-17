@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AudioToolbox
 
 class TimerViewController: BaseViewController {
     fileprivate enum SelectionType {
@@ -43,6 +45,8 @@ class TimerViewController: BaseViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet var selectionButtons: [UIButton]!
     
+    var objPlayer: AVAudioPlayer?
+
     var timer = Timer()
     fileprivate var longPressGesture = UILongPressGestureRecognizer()
     fileprivate var tapGesture = UITapGestureRecognizer()
@@ -73,7 +77,7 @@ class TimerViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        circleProgressBar.center = CGPoint(x: view.center.x, y: view.center.y-20)
+        circleProgressBar.center = CGPoint(x: view.center.x, y: view.center.y+50)
         setUpItemsColors()
     }
     
@@ -93,6 +97,7 @@ class TimerViewController: BaseViewController {
         circleProgressBar.circleBackgroundColor = circleProgressColor
         circleProgressBar.trackerColor = circleProgressColor
         circleProgressBar.progressColor = progressColor
+        circleProgressBar.pulsingColor = progressColor
         
         selectionButtons.forEach { button in
             button.backgroundColor = buttonColor
@@ -102,15 +107,21 @@ class TimerViewController: BaseViewController {
     // MARK: Actions
     
     @objc fileprivate func startTimer() {
+        selectionView.isHidden = true
         var cd = countDown
         enableItems(false)
+        circleProgressBar.animatePulsatingLayer()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.circleProgressBar.progress = cd
             if cd == -1 {
                 self.timer.invalidate()
                 self.timer = Timer()
+                self.playAudioFile()
                 self.circleProgressBar.progress = self.countDown
                 self.enableItems(true)
+            }
+            if cd == self.countDown {
+                self.circleProgressBar.removeAnimatePulsatingLayer()
             }
             cd -= 1
         }
@@ -143,15 +154,16 @@ class TimerViewController: BaseViewController {
         selectionType = type
         selectionButtons.forEach { button in
             let values = self.selectionType.selectionValues()
-            let title = "\(self.selectionType.symbol())\(values[button.tag])"
-            button.setTitle(title, for: .normal)
+            button.setTitle("\(values[button.tag])", for: .normal)
         }
     }
     
     @IBAction func selectionAction(_ sender: Any) {
         let button = sender as! UIButton
         let values = selectionType.selectionValues()
+        let symbol = selectionType.symbol()
         let selectedValue = values[button.tag]
+        let title = "\(symbol)\(selectedValue)"
         switch selectionType {
         case .timer:
             countDown = selectedValue
@@ -160,24 +172,53 @@ class TimerViewController: BaseViewController {
             
         case .minusButton:
             minusUnit = selectedValue
+            minusButton.setTitle(title, for: .normal)
             
         case .addButton:
             addUnit = selectedValue
+            addButton.setTitle(title, for: .normal)
         }
         
+        longPressGesture.isEnabled = true
         selectionView.isHidden = true
     }
 
     @IBAction func minusAction(_ sender: Any) {
+        selectionView.isHidden = true
         countDown = (countDown - minusUnit) < 0 ? 0 : (countDown - minusUnit)
         circleProgressBar.fullProgressNumber = countDown
         circleProgressBar.progress = countDown
     }
     
     @IBAction func addAction(_ sender: Any) {
+        selectionView.isHidden = true
         countDown += addUnit
         circleProgressBar.fullProgressNumber = countDown
         circleProgressBar.progress = countDown
     }
     
+    @IBAction func tapOnEmptyViewAction(_ sender: Any) {
+        selectionView.isHidden = true
+        objPlayer?.stop()
+    }
+    
+    fileprivate func playAudioFile() {
+        //震动
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        
+        //音效
+        guard let url = Bundle.main.url(forResource: "soundName", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+        
+            guard let aPlayer = objPlayer else { return }
+            aPlayer.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }

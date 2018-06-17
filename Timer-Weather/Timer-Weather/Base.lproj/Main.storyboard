@@ -466,7 +466,7 @@
                                 </connections>
                             </button>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-Jh-924">
-                                <rect key="frame" x="0.0" y="439" width="375" height="231"/>
+                                <rect key="frame" x="0.0" y="439" width="375" height="211"/>
                                 <connections>
                                     <segue destination="fRr-LH-QwK" kind="embed" id="9wj-EH-hr1"/>
                                 </connections>
@@ -492,7 +492,7 @@
                             <constraint firstItem="feB-Tt-kv4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QEO-zZ-e06"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vfq-T5-Q8A" secondAttribute="trailing" id="QW7-0p-AOc"/>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="top" id="S1H-Ol-wnv"/>
-                            <constraint firstItem="gQs-YC-Q3E" firstAttribute="top" secondItem="fYq-Jh-924" secondAttribute="bottom" id="TVa-Oa-deP"/>
+                            <constraint firstItem="gQs-YC-Q3E" firstAttribute="top" secondItem="fYq-Jh-924" secondAttribute="bottom" constant="20" id="TVa-Oa-deP"/>
                             <constraint firstItem="fYq-Jh-924" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U1O-5k-mmO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="feB-Tt-kv4" secondAttribute="bottom" constant="10" id="UqQ-aX-vb1"/>
                             <constraint firstItem="s8C-vK-0ct" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VAe-9A-rab"/>
@@ -1146,11 +1146,11 @@
             <objects>
                 <viewController id="fRr-LH-QwK" customClass="TimerViewController" customModule="Timer_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ITP-dy-EkI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="231"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddh-TJ-9R7">
-                                <rect key="frame" x="147" y="75" width="80" height="80"/>
+                                <rect key="frame" x="147" y="87" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="20y-Vx-MQS"/>
@@ -1158,7 +1158,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDg-4L-lWH">
-                                <rect key="frame" x="63" y="86" width="60" height="60"/>
+                                <rect key="frame" x="47" y="107" width="60" height="60"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="XWd-VF-R6M"/>
@@ -1180,7 +1180,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdA-A7-Lbt">
-                                <rect key="frame" x="251" y="86" width="60" height="60"/>
+                                <rect key="frame" x="267" y="107" width="60" height="60"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="+1">
@@ -1197,60 +1197,15 @@
                                     <outletCollection property="gestureRecognizers" destination="0qn-gE-4GV" appends="YES" id="BSv-51-lUQ"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCY-lL-VCW">
-                                <rect key="frame" x="67" y="-60" width="240" height="120"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCY-lL-VCW">
+                                <rect key="frame" x="67" y="-18" width="240" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJU-lR-i0B">
-                                        <rect key="frame" x="159" y="52" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="40">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="P0L-Kd-gkE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-EM-5QX">
-                                        <rect key="frame" x="202" y="90" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="60">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="YKW-2P-0sn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZz-Pz-JZr">
-                                        <rect key="frame" x="38" y="52" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="10">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="CSY-7c-Gej"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwH-dc-NdJ">
-                                        <rect key="frame" x="8" y="91" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwH-dc-NdJ">
+                                        <rect key="frame" x="30" y="70" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mwH-dc-NdJ" secondAttribute="height" multiplier="1:1" id="2St-Ui-vIJ"/>
+                                            <constraint firstAttribute="width" constant="30" id="AeY-1v-AFH"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="5">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1265,9 +1220,23 @@
                                             <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="sZV-sa-9K2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-h1-5YC">
-                                        <rect key="frame" x="105" y="36" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZz-Pz-JZr">
+                                        <rect key="frame" x="65" y="35" width="30" height="30"/>
+                                        <state key="normal" title="10">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="CSY-7c-Gej"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-h1-5YC">
+                                        <rect key="frame" x="105" y="10" width="30" height="30"/>
                                         <state key="normal" title="20">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -1278,13 +1247,61 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="EKY-ZI-PlZ"/>
+                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="pj5-mG-uK2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJU-lR-i0B">
+                                        <rect key="frame" x="150" y="35" width="30" height="30"/>
+                                        <state key="normal" title="40">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="P0L-Kd-gkE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-EM-5QX">
+                                        <rect key="frame" x="190" y="70" width="30" height="30"/>
+                                        <state key="normal" title="60">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectionAction:" destination="fRr-LH-QwK" eventType="touchUpInside" id="YKW-2P-0sn"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="9JB-ah-Q2g"/>
-                                    <constraint firstAttribute="height" constant="120" id="x7H-hX-jkv"/>
+                                    <constraint firstItem="AJU-lR-i0B" firstAttribute="width" secondItem="mwH-dc-NdJ" secondAttribute="width" id="2J3-oz-EtV"/>
+                                    <constraint firstItem="mwH-dc-NdJ" firstAttribute="top" secondItem="TZz-Pz-JZr" secondAttribute="bottom" constant="5" id="31w-kF-pfV"/>
+                                    <constraint firstAttribute="width" constant="240" id="Afd-7c-Uc7"/>
+                                    <constraint firstItem="TZz-Pz-JZr" firstAttribute="leading" secondItem="mwH-dc-NdJ" secondAttribute="trailing" constant="5" id="Cc0-Fg-9oj"/>
+                                    <constraint firstItem="TZz-Pz-JZr" firstAttribute="top" secondItem="xrR-h1-5YC" secondAttribute="bottom" constant="-5" id="DFc-IQ-BXp"/>
+                                    <constraint firstItem="xrR-h1-5YC" firstAttribute="centerX" secondItem="vCY-lL-VCW" secondAttribute="centerX" id="HnG-Hi-10r"/>
+                                    <constraint firstItem="AJU-lR-i0B" firstAttribute="bottom" secondItem="TZz-Pz-JZr" secondAttribute="bottom" id="Ho1-6v-oYY"/>
+                                    <constraint firstAttribute="bottom" secondItem="mwH-dc-NdJ" secondAttribute="bottom" id="Mru-bJ-M6f"/>
+                                    <constraint firstAttribute="height" constant="100" id="PaL-9i-5uw"/>
+                                    <constraint firstItem="xrR-h1-5YC" firstAttribute="width" secondItem="mwH-dc-NdJ" secondAttribute="width" id="eGl-jb-86X"/>
+                                    <constraint firstItem="AJU-lR-i0B" firstAttribute="height" secondItem="mwH-dc-NdJ" secondAttribute="height" id="etE-TP-8hl"/>
+                                    <constraint firstItem="I4a-EM-5QX" firstAttribute="leading" secondItem="AJU-lR-i0B" secondAttribute="trailing" constant="10" id="fEX-mn-cud"/>
+                                    <constraint firstItem="xrR-h1-5YC" firstAttribute="height" secondItem="mwH-dc-NdJ" secondAttribute="height" id="hrO-vr-7ax"/>
+                                    <constraint firstItem="I4a-EM-5QX" firstAttribute="height" secondItem="mwH-dc-NdJ" secondAttribute="height" id="jJM-np-ut9"/>
+                                    <constraint firstItem="xrR-h1-5YC" firstAttribute="leading" secondItem="TZz-Pz-JZr" secondAttribute="trailing" constant="10" id="mgf-WP-aUw"/>
+                                    <constraint firstItem="mwH-dc-NdJ" firstAttribute="height" secondItem="TZz-Pz-JZr" secondAttribute="height" id="oU2-aq-G9z"/>
+                                    <constraint firstItem="I4a-EM-5QX" firstAttribute="bottom" secondItem="mwH-dc-NdJ" secondAttribute="bottom" id="uGe-I0-9Hk"/>
+                                    <constraint firstItem="I4a-EM-5QX" firstAttribute="width" secondItem="mwH-dc-NdJ" secondAttribute="width" id="wjS-dl-xRk"/>
+                                    <constraint firstItem="AJU-lR-i0B" firstAttribute="leading" secondItem="xrR-h1-5YC" secondAttribute="trailing" constant="15" id="yTx-KE-cOB"/>
+                                    <constraint firstItem="mwH-dc-NdJ" firstAttribute="width" secondItem="TZz-Pz-JZr" secondAttribute="width" id="zF6-LQ-zjP"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -1295,27 +1312,33 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="top" secondItem="vCY-lL-VCW" secondAttribute="bottom" constant="15" id="0Bu-7e-ytN"/>
-                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wDg-4L-lWH" secondAttribute="trailing" constant="8" symbolic="YES" id="1eU-1P-cYy"/>
-                            <constraint firstItem="wDg-4L-lWH" firstAttribute="centerY" secondItem="ITP-dy-EkI" secondAttribute="centerY" id="41y-lX-m20"/>
-                            <constraint firstAttribute="trailing" secondItem="UdA-A7-Lbt" secondAttribute="trailing" constant="64" id="4tl-de-oXe"/>
+                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="top" secondItem="vCY-lL-VCW" secondAttribute="bottom" constant="5" id="0Bu-7e-ytN"/>
                             <constraint firstItem="UdA-A7-Lbt" firstAttribute="top" secondItem="wDg-4L-lWH" secondAttribute="top" id="AAq-ur-GbR"/>
                             <constraint firstItem="vCY-lL-VCW" firstAttribute="centerX" secondItem="ITP-dy-EkI" secondAttribute="centerX" id="ADa-i6-TYL"/>
-                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="centerY" secondItem="ITP-dy-EkI" secondAttribute="centerY" id="EyX-Vs-sad"/>
+                            <constraint firstItem="hmc-KS-BsA" firstAttribute="bottom" secondItem="Ddh-TJ-9R7" secondAttribute="bottom" constant="10" id="KDX-zc-dM3"/>
                             <constraint firstItem="UdA-A7-Lbt" firstAttribute="width" secondItem="wDg-4L-lWH" secondAttribute="width" id="MDC-F4-NXi"/>
-                            <constraint firstItem="wDg-4L-lWH" firstAttribute="leading" secondItem="ITP-dy-EkI" secondAttribute="leading" constant="63" id="Oah-xB-YtS"/>
                             <constraint firstItem="Ddh-TJ-9R7" firstAttribute="centerX" secondItem="ITP-dy-EkI" secondAttribute="centerX" id="Tb7-hm-y1s"/>
                             <constraint firstItem="UdA-A7-Lbt" firstAttribute="height" secondItem="wDg-4L-lWH" secondAttribute="height" id="V9o-Re-MJZ"/>
-                            <constraint firstItem="UdA-A7-Lbt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ddh-TJ-9R7" secondAttribute="trailing" constant="8" symbolic="YES" id="hPq-8h-0Ts"/>
+                            <constraint firstItem="UdA-A7-Lbt" firstAttribute="leading" secondItem="Ddh-TJ-9R7" secondAttribute="trailing" constant="40" id="bof-e5-JXb"/>
+                            <constraint firstItem="hmc-KS-BsA" firstAttribute="bottom" secondItem="wDg-4L-lWH" secondAttribute="bottom" constant="10" id="dgE-rA-Uiy"/>
+                            <constraint firstItem="Ddh-TJ-9R7" firstAttribute="leading" secondItem="wDg-4L-lWH" secondAttribute="trailing" constant="40" id="rtb-nV-3NO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hmc-KS-BsA"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="aMJ-mL-zcm" appends="YES" id="hmN-80-LsA"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="UdA-A7-Lbt" id="J7s-3a-abv"/>
                         <outlet property="minusButton" destination="wDg-4L-lWH" id="OLz-73-Nsy"/>
                         <outlet property="selectionView" destination="vCY-lL-VCW" id="iaF-Jg-uyH"/>
                         <outletCollection property="selectionButtons" destination="xrR-h1-5YC" collectionClass="NSMutableArray" id="KyQ-vs-IXG"/>
+                        <outletCollection property="selectionButtons" destination="AJU-lR-i0B" collectionClass="NSMutableArray" id="m98-bh-Wd2"/>
+                        <outletCollection property="selectionButtons" destination="I4a-EM-5QX" collectionClass="NSMutableArray" id="XP2-g0-KmB"/>
+                        <outletCollection property="selectionButtons" destination="TZz-Pz-JZr" collectionClass="NSMutableArray" id="ghd-6d-laz"/>
+                        <outletCollection property="selectionButtons" destination="mwH-dc-NdJ" collectionClass="NSMutableArray" id="HQ2-eN-58d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbG-Wc-rje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1329,6 +1352,11 @@
                         <action selector="addButtonLongPressAction:" destination="fRr-LH-QwK" id="3AT-nu-zco"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="aMJ-mL-zcm">
+                    <connections>
+                        <action selector="tapOnEmptyViewAction:" destination="fRr-LH-QwK" id="j65-a3-r9X"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-370" y="642"/>
         </scene>

@@ -299,6 +299,9 @@ class MainViewController: BaseViewController {
     
     @IBAction func swipeGestureAction(_ sender: Any) {
         countDownTimerView.isHidden = !countDownTimerView.isHidden
+        countDownTimerView.isHidden ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
+            : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
+
     }
     
     fileprivate func showAlert( _ message: String ) {
