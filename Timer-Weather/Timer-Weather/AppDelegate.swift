@@ -32,6 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func initialPreferences() {
+        
+        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.firstNumber)
+        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.secondNumber)
+        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.thirdNumber)
+        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.forthNumber)
+
         if let _ = Preferences.sharedInstance.getShowWeather() {
         } else {
             Preferences.sharedInstance.setShowWeather(true)
