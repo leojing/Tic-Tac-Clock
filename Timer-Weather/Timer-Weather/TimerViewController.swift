@@ -205,7 +205,9 @@ class TimerViewController: BaseViewController {
     fileprivate func playAudioFile() {
         //震动
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-        
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+
         //音效
         guard let url = Bundle.main.url(forResource: "soundName", withExtension: "mp3") else { return }
         
