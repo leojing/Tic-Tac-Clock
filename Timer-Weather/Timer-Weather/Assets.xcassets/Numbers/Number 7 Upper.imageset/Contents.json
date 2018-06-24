@@ -2,10 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Number 7 Upper.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Number 7 Upper@2x.png",
       "scale" : "2x"
     },
     {
