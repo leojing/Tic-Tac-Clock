@@ -39,6 +39,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var refreshButton: UIButton!
 
     @IBOutlet weak var countDownTimerView: UIView!
+    @IBOutlet weak var guideView: UIView!
     
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel? {
@@ -83,6 +84,10 @@ class MainViewController: BaseViewController {
         
         timer = Timer.scheduledTimer(withTimeInterval: 2*60*60, repeats: true) { _ in
             self.refreshAction(nil)
+        }
+        
+        if let isShowGuiderView = Preferences.sharedInstance.getIsShowGuideView() {
+            guideView.isHidden = !isShowGuiderView
         }
         
         if let isDisable = Preferences.sharedInstance.getDisabelIdleTimer() {
@@ -295,7 +300,11 @@ class MainViewController: BaseViewController {
     
     // MARK: Actions
     
-    @IBAction func swipeGestureAction(_ sender: Any) {
+    @IBAction func swipeGestureAction(_ sender: Any?) {
+        if !guideView.isHidden {
+            guideViewTapped(nil)
+        }
+
         countDownTimerView.isHidden = !countDownTimerView.isHidden
         countDownTimerView.isHidden ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
             : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
@@ -326,6 +335,11 @@ class MainViewController: BaseViewController {
     fileprivate func triggleTimer() {
         viewModel?.currentDate.value = Date()
         refreshAction(nil)
+    }
+    
+    @IBAction func guideViewTapped(_ sender: Any?) {
+        Preferences.sharedInstance.setIsShowGuideView(false)
+        guideView.isHidden = true
     }
 }
 

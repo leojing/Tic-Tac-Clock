@@ -33,11 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileprivate func initialPreferences() {
         
-        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.firstNumber)
-        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.secondNumber)
-        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.thirdNumber)
-        UserDefaults.standard.removeObject(forKey: FlipClockNumbers.forthNumber)
-
+        Preferences.sharedInstance.removeFlipNumbers()
+        
         if let _ = Preferences.sharedInstance.getShowWeather() {
         } else {
             Preferences.sharedInstance.setShowWeather(true)
@@ -70,12 +67,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let _ = Preferences.sharedInstance.getBackground() {
         } else {
-            Preferences.sharedInstance.setBackground("#000000")
+            Preferences.sharedInstance.setBackground("#c96167")
         }
         
         if let _ = Preferences.sharedInstance.getDateFormat() {
         } else {
             Preferences.sharedInstance.setDateFormat("YYYY/MM/dd")
+        }
+        
+        if let _ = Preferences.sharedInstance.getIsShowGuideView() {
+        } else {
+            Preferences.sharedInstance.setIsShowGuideView(true)
         }
     }
 }

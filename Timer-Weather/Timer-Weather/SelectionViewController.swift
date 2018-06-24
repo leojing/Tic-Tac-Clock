@@ -41,6 +41,7 @@ class SelectionViewController: BaseViewController {
                 self.navigationBar.items?.first?.title = Localizable.dateFormat
 
             case .watchFace:
+                Preferences.sharedInstance.removeFlipNumbers()
                 self.navigationBar.items?.first?.title = Localizable.watchFace
 
             case .background:

@@ -11,29 +11,33 @@ import UIKit
 class FlipNumberView: UIView {
     
     @IBOutlet weak var numberImageView: UIImageView!
-    @IBOutlet weak var AImageView: UIImageView!
-    @IBOutlet weak var BImageView: UIImageView!
-    @IBOutlet weak var CImageView: UIImageView!
+    @IBOutlet weak var AImageView: UIImageView?
+    @IBOutlet weak var BImageView: UIImageView?
+    @IBOutlet weak var CImageView: UIImageView?
 
     @objc func initializeABC() {
-        AImageView.alpha = 0
-        BImageView.alpha = 0
-        CImageView.alpha = 0
+        AImageView?.alpha = 0
+        BImageView?.alpha = 0
+        CImageView?.alpha = 0
     }
     
     func setUpTransitView(a: UIImage, b: UIImage, c: UIImage) {
-        AImageView.image = a
-        BImageView.image = b
-        CImageView.image = c
+        AImageView?.image = a
+        BImageView?.image = b
+        CImageView?.image = c
     }
     
     func rotation(){
-        AImageView.alpha = 1
-        BImageView.alpha = 1
-        CImageView.alpha = 1
-        rotationFirst(view: BImageView)
+        AImageView?.alpha = 1
+        BImageView?.alpha = 1
+        CImageView?.alpha = 1
+        if let b = BImageView {
+            rotationFirst(view: b)
+        }
         //本文中提到的B，显示13
-        rotationSecond(view: CImageView)
+        if let c = CImageView {
+            rotationSecond(view: c)
+        }
         //本文中提到的C，显示14
         self.perform(#selector(self.initializeABC), with: nil, afterDelay: 0.9)
         //最后为了过度顺利，提前0.1秒让A/B/C小时

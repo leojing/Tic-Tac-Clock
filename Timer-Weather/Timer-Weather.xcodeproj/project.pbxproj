@@ -796,7 +796,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z6AR8727R;
+				DEVELOPMENT_TEAM = SM8VG26ZPC;
 				INFOPLIST_FILE = "Timer-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.orris.goodclock;
@@ -812,7 +812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z6AR8727R;
+				DEVELOPMENT_TEAM = SM8VG26ZPC;
 				INFOPLIST_FILE = "Timer-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.orris.goodclock;

@@ -8,21 +8,12 @@
 
 import UIKit
 
-enum FlipClockNumbers {
-    static let firstNumber = "firstNumber"
-    static let secondNumber = "secondNumber"
-    static let thirdNumber = "thirdNumber"
-    static let forthNumber = "forthNumber"
-}
-
 class FlipClockView: UIView {
     
     @IBOutlet weak var number0View: FlipNumberView!
     @IBOutlet weak var number1View: FlipNumberView!
     @IBOutlet weak var number2View: FlipNumberView!
     @IBOutlet weak var number3View: FlipNumberView!
-
-    let userDefault = UserDefaults.standard
     
     func setTimeToDate(_ date: Date, _ animated: Bool) {
         let dateString = date.timeOfCounter() ?? ""
@@ -36,7 +27,7 @@ class FlipClockView: UIView {
         let min1 = String(dateString[index1..<index2])
         let min2 = String(dateString.suffix(from: index2))
         
-        if let first = userDefault.value(forKey: FlipClockNumbers.firstNumber) as? String {
+        if let first = Preferences.sharedInstance.getFlipNumber(key: .firstNumber) {
             if first != hour1 {
                 let lowerFirstImage = UIImage(named: flipImageForNumberLower(first))!
                 let upperFirstImage = UIImage(named: flipImageForNumberUpper(first))!
@@ -46,14 +37,14 @@ class FlipClockView: UIView {
                 
                 number0View.numberImageView.image = UIImage(named: flipImageForNumber(hour1))
                 
-                userDefault.set(hour1, forKey: FlipClockNumbers.firstNumber)
+                Preferences.sharedInstance.setFlipNumber(hour1, key: .firstNumber)
             }
         } else {
-            userDefault.set(hour1, forKey: FlipClockNumbers.firstNumber)
+            Preferences.sharedInstance.setFlipNumber(hour1, key: .firstNumber)
             number0View.numberImageView.image = UIImage(named: flipImageForNumber(hour1))
         }
         
-        if let second = userDefault.value(forKey: FlipClockNumbers.secondNumber) as? String {
+        if let second = Preferences.sharedInstance.getFlipNumber(key: .secondNumber) {
             if second != hour2 {
                 let lowerSecondImage = UIImage(named: flipImageForNumberLower(second))!
                 let upperSecondImage = UIImage(named: flipImageForNumberUpper(second))!
@@ -63,14 +54,14 @@ class FlipClockView: UIView {
 
                 number1View.numberImageView.image = UIImage(named: flipImageForNumber(hour2))!
                 
-                userDefault.set(hour2, forKey: FlipClockNumbers.secondNumber)
+                Preferences.sharedInstance.setFlipNumber(hour2, key: .secondNumber)
             }
         } else {
-            userDefault.set(hour2, forKey: FlipClockNumbers.secondNumber)
+            Preferences.sharedInstance.setFlipNumber(hour2, key: .secondNumber)
             number1View.numberImageView.image = UIImage(named: flipImageForNumber(hour2))
         }
         
-        if let third = userDefault.value(forKey: FlipClockNumbers.thirdNumber) as? String {
+        if let third = Preferences.sharedInstance.getFlipNumber(key: .thirdNumber) {
             if third != min1 {
                 let lowerThirdImage = UIImage(named: flipImageForNumberLower(third))!
                 let upperThirdImage = UIImage(named: flipImageForNumberUpper(third))!
@@ -80,14 +71,14 @@ class FlipClockView: UIView {
                 
                 number2View.numberImageView.image = UIImage(named: flipImageForNumber(min1))!
 
-                userDefault.set(min1, forKey: FlipClockNumbers.thirdNumber)
+                Preferences.sharedInstance.setFlipNumber(min1, key: .thirdNumber)
             }
         } else {
-            userDefault.set(min1, forKey: FlipClockNumbers.thirdNumber)
+            Preferences.sharedInstance.setFlipNumber(min1, key: .thirdNumber)
             number2View.numberImageView.image = UIImage(named: flipImageForNumber(min1))
         }
         
-        if let forth = userDefault.value(forKey: FlipClockNumbers.forthNumber) as? String {
+        if let forth = Preferences.sharedInstance.getFlipNumber(key: .forthNumber) {
             if forth != min2 {
                 let lowerForthImage = UIImage(named: flipImageForNumberLower(forth))!
                 let upperForthImage = UIImage(named: flipImageForNumberUpper(forth))!
@@ -97,10 +88,10 @@ class FlipClockView: UIView {
                 
                 number3View.numberImageView.image = UIImage(named: flipImageForNumber(min2))!
 
-                userDefault.set(min2, forKey: FlipClockNumbers.forthNumber)
+                Preferences.sharedInstance.setFlipNumber(min2, key: .forthNumber)
             }
         } else {
-            userDefault.set(min2, forKey: FlipClockNumbers.forthNumber)
+            Preferences.sharedInstance.setFlipNumber(min2, key: .forthNumber)
             number3View.numberImageView.image = UIImage(named: flipImageForNumber(min2))
         }
     }
