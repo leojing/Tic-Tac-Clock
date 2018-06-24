@@ -38,12 +38,13 @@ class FlipClockView: UIView {
         
         if let first = userDefault.value(forKey: FlipClockNumbers.firstNumber) as? String {
             if first != hour1 {
-                let firstImage = UIImage(named: flipImageForNumber(first))!
-                let hour1Image = UIImage(named: flipImageForNumber(hour1))!
-                number0View.setUpTransitView(a: firstImage, b: firstImage, c: hour1Image)
+                let lowerFirstImage = UIImage(named: flipImageForNumberLower(first))!
+                let upperFirstImage = UIImage(named: flipImageForNumberUpper(first))!
+                let hour1LowerImage = UIImage(named: flipImageForNumberLower(hour1))!
+                number0View.setUpTransitView(a: lowerFirstImage, b: upperFirstImage, c: hour1LowerImage)
                 number0View.rotation()
                 
-                number0View.numberImageView.image = hour1Image
+                number0View.numberImageView.image = UIImage(named: flipImageForNumber(hour1))
                 
                 userDefault.set(hour1, forKey: FlipClockNumbers.firstNumber)
             }
@@ -54,12 +55,13 @@ class FlipClockView: UIView {
         
         if let second = userDefault.value(forKey: FlipClockNumbers.secondNumber) as? String {
             if second != hour2 {
-                let secondImage = UIImage(named: flipImageForNumber(second))!
-                let hour2Image = UIImage(named: flipImageForNumber(hour2))!
-                number1View.setUpTransitView(a: secondImage, b: secondImage, c: hour2Image)
+                let lowerSecondImage = UIImage(named: flipImageForNumberLower(second))!
+                let upperSecondImage = UIImage(named: flipImageForNumberUpper(second))!
+                let hour2LowerImage = UIImage(named: flipImageForNumberLower(hour2))!
+                number1View.setUpTransitView(a: lowerSecondImage, b: upperSecondImage, c: hour2LowerImage)
                 number1View.rotation()
 
-                number1View.numberImageView.image = hour2Image
+                number1View.numberImageView.image = UIImage(named: flipImageForNumber(hour2))!
                 
                 userDefault.set(hour2, forKey: FlipClockNumbers.secondNumber)
             }
@@ -70,12 +72,13 @@ class FlipClockView: UIView {
         
         if let third = userDefault.value(forKey: FlipClockNumbers.thirdNumber) as? String {
             if third != min1 {
-                let thirdImage = UIImage(named: flipImageForNumber(third))!
-                let min1Image = UIImage(named: flipImageForNumber(min1))!
-                number2View.setUpTransitView(a: thirdImage, b: thirdImage, c: min1Image)
+                let lowerThirdImage = UIImage(named: flipImageForNumberLower(third))!
+                let upperThirdImage = UIImage(named: flipImageForNumberUpper(third))!
+                let min1LowerImage = UIImage(named: flipImageForNumberLower(min1))!
+                number2View.setUpTransitView(a: lowerThirdImage, b: upperThirdImage, c: min1LowerImage)
                 number2View.rotation()
                 
-                number2View.numberImageView.image = min1Image
+                number2View.numberImageView.image = UIImage(named: flipImageForNumber(min1))!
 
                 userDefault.set(min1, forKey: FlipClockNumbers.thirdNumber)
             }
@@ -86,12 +89,13 @@ class FlipClockView: UIView {
         
         if let forth = userDefault.value(forKey: FlipClockNumbers.forthNumber) as? String {
             if forth != min2 {
-                let forthImage = UIImage(named: flipImageForNumber(forth))!
-                let min2Image = UIImage(named: flipImageForNumber(min2))!
-                number3View.setUpTransitView(a: forthImage, b: forthImage, c: min2Image)
+                let lowerForthImage = UIImage(named: flipImageForNumberLower(forth))!
+                let upperForthImage = UIImage(named: flipImageForNumberUpper(forth))!
+                let min2LowerImage = UIImage(named: flipImageForNumberLower(min2))!
+                number3View.setUpTransitView(a: lowerForthImage, b: upperForthImage, c: min2LowerImage)
                 number3View.rotation()
                 
-                number3View.numberImageView.image = min2Image
+                number3View.numberImageView.image = UIImage(named: flipImageForNumber(min2))!
 
                 userDefault.set(min2, forKey: FlipClockNumbers.forthNumber)
             }
@@ -103,5 +107,13 @@ class FlipClockView: UIView {
     
     fileprivate func flipImageForNumber(_ number: String) -> String {
         return "number-\(number)"
+    }
+    
+    fileprivate func flipImageForNumberLower(_ number: String) -> String {
+        return "Number \(number) Lower"
+    }
+    
+    fileprivate func flipImageForNumberUpper(_ number: String) -> String {
+        return "Number \(number) Upper"
     }
 }
