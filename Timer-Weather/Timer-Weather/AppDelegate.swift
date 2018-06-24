@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let _ = Preferences.sharedInstance.getShow5DaysWeather() {
         } else {
-            Preferences.sharedInstance.setShow5DaysWeather(true)
+            Preferences.sharedInstance.setShow5DaysWeather(false)
         }
         
         if let _ = Preferences.sharedInstance.getShowLocation() {

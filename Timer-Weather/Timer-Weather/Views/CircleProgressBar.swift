@@ -15,7 +15,7 @@ class CircleProgressBar:UIView {
     open var progress : Int = 0 {
         didSet {
             DispatchQueue.main.async {
-                self.percentageLabel.text = "\(self.progress)"
+                self.percentageLabel.text = (self.progress < self.fullProgressNumber) ? "\(self.progress/60 + 1)'" : "\(self.progress/60)'"
                 self.shapeLayer?.strokeEnd = CGFloat(self.progress)/CGFloat(self.fullProgressNumber)
             }
         }

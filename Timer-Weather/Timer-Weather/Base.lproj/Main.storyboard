@@ -619,7 +619,7 @@
                                 </connections>
                             </button>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-Jh-924">
-                                <rect key="frame" x="0.0" y="440" width="375" height="210"/>
+                                <rect key="frame" x="0.0" y="330" width="375" height="320"/>
                                 <connections>
                                     <segue destination="fRr-LH-QwK" kind="embed" id="9wj-EH-hr1"/>
                                 </connections>
@@ -633,10 +633,10 @@
                                         <gestureRecognizers/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="helper" translatesAutoresizingMaskIntoConstraints="NO" id="GYY-FA-c6Z">
-                                        <rect key="frame" x="175" y="490" width="25" height="32"/>
+                                        <rect key="frame" x="175" y="430" width="25" height="32"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSV-Hf-yDt">
-                                        <rect key="frame" x="20" y="542" width="335" height="40.666666666666629"/>
+                                        <rect key="frame" x="20" y="482" width="335" height="40.666666666666629"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Swipe left to show the count down  touch anywhere to dismiss">
                                                 <attributes>
@@ -689,7 +689,7 @@
                             <constraint firstItem="fYq-Jh-924" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U1O-5k-mmO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="feB-Tt-kv4" secondAttribute="bottom" constant="10" id="UqQ-aX-vb1"/>
                             <constraint firstItem="s8C-vK-0ct" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VAe-9A-rab"/>
-                            <constraint firstItem="GYY-FA-c6Z" firstAttribute="top" secondItem="fYq-Jh-924" secondAttribute="top" constant="50" id="VaJ-MJ-cC7"/>
+                            <constraint firstItem="GYY-FA-c6Z" firstAttribute="top" secondItem="fYq-Jh-924" secondAttribute="top" constant="100" id="VaJ-MJ-cC7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CTD-kx-lA0" secondAttribute="trailing" id="X3C-PC-9fH"/>
                             <constraint firstItem="feB-Tt-kv4" firstAttribute="top" secondItem="gQs-YC-Q3E" secondAttribute="bottom" constant="8" id="eRo-h4-ZzW"/>
                             <constraint firstItem="NXv-NW-SEW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ejj-yd-nT5"/>
@@ -701,7 +701,7 @@
                             <constraint firstAttribute="bottom" secondItem="NXv-NW-SEW" secondAttribute="bottom" id="naf-BK-W31"/>
                             <constraint firstItem="s8C-vK-0ct" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tfG-UZ-uPj"/>
                             <constraint firstItem="fe7-Tq-fSp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uk2-lk-DmC"/>
-                            <constraint firstItem="fYq-Jh-924" firstAttribute="top" secondItem="vfq-T5-Q8A" secondAttribute="bottom" constant="5" id="xjA-JY-L5u"/>
+                            <constraint firstItem="fYq-Jh-924" firstAttribute="top" secondItem="s8C-vK-0ct" secondAttribute="bottom" constant="20" id="xjA-JY-L5u"/>
                             <constraint firstItem="feB-Tt-kv4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yOe-E6-FUK"/>
                             <constraint firstItem="CTD-kx-lA0" firstAttribute="top" secondItem="fe7-Tq-fSp" secondAttribute="top" id="zCB-XW-5Wn"/>
                         </constraints>
@@ -1403,11 +1403,11 @@
             <objects>
                 <viewController id="fRr-LH-QwK" customClass="TimerViewController" customModule="Timer_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ITP-dy-EkI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddh-TJ-9R7">
-                                <rect key="frame" x="147" y="86" width="80" height="80"/>
+                                <rect key="frame" x="147" y="196" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="20y-Vx-MQS"/>
@@ -1415,7 +1415,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDg-4L-lWH">
-                                <rect key="frame" x="47" y="106" width="60" height="60"/>
+                                <rect key="frame" x="47" y="216" width="60" height="60"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="XWd-VF-R6M"/>
@@ -1437,7 +1437,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdA-A7-Lbt">
-                                <rect key="frame" x="267" y="106" width="60" height="60"/>
+                                <rect key="frame" x="267" y="216" width="60" height="60"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="+1">
@@ -1455,7 +1455,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCY-lL-VCW">
-                                <rect key="frame" x="67" y="-19" width="240" height="100"/>
+                                <rect key="frame" x="67" y="91" width="240" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwH-dc-NdJ">
                                         <rect key="frame" x="30" y="70" width="30" height="30"/>

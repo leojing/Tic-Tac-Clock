@@ -66,12 +66,12 @@ class TimerViewController: BaseViewController {
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(selectInitialCountDown))
         circleProgressBar.addGestureRecognizer(longPressGesture)
         
-        circleProgressBar.progress = countDown
-        circleProgressBar.fullProgressNumber = countDown
+        circleProgressBar.progress = countDown * 60
+        circleProgressBar.fullProgressNumber = countDown * 60
         view.addSubview(circleProgressBar)
         
-        minusButton.setTitle("-\(minusUnit)", for: .normal)
-        addButton.setTitle("+\(addUnit)", for: .normal)
+        minusButton.setTitle("-\(minusUnit)'", for: .normal)
+        addButton.setTitle("+\(addUnit)'", for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +108,7 @@ class TimerViewController: BaseViewController {
     
     @objc fileprivate func startTimer() {
         selectionView.isHidden = true
-        var cd = countDown
+        var cd = countDown * 60
         enableItems(false)
         circleProgressBar.animatePulsatingLayer()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
@@ -117,10 +117,10 @@ class TimerViewController: BaseViewController {
                 self.timer.invalidate()
                 self.timer = Timer()
                 self.playAudioFile()
-                self.circleProgressBar.progress = self.countDown
+                self.circleProgressBar.progress = self.countDown * 60
                 self.enableItems(true)
             }
-            if cd == self.countDown {
+            if cd == self.countDown * 60 {
                 self.circleProgressBar.removeAnimatePulsatingLayer()
             }
             cd -= 1
@@ -154,7 +154,7 @@ class TimerViewController: BaseViewController {
         selectionType = type
         selectionButtons.forEach { button in
             let values = self.selectionType.selectionValues()
-            button.setTitle("\(values[button.tag])", for: .normal)
+            button.setTitle("\(values[button.tag])'", for: .normal)
         }
     }
     
@@ -163,12 +163,12 @@ class TimerViewController: BaseViewController {
         let values = selectionType.selectionValues()
         let symbol = selectionType.symbol()
         let selectedValue = values[button.tag]
-        let title = "\(symbol)\(selectedValue)"
+        let title = "\(symbol)\(selectedValue)'"
         switch selectionType {
         case .timer:
             countDown = selectedValue
-            circleProgressBar.progress = countDown
-            circleProgressBar.fullProgressNumber = countDown
+            circleProgressBar.progress = countDown * 60
+            circleProgressBar.fullProgressNumber = countDown * 60
             
         case .minusButton:
             minusUnit = selectedValue
@@ -186,15 +186,15 @@ class TimerViewController: BaseViewController {
     @IBAction func minusAction(_ sender: Any) {
         selectionView.isHidden = true
         countDown = (countDown - minusUnit) < 0 ? 0 : (countDown - minusUnit)
-        circleProgressBar.fullProgressNumber = countDown
-        circleProgressBar.progress = countDown
+        circleProgressBar.fullProgressNumber = countDown * 60
+        circleProgressBar.progress = countDown * 60
     }
     
     @IBAction func addAction(_ sender: Any) {
         selectionView.isHidden = true
         countDown += addUnit
-        circleProgressBar.fullProgressNumber = countDown
-        circleProgressBar.progress = countDown
+        circleProgressBar.fullProgressNumber = countDown * 60
+        circleProgressBar.progress = countDown * 60
     }
     
     @IBAction func tapOnEmptyViewAction(_ sender: Any) {

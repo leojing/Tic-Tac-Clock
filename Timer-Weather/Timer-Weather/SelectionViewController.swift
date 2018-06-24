@@ -151,7 +151,7 @@ extension SelectionType {
             return getCurrentDateWithFormat()
             
         case .watchFace:
-            return ["chronography-black", "chronography-blue", "chronography-brown", "chronography-green", "chronography-grey", "chronography-light-blue", "chronography-light-grey", "chronography-light-yellow", Date().timeOfCounter() ?? "09:28", Date().timeOfCounter() ?? "09:28"]
+            return ["chronography-black", "chronography-blue", "chronography-brown", "chronography-green", "chronography-grey", "chronography-light-blue", "chronography-light-grey", "chronography-light-yellow", Date().timeOfCounter() ?? "09:28"]//, Date().timeOfCounter() ?? "09:28"] hidden flip clock view
         }
     }
     
