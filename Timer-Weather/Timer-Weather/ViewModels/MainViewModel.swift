@@ -95,12 +95,11 @@ class MainViewModel: NSObject {
                 if let weatherData = w?.daily?.data, weatherData.count > 0 {
                     self.singleDaysData.value = Array(weatherData.prefix(1))
                     self.mutipleDaysData.value = Array(weatherData.prefix(5))
-                    if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
-                        if isShow5DaysWeather {
-                            self.dailyData.value = self.mutipleDaysData.value
-                        } else {
-                            self.dailyData.value = [self.singleDaysData.value.first, nil, nil, nil, nil]
-                        }
+                    let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather()
+                    if isShow5DaysWeather {
+                        self.dailyData.value = self.mutipleDaysData.value
+                    } else {
+                        self.dailyData.value = [self.singleDaysData.value.first, nil, nil, nil, nil]
                     }
                 } else {
                     self.alertMessage.value = "Empty data"

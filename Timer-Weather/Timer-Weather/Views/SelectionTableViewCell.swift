@@ -33,9 +33,8 @@ class SelectionTableViewCell: UITableViewCell {
         if type == .background, let colors = type?.getbackgroundColors() {
             contentView.backgroundColor = UIColor().hexStringToUIColor(hex: colors[indexPath.row])
         } else {
-            if let bgColor = Preferences.sharedInstance.getBackground() {
-                self.contentView.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
-            }
+            let bgColor = Preferences.sharedInstance.getBackground()
+            self.contentView.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
         }
         checkImageView.isHidden = !isSelected
         clockView.isHidden = true

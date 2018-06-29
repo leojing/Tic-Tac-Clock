@@ -35,8 +35,18 @@ class SelectionViewController: BaseViewController {
             Preferences.sharedInstance.setBackground(colors[selectedIndex])
         }
         
-        if let title = selectionType?.rawValue {
-            self.navigationBar.items?.first?.title = NSLocalizedString(title, comment: title)
+        if let type = selectionType {
+            switch type {
+            case .dateFormat:
+                self.navigationBar.items?.first?.title = Localizable.dateFormat
+
+            case .watchFace:
+                Preferences.sharedInstance.removeFlipNumbers()
+                self.navigationBar.items?.first?.title = Localizable.watchFace
+
+            case .background:
+                self.navigationBar.items?.first?.title = Localizable.backgroundColor
+            }
         }
     }
     
@@ -46,11 +56,10 @@ class SelectionViewController: BaseViewController {
     }
     
     fileprivate func updateViewsBackgroundColor() {
-        if let colorString = Preferences.sharedInstance.getBackground() {
-            let bgColor = UIColor().hexStringToUIColor(hex: colorString)
-            navigationBar.barTintColor = bgColor
-            self.view.backgroundColor = bgColor
-        }
+        let colorString = Preferences.sharedInstance.getBackground()
+        let bgColor = UIColor().hexStringToUIColor(hex: colorString)
+        navigationBar.barTintColor = bgColor
+        self.view.backgroundColor = bgColor
     }
     
     // MARK: set & get for selected index of data
@@ -141,7 +150,7 @@ extension SelectionType {
             return getCurrentDateWithFormat()
             
         case .watchFace:
-            return ["chronography-black", "chronography-blue", "chronography-brown", "chronography-green", "chronography-grey", "chronography-light-blue", "chronography-light-grey", "chronography-light-yellow", Date().timeOfCounter() ?? "09:28", Date().timeOfCounter() ?? "09:28"]
+            return ["chronography-black", "chronography-blue", "chronography-brown", "chronography-green", "chronography-grey", "chronography-light-blue", "chronography-light-grey", "chronography-light-yellow", Date().timeOfCounter() ?? "09:28"]//, Date().timeOfCounter() ?? "09:28"] hidden flip clock view
         }
     }
     

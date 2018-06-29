@@ -35,13 +35,12 @@ class SettingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let colorString = Preferences.sharedInstance.getBackground() {
-            let bgColor = UIColor().hexStringToUIColor(hex: colorString)
-            navigationBar.barTintColor = bgColor
-            self.tableView.backgroundColor = bgColor
-        }
-        
-        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace(), watchfaceIndex >= 8 {
+        let colorString = Preferences.sharedInstance.getBackground()
+        let bgColor = UIColor().hexStringToUIColor(hex: colorString)
+        navigationBar.barTintColor = bgColor
+        self.tableView.backgroundColor = bgColor
+    
+        if Preferences.sharedInstance.getWatchFace() >= 8 {
             showDateSwitch.isEnabled = true
         } else {
             showDateSwitch.isEnabled = false
@@ -73,21 +72,11 @@ class SettingViewController: UITableViewController {
     
     // MARK: Setup Initial data
     fileprivate func setUpInitialData() {
-        if let isShowWeather = Preferences.sharedInstance.getShowWeather() {
-            showWeatherSwitch.isOn = isShowWeather
-        }
-        if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
-            show5DaysWeatherSwitch.isOn = isShow5DaysWeather
-        }
-        if let isShowLocation = Preferences.sharedInstance.getShowLocation() {
-            showLocationSwitch.isOn = isShowLocation
-        }
-        if let isShowDate = Preferences.sharedInstance.getShowDate() {
-            showDateSwitch.isOn = isShowDate
-        }
-        if let isEnable = Preferences.sharedInstance.getDisabelIdleTimer() {
-            disableIdleTimerSwitch.isOn = isEnable
-        }
+        showWeatherSwitch.isOn = Preferences.sharedInstance.getShowWeather()
+        show5DaysWeatherSwitch.isOn = Preferences.sharedInstance.getShow5DaysWeather()
+        showLocationSwitch.isOn = Preferences.sharedInstance.getShowLocation()
+        showDateSwitch.isOn = Preferences.sharedInstance.getShowDate()
+        disableIdleTimerSwitch.isOn = Preferences.sharedInstance.getDisabelIdleTimer()
         
         showWeatherSwitch.rx.isOn.asObservable()
             .subscribe(onNext: { isOn in

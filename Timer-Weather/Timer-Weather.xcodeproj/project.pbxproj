@@ -12,14 +12,17 @@
 		242194DA20B17AC100B0EBD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 242194DC20B17AC100B0EBD8 /* InfoPlist.strings */; };
 		242194F320B1B18B00B0EBD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 242194F520B1B18B00B0EBD8 /* Localizable.strings */; };
 		2448CD8020C40FEC00466830 /* FlipClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2448CD7F20C40FEC00466830 /* FlipClockView.swift */; };
-		2448CD8220C41AD000466830 /* FlipClockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2448CD8120C41AD000466830 /* FlipClockView.xib */; };
 		246BC26D207E33F70051A258 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BC26C207E33F70051A258 /* Preferences.swift */; };
+		246BD10220CA470E00D132B5 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BD10120CA470D00D132B5 /* Localizable.swift */; };
 		246DFB312095F569002F9D73 /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */; };
 		246DFB33209603D9002F9D73 /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */; };
 		246DFB3520960B66002F9D73 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246DFB3420960B66002F9D73 /* BaseViewController.swift */; };
 		24797B38207B9A7400E83634 /* DailyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */; };
 		247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247B89E4206BB5E70084D7CE /* AnalogClockView.swift */; };
+		248220F520D7CD6400D8DCDD /* FlipNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248220F420D7CD6400D8DCDD /* FlipNumberView.swift */; };
 		24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */; };
+		24EBB24720CC2129005801F4 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBB24620CC2129005801F4 /* TimerViewController.swift */; };
+		24EBB24920CC2741005801F4 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBB24820CC2741005801F4 /* CircleProgressBar.swift */; };
 		24ED089D2061197000DCF838 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089C2061197000DCF838 /* MainViewController.swift */; };
 		24ED08AB20611C9700DCF838 /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089F20611C9600DCF838 /* Currently.swift */; };
 		24ED08AC20611C9700DCF838 /* WeatherDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED08A020611C9600DCF838 /* WeatherDisplayModel.swift */; };
@@ -79,14 +82,17 @@
 		242194F620B1B18C00B0EBD8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		242194F720B1B19000B0EBD8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2448CD7F20C40FEC00466830 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
-		2448CD8120C41AD000466830 /* FlipClockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipClockView.xib; sourceTree = "<group>"; };
 		246BC26C207E33F70051A258 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		246BD10120CA470D00D132B5 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
 		246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
 		246DFB3420960B66002F9D73 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewCell.swift; sourceTree = "<group>"; };
 		247B89E4206BB5E70084D7CE /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
+		248220F420D7CD6400D8DCDD /* FlipNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipNumberView.swift; sourceTree = "<group>"; };
 		24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		24EBB24620CC2129005801F4 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		24EBB24820CC2741005801F4 /* CircleProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		24ED089C2061197000DCF838 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		24ED089F20611C9600DCF838 /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
 		24ED08A020611C9600DCF838 /* WeatherDisplayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDisplayModel.swift; sourceTree = "<group>"; };
@@ -190,11 +196,12 @@
 		24ED08B920626E0B00DCF838 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				24EBB24820CC2741005801F4 /* CircleProgressBar.swift */,
 				247B89E4206BB5E70084D7CE /* AnalogClockView.swift */,
 				24797B37207B9A7400E83634 /* DailyCollectionViewCell.swift */,
 				246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */,
 				2448CD7F20C40FEC00466830 /* FlipClockView.swift */,
-				2448CD8120C41AD000466830 /* FlipClockView.xib */,
+				248220F420D7CD6400D8DCDD /* FlipNumberView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +250,7 @@
 				24F7883A205FCE2A00712C0C /* AppDelegate.swift */,
 				246DFB3420960B66002F9D73 /* BaseViewController.swift */,
 				24ED089C2061197000DCF838 /* MainViewController.swift */,
+				24EBB24620CC2129005801F4 /* TimerViewController.swift */,
 				24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */,
 				2403762E2095E80900818D83 /* SelectionViewController.swift */,
 				24F7883E205FCE2A00712C0C /* Main.storyboard */,
@@ -251,6 +259,7 @@
 				24F78846205FCE2A00712C0C /* Info.plist */,
 				242194DC20B17AC100B0EBD8 /* InfoPlist.strings */,
 				242194F520B1B18B00B0EBD8 /* Localizable.strings */,
+				246BD10120CA470D00D132B5 /* Localizable.swift */,
 			);
 			path = "Timer-Weather";
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 				24F78835205FCE2A00712C0C /* Resources */,
 				BA113643783577A1355789AB /* [CP] Embed Pods Frameworks */,
 				9906AA3CC928CA31C615BD3D /* [CP] Copy Pods Resources */,
+				2473EE4520CA37CA00FEC45C /* SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -399,7 +409,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2448CD8220C41AD000466830 /* FlipClockView.xib in Resources */,
 				242194F320B1B18B00B0EBD8 /* Localizable.strings in Resources */,
 				24F78845205FCE2A00712C0C /* LaunchScreen.storyboard in Resources */,
 				242194DA20B17AC100B0EBD8 /* InfoPlist.strings in Resources */,
@@ -425,6 +434,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2473EE4520CA37CA00FEC45C /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=$PROJECT_DIR/Pods/SwiftGen/bin/:$PATH\n\nif which swiftgen >/dev/null; then\nswiftgen strings \"$PROJECT_DIR/Timer-Weather/en.lproj/Localizable.strings\" --template structured-swift4 --param enumName=\"Localizable\" --output \"$PROJECT_DIR/Timer-Weather/Localizable.swift\"\nelse\necho \"SwiftGen not installed\"\nfi";
+		};
 		53E1456DFA773C4ADD9B608A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,6 +571,7 @@
 			files = (
 				24ED08C120626EBE00DCF838 /* String+Customise.swift in Sources */,
 				24ED08B82061234100DCF838 /* LocationService.swift in Sources */,
+				24EBB24920CC2741005801F4 /* CircleProgressBar.swift in Sources */,
 				247B89E5206BB5E70084D7CE /* AnalogClockView.swift in Sources */,
 				24F7883B205FCE2A00712C0C /* AppDelegate.swift in Sources */,
 				24ED08C220626EBE00DCF838 /* Date+Customise.swift in Sources */,
@@ -556,6 +580,7 @@
 				24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */,
 				24ED08B020611C9700DCF838 /* WeatherDetail.swift in Sources */,
 				24ED08AD20611C9700DCF838 /* Daily.swift in Sources */,
+				24EBB24720CC2129005801F4 /* TimerViewController.swift in Sources */,
 				24ED089D2061197000DCF838 /* MainViewController.swift in Sources */,
 				24797B38207B9A7400E83634 /* DailyCollectionViewCell.swift in Sources */,
 				24ED08B320611C9700DCF838 /* APIService.swift in Sources */,
@@ -565,11 +590,13 @@
 				246DFB312095F569002F9D73 /* SelectionTableViewCell.swift in Sources */,
 				24ED08B120611C9700DCF838 /* Flag.swift in Sources */,
 				24ED08AB20611C9700DCF838 /* Currently.swift in Sources */,
+				248220F520D7CD6400D8DCDD /* FlipNumberView.swift in Sources */,
 				246BC26D207E33F70051A258 /* Preferences.swift in Sources */,
 				24ED08AE20611C9700DCF838 /* Weather.swift in Sources */,
 				24ED08AF20611C9700DCF838 /* WeatherIcon.swift in Sources */,
 				24ED08AC20611C9700DCF838 /* WeatherDisplayModel.swift in Sources */,
 				24ED08B420611C9700DCF838 /* ApiClient.swift in Sources */,
+				246BD10220CA470E00D132B5 /* Localizable.swift in Sources */,
 				2448CD8020C40FEC00466830 /* FlipClockView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,7 +796,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z6AR8727R;
+				DEVELOPMENT_TEAM = SM8VG26ZPC;
 				INFOPLIST_FILE = "Timer-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.orris.goodclock;
@@ -785,7 +812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z6AR8727R;
+				DEVELOPMENT_TEAM = SM8VG26ZPC;
 				INFOPLIST_FILE = "Timer-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.orris.goodclock;
