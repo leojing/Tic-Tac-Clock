@@ -56,11 +56,10 @@ class SelectionViewController: BaseViewController {
     }
     
     fileprivate func updateViewsBackgroundColor() {
-        if let colorString = Preferences.sharedInstance.getBackground() {
-            let bgColor = UIColor().hexStringToUIColor(hex: colorString)
-            navigationBar.barTintColor = bgColor
-            self.view.backgroundColor = bgColor
-        }
+        let colorString = Preferences.sharedInstance.getBackground()
+        let bgColor = UIColor().hexStringToUIColor(hex: colorString)
+        navigationBar.barTintColor = bgColor
+        self.view.backgroundColor = bgColor
     }
     
     // MARK: set & get for selected index of data

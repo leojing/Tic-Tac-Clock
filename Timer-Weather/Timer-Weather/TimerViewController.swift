@@ -85,11 +85,10 @@ class TimerViewController: BaseViewController {
         var circleProgressColor: UIColor = .clear
         var progressColor: UIColor = .clear
         var buttonColor: UIColor = .clear
-        if let bgColor = Preferences.sharedInstance.getBackground() {
-            circleProgressColor = UIColor().hexStringToUIColor(hex: bgColor, r: 10, g: 0, b: 0, alpha: 1.0)
-            progressColor = UIColor().hexStringToUIColor(hex: bgColor, r: 10, g: 20, b: 0, alpha: 1.0)
-            buttonColor = UIColor().hexStringToUIColor(hex: bgColor, r: 10, g: 0, b: 0, alpha: 1.0)
-        }
+        let bgColor = Preferences.sharedInstance.getBackground()
+        circleProgressColor = UIColor().hexStringToUIColor(hex: bgColor, r: 10, g: 0, b: 0, alpha: 1.0)
+        progressColor = UIColor().hexStringToUIColor(hex: bgColor, r: 10, g: 20, b: 0, alpha: 1.0)
+        buttonColor = UIColor().hexStringToUIColor(hex: bgColor, r: 10, g: 0, b: 0, alpha: 1.0)
         
         minusButton.backgroundColor = buttonColor
         addButton.backgroundColor = buttonColor

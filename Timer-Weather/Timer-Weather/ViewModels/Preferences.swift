@@ -60,8 +60,12 @@ class Preferences: NSObject {
         userDefaults.setValue(isShow, forKey: PreferenceOption.showWeather.rawValue)
     }
     
-    func getShowWeather() -> Bool? {
-        return userDefaults.value(forKey: PreferenceOption.showWeather.rawValue) as? Bool
+    func getShowWeather() -> Bool {
+        guard let isShow = userDefaults.value(forKey: PreferenceOption.showWeather.rawValue) as? Bool else {
+            userDefaults.setValue(true, forKey: PreferenceOption.showWeather.rawValue)
+            return true
+        }
+        return isShow
     }
     
     // MARK: set & get for Show 5 days weather data
@@ -69,8 +73,12 @@ class Preferences: NSObject {
         userDefaults.setValue(isShow, forKey: PreferenceOption.show5DaysWeather.rawValue)
     }
     
-    func getShow5DaysWeather() -> Bool? {
-        return userDefaults.value(forKey: PreferenceOption.show5DaysWeather.rawValue) as? Bool
+    func getShow5DaysWeather() -> Bool {
+        guard let isShow = userDefaults.value(forKey: PreferenceOption.show5DaysWeather.rawValue) as? Bool else {
+            userDefaults.setValue(false, forKey: PreferenceOption.show5DaysWeather.rawValue)
+            return false
+        }
+        return isShow
     }
 
     // MARK: set & get for Show location data
@@ -78,8 +86,12 @@ class Preferences: NSObject {
         userDefaults.setValue(isShow, forKey: PreferenceOption.showLocation.rawValue)
     }
     
-    func getShowLocation() -> Bool? {
-        return userDefaults.value(forKey: PreferenceOption.showLocation.rawValue) as? Bool
+    func getShowLocation() -> Bool {
+        guard let isShow = userDefaults.value(forKey: PreferenceOption.showLocation.rawValue) as? Bool else {
+            userDefaults.setValue(true, forKey: PreferenceOption.showLocation.rawValue)
+            return true
+        }
+        return isShow
     }
 
     // MARK: set & get for Show date data
@@ -87,8 +99,12 @@ class Preferences: NSObject {
         userDefaults.setValue(isShow, forKey: PreferenceOption.showDate.rawValue)
     }
     
-    func getShowDate() -> Bool? {
-        return userDefaults.value(forKey: PreferenceOption.showDate.rawValue) as? Bool
+    func getShowDate() -> Bool {
+        guard let isShow = userDefaults.value(forKey: PreferenceOption.showDate.rawValue) as? Bool else {
+            userDefaults.setValue(true, forKey: PreferenceOption.showDate.rawValue)
+            return true
+        }
+        return isShow
     }
     
     // MARK: set & get for date format data
@@ -96,8 +112,12 @@ class Preferences: NSObject {
         userDefaults.setValue(format, forKey: PreferenceOption.dateFormat.rawValue)
     }
     
-    func getDateFormat() -> String? {
-        return userDefaults.value(forKey: PreferenceOption.dateFormat.rawValue) as? String
+    func getDateFormat() -> String {
+        guard let dateFormat = userDefaults.value(forKey: PreferenceOption.dateFormat.rawValue) as? String else {
+            userDefaults.setValue(("YYYY/MM/dd"), forKey: PreferenceOption.dateFormat.rawValue)
+            return "YYYY/MM/dd"
+        }
+        return dateFormat
     }
     
     // MARK: set & get for disable IdleTimerdata
@@ -105,8 +125,12 @@ class Preferences: NSObject {
         userDefaults.setValue(enable, forKey: PreferenceOption.disableIdleTimer.rawValue)
     }
     
-    func getDisabelIdleTimer() -> Bool? {
-        return userDefaults.value(forKey: PreferenceOption.disableIdleTimer.rawValue) as? Bool
+    func getDisabelIdleTimer() -> Bool {
+        guard let disableIdleTimer = userDefaults.value(forKey: PreferenceOption.disableIdleTimer.rawValue) as? Bool else {
+            userDefaults.setValue(false, forKey: PreferenceOption.disableIdleTimer.rawValue)
+            return false
+        }
+        return disableIdleTimer
     }
 
     // MARK: set & get for watch face data
@@ -114,8 +138,12 @@ class Preferences: NSObject {
         userDefaults.setValue(index, forKey: PreferenceOption.watchFace.rawValue)
     }
     
-    func getWatchFace() -> Int? {
-        return userDefaults.value(forKey: PreferenceOption.watchFace.rawValue) as? Int
+    func getWatchFace() -> Int {
+        guard let watchFace = userDefaults.value(forKey: PreferenceOption.watchFace.rawValue) as? Int else {
+            userDefaults.setValue(0, forKey: PreferenceOption.watchFace.rawValue)
+            return 0
+        }
+        return watchFace
     }
     
     // MARK: set & get for background
@@ -123,8 +151,12 @@ class Preferences: NSObject {
         userDefaults.setValue(color, forKey: PreferenceOption.background.rawValue)
     }
     
-    func getBackground() -> String? {
-        return userDefaults.value(forKey: PreferenceOption.background.rawValue) as? String
+    func getBackground() -> String {
+        guard let bgColor = userDefaults.value(forKey: PreferenceOption.background.rawValue) as? String else {
+            userDefaults.setValue("#c96167", forKey: PreferenceOption.background.rawValue)
+            return "#c96167"
+        }
+        return bgColor
     }
     
     // MARK: set & get for is show guide view
@@ -132,8 +164,12 @@ class Preferences: NSObject {
         userDefaults.setValue(isShow, forKey: PreferenceOption.isShowGuideView.rawValue)
     }
     
-    func getIsShowGuideView() -> Bool? {
-        return userDefaults.value(forKey: PreferenceOption.isShowGuideView.rawValue) as? Bool
+    func getIsShowGuideView() -> Bool {
+        guard let isShow = userDefaults.value(forKey: PreferenceOption.isShowGuideView.rawValue) as? Bool else {
+            userDefaults.setValue(false, forKey: PreferenceOption.isShowGuideView.rawValue)
+            return false
+        }
+        return isShow
     }
     
     // MARK: set & get for FlipClock first number

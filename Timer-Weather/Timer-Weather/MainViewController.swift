@@ -86,27 +86,24 @@ class MainViewController: BaseViewController {
             self.refreshAction(nil)
         }
         
-        if let isShowGuiderView = Preferences.sharedInstance.getIsShowGuideView() {
-            guideView.isHidden = !isShowGuiderView
-        }
+        let isShowGuiderView = Preferences.sharedInstance.getIsShowGuideView()
+        guideView.isHidden = !isShowGuiderView
         
-        if let isDisable = Preferences.sharedInstance.getDisabelIdleTimer() {
-            UIApplication.shared.isIdleTimerDisabled = isDisable
+        if Preferences.sharedInstance.getDisabelIdleTimer() {
+            UIApplication.shared.isIdleTimerDisabled = Preferences.sharedInstance.getDisabelIdleTimer()
             Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
                 UIScreen.main.brightness = 0.5
             }
         }
 
-        if let bgColor = Preferences.sharedInstance.getBackground() {
-            self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
-        }
+        let bgColor = Preferences.sharedInstance.getBackground()
+        self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
 
         updateWatchFace()
         updateWeather()
         
-        if let isShowLocation = Preferences.sharedInstance.getShowLocation() {
-            cityNameLabel.isHidden = !isShowLocation
-        }
+        let isShowLocation = Preferences.sharedInstance.getShowLocation()
+        cityNameLabel.isHidden = !isShowLocation
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -133,62 +130,60 @@ class MainViewController: BaseViewController {
     // MARK: UI update
     fileprivate func updateWatchFace() {
         
-        if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
-            if let isShowDate = Preferences.sharedInstance.getShowDate(), watchfaceIndex >= 8 {
-                let height = isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
-                dateLabelHeightConstraint.constant = CGFloat(isShowDate ? height : 0)
-            } else {
-                dateLabelHeightConstraint.constant = CGFloat(0)
-            }
-            
-            if watchfaceIndex == 8 {
-                digitalTimerHeightConstraint.constant = CGFloat(isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
+        let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
+        if watchfaceIndex >= 8 {
+            let height = isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
+            dateLabelHeightConstraint.constant = CGFloat(Preferences.sharedInstance.getShowDate() ? height : 0)
+        } else {
+            dateLabelHeightConstraint.constant = CGFloat(0)
+        }
+        
+        if watchfaceIndex == 8 {
+            digitalTimerHeightConstraint.constant = CGFloat(isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
+            circleTimerView.isHidden = true
+            flipClockView.isHidden = true
+            digitalTimerView.isHidden = false
+            dateLabelTopConstraint.constant = 20
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
+        } else {
+            digitalTimerView.isHidden = true
+            if watchfaceIndex == 9 {
+                flipClockView.isHidden = false
                 circleTimerView.isHidden = true
-                flipClockView.isHidden = true
-                digitalTimerView.isHidden = false
-                dateLabelTopConstraint.constant = 20
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
+                dateLabelTopConstraint.constant = 230
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
             } else {
-                digitalTimerView.isHidden = true
-                if watchfaceIndex == 9 {
-                    flipClockView.isHidden = false
-                    circleTimerView.isHidden = true
-                    dateLabelTopConstraint.constant = 230
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
-                } else {
-                    circleTimerView.isHidden = false
-                    flipClockView.isHidden = true
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
-                }
-                let watchFaces = SelectionType.getContentList(.watchFace)
-                if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
-                    clockView.backgroundImageView.image = UIImage(named: watchFaces()![watchfaceIndex]!)
-                    if watchfaceIndex > 4  && watchfaceIndex < 8 {
-                        clockView.smallialImageView?.image = UIImage(named: "upper-dial-light")
-                        smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial-light")
-                        smallClockView.secondHand.image = UIImage(named: "bottom-dial-second-light")
-                    } else {
-                        clockView.smallialImageView?.image = UIImage(named: "upper-dial")
-                        smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial")
-                        smallClockView.secondHand.image = UIImage(named: "bottom-dial-second")
-                    }
-                }
+                circleTimerView.isHidden = false
+                flipClockView.isHidden = true
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
+            }
+            let watchFaces = SelectionType.getContentList(.watchFace)
+            let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
+            clockView.backgroundImageView.image = UIImage(named: watchFaces()![watchfaceIndex]!)
+            if watchfaceIndex > 4  && watchfaceIndex < 8 {
+                clockView.smallialImageView?.image = UIImage(named: "upper-dial-light")
+                smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial-light")
+                smallClockView.secondHand.image = UIImage(named: "bottom-dial-second-light")
+            } else {
+                clockView.smallialImageView?.image = UIImage(named: "upper-dial")
+                smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial")
+                smallClockView.secondHand.image = UIImage(named: "bottom-dial-second")
             }
         }
     }
     
     fileprivate func updateWeather() {
-        if let isShowWeather = Preferences.sharedInstance.getShowWeather() {
-            weatherStackView.isHidden = !isShowWeather
-        }
+        let isShowWeather = Preferences.sharedInstance.getShowWeather()
+        weatherStackView.isHidden = !isShowWeather
         
-        if let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather() {
-            if isShow5DaysWeather, let data = viewModel?.mutipleDaysData.value {
+        let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather()
+        if let data = viewModel?.mutipleDaysData.value {
+            if isShow5DaysWeather {
                 viewModel?.dailyData.value = data
                 dailyViews.forEach({ view in
                     view.isHidden = false
                 })
-            } else if !isShow5DaysWeather, let data = viewModel?.singleDaysData.value {
+            } else {
                 viewModel?.dailyData.value = data
                 dailyViews.enumerated().forEach({ (index, view) in
                     view.isHidden = !(index == 0)
@@ -226,12 +221,11 @@ class MainViewController: BaseViewController {
             .subscribe(onNext: { date in
                 let attributedString = NSMutableAttributedString(string: (date.dayOfWeekShort()?.uppercased())!)
                 attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
-                if let watchfaceIndex = Preferences.sharedInstance.getWatchFace() {
-                    if watchfaceIndex < 5 {
-                        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: 3))
-                    } else {
-                        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
-                    }
+                let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
+                if watchfaceIndex < 5 {
+                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: 3))
+                } else {
+                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
                 }
                 self.dateInWatchLabel.attributedText = attributedString
 
@@ -301,6 +295,9 @@ class MainViewController: BaseViewController {
     // MARK: Actions
     
     @IBAction func swipeGestureAction(_ sender: Any?) {
+        // Switch off Count down feature
+        return
+        
         if !guideView.isHidden {
             guideViewTapped(nil)
         }
