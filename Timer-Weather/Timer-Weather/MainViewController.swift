@@ -295,9 +295,6 @@ class MainViewController: BaseViewController {
     // MARK: Actions
     
     @IBAction func swipeGestureAction(_ sender: Any?) {
-        // Switch off Count down feature
-        return
-        
         if !guideView.isHidden {
             guideViewTapped(nil)
         }
