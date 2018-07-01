@@ -30,7 +30,11 @@ class MainViewModel: NSObject {
     var currentDigitalTime = Variable<String>(Date().timeOfCounter() ?? "")
     var currentDate = Variable<Date>(Date())
     
-    init(_ apiService: APIService) {
+    var isPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+
+    init(_ apiService: APIService? = APIClient()) {
         super.init()
         
         apiservice = apiService

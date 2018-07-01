@@ -13,7 +13,7 @@ import HGCircularSlider
 
 class MainViewController: BaseViewController {
     
-    @IBOutlet weak var flipClockView: FlipClockView!
+    @IBOutlet weak var flipClockContainer: UIView!
 
     @IBOutlet weak var circleTimerView: UIView!
     
@@ -38,11 +38,11 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
     @IBOutlet weak var refreshButton: UIButton!
 
-    @IBOutlet weak var countDownTimerView: UIView!
+    @IBOutlet weak var countDownTimerContainer: UIView!
     @IBOutlet weak var guideView: UIView!
     
     fileprivate let disposeBag = DisposeBag()
-    var viewModel: MainViewModel? {
+    var viewModel: MainViewModel = MainViewModel() {
         didSet {
             setupViewModelBinds()
         }
@@ -50,10 +50,6 @@ class MainViewController: BaseViewController {
     fileprivate let apiService = APIClient()
     fileprivate var timer = Timer()
     
-    fileprivate var isPad: Bool {
-        return UIDevice.current.userInterfaceIdiom == .pad
-    }
-
     private enum Constants {
         static let digitalTimerHeightForPhone = 120
         static let digitalTimerHeightForPad = 190
@@ -69,11 +65,13 @@ class MainViewController: BaseViewController {
         
         viewModel = MainViewModel(apiService)
 
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
+
         navigationController?.interactivePopGestureRecognizer?.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
-        adjustFontByDevice(isPad)
+        adjustFontByDevice(viewModel.isPad)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +109,9 @@ class MainViewController: BaseViewController {
     }
     
     private func rotateDevice() {
-        if isPad { return }
+        if viewModel.isPad { return }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
         
         if UIDevice.current.orientation.isLandscape {
             clockViewTopConstraint.constant = -70
@@ -132,30 +132,27 @@ class MainViewController: BaseViewController {
         
         let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
         if watchfaceIndex >= 8 {
-            let height = isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
+            let height = viewModel.isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
             dateLabelHeightConstraint.constant = CGFloat(Preferences.sharedInstance.getShowDate() ? height : 0)
         } else {
             dateLabelHeightConstraint.constant = CGFloat(0)
         }
         
         if watchfaceIndex == 8 {
-            digitalTimerHeightConstraint.constant = CGFloat(isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
+            digitalTimerHeightConstraint.constant = CGFloat(viewModel.isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
             circleTimerView.isHidden = true
-            flipClockView.isHidden = true
+            flipClockContainer.isHidden = true
             digitalTimerView.isHidden = false
             dateLabelTopConstraint.constant = 20
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
         } else {
             digitalTimerView.isHidden = true
             if watchfaceIndex == 9 {
-                flipClockView.isHidden = false
+                flipClockContainer.isHidden = false
                 circleTimerView.isHidden = true
                 dateLabelTopConstraint.constant = 230
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
             } else {
                 circleTimerView.isHidden = false
-                flipClockView.isHidden = true
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
+                flipClockContainer.isHidden = true
             }
             let watchFaces = SelectionType.getContentList(.watchFace)
             let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
@@ -177,18 +174,17 @@ class MainViewController: BaseViewController {
         weatherStackView.isHidden = !isShowWeather
         
         let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather()
-        if let data = viewModel?.mutipleDaysData.value {
-            if isShow5DaysWeather {
-                viewModel?.dailyData.value = data
-                dailyViews.forEach({ view in
-                    view.isHidden = false
-                })
-            } else {
-                viewModel?.dailyData.value = data
-                dailyViews.enumerated().forEach({ (index, view) in
-                    view.isHidden = !(index == 0)
-                })
-            }
+        let data = viewModel.mutipleDaysData.value
+        if isShow5DaysWeather {
+            viewModel.dailyData.value = data
+            dailyViews.forEach({ view in
+                view.isHidden = false
+            })
+        } else {
+            viewModel.dailyData.value = data
+            dailyViews.enumerated().forEach({ (index, view) in
+                view.isHidden = !(index == 0)
+            })
         }
     }
     
@@ -207,7 +203,7 @@ class MainViewController: BaseViewController {
     // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {
         
-        viewModel?.currentDigitalTime.asObservable()
+        viewModel.currentDigitalTime.asObservable()
             .subscribe(onNext: { timer in
                 var index = timer.index(timer.startIndex, offsetBy: 2)
                 self.digitalTimerHourLabel.text = String(timer.prefix(upTo: index))
@@ -216,7 +212,7 @@ class MainViewController: BaseViewController {
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
-        viewModel?.currentDate.asObservable()
+        viewModel.currentDate.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { date in
                 let attributedString = NSMutableAttributedString(string: (date.dayOfWeekShort()?.uppercased())!)
@@ -234,16 +230,16 @@ class MainViewController: BaseViewController {
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
                 
-                self.flipClockView.setTimeToDate(date, false)
+//                self.flipClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
-        viewModel?.cityName.asObservable()
+        viewModel.cityName.asObservable()
         .bind(to: self.cityNameLabel.rx.text)
         .disposed(by: disposeBag)
         
         // MARK: bind Top info view and background theme color by currently weather data
-        viewModel?.weather.asObservable()
+        viewModel.weather.asObservable()
             .filter{$0 != nil}
             .subscribe(onNext: { w in
                 NSLog("Weather info is \(String(describing: w?.currently?.summary))")
@@ -253,7 +249,7 @@ class MainViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         // MARK: bind spinner view
-        viewModel?.isLoading.asObservable()
+        viewModel.isLoading.asObservable()
             .subscribe(onNext: { loading in
                 DispatchQueue.main.async {
                     if loading {
@@ -266,7 +262,7 @@ class MainViewController: BaseViewController {
         .disposed(by: disposeBag)
         
         // MARK: bind daily data with daysWeatherCollectionView
-        viewModel?.dailyData.asObservable()
+        viewModel.dailyData.asObservable()
             .filter { $0.count > 0 }
             .subscribe(onNext: { data in
                 DispatchQueue.main.async {
@@ -281,7 +277,7 @@ class MainViewController: BaseViewController {
         .disposed(by: disposeBag)
         
        // MARK: show error message
-        viewModel?.alertMessage.asObservable()
+        viewModel.alertMessage.asObservable()
             .filter { $0.count > 0 }
             .subscribe(onNext: { errorMessage in
                 DispatchQueue.main.async {
@@ -302,8 +298,8 @@ class MainViewController: BaseViewController {
             guideViewTapped(nil)
         }
 
-        countDownTimerView.isHidden = !countDownTimerView.isHidden
-        countDownTimerView.isHidden ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
+        countDownTimerContainer.isHidden = !countDownTimerContainer.isHidden
+        countDownTimerContainer.isHidden ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
             : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
 
     }
@@ -317,7 +313,7 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func refreshAction(_ sender: Any?) {
-        viewModel?.setupLocationManager()
+        viewModel.setupLocationManager()
         refreshButton.isHidden = true
     }
     
@@ -330,7 +326,7 @@ class MainViewController: BaseViewController {
     
     @objc
     fileprivate func triggleTimer() {
-        viewModel?.currentDate.value = Date()
+        viewModel.currentDate.value = Date()
         refreshAction(nil)
     }
     
