@@ -127,6 +127,20 @@ class MainViewController: BaseViewController {
         timer.invalidate()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "flipClock":
+                if let vc = segue.destination as? FlipClockViewController {
+                    vc.viewModel = viewModel
+                }
+                
+            default:
+                break
+            }
+        }
+    }
+    
     // MARK: UI update
     fileprivate func updateWatchFace() {
         
@@ -149,7 +163,7 @@ class MainViewController: BaseViewController {
             if watchfaceIndex == 9 {
                 flipClockContainer.isHidden = false
                 circleTimerView.isHidden = true
-                dateLabelTopConstraint.constant = 230
+                dateLabelTopConstraint.constant = 280
             } else {
                 circleTimerView.isHidden = false
                 flipClockContainer.isHidden = true

@@ -41,7 +41,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHE-de-tQT">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <connections>
-                                    <segue destination="KnQ-98-Kgy" kind="embed" id="agc-pW-G61"/>
+                                    <segue destination="KnQ-98-Kgy" kind="embed" identifier="flipClock" id="agc-pW-G61"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8C-vK-0ct">

@@ -12,8 +12,8 @@ import RxCocoa
 
 class FlipClockViewController: BaseViewController {
     
-    @IBOutlet weak var portraitFlipClockView: FlipClockView!
-    @IBOutlet weak var landscapeFlipClockView: FlipClockView!
+    @IBOutlet weak var portraitFlipClockView: FlipClockView?
+    @IBOutlet weak var landscapeFlipClockView: FlipClockView?
 
     fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel = MainViewModel() {
@@ -24,8 +24,9 @@ class FlipClockViewController: BaseViewController {
     
     var isLandscape = false {
         didSet {
-            portraitFlipClockView.isHidden = isLandscape
-            landscapeFlipClockView.isHidden = !isLandscape
+            Preferences.sharedInstance.removeFlipNumbers()
+            portraitFlipClockView?.isHidden = isLandscape
+            landscapeFlipClockView?.isHidden = !isLandscape
         }
     }
     
@@ -45,8 +46,8 @@ class FlipClockViewController: BaseViewController {
         viewModel.currentDate.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { date in
-                self.portraitFlipClockView.setTimeToDate(date, false)
-                self.landscapeFlipClockView.setTimeToDate(date, false)
+                self.portraitFlipClockView?.setTimeToDate(date, false)
+                self.landscapeFlipClockView?.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
