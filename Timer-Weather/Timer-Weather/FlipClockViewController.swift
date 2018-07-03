@@ -46,8 +46,11 @@ class FlipClockViewController: BaseViewController {
         viewModel.currentDate.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { date in
-                self.portraitFlipClockView?.setTimeToDate(date, false)
-                self.landscapeFlipClockView?.setTimeToDate(date, false)
+                if self.isLandscape {
+                    self.landscapeFlipClockView?.setTimeToDate(date, false)
+                } else {
+                    self.portraitFlipClockView?.setTimeToDate(date, false)
+                }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
