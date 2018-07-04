@@ -14,6 +14,7 @@ class WeatherLocationViewController: BaseViewController {
     
     @IBOutlet weak var spinnerView: UIActivityIndicatorView?
     @IBOutlet weak var refreshButton: UIButton?
+    @IBOutlet weak var weatherView: UIView?
     @IBOutlet weak var weatherStackView: UIStackView?
     @IBOutlet var dailyViews: [DailyCollectionViewCell]?
     @IBOutlet weak var cityNameLabel: UILabel?
@@ -55,7 +56,7 @@ class WeatherLocationViewController: BaseViewController {
     
     fileprivate func updateWeather() {
         let isShowWeather = Preferences.sharedInstance.getShowWeather()
-        weatherStackView?.isHidden = !isShowWeather
+        weatherView?.isHidden = !isShowWeather
         
         let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather()
         let data = viewModel.mutipleDaysData.value
@@ -79,13 +80,13 @@ class WeatherLocationViewController: BaseViewController {
                 self.cityNameLabel?.text = name
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
-                
+        
         // MARK: bind spinner view
         viewModel.isLoading.asObservable()
             .subscribe(onNext: { loading in
                 DispatchQueue.main.async {
                     if loading {
-                        self.weatherStackView?.isHidden = true
+                        self.weatherView?.isHidden = true
                         self.refreshButton?.isHidden = true
                     }
                     loading ? self.spinnerView?.startAnimating() : self.spinnerView?.stopAnimating()
@@ -98,7 +99,7 @@ class WeatherLocationViewController: BaseViewController {
             .filter { $0.count > 0 }
             .subscribe(onNext: { data in
                 DispatchQueue.main.async {
-                    self.weatherStackView?.isHidden = false
+                    self.weatherView?.isHidden = false
                     self.refreshButton?.isHidden = true
                 }
                 data.enumerated().forEach({ (index, detail) in
@@ -115,7 +116,7 @@ class WeatherLocationViewController: BaseViewController {
             .filter { $0.count > 0 }
             .subscribe(onNext: { errorMessage in
                 DispatchQueue.main.async {
-                    self.weatherStackView?.isHidden = true
+                    self.weatherView?.isHidden = true
                     self.refreshButton?.isHidden = false
                 }
             }, onError: nil, onCompleted: nil, onDisposed: nil)

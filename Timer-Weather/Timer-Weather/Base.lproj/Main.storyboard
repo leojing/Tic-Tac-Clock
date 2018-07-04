@@ -221,7 +221,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MjY-SP-Bk4">
-                                <rect key="frame" x="13" y="678" width="350" height="90"/>
+                                <rect key="frame" x="13" y="688" width="350" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="M9a-Zq-ZZB"/>
                                     <constraint firstAttribute="height" constant="90" id="bVa-De-FKl"/>
@@ -259,7 +259,7 @@
                                 </connections>
                             </button>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-Jh-924">
-                                <rect key="frame" x="0.0" y="330" width="375" height="328"/>
+                                <rect key="frame" x="0.0" y="330" width="375" height="338"/>
                                 <connections>
                                     <segue destination="fRr-LH-QwK" kind="embed" id="9wj-EH-hr1"/>
                                 </connections>
@@ -313,7 +313,7 @@
                             <constraint firstItem="fe7-Tq-fSp" firstAttribute="firstBaseline" secondItem="CTD-kx-lA0" secondAttribute="firstBaseline" id="48I-lo-fts"/>
                             <constraint firstItem="f5N-cF-hYx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5PD-mU-h4h"/>
                             <constraint firstItem="MjY-SP-Bk4" firstAttribute="top" secondItem="fYq-Jh-924" secondAttribute="bottom" constant="20" id="5aW-jT-qqf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MjY-SP-Bk4" secondAttribute="bottom" constant="10" id="7FU-sj-9Vm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MjY-SP-Bk4" secondAttribute="bottom" id="7FU-sj-9Vm"/>
                             <constraint firstItem="DHE-de-tQT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9qd-95-spq"/>
                             <constraint firstItem="284-3f-JdY" firstAttribute="top" secondItem="f5N-cF-hYx" secondAttribute="bottom" constant="20" id="AwJ-TT-TkX"/>
                             <constraint firstItem="MjY-SP-Bk4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B0V-Do-dep"/>
@@ -1034,11 +1034,11 @@
             <objects>
                 <viewController id="fRr-LH-QwK" customClass="TimerViewController" customModule="Timer_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ITP-dy-EkI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddh-TJ-9R7">
-                                <rect key="frame" x="147.66666666666666" y="204" width="80" height="80"/>
+                                <rect key="frame" x="147.66666666666666" y="214" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="20y-Vx-MQS"/>
@@ -1046,7 +1046,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDg-4L-lWH">
-                                <rect key="frame" x="47.666666666666657" y="224" width="60" height="60"/>
+                                <rect key="frame" x="47.666666666666657" y="234" width="60" height="60"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="XWd-VF-R6M"/>
@@ -1068,7 +1068,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdA-A7-Lbt">
-                                <rect key="frame" x="267.66666666666669" y="224" width="60" height="60"/>
+                                <rect key="frame" x="267.66666666666669" y="234" width="60" height="60"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="+1">
@@ -1086,7 +1086,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCY-lL-VCW">
-                                <rect key="frame" x="67.666666666666686" y="99" width="240" height="100"/>
+                                <rect key="frame" x="67.666666666666686" y="109" width="240" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwH-dc-NdJ">
                                         <rect key="frame" x="30" y="70" width="30" height="30"/>
@@ -1883,12 +1883,14 @@
                             <constraint firstItem="3OO-7N-heS" firstAttribute="leading" secondItem="k9I-a7-DH5" secondAttribute="leading" id="LX5-rC-xFA"/>
                             <constraint firstAttribute="trailing" secondItem="3OO-7N-heS" secondAttribute="trailing" id="fRN-XY-VOG"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Df7-vg-IJ3"/>
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="pm2-H1-vlE" id="soY-eT-dZt"/>
                         <outlet property="refreshButton" destination="eNS-UJ-UzD" id="ZCz-vh-xA2"/>
                         <outlet property="spinnerView" destination="url-Od-iIm" id="ggW-gq-xzE"/>
                         <outlet property="weatherStackView" destination="FTq-Kc-gHB" id="tuv-Bh-IBY"/>
+                        <outlet property="weatherView" destination="AFI-Ut-hzA" id="fsk-6s-Jo4"/>
                         <outletCollection property="dailyViews" destination="TTO-X6-DsZ" collectionClass="NSMutableArray" id="ocs-yB-jYS"/>
                         <outletCollection property="dailyViews" destination="VTG-Cg-G89" collectionClass="NSMutableArray" id="0j2-Bd-9AF"/>
                         <outletCollection property="dailyViews" destination="9hL-PA-V8J" collectionClass="NSMutableArray" id="oan-ET-m6q"/>
