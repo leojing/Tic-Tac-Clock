@@ -14,7 +14,6 @@ import HGCircularSlider
 class MainViewController: BaseViewController {
     
     @IBOutlet weak var flipClockContainer: UIView!
-
     @IBOutlet weak var circleTimerView: UIView!
     
     @IBOutlet weak var clockViewTopConstraint: NSLayoutConstraint!
@@ -31,12 +30,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var dateLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var dateLabelHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var weatherStackView: UIStackView!
-    @IBOutlet var dailyViews: [DailyCollectionViewCell]!
-
-    @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var spinnerView: UIActivityIndicatorView!
-    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var weatherLocationView: UIView!
 
     @IBOutlet weak var countDownTimerContainer: UIView!
     @IBOutlet weak var guideView: UIView!
@@ -47,8 +41,6 @@ class MainViewController: BaseViewController {
             setupViewModelBinds()
         }
     }
-    fileprivate let apiService = APIClient()
-    fileprivate var timer = Timer()
     
     private enum Constants {
         static let digitalTimerHeightForPhone = 120
@@ -62,8 +54,6 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel = MainViewModel(apiService)
 
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
 
@@ -77,12 +67,7 @@ class MainViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        refreshAction(nil)
         rotateDevice()
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 2*60*60, repeats: true) { _ in
-            self.refreshAction(nil)
-        }
         
         let isShowGuiderView = Preferences.sharedInstance.getIsShowGuideView()
         guideView.isHidden = !isShowGuiderView
@@ -98,10 +83,6 @@ class MainViewController: BaseViewController {
         self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
 
         updateWatchFace()
-        updateWeather()
-        
-        let isShowLocation = Preferences.sharedInstance.getShowLocation()
-        cityNameLabel.isHidden = !isShowLocation
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -120,18 +101,17 @@ class MainViewController: BaseViewController {
         }
         view.layoutIfNeeded()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         
-        timer.invalidate()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "flipClock":
                 if let vc = segue.destination as? FlipClockViewController {
+                    vc.viewModel = viewModel
+                }
+                
+            case "weatherLocation":
+                if let vc = segue.destination as? WeatherLocationViewController {
                     vc.viewModel = viewModel
                 }
                 
@@ -183,24 +163,6 @@ class MainViewController: BaseViewController {
         }
     }
     
-    fileprivate func updateWeather() {
-        let isShowWeather = Preferences.sharedInstance.getShowWeather()
-        weatherStackView.isHidden = !isShowWeather
-        
-        let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather()
-        let data = viewModel.mutipleDaysData.value
-        if isShow5DaysWeather {
-            viewModel.dailyData.value = data
-            dailyViews.forEach({ view in
-                view.isHidden = false
-            })
-        } else {
-            viewModel.dailyData.value = data
-            dailyViews.enumerated().forEach({ (index, view) in
-                view.isHidden = !(index == 0)
-            })
-        }
-    }
     
     fileprivate func adjustFontByDevice(_ isPad: Bool) {
         if isPad {
@@ -243,15 +205,9 @@ class MainViewController: BaseViewController {
 
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
-                
-//                self.flipClockView.setTimeToDate(date, false)
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
-        
-        viewModel.cityName.asObservable()
-        .bind(to: self.cityNameLabel.rx.text)
-        .disposed(by: disposeBag)
-        
+                
         // MARK: bind Top info view and background theme color by currently weather data
         viewModel.weather.asObservable()
             .filter{$0 != nil}
@@ -260,45 +216,6 @@ class MainViewController: BaseViewController {
             }, onError: { error in
                 print(error.localizedDescription)
             }, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
-        
-        // MARK: bind spinner view
-        viewModel.isLoading.asObservable()
-            .subscribe(onNext: { loading in
-                DispatchQueue.main.async {
-                    if loading {
-                        self.weatherStackView.isHidden = true
-                        self.refreshButton.isHidden = true
-                    }
-                    loading ? self.spinnerView.startAnimating() : self.spinnerView.stopAnimating()
-                }
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-        .disposed(by: disposeBag)
-        
-        // MARK: bind daily data with daysWeatherCollectionView
-        viewModel.dailyData.asObservable()
-            .filter { $0.count > 0 }
-            .subscribe(onNext: { data in
-                DispatchQueue.main.async {
-                    self.weatherStackView.isHidden = false
-                    self.refreshButton.isHidden = true
-                }
-                data.enumerated().forEach({ (index, detail) in
-                    let dailyView = self.dailyViews[index]
-                    dailyView.configureCell(detail)
-                })
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-        .disposed(by: disposeBag)
-        
-       // MARK: show error message
-        viewModel.alertMessage.asObservable()
-            .filter { $0.count > 0 }
-            .subscribe(onNext: { errorMessage in
-                DispatchQueue.main.async {
-                    self.weatherStackView.isHidden = true
-                    self.refreshButton.isHidden = false
-                }
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
     
@@ -315,7 +232,6 @@ class MainViewController: BaseViewController {
         countDownTimerContainer.isHidden = !countDownTimerContainer.isHidden
         countDownTimerContainer.isHidden ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
             : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
-
     }
     
     fileprivate func showAlert( _ message: String ) {
@@ -325,12 +241,7 @@ class MainViewController: BaseViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    @IBAction func refreshAction(_ sender: Any?) {
-        viewModel.setupLocationManager()
-        refreshButton.isHidden = true
-    }
-    
+        
     @IBAction func shareAction(_ sender: Any?) {
         let appURL = URL(string: "https://itunes.apple.com/us/app/tic-tac-clock/id1312810639?mt=8&ign-mpt=uo%3D2")!
         let vc = UIActivityViewController(activityItems: [appURL], applicationActivities: [])
@@ -341,7 +252,6 @@ class MainViewController: BaseViewController {
     @objc
     fileprivate func triggleTimer() {
         viewModel.currentDate.value = Date()
-        refreshAction(nil)
     }
     
     @IBAction func guideViewTapped(_ sender: Any?) {

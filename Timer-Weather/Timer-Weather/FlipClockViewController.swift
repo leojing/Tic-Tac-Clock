@@ -39,6 +39,12 @@ class FlipClockViewController: BaseViewController {
             self.isLandscape = isLandscape
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSLog("view will appear")
+    }
 
     // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {

@@ -11,6 +11,7 @@
 		241DD8E52073B987008B760F /* UIView+performBlockAfterDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */; };
 		242194DA20B17AC100B0EBD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 242194DC20B17AC100B0EBD8 /* InfoPlist.strings */; };
 		242194F320B1B18B00B0EBD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 242194F520B1B18B00B0EBD8 /* Localizable.strings */; };
+		2445208120ECEC65004DB47B /* WeatherLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */; };
 		2448CD8020C40FEC00466830 /* FlipClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2448CD7F20C40FEC00466830 /* FlipClockView.swift */; };
 		246BC26D207E33F70051A258 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BC26C207E33F70051A258 /* Preferences.swift */; };
 		246BD10220CA470E00D132B5 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BD10120CA470D00D132B5 /* Localizable.swift */; };
@@ -82,6 +83,7 @@
 		242194F420B1B18B00B0EBD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242194F620B1B18C00B0EBD8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		242194F720B1B19000B0EBD8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationViewController.swift; sourceTree = "<group>"; };
 		2448CD7F20C40FEC00466830 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		246BC26C207E33F70051A258 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		246BD10120CA470D00D132B5 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				24F7883A205FCE2A00712C0C /* AppDelegate.swift */,
 				246DFB3420960B66002F9D73 /* BaseViewController.swift */,
 				24ED089C2061197000DCF838 /* MainViewController.swift */,
+				2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */,
 				24EBB24620CC2129005801F4 /* TimerViewController.swift */,
 				24BA173E20E8718E00BA4A79 /* FlipClockViewController.swift */,
 				24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */,
@@ -581,6 +584,7 @@
 				246DFB3520960B66002F9D73 /* BaseViewController.swift in Sources */,
 				246DFB33209603D9002F9D73 /* UIColor+HexValue.swift in Sources */,
 				24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */,
+				2445208120ECEC65004DB47B /* WeatherLocationViewController.swift in Sources */,
 				24ED08B020611C9700DCF838 /* WeatherDetail.swift in Sources */,
 				24ED08AD20611C9700DCF838 /* Daily.swift in Sources */,
 				24EBB24720CC2129005801F4 /* TimerViewController.swift in Sources */,
