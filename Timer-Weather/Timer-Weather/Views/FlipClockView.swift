@@ -27,6 +27,8 @@ class FlipClockView: UIView {
         let min1 = String(dateString[index1..<index2])
         let min2 = String(dateString.suffix(from: index2))
         
+        let separatorColor = UIColor().hexStringToUIColor(hex: Preferences.sharedInstance.getBackground())
+        let bgColor = UIColor().hexStringToUIColor(hex: Preferences.sharedInstance.getBackground(), r: 20, g: 10, b: 0, alpha: 1.0)
         if let first = Preferences.sharedInstance.getFlipNumber(key: .firstNumber) {
             if first != hour1 {
                 let lowerFirstImage = UIImage(named: flipImageForNumberLower(first))!
@@ -42,6 +44,8 @@ class FlipClockView: UIView {
         } else {
             Preferences.sharedInstance.setFlipNumber(hour1, key: .firstNumber)
             number0View.numberImageView.image = UIImage(named: flipImageForNumber(hour1))
+            number0View.backgroundColor = bgColor
+            number0View.separatorView.backgroundColor = separatorColor
         }
         
         if let second = Preferences.sharedInstance.getFlipNumber(key: .secondNumber) {
@@ -59,6 +63,8 @@ class FlipClockView: UIView {
         } else {
             Preferences.sharedInstance.setFlipNumber(hour2, key: .secondNumber)
             number1View.numberImageView.image = UIImage(named: flipImageForNumber(hour2))
+            number1View.backgroundColor = bgColor
+            number1View.separatorView.backgroundColor = separatorColor
         }
         
         if let third = Preferences.sharedInstance.getFlipNumber(key: .thirdNumber) {
@@ -76,6 +82,8 @@ class FlipClockView: UIView {
         } else {
             Preferences.sharedInstance.setFlipNumber(min1, key: .thirdNumber)
             number2View.numberImageView.image = UIImage(named: flipImageForNumber(min1))
+            number2View.backgroundColor = bgColor
+            number2View.separatorView.backgroundColor = separatorColor
         }
         
         if let forth = Preferences.sharedInstance.getFlipNumber(key: .forthNumber) {
@@ -93,18 +101,20 @@ class FlipClockView: UIView {
         } else {
             Preferences.sharedInstance.setFlipNumber(min2, key: .forthNumber)
             number3View.numberImageView.image = UIImage(named: flipImageForNumber(min2))
+            number3View.backgroundColor = bgColor
+            number3View.separatorView.backgroundColor = separatorColor
         }
     }
     
     fileprivate func flipImageForNumber(_ number: String) -> String {
-        return "number-\(number)"
+        return "Number \(number)"
     }
     
     fileprivate func flipImageForNumberLower(_ number: String) -> String {
-        return "Number \(number) Lower"
+        return "number \(number)-bottom"
     }
     
     fileprivate func flipImageForNumberUpper(_ number: String) -> String {
-        return "Number \(number) Upper"
+        return "number \(number)-top"
     }
 }

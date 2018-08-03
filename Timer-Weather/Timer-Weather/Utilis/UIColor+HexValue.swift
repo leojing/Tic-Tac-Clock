@@ -32,7 +32,11 @@ extension UIColor {
         )
     }
     
-    func hexStringToUIColor(hex:String, r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat) -> UIColor {
+    func hexStringToUIColor(hex:String, r: CGFloat? = 0.0, g: CGFloat? = 0.0, b: CGFloat? = 0.0, alpha: CGFloat? = 1.0) -> UIColor {
+        guard let r = r, let g = g, let b = b, let alpha = alpha else {
+            return UIColor.clear
+        }
+        
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {

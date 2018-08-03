@@ -10,6 +10,7 @@ import UIKit
 
 class FlipNumberView: UIView {
     
+    @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var numberImageView: UIImageView!
     @IBOutlet weak var AImageView: UIImageView?
     @IBOutlet weak var BImageView: UIImageView?

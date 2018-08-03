@@ -1262,6 +1262,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-0Y-MqB" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="58.666666666666664" y="0.0" width="124.33333333333334" height="160.66666666666666"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMe-D3-ZNX">
+                                                <rect key="frame" x="0.0" y="77.333333333333343" width="124.33333333333333" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="9Ek-wa-8gc"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-0" translatesAutoresizingMaskIntoConstraints="NO" id="npn-mD-MFn">
                                                 <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="160.66666666666666"/>
                                             </imageView>
@@ -1279,11 +1286,14 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="HAD-HK-v4y" secondAttribute="bottom" id="AAE-Y2-mFv"/>
                                             <constraint firstItem="a7S-Ec-alZ" firstAttribute="leading" secondItem="fDr-0Y-MqB" secondAttribute="leading" id="Br6-c0-nXD"/>
+                                            <constraint firstItem="SMe-D3-ZNX" firstAttribute="leading" secondItem="fDr-0Y-MqB" secondAttribute="leading" id="HdY-TW-AIk"/>
+                                            <constraint firstItem="SMe-D3-ZNX" firstAttribute="centerY" secondItem="fDr-0Y-MqB" secondAttribute="centerY" id="Ltz-gj-m6W"/>
                                             <constraint firstAttribute="bottom" secondItem="a7S-Ec-alZ" secondAttribute="bottom" id="MAs-z3-XOb"/>
                                             <constraint firstAttribute="trailing" secondItem="npn-mD-MFn" secondAttribute="trailing" id="MI1-NX-EyB"/>
                                             <constraint firstAttribute="trailing" secondItem="9Sl-8J-kms" secondAttribute="trailing" id="ObJ-Dj-eyb"/>
                                             <constraint firstItem="HAD-HK-v4y" firstAttribute="leading" secondItem="fDr-0Y-MqB" secondAttribute="leading" id="OqU-tv-BFk"/>
                                             <constraint firstItem="9Sl-8J-kms" firstAttribute="leading" secondItem="fDr-0Y-MqB" secondAttribute="leading" id="P31-Rt-j8L"/>
+                                            <constraint firstAttribute="trailing" secondItem="SMe-D3-ZNX" secondAttribute="trailing" id="asM-Ae-41L"/>
                                             <constraint firstItem="npn-mD-MFn" firstAttribute="leading" secondItem="fDr-0Y-MqB" secondAttribute="leading" id="cAg-dX-7pU"/>
                                             <constraint firstAttribute="trailing" secondItem="a7S-Ec-alZ" secondAttribute="trailing" id="fDB-RO-xMA"/>
                                             <constraint firstAttribute="bottom" secondItem="9Sl-8J-kms" secondAttribute="bottom" id="hPJ-q0-5Lz"/>
@@ -1295,16 +1305,30 @@
                                             <constraint firstAttribute="bottom" secondItem="npn-mD-MFn" secondAttribute="bottom" id="rQz-je-Ks4"/>
                                             <constraint firstAttribute="width" secondItem="fDr-0Y-MqB" secondAttribute="height" multiplier="75:97" id="wc8-9n-vNN"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="9Sl-8J-kms" id="UMj-X0-eKl"/>
                                             <outlet property="BImageView" destination="HAD-HK-v4y" id="ula-22-rE7"/>
                                             <outlet property="CImageView" destination="a7S-Ec-alZ" id="bjc-Ok-cPO"/>
                                             <outlet property="numberImageView" destination="npn-mD-MFn" id="vD0-vt-FHH"/>
+                                            <outlet property="separatorView" destination="SMe-D3-ZNX" id="jFy-8b-Sx0"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSe-rs-31b" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="192.66666666666666" y="0.0" width="123.99999999999997" height="160.66666666666666"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gx-pJ-2UB">
+                                                <rect key="frame" x="-0.66666666666665719" y="77.333333333333343" width="124.33333333333333" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="ooG-9k-Nlj"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-9" translatesAutoresizingMaskIntoConstraints="NO" id="Coa-r3-JBK">
                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="160.66666666666666"/>
                                             </imageView>
@@ -1323,6 +1347,7 @@
                                             <constraint firstAttribute="bottom" secondItem="pIG-ZJ-Y9M" secondAttribute="bottom" id="110-DO-qPl"/>
                                             <constraint firstItem="gm8-uc-lAu" firstAttribute="leading" secondItem="HSe-rs-31b" secondAttribute="leading" id="2a3-7E-aKW"/>
                                             <constraint firstItem="gm8-uc-lAu" firstAttribute="top" secondItem="HSe-rs-31b" secondAttribute="top" id="Cug-pn-3LW"/>
+                                            <constraint firstAttribute="trailing" secondItem="4Gx-pJ-2UB" secondAttribute="trailing" id="Fgt-t1-lXA"/>
                                             <constraint firstItem="x8o-zf-IoR" firstAttribute="top" secondItem="HSe-rs-31b" secondAttribute="top" id="GDd-pe-EiE"/>
                                             <constraint firstAttribute="trailing" secondItem="Coa-r3-JBK" secondAttribute="trailing" id="ISG-Ok-KA0"/>
                                             <constraint firstAttribute="trailing" secondItem="pIG-ZJ-Y9M" secondAttribute="trailing" id="Kli-NN-bed"/>
@@ -1332,21 +1357,37 @@
                                             <constraint firstItem="Coa-r3-JBK" firstAttribute="top" secondItem="HSe-rs-31b" secondAttribute="top" id="Y9t-mQ-Ykv"/>
                                             <constraint firstAttribute="bottom" secondItem="x8o-zf-IoR" secondAttribute="bottom" id="aE9-SQ-9dJ"/>
                                             <constraint firstItem="pIG-ZJ-Y9M" firstAttribute="leading" secondItem="HSe-rs-31b" secondAttribute="leading" id="aL0-ZG-CNw"/>
+                                            <constraint firstItem="4Gx-pJ-2UB" firstAttribute="leading" secondItem="HSe-rs-31b" secondAttribute="leading" id="azq-Ro-7q0"/>
                                             <constraint firstItem="pIG-ZJ-Y9M" firstAttribute="top" secondItem="HSe-rs-31b" secondAttribute="top" id="bIT-sI-vLc"/>
                                             <constraint firstAttribute="trailing" secondItem="x8o-zf-IoR" secondAttribute="trailing" id="hxT-3R-LTC"/>
                                             <constraint firstAttribute="bottom" secondItem="gm8-uc-lAu" secondAttribute="bottom" id="qh5-4S-Wkr"/>
                                             <constraint firstItem="x8o-zf-IoR" firstAttribute="leading" secondItem="HSe-rs-31b" secondAttribute="leading" id="uNg-Pw-dSq"/>
+                                            <constraint firstItem="4Gx-pJ-2UB" firstAttribute="centerY" secondItem="HSe-rs-31b" secondAttribute="centerY" id="v0M-ma-a43"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="gm8-uc-lAu" id="Fw5-uy-aPF"/>
                                             <outlet property="BImageView" destination="x8o-zf-IoR" id="hXd-Pz-6cn"/>
                                             <outlet property="CImageView" destination="pIG-ZJ-Y9M" id="75L-UU-ogw"/>
                                             <outlet property="numberImageView" destination="Coa-r3-JBK" id="sxY-jZ-8w3"/>
+                                            <outlet property="separatorView" destination="4Gx-pJ-2UB" id="I0U-4n-wwS"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waL-EG-dMv" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="58.666666666666664" y="165.66666666666669" width="124.33333333333334" height="161.33333333333331"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5oZ-mk-7LB">
+                                                <rect key="frame" x="-0.6666666666666643" y="77.666666666666629" width="124.33333333333331" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="pjn-lM-o30"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-4" translatesAutoresizingMaskIntoConstraints="NO" id="Rwx-Y1-Si3">
                                                 <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="161.33333333333334"/>
                                             </imageView>
@@ -1366,12 +1407,15 @@
                                             <constraint firstItem="XBz-mO-TQe" firstAttribute="top" secondItem="waL-EG-dMv" secondAttribute="top" id="3pl-LL-q03"/>
                                             <constraint firstItem="A3H-pR-xXc" firstAttribute="leading" secondItem="waL-EG-dMv" secondAttribute="leading" id="EAq-z1-l0n"/>
                                             <constraint firstItem="Rwx-Y1-Si3" firstAttribute="top" secondItem="waL-EG-dMv" secondAttribute="top" id="KMm-Q5-mYR"/>
+                                            <constraint firstItem="5oZ-mk-7LB" firstAttribute="leading" secondItem="waL-EG-dMv" secondAttribute="leading" id="KWE-oz-7Lp"/>
                                             <constraint firstItem="zJh-uV-nl5" firstAttribute="leading" secondItem="waL-EG-dMv" secondAttribute="leading" id="Osj-hr-aGB"/>
                                             <constraint firstItem="Rwx-Y1-Si3" firstAttribute="leading" secondItem="waL-EG-dMv" secondAttribute="leading" id="OvP-hQ-ZhD"/>
+                                            <constraint firstAttribute="trailing" secondItem="5oZ-mk-7LB" secondAttribute="trailing" id="Sd2-R5-8hq"/>
                                             <constraint firstItem="zJh-uV-nl5" firstAttribute="top" secondItem="waL-EG-dMv" secondAttribute="top" id="TNl-bw-nAC"/>
                                             <constraint firstAttribute="bottom" secondItem="Rwx-Y1-Si3" secondAttribute="bottom" id="UkG-o7-BD1"/>
                                             <constraint firstAttribute="trailing" secondItem="XBz-mO-TQe" secondAttribute="trailing" id="Wsk-Rb-JaO"/>
                                             <constraint firstAttribute="bottom" secondItem="A3H-pR-xXc" secondAttribute="bottom" id="YiB-oo-w4K"/>
+                                            <constraint firstItem="5oZ-mk-7LB" firstAttribute="centerY" secondItem="waL-EG-dMv" secondAttribute="centerY" id="aH1-va-uTa"/>
                                             <constraint firstAttribute="trailing" secondItem="zJh-uV-nl5" secondAttribute="trailing" id="dUF-NW-vOg"/>
                                             <constraint firstAttribute="bottom" secondItem="XBz-mO-TQe" secondAttribute="bottom" id="gdg-Fc-wof"/>
                                             <constraint firstItem="A3H-pR-xXc" firstAttribute="top" secondItem="waL-EG-dMv" secondAttribute="top" id="ikU-pd-uez"/>
@@ -1379,16 +1423,30 @@
                                             <constraint firstAttribute="bottom" secondItem="zJh-uV-nl5" secondAttribute="bottom" id="wa9-ZK-uOE"/>
                                             <constraint firstAttribute="trailing" secondItem="Rwx-Y1-Si3" secondAttribute="trailing" id="xDv-WV-YP1"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="zJh-uV-nl5" id="OmR-23-j3F"/>
                                             <outlet property="BImageView" destination="XBz-mO-TQe" id="9t7-MR-T85"/>
                                             <outlet property="CImageView" destination="A3H-pR-xXc" id="Fug-Tx-nCg"/>
                                             <outlet property="numberImageView" destination="Rwx-Y1-Si3" id="Oeg-2X-Ktx"/>
+                                            <outlet property="separatorView" destination="5oZ-mk-7LB" id="Fg4-hg-3NV"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pza-iN-QGj" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="192.66666666666666" y="165.66666666666669" width="123.99999999999997" height="161.33333333333331"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erc-VB-dwX">
+                                                <rect key="frame" x="-0.66666666666665719" y="77.666666666666629" width="124.33333333333333" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="RfE-7J-AgO"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-2" translatesAutoresizingMaskIntoConstraints="NO" id="vRW-XQ-CUw">
                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="161.33333333333334"/>
                                             </imageView>
@@ -1404,14 +1462,17 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="erc-VB-dwX" secondAttribute="trailing" id="7c5-mD-iNa"/>
                                             <constraint firstAttribute="trailing" secondItem="D4d-WK-BSV" secondAttribute="trailing" id="9XK-kw-fQG"/>
                                             <constraint firstAttribute="trailing" secondItem="vRW-XQ-CUw" secondAttribute="trailing" id="AHd-iF-JNB"/>
                                             <constraint firstAttribute="bottom" secondItem="pnZ-P4-747" secondAttribute="bottom" id="Suz-mb-4F8"/>
                                             <constraint firstItem="DKm-RM-6xf" firstAttribute="top" secondItem="pza-iN-QGj" secondAttribute="top" id="SzE-aa-R9z"/>
                                             <constraint firstItem="D4d-WK-BSV" firstAttribute="leading" secondItem="pza-iN-QGj" secondAttribute="leading" id="Y00-Fb-ba2"/>
                                             <constraint firstAttribute="trailing" secondItem="pnZ-P4-747" secondAttribute="trailing" id="Yvs-tH-2bL"/>
+                                            <constraint firstItem="erc-VB-dwX" firstAttribute="leading" secondItem="pza-iN-QGj" secondAttribute="leading" id="bm5-Yf-ji6"/>
                                             <constraint firstItem="pnZ-P4-747" firstAttribute="top" secondItem="pza-iN-QGj" secondAttribute="top" id="btW-tD-QMu"/>
                                             <constraint firstAttribute="bottom" secondItem="vRW-XQ-CUw" secondAttribute="bottom" id="fHa-43-XWo"/>
+                                            <constraint firstItem="erc-VB-dwX" firstAttribute="centerY" secondItem="pza-iN-QGj" secondAttribute="centerY" id="g9Y-n3-118"/>
                                             <constraint firstItem="pnZ-P4-747" firstAttribute="leading" secondItem="pza-iN-QGj" secondAttribute="leading" id="gS3-Vj-Pv7"/>
                                             <constraint firstAttribute="trailing" secondItem="DKm-RM-6xf" secondAttribute="trailing" id="gh4-7M-NFw"/>
                                             <constraint firstItem="D4d-WK-BSV" firstAttribute="top" secondItem="pza-iN-QGj" secondAttribute="top" id="gl5-G2-Qiz"/>
@@ -1421,11 +1482,18 @@
                                             <constraint firstItem="vRW-XQ-CUw" firstAttribute="top" secondItem="pza-iN-QGj" secondAttribute="top" id="nNm-2G-CuP"/>
                                             <constraint firstItem="DKm-RM-6xf" firstAttribute="leading" secondItem="pza-iN-QGj" secondAttribute="leading" id="oy1-Ig-TQi"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="pnZ-P4-747" id="6St-wA-484"/>
                                             <outlet property="BImageView" destination="D4d-WK-BSV" id="nC5-Ad-4ru"/>
                                             <outlet property="CImageView" destination="DKm-RM-6xf" id="NB0-78-2EZ"/>
                                             <outlet property="numberImageView" destination="vRW-XQ-CUw" id="1ga-eT-L2r"/>
+                                            <outlet property="separatorView" destination="erc-VB-dwX" id="TvU-7G-ubT"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -1460,6 +1528,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBP-nY-g63" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="-4.6666666666666643" y="311" width="86.333333333333314" height="112"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmR-Ci-pF0">
+                                                <rect key="frame" x="0.0" y="53.666666666666686" width="86.333333333333329" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="sSF-IB-Rap"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-0" translatesAutoresizingMaskIntoConstraints="NO" id="w8E-Ij-bfO">
                                                 <rect key="frame" x="0.0" y="0.0" width="86.333333333333329" height="112"/>
                                             </imageView>
@@ -1480,6 +1555,8 @@
                                             <constraint firstItem="ffs-hM-Nca" firstAttribute="top" secondItem="zBP-nY-g63" secondAttribute="top" id="Arz-VJ-Cna"/>
                                             <constraint firstAttribute="trailing" secondItem="e5p-U2-eJb" secondAttribute="trailing" id="DMv-Tg-DqT"/>
                                             <constraint firstItem="e5p-U2-eJb" firstAttribute="top" secondItem="zBP-nY-g63" secondAttribute="top" id="Tg6-ry-abI"/>
+                                            <constraint firstItem="tmR-Ci-pF0" firstAttribute="leading" secondItem="zBP-nY-g63" secondAttribute="leading" id="ThP-OI-gpa"/>
+                                            <constraint firstItem="tmR-Ci-pF0" firstAttribute="centerY" secondItem="zBP-nY-g63" secondAttribute="centerY" id="XNB-E2-Wfq"/>
                                             <constraint firstItem="7hq-cW-ybf" firstAttribute="top" secondItem="zBP-nY-g63" secondAttribute="top" id="XqM-ha-YBu"/>
                                             <constraint firstAttribute="trailing" secondItem="7hq-cW-ybf" secondAttribute="trailing" id="aH3-eW-fWk"/>
                                             <constraint firstAttribute="bottom" secondItem="e5p-U2-eJb" secondAttribute="bottom" id="b8L-J1-oNh"/>
@@ -1489,20 +1566,35 @@
                                             <constraint firstItem="w8E-Ij-bfO" firstAttribute="top" secondItem="zBP-nY-g63" secondAttribute="top" id="l7O-4u-vez"/>
                                             <constraint firstItem="ffs-hM-Nca" firstAttribute="leading" secondItem="zBP-nY-g63" secondAttribute="leading" id="l9g-04-rDF"/>
                                             <constraint firstItem="7hq-cW-ybf" firstAttribute="leading" secondItem="zBP-nY-g63" secondAttribute="leading" id="pFn-fr-87G"/>
+                                            <constraint firstAttribute="trailing" secondItem="tmR-Ci-pF0" secondAttribute="trailing" id="rwE-PT-dEG"/>
                                             <constraint firstItem="e5p-U2-eJb" firstAttribute="leading" secondItem="zBP-nY-g63" secondAttribute="leading" id="sJg-2O-ceT"/>
                                             <constraint firstAttribute="width" secondItem="zBP-nY-g63" secondAttribute="height" multiplier="75:97" id="tni-TR-gZT"/>
                                             <constraint firstAttribute="trailing" secondItem="ffs-hM-Nca" secondAttribute="trailing" id="x45-Jg-hg9"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="7hq-cW-ybf" id="ohz-hL-dem"/>
                                             <outlet property="BImageView" destination="ffs-hM-Nca" id="kpZ-5z-4ad"/>
                                             <outlet property="CImageView" destination="e5p-U2-eJb" id="dNg-EA-YgN"/>
                                             <outlet property="numberImageView" destination="w8E-Ij-bfO" id="HyI-D1-soi"/>
+                                            <outlet property="separatorView" destination="tmR-Ci-pF0" id="GWK-4k-SVx"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxP-AB-ptR" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="86.666666666666657" y="311" width="86.666666666666657" height="112"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHx-Pq-H2g">
+                                                <rect key="frame" x="-0.6666666666666714" y="53" width="87.333333333333329" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="F4O-z1-B0D"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-9" translatesAutoresizingMaskIntoConstraints="NO" id="8Oj-iS-XCf">
                                                 <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="112"/>
                                             </imageView>
@@ -1520,6 +1612,8 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="8Oj-iS-XCf" secondAttribute="trailing" id="4Nh-Mn-dsZ"/>
                                             <constraint firstAttribute="trailing" secondItem="cwj-J5-gZ2" secondAttribute="trailing" id="7vI-Xf-Lmb"/>
+                                            <constraint firstItem="rHx-Pq-H2g" firstAttribute="leading" secondItem="LxP-AB-ptR" secondAttribute="leading" id="9wS-Le-7wB"/>
+                                            <constraint firstItem="rHx-Pq-H2g" firstAttribute="centerY" secondItem="LxP-AB-ptR" secondAttribute="centerY" id="C74-nI-xol"/>
                                             <constraint firstItem="a4C-DZ-KnC" firstAttribute="top" secondItem="LxP-AB-ptR" secondAttribute="top" id="JsY-vn-D43"/>
                                             <constraint firstItem="sri-9o-UwO" firstAttribute="top" secondItem="LxP-AB-ptR" secondAttribute="top" id="Jxm-7t-lku"/>
                                             <constraint firstAttribute="bottom" secondItem="sri-9o-UwO" secondAttribute="bottom" id="LUn-he-IUi"/>
@@ -1528,6 +1622,7 @@
                                             <constraint firstItem="a4C-DZ-KnC" firstAttribute="leading" secondItem="LxP-AB-ptR" secondAttribute="leading" id="Zr0-D2-pvp"/>
                                             <constraint firstAttribute="trailing" secondItem="a4C-DZ-KnC" secondAttribute="trailing" id="ahe-Yd-QUi"/>
                                             <constraint firstAttribute="bottom" secondItem="cwj-J5-gZ2" secondAttribute="bottom" id="akc-We-nWk"/>
+                                            <constraint firstAttribute="trailing" secondItem="rHx-Pq-H2g" secondAttribute="trailing" id="cmB-ZU-4bp"/>
                                             <constraint firstItem="cwj-J5-gZ2" firstAttribute="leading" secondItem="LxP-AB-ptR" secondAttribute="leading" id="hIK-Uh-BjC"/>
                                             <constraint firstAttribute="width" secondItem="LxP-AB-ptR" secondAttribute="height" multiplier="75:97" id="iWy-2c-dTg"/>
                                             <constraint firstAttribute="bottom" secondItem="a4C-DZ-KnC" secondAttribute="bottom" id="la2-Fn-kep"/>
@@ -1536,16 +1631,30 @@
                                             <constraint firstItem="cwj-J5-gZ2" firstAttribute="top" secondItem="LxP-AB-ptR" secondAttribute="top" id="x58-0x-en9"/>
                                             <constraint firstAttribute="trailing" secondItem="sri-9o-UwO" secondAttribute="trailing" id="yJH-hv-nqe"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="sri-9o-UwO" id="Uio-C0-Tv3"/>
                                             <outlet property="BImageView" destination="cwj-J5-gZ2" id="a1Y-EP-plN"/>
                                             <outlet property="CImageView" destination="a4C-DZ-KnC" id="PS8-Is-tz9"/>
                                             <outlet property="numberImageView" destination="8Oj-iS-XCf" id="1dB-WZ-Xss"/>
+                                            <outlet property="separatorView" destination="rHx-Pq-H2g" id="Sbr-oQ-QIl"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8x1-0J-jWZ" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="203.33333333333334" y="310.66666666666669" width="86.000000000000028" height="111.66666666666669"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23C-En-4Mj">
+                                                <rect key="frame" x="-0.33333333333334281" y="53.333333333333314" width="86.333333333333329" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="3FL-tm-rIU"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-4" translatesAutoresizingMaskIntoConstraints="NO" id="wpA-tc-Y8Q">
                                                 <rect key="frame" x="0.66666666666665719" y="0.0" width="85.666666666666671" height="111.66666666666667"/>
                                             </imageView>
@@ -1562,6 +1671,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="VXd-Tw-Ufh" secondAttribute="trailing" id="0Lw-X7-YXB"/>
+                                            <constraint firstItem="23C-En-4Mj" firstAttribute="leading" secondItem="8x1-0J-jWZ" secondAttribute="leading" id="1Oc-lE-7vg"/>
                                             <constraint firstAttribute="bottom" secondItem="3VJ-N5-FmC" secondAttribute="bottom" id="3LY-06-aoQ"/>
                                             <constraint firstAttribute="trailing" secondItem="3VJ-N5-FmC" secondAttribute="trailing" id="3Pf-uY-bp2"/>
                                             <constraint firstItem="3VJ-N5-FmC" firstAttribute="leading" secondItem="8x1-0J-jWZ" secondAttribute="leading" id="6Dp-rA-VFl"/>
@@ -1574,21 +1684,37 @@
                                             <constraint firstAttribute="bottom" secondItem="u7c-9V-CLj" secondAttribute="bottom" id="OdR-xq-wIM"/>
                                             <constraint firstItem="VXd-Tw-Ufh" firstAttribute="leading" secondItem="8x1-0J-jWZ" secondAttribute="leading" id="bGB-lp-rB2"/>
                                             <constraint firstItem="3VJ-N5-FmC" firstAttribute="top" secondItem="8x1-0J-jWZ" secondAttribute="top" id="epq-GT-1mB"/>
+                                            <constraint firstAttribute="trailing" secondItem="23C-En-4Mj" secondAttribute="trailing" id="fLg-ww-sAV"/>
                                             <constraint firstItem="u7c-9V-CLj" firstAttribute="top" secondItem="8x1-0J-jWZ" secondAttribute="top" id="gIy-30-9Sy"/>
                                             <constraint firstItem="VXd-Tw-Ufh" firstAttribute="top" secondItem="8x1-0J-jWZ" secondAttribute="top" id="l3G-gu-yAH"/>
+                                            <constraint firstItem="23C-En-4Mj" firstAttribute="centerY" secondItem="8x1-0J-jWZ" secondAttribute="centerY" id="tWn-84-nQd"/>
                                             <constraint firstAttribute="bottom" secondItem="VXd-Tw-Ufh" secondAttribute="bottom" id="uYj-87-odu"/>
                                             <constraint firstAttribute="trailing" secondItem="wpA-tc-Y8Q" secondAttribute="trailing" id="wQM-sW-KYk"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="3VJ-N5-FmC" id="sAV-ya-Ns5"/>
                                             <outlet property="BImageView" destination="VXd-Tw-Ufh" id="haz-HB-61e"/>
                                             <outlet property="CImageView" destination="u7c-9V-CLj" id="oJo-08-dwi"/>
                                             <outlet property="numberImageView" destination="wpA-tc-Y8Q" id="Ifi-nY-cuu"/>
+                                            <outlet property="separatorView" destination="23C-En-4Mj" id="7Lt-NW-hvr"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghd-Vn-IR8" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                         <rect key="frame" x="294.33333333333331" y="311" width="86.333333333333314" height="112"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GD4-qu-W5R">
+                                                <rect key="frame" x="-0.33333333333331439" y="53" width="86.333333333333329" height="5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="10C-gF-Rrz"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number-2" translatesAutoresizingMaskIntoConstraints="NO" id="qnN-lr-8U8">
                                                 <rect key="frame" x="0.0" y="0.0" width="87" height="112"/>
                                             </imageView>
@@ -1604,6 +1730,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="GD4-qu-W5R" secondAttribute="trailing" id="0m1-q4-zZf"/>
                                             <constraint firstAttribute="width" secondItem="ghd-Vn-IR8" secondAttribute="height" multiplier="75:97" id="2RC-dO-zVL"/>
                                             <constraint firstAttribute="trailing" secondItem="478-fN-1TI" secondAttribute="trailing" id="BAG-4a-l4f"/>
                                             <constraint firstItem="478-fN-1TI" firstAttribute="top" secondItem="ghd-Vn-IR8" secondAttribute="top" id="BIa-Rz-LEq"/>
@@ -1613,20 +1740,29 @@
                                             <constraint firstAttribute="trailing" secondItem="qnN-lr-8U8" secondAttribute="trailing" id="UCg-kc-tBV"/>
                                             <constraint firstAttribute="bottom" secondItem="Uxu-NI-D2v" secondAttribute="bottom" id="UQP-gQ-eYe"/>
                                             <constraint firstAttribute="trailing" secondItem="Uxu-NI-D2v" secondAttribute="trailing" id="VWG-q1-5sR"/>
+                                            <constraint firstItem="GD4-qu-W5R" firstAttribute="leading" secondItem="ghd-Vn-IR8" secondAttribute="leading" id="WFb-Lj-94Q"/>
                                             <constraint firstItem="qnN-lr-8U8" firstAttribute="top" secondItem="ghd-Vn-IR8" secondAttribute="top" id="YZs-vI-Jux"/>
                                             <constraint firstItem="E9x-0x-KLM" firstAttribute="leading" secondItem="ghd-Vn-IR8" secondAttribute="leading" id="bfJ-ki-Dpu"/>
                                             <constraint firstItem="Uxu-NI-D2v" firstAttribute="leading" secondItem="ghd-Vn-IR8" secondAttribute="leading" id="dQF-SF-j6V"/>
                                             <constraint firstAttribute="bottom" secondItem="478-fN-1TI" secondAttribute="bottom" id="fjo-72-llB"/>
+                                            <constraint firstItem="GD4-qu-W5R" firstAttribute="centerY" secondItem="ghd-Vn-IR8" secondAttribute="centerY" id="nAZ-f0-Lme"/>
                                             <constraint firstItem="478-fN-1TI" firstAttribute="leading" secondItem="ghd-Vn-IR8" secondAttribute="leading" id="rkp-s0-Xzj"/>
                                             <constraint firstItem="Uxu-NI-D2v" firstAttribute="top" secondItem="ghd-Vn-IR8" secondAttribute="top" id="vCd-ty-s31"/>
                                             <constraint firstItem="qnN-lr-8U8" firstAttribute="leading" secondItem="ghd-Vn-IR8" secondAttribute="leading" id="xaC-iZ-a0k"/>
                                             <constraint firstAttribute="bottom" secondItem="E9x-0x-KLM" secondAttribute="bottom" id="zY2-xL-u08"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="AImageView" destination="Uxu-NI-D2v" id="oMq-kn-18r"/>
                                             <outlet property="BImageView" destination="478-fN-1TI" id="a9z-YU-vpW"/>
                                             <outlet property="CImageView" destination="E9x-0x-KLM" id="ukv-cR-ND6"/>
                                             <outlet property="numberImageView" destination="qnN-lr-8U8" id="dSY-Zh-CW6"/>
+                                            <outlet property="separatorView" destination="GD4-qu-W5R" id="udc-zt-kBp"/>
                                         </connections>
                                     </view>
                                 </subviews>
