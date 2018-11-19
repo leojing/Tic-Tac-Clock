@@ -10,7 +10,6 @@ import Foundation
 
 
 struct WeatherDisplayModel {
-    
     let city: String?
     let summary: String?
     let temperature: Double?

@@ -164,6 +164,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		243431B7219D86CB00FD7D92 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				246DFB3420960B66002F9D73 /* BaseViewController.swift */,
+				24ED089C2061197000DCF838 /* MainViewController.swift */,
+				2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */,
+				24EBB24620CC2129005801F4 /* TimerViewController.swift */,
+				24BA173E20E8718E00BA4A79 /* FlipClockViewController.swift */,
+				24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */,
+				2403762E2095E80900818D83 /* SelectionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		243431B8219D86EB00FD7D92 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				242194DC20B17AC100B0EBD8 /* InfoPlist.strings */,
+				242194F520B1B18B00B0EBD8 /* Localizable.strings */,
+				246BD10120CA470D00D132B5 /* Localizable.swift */,
+				24F78841205FCE2A00712C0C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		24ED089E20611C9600DCF838 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +235,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		24ED08BE20626EBE00DCF838 /* Utilis */ = {
+		24ED08BE20626EBE00DCF838 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				24ED08BF20626EBE00DCF838 /* String+Customise.swift */,
@@ -218,7 +243,7 @@
 				241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */,
 				246DFB32209603D9002F9D73 /* UIColor+HexValue.swift */,
 			);
-			path = Utilis;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		24F7882E205FCE2A00712C0C = {
@@ -246,26 +271,17 @@
 		24F78839205FCE2A00712C0C /* Timer-Weather */ = {
 			isa = PBXGroup;
 			children = (
-				24ED08BE20626EBE00DCF838 /* Utilis */,
-				24ED08A820611C9600DCF838 /* Networking */,
-				24ED089E20611C9600DCF838 /* Models */,
-				24ED08A620611C9600DCF838 /* ViewModels */,
-				24ED08B920626E0B00DCF838 /* Views */,
 				24F7883A205FCE2A00712C0C /* AppDelegate.swift */,
-				246DFB3420960B66002F9D73 /* BaseViewController.swift */,
-				24ED089C2061197000DCF838 /* MainViewController.swift */,
-				2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */,
-				24EBB24620CC2129005801F4 /* TimerViewController.swift */,
-				24BA173E20E8718E00BA4A79 /* FlipClockViewController.swift */,
-				24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */,
-				2403762E2095E80900818D83 /* SelectionViewController.swift */,
+				243431B7219D86CB00FD7D92 /* ViewControllers */,
+				24ED08B920626E0B00DCF838 /* Views */,
+				24ED08A620611C9600DCF838 /* ViewModels */,
+				24ED089E20611C9600DCF838 /* Models */,
+				24ED08A820611C9600DCF838 /* Networking */,
+				24ED08BE20626EBE00DCF838 /* Utilities */,
+				243431B8219D86EB00FD7D92 /* Resources */,
 				24F7883E205FCE2A00712C0C /* Main.storyboard */,
-				24F78841205FCE2A00712C0C /* Assets.xcassets */,
 				24F78843205FCE2A00712C0C /* LaunchScreen.storyboard */,
 				24F78846205FCE2A00712C0C /* Info.plist */,
-				242194DC20B17AC100B0EBD8 /* InfoPlist.strings */,
-				242194F520B1B18B00B0EBD8 /* Localizable.strings */,
-				246BD10120CA470D00D132B5 /* Localizable.swift */,
 			);
 			path = "Timer-Weather";
 			sourceTree = "<group>";
@@ -452,7 +468,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=$PROJECT_DIR/Pods/SwiftGen/bin/:$PATH\n\nif which swiftgen >/dev/null; then\nswiftgen strings \"$PROJECT_DIR/Timer-Weather/en.lproj/Localizable.strings\" --template structured-swift4 --param enumName=\"Localizable\" --output \"$PROJECT_DIR/Timer-Weather/Localizable.swift\"\nelse\necho \"SwiftGen not installed\"\nfi";
+			shellScript = "export PATH=$PROJECT_DIR/Pods/SwiftGen/bin/:$PATH\n\nif which swiftgen >/dev/null; then\nswiftgen strings \"$PROJECT_DIR/Timer-Weather/Resources/en.lproj/Localizable.strings\" --template structured-swift4 --param enumName=\"Localizable\" --output \"$PROJECT_DIR/Timer-Weather/Resources/Localizable.swift\"\nelse\necho \"SwiftGen not installed\"\nfi\n";
 		};
 		53E1456DFA773C4ADD9B608A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -84,7 +84,7 @@ class AnalogClockView : UIView {
             damping = 0.6
         }
         
-        UIView.animate(withDuration: TimeInterval(duration), delay: 0, usingSpringWithDamping: CGFloat(damping), initialSpringVelocity: 0.8, options: UIViewAnimationOptions(rawValue: 0), animations: {
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0, usingSpringWithDamping: CGFloat(damping), initialSpringVelocity: 0.8, options: UIView.AnimationOptions(rawValue: 0), animations: {
             theHandView.transform = CGAffineTransform(rotationAngle: toAngle)
         }, completion: nil)
     }

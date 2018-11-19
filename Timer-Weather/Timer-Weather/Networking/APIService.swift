@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 import Alamofire
 
 // MARK: - RequestStatus definition
@@ -96,7 +95,7 @@ extension APIConfig {
 
 // MARK: - APIService protocol definition
 protocol APIService {
-    func fetchWeatherInfo(_ config: APIConfig) -> Observable<RequestStatus>
-    func networkRequest(_ config: APIConfig, completionHandler: @escaping ((_ jsonResponse: [String: Any]?, _ error: RequestError?) -> Void))
+    func fetchWeatherInfo(_ config: APIConfig, _ completionHandler: @escaping ((_ status: RequestStatus) -> Void))
+    func networkRequest(_ config: APIConfig, completionHandler: @escaping ((_ jsonResponse: Data?, _ error: RequestError?) -> Void))
 }
 

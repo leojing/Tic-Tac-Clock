@@ -61,7 +61,7 @@ class CircleProgressBar:UIView {
         shape.strokeColor = UIColor.red.cgColor
         shape.lineWidth = 10
         shape.fillColor = UIColor.clear.cgColor
-        shape.lineCap = kCALineCapRound
+        shape.lineCap = CAShapeLayerLineCap.round
         shape.position = center
         return shape
     }
@@ -115,7 +115,7 @@ class CircleProgressBar:UIView {
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.toValue = 1.1
         animation.duration = 0.5
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         animation.autoreverses = true
         animation.repeatCount = Float.infinity
         pulsatingLayer?.add(animation, forKey: "pulsing")

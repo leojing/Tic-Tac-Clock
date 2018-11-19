@@ -28,7 +28,7 @@ class SelectionViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         if let colors = selectionType?.getbackgroundColors() {
             let selectedIndex = getSelectedIndexPath(selectionType)

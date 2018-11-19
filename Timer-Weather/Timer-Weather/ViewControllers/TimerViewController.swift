@@ -211,7 +211,7 @@ class TimerViewController: BaseViewController {
         guard let url = Bundle.main.url(forResource: "soundName", withExtension: "mp3") else { return }
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default, options: [])
             try AVAudioSession.sharedInstance().setActive(true)
             
             objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)

@@ -7,38 +7,35 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 import HGCircularSlider
 
 class MainViewController: BaseViewController {
     
-    @IBOutlet weak var flipClockContainer: UIView!
-    @IBOutlet weak var circleTimerView: UIView!
+    @IBOutlet private weak var flipClockContainer: UIView!
+    @IBOutlet private weak var circleTimerView: UIView!
     
-    @IBOutlet weak var clockViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var clockView: AnalogClockView!
-    @IBOutlet weak var smallClockView: AnalogClockView!
-    @IBOutlet weak var dateInWatchLabel: UILabel!
+    @IBOutlet private weak var clockViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var clockView: AnalogClockView!
+    @IBOutlet private weak var smallClockView: AnalogClockView!
+    @IBOutlet private weak var dateInWatchLabel: UILabel!
     
-    @IBOutlet weak var digitalTimerView: UIView!
-    @IBOutlet weak var digitalTimerHourLabel: UILabel!
-    @IBOutlet weak var digitalTimerMinLabel: UILabel!
-    @IBOutlet weak var digitalTimerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var digitalTimerView: UIView!
+    @IBOutlet private weak var digitalTimerHourLabel: UILabel!
+    @IBOutlet private weak var digitalTimerMinLabel: UILabel!
+    @IBOutlet private weak var digitalTimerHeightConstraint: NSLayoutConstraint!
 
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var dateLabelTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dateLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var dateLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var dateLabelHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var weatherLocationView: UIView!
+    @IBOutlet private weak var weatherLocationView: UIView!
 
-    @IBOutlet weak var countDownTimerContainer: UIView!
-    @IBOutlet weak var guideView: UIView!
+    @IBOutlet private weak var countDownTimerContainer: UIView!
+    @IBOutlet private weak var guideView: UIView!
     
-    fileprivate let disposeBag = DisposeBag()
     var viewModel: MainViewModel = MainViewModel() {
         didSet {
-            setupViewModelBinds()
+            setupViewModel()
         }
     }
     
@@ -59,7 +56,7 @@ class MainViewController: BaseViewController {
 
         navigationController?.interactivePopGestureRecognizer?.delegate = self
 
-        NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         adjustFontByDevice(viewModel.isPad)
     }
@@ -87,6 +84,10 @@ class MainViewController: BaseViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         rotateDevice()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func rotateDevice() {
@@ -177,46 +178,43 @@ class MainViewController: BaseViewController {
     }
 
     // MARK: Bind ViewModel
-    fileprivate func setupViewModelBinds() {
+    fileprivate func setupViewModel() {
         
-        viewModel.currentDigitalTime.asObservable()
-            .subscribe(onNext: { timer in
+        viewModel.currentDigitalTimeDidUpdate = { timer in
+            DispatchQueue.main.async {
                 var index = timer.index(timer.startIndex, offsetBy: 2)
                 self.digitalTimerHourLabel.text = String(timer.prefix(upTo: index))
                 index = timer.index(timer.endIndex, offsetBy: -2)
                 self.digitalTimerMinLabel.text = ":\(String(timer.suffix(from: index)))"
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-        .disposed(by: disposeBag)
+            }
+        }
         
-        viewModel.currentDate.asObservable()
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { date in
+        viewModel.currentDateDidUpdate = { date in
+            DispatchQueue.main.async {
                 let attributedString = NSMutableAttributedString(string: (date.dayOfWeekShort()?.uppercased())!)
-                attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
+                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
                 let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
                 if watchfaceIndex < 5 {
-                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: 3))
+                    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: 3))
                 } else {
-                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
+                    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
                 }
                 self.dateInWatchLabel.attributedText = attributedString
-
+                
                 self.dateLabel.text = date.dayOfWeek(Preferences.sharedInstance.getDateFormat())
-
+                
                 self.clockView.setTimeToDate(date, false)
                 self.smallClockView.setTimeToDate(date, false)
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-        .disposed(by: disposeBag)
-                
-        // MARK: bind Top info view and background theme color by currently weather data
-        viewModel.weather.asObservable()
-            .filter{$0 != nil}
-            .subscribe(onNext: { w in
-                NSLog("Weather info is \(String(describing: w?.currently?.summary))")
-            }, onError: { error in
-                print(error.localizedDescription)
-            }, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
+            }
+        }
+
+        viewModel.showAlert = { message in
+            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+            alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     // MARK: Actions
@@ -234,14 +232,6 @@ class MainViewController: BaseViewController {
             : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
     }
     
-    fileprivate func showAlert( _ message: String ) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-        
     @IBAction func shareAction(_ sender: Any?) {
         let appURL = URL(string: "https://itunes.apple.com/us/app/tic-tac-clock/id1312810639?mt=8&ign-mpt=uo%3D2")!
         let vc = UIActivityViewController(activityItems: [appURL], applicationActivities: [])
@@ -251,7 +241,7 @@ class MainViewController: BaseViewController {
     
     @objc
     fileprivate func triggleTimer() {
-        viewModel.currentDate.value = Date()
+        viewModel.currentDate = Date()
     }
     
     @IBAction func guideViewTapped(_ sender: Any?) {

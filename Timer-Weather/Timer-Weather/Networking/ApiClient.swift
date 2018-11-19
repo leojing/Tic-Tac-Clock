@@ -8,13 +8,11 @@
 
 
 import Foundation
-import RxSwift
 import Alamofire
-import ObjectMapper
 
 class APIClient: APIService {
     
-    typealias CompletionHandler = (_ jsonResponse: [String: Any]?, _ error: RequestError?) -> Void
+    typealias CompletionHandler = (_ jsonResponse: Data?, _ error: RequestError?) -> Void
     
     enum AlertMessage {
         static let parseInfoFailed = "Parse remote data failed. Please try again."
@@ -29,28 +27,23 @@ class APIClient: APIService {
     
     
     // MARK: start a fetch data request and return RxSwift Observable object which can be observed in ViewModel
-    func fetchWeatherInfo(_ config: APIConfig) -> Observable<RequestStatus> {
-        return Observable<RequestStatus>.create { observable -> Disposable in
-            self.networkRequest(config, completionHandler: { (json, error) in
-                guard let json = json else {
-                    if let error = error {
-                        observable.onNext(RequestStatus.fail(error))
-                    } else {
-                        observable.onNext(RequestStatus.fail(RequestError(ResponseStatusCode.parseInfoFailed.rawValue, AlertMessage.parseInfoFailed)))
-                    }
-                    observable.onCompleted()
-                    return
-                }
-                if let weather = Mapper<Weather>().map(JSON: json) {
-                    observable.onNext(RequestStatus.success(weather))
-                    observable.onCompleted()
+    func fetchWeatherInfo(_ config: APIConfig, _ completionHandler: @escaping ((_ status: RequestStatus) -> Void)) {
+        networkRequest(config, completionHandler: { (data, error) in
+            guard let data = data else {
+                if let error = error {
+                    return completionHandler(RequestStatus.fail(error))
                 } else {
-                    observable.onNext(RequestStatus.fail(RequestError(ResponseStatusCode.parseInfoFailed.rawValue, AlertMessage.parseInfoFailed)))
-                    observable.onCompleted()
+                    return completionHandler(RequestStatus.fail(RequestError(ResponseStatusCode.parseInfoFailed.rawValue, AlertMessage.parseInfoFailed)))
                 }
-            })
-            return Disposables.create()
-            }.share()
+            }
+            do {
+                let decoder = JSONDecoder()
+                let weather = try decoder.decode([Weather].self, from: data)
+                return completionHandler(RequestStatus.success(weather))
+            } catch {
+                return completionHandler(RequestStatus.fail(RequestError(ResponseStatusCode.parseInfoFailed.rawValue, AlertMessage.parseInfoFailed)))
+            }
+        })
     }
     
     // MARK: conform to APIService protocol. For new class inherit from APIClient class, you can overwrite this function and use any other HTTP networking libraries. Like in Unit test, I create MockAPIClient which request network by load local JSON file.
@@ -75,22 +68,22 @@ class APIClient: APIService {
     }
     
     // MARK: Parse response when request success
-    fileprivate func networkResponseSuccess(_ response: DataResponse<Any>?, _ completionHandler: CompletionHandler) {
+    private func networkResponseSuccess(_ response: DataResponse<Any>?, _ completionHandler: CompletionHandler) {
         guard let response = response else {
             return completionHandler(nil, RequestError(ResponseStatusCode.emptyData.rawValue, AlertMessage.emptyData))
         }
         
-        guard let json = response.result.value as? [String: Any] else {
+        guard let data = response.data as? Data else {
             print("Error: \(String(describing: response.result.error))")
             completionHandler(nil, RequestError(ResponseStatusCode.parseInfoFailed.rawValue, (response.result.error?.localizedDescription)!))
             return
         }
         
-        completionHandler(json, nil)
+        completionHandler(data, nil)
     }
     
     // MARK: Parse response when request failure
-    fileprivate func networkResponseFailure(_ error: Error, _ completionHandler: CompletionHandler) {
+    private func networkResponseFailure(_ error: Error, _ completionHandler: CompletionHandler) {
         completionHandler(nil, RequestError(ResponseStatusCode.parseInfoFailed.rawValue, error.localizedDescription))
     }
 }

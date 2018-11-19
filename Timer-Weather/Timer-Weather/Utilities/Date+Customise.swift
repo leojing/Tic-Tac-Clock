@@ -35,9 +35,9 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    func timeOfCounter() -> String? {
+    func timeOfCounter() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter.string(from: self)
+        return dateFormatter.string(from: self) 
     }
 }

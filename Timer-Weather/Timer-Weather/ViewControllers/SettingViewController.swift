@@ -6,9 +6,7 @@
 //  Copyright © 2018 JINGLUO. All rights reserved.
 //
 
-import Foundation
-import RxSwift
-import RxCocoa
+import UIKit
 
 class SettingViewController: UITableViewController {
     
@@ -19,8 +17,6 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var showLocationSwitch: UISwitch!
     @IBOutlet weak var showDateSwitch: UISwitch!
     @IBOutlet weak var disableIdleTimerSwitch: UISwitch!
-
-    fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,42 +74,42 @@ class SettingViewController: UITableViewController {
         showDateSwitch.isOn = Preferences.sharedInstance.getShowDate()
         disableIdleTimerSwitch.isOn = Preferences.sharedInstance.getDisabelIdleTimer()
         
-        showWeatherSwitch.rx.isOn.asObservable()
-            .subscribe(onNext: { isOn in
-                Preferences.sharedInstance.setShowWeather(isOn)
-                if !isOn {
-                    self.show5DaysWeatherSwitch.isOn = false
-                    Preferences.sharedInstance.setShow5DaysWeather(false)
-                }
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
-        
-        show5DaysWeatherSwitch.rx.isOn.asObservable()
-            .subscribe(onNext: { isOn in
-                Preferences.sharedInstance.setShow5DaysWeather(isOn)
-                if isOn {
-                    self.showWeatherSwitch.isOn = true
-                    Preferences.sharedInstance.setShowWeather(true)
-                }
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
-        
-        showLocationSwitch.rx.isOn.asObservable()
-            .subscribe(onNext: { isOn in
-                Preferences.sharedInstance.setShowLocation(isOn)
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
-
-        showDateSwitch.rx.isOn.asObservable()
-            .subscribe(onNext: { isOn in
-                Preferences.sharedInstance.setShowDate(isOn)
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
-        
-        disableIdleTimerSwitch.rx.isOn.asObservable()
-            .subscribe(onNext: { isOn in
-                Preferences.sharedInstance.setDisabelIdleTimer(isOn)
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
+//        showWeatherSwitch.rx.isOn.asObservable()
+//            .subscribe(onNext: { isOn in
+//                Preferences.sharedInstance.setShowWeather(isOn)
+//                if !isOn {
+//                    self.show5DaysWeatherSwitch.isOn = false
+//                    Preferences.sharedInstance.setShow5DaysWeather(false)
+//                }
+//            }, onError: nil, onCompleted: nil, onDisposed: nil)
+//            .disposed(by: disposeBag)
+//
+//        show5DaysWeatherSwitch.rx.isOn.asObservable()
+//            .subscribe(onNext: { isOn in
+//                Preferences.sharedInstance.setShow5DaysWeather(isOn)
+//                if isOn {
+//                    self.showWeatherSwitch.isOn = true
+//                    Preferences.sharedInstance.setShowWeather(true)
+//                }
+//            }, onError: nil, onCompleted: nil, onDisposed: nil)
+//            .disposed(by: disposeBag)
+//
+//        showLocationSwitch.rx.isOn.asObservable()
+//            .subscribe(onNext: { isOn in
+//                Preferences.sharedInstance.setShowLocation(isOn)
+//            }, onError: nil, onCompleted: nil, onDisposed: nil)
+//            .disposed(by: disposeBag)
+//
+//        showDateSwitch.rx.isOn.asObservable()
+//            .subscribe(onNext: { isOn in
+//                Preferences.sharedInstance.setShowDate(isOn)
+//            }, onError: nil, onCompleted: nil, onDisposed: nil)
+//            .disposed(by: disposeBag)
+//
+//        disableIdleTimerSwitch.rx.isOn.asObservable()
+//            .subscribe(onNext: { isOn in
+//                Preferences.sharedInstance.setDisabelIdleTimer(isOn)
+//            }, onError: nil, onCompleted: nil, onDisposed: nil)
+//            .disposed(by: disposeBag)
     }
 }

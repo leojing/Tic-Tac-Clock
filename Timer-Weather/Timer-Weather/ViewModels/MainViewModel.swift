@@ -8,32 +8,82 @@
 
 import Foundation
 import CoreLocation
-import RxSwift
 
 class MainViewModel: NSObject {
     
-    let disposeBag = DisposeBag()
-    
     private var locationManager: CLLocationManager?
-    fileprivate var currentLocation: CLLocation?
-    fileprivate var apiservice: APIService?
-    fileprivate var timer: Timer?
+    private var currentLocation: CLLocation?
+    private var apiservice: APIService?
+    private var timer: Timer?
     
-    var weather = Variable<Weather?>(nil)
-    var dailyData = Variable<[WeatherDetail?]>([])
-    var singleDaysData = Variable<[WeatherDetail]>([])
-    var mutipleDaysData = Variable<[WeatherDetail]>([])
-    var cityName = Variable<String>("")
-    var alertMessage = Variable<String>("")
-    var isLoading = Variable<Bool>(true)
+    var weather: Weather? {
+        didSet {
+            weatherDidUpdate?(weather)
+        }
+    }
     
-    var currentDigitalTime = Variable<String>(Date().timeOfCounter() ?? "")
-    var currentDate = Variable<Date>(Date())
+    var dailyData: [WeatherDetail]? {
+        didSet {
+            dailyDataDidUpdate?(dailyData)
+        }
+    }
     
-    var isPad: Bool {
-        return UIDevice.current.userInterfaceIdiom == .pad
+    var singleDaysData: [WeatherDetail]? {
+        didSet {
+            singleDaysDataDidUpdate?(singleDaysData)
+        }
     }
 
+    var mutipleDaysData: [WeatherDetail]? {
+        didSet {
+            mutipleDaysDataDidUpdate?(mutipleDaysData)
+        }
+    }
+    
+    var cityName: String? {
+        didSet {
+            cityNameDidUpdate?(cityName)
+        }
+    }
+    
+    var alertMessage: String? {
+        didSet {
+            showAlert?(alertMessage)
+        }
+    }
+    
+    var isLoading: Bool? {
+        didSet {
+            isLoadingDidUpdate?(isLoading)
+        }
+    }
+    
+    var currentDigitalTime: String? {
+        didSet {
+            currentDigitalTimeDidUpdate?(currentDigitalTime ?? Date().timeOfCounter())
+        }
+    }
+    
+    var currentDate: Date? {
+        didSet {
+            currentDateDidUpdate?(currentDate ?? Date())
+        }
+    }
+    
+    var isPad: Bool {
+        return false
+    }
+    
+    var weatherDidUpdate: ((_ weather: Weather?) -> Void)?
+    var dailyDataDidUpdate: ((_ dailyData: [WeatherDetail]?) -> Void)?
+    var singleDaysDataDidUpdate: ((_ singleDaysData: [WeatherDetail]?) -> Void)?
+    var mutipleDaysDataDidUpdate: ((_ mutipleDaysData: [WeatherDetail]?) -> Void)?
+    var cityNameDidUpdate: ((_ city: String?) -> Void)?
+    var showAlert: ((_ message: String?) -> Void)?
+    var isLoadingDidUpdate: ((_ isLoading: Bool?) -> Void)?
+    var currentDigitalTimeDidUpdate: ((_ currentDigitalTime: String) -> Void)?
+    var currentDateDidUpdate: ((_ currentDate: Date) -> Void)?
+    
     init(_ apiService: APIService? = APIClient()) {
         super.init()
         
@@ -42,8 +92,8 @@ class MainViewModel: NSObject {
         bindDailyData()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-            self.currentDigitalTime.value = Date().timeOfCounter() ?? ""
-            self.currentDate.value = Date()
+            self.currentDigitalTime = Date().timeOfCounter() ?? ""
+            self.currentDate = Date()
         })
     }
     
@@ -64,52 +114,46 @@ class MainViewModel: NSObject {
     }
     
     func fetchWeatherInfo(_ apiService: APIService) {
-        isLoading.value = true
-        singleDaysData.value = []
-        mutipleDaysData.value = []
+        isLoading = true
+        singleDaysData = []
+        mutipleDaysData = []
         if let lat = currentLocation?.coordinate.latitude, let lng = currentLocation?.coordinate.longitude {
-            apiService.fetchWeatherInfo(APIConfig.weather((lat, lng)))
-                .subscribe(onNext: { status in
-                    self.isLoading.value = false
-                    switch status {
-                    case .success(let weather):
-                        self.weather.value = weather as? Weather
-                        
-                    case .fail(let error):
-                        let errorMessage = error.errorDescription ?? "Faild to load weather data"
-                        self.alertMessage.value = errorMessage
-                    }
-                }, onError: nil, onCompleted: nil, onDisposed: nil)
-                .disposed(by: disposeBag)
+            apiService.fetchWeatherInfo(APIConfig.weather((lat, lng))) { status in
+                self.isLoading = false
+                switch status {
+                case .success(let weather):
+                    self.weather = weather as? Weather
+                    
+                case .fail(let error):
+                    let errorMessage = error.errorDescription ?? "Faild to load weather data"
+                    self.alertMessage = errorMessage
+                }
+            }
         } else {
-            isLoading.value = false
-            self.alertMessage.value = "Can not find location"
+            isLoading = false
+            self.alertMessage = "Can not find location"
         }
     }
     
     fileprivate func fetchCityName(_ locationService: LocationService) {
         locationService.fetchCity { city in
-            self.cityName.value = city
+            self.cityName = city
         }
     }
     
     fileprivate func bindDailyData() {
-        weather.asObservable()
-            .subscribe(onNext: { w in
-                if let weatherData = w?.daily?.data, weatherData.count > 0 {
-                    self.singleDaysData.value = Array(weatherData.prefix(1))
-                    self.mutipleDaysData.value = Array(weatherData.prefix(5))
-                    let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather()
-                    if isShow5DaysWeather {
-                        self.dailyData.value = self.mutipleDaysData.value
-                    } else {
-                        self.dailyData.value = [self.singleDaysData.value.first, nil, nil, nil, nil]
-                    }
-                } else {
-                    self.alertMessage.value = "Empty data"
-                }
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
+        if let weatherData = weather?.daily?.data, weatherData.count > 0 {
+            self.singleDaysData = Array(weatherData.prefix(1))
+            self.mutipleDaysData = Array(weatherData.prefix(5))
+            let isShow5DaysWeather = Preferences.sharedInstance.getShow5DaysWeather()
+            if isShow5DaysWeather {
+                self.dailyData = self.mutipleDaysData
+            } else {
+                self.dailyData = [self.singleDaysData?.first, nil, nil, nil, nil] as? [WeatherDetail]
+            }
+        } else {
+            self.alertMessage = "Empty data"
+        }
     }
 }
 
