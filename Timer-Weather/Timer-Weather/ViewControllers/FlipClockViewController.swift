@@ -45,16 +45,12 @@ class FlipClockViewController: BaseViewController {
 
     // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {
-        
-//        viewModel.currentDate.asObservable()
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onNext: { date in
-//                if self.isLandscape {
-//                    self.landscapeFlipClockView?.setTimeToDate(date, false)
-//                } else {
-//                    self.portraitFlipClockView?.setTimeToDate(date, false)
-//                }
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
+        viewModel.currentDateDidUpdate = { date in
+            if self.isLandscape {
+                self.landscapeFlipClockView?.setTimeToDate(date, false)
+            } else {
+                self.portraitFlipClockView?.setTimeToDate(date, false)
+            }
+        }
     }
 }

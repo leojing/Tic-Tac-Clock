@@ -76,52 +76,47 @@ class WeatherLocationViewController: BaseViewController {
     
     // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {
-//        viewModel.cityName.asObservable()
-//            .subscribe(onNext: { name in
-//                self.cityNameLabel?.text = name
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//        .disposed(by: disposeBag)
-//
-//        // MARK: bind spinner view
-//        viewModel.isLoading.asObservable()
-//            .subscribe(onNext: { loading in
-//                DispatchQueue.main.async {
-//                    if loading {
-//                        self.weatherView?.isHidden = true
-//                        self.refreshButton?.isHidden = true
-//                    }
-//                    loading ? self.spinnerView?.startAnimating() : self.spinnerView?.stopAnimating()
-//                }
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
-//
-//        // MARK: bind daily data with daysWeatherCollectionView
-//        viewModel.dailyData.asObservable()
-//            .filter { $0.count > 0 }
-//            .subscribe(onNext: { data in
-//                DispatchQueue.main.async {
-//                    self.weatherView?.isHidden = false
-//                    self.refreshButton?.isHidden = true
-//                }
-//                data.enumerated().forEach({ (index, detail) in
-//                    if let dailyViews = self.dailyViews {
-//                        let dailyView = dailyViews[index]
-//                        dailyView.configureCell(detail)
-//                    }
-//                })
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
-//
-//        // MARK: show error message
-//        viewModel.alertMessage.asObservable()
-//            .filter { $0.count > 0 }
-//            .subscribe(onNext: { errorMessage in
-//                DispatchQueue.main.async {
-//                    self.weatherView?.isHidden = true
-//                    self.refreshButton?.isHidden = false
-//                }
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
+        viewModel.cityNameDidUpdate = { city in
+            self.cityNameLabel?.text = city ?? "Sydney"
+        }
+        
+        viewModel.isLoadingDidUpdate = { isLoading in
+            DispatchQueue.main.async {
+                if let loading = isLoading {
+                    if loading {
+                        self.weatherView?.isHidden = true
+                        self.refreshButton?.isHidden = true
+                    }
+                    loading ? self.spinnerView?.startAnimating() : self.spinnerView?.stopAnimating()
+                }
+            }
+        }
+        
+        viewModel.dailyDataDidUpdate = { dailyData in
+            if let dailyData = dailyData,
+                dailyData.count > 0 {
+                DispatchQueue.main.async {
+                    self.weatherView?.isHidden = false
+                    self.refreshButton?.isHidden = true
+                }
+                dailyData.enumerated().forEach({ (index, detail) in
+                    if let dailyViews = self.dailyViews {
+                        let dailyView = dailyViews[index]
+                        dailyView.configureCell(detail)
+                    }
+                })
+            }
+        }
+        
+        viewModel.showAlert = { message in
+            if let count = message?.count,
+                count > 0 {
+                DispatchQueue.main.async {
+                    self.weatherView?.isHidden = true
+                    self.refreshButton?.isHidden = false
+                }
+            }
+        }
     }
     
     @objc

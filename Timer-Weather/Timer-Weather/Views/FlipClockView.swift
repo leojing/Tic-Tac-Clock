@@ -16,7 +16,7 @@ class FlipClockView: UIView {
     @IBOutlet weak var number3View: FlipNumberView!
     
     func setTimeToDate(_ date: Date, _ animated: Bool) {
-        let dateString = date.timeOfCounter() ?? ""
+        let dateString = date.timeOfCounter()
         var index1 = dateString.index(dateString.startIndex, offsetBy: 1)
         let hour1 = String(dateString.prefix(upTo: index1))
         var index2 = dateString.index(dateString.startIndex, offsetBy: 2)

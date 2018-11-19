@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircleProgressBar:UIView {
+class CircleProgressBar: UIView {
  
     var fullProgressNumber = 100
     
@@ -33,7 +33,7 @@ class CircleProgressBar:UIView {
         }
     }
 
-    open var pulsingColor : UIColor = .clear{
+    open var pulsingColor : UIColor = .clear {
         didSet {
             pulsatingLayer?.strokeColor = pulsingColor.cgColor
         }
@@ -66,7 +66,7 @@ class CircleProgressBar:UIView {
         return shape
     }
     
-    private func prepareLayers(){
+    private func prepareLayers() {
         shapeLayer = createLayer()
         shapeLayer?.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         shapeLayer?.strokeEnd = 0

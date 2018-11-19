@@ -57,19 +57,19 @@ class AnalogClockView : UIView {
         }
         
         if let second = theHandAngles.secondHandAngle, let oldSecond = oldHandAngles?.secondHandAngle {
-            let big_change = fabs(second - oldSecond) > .pi/4
+            let big_change = abs(second - oldSecond) > .pi/4
             let duration = big_change ? 0.6 : 0.3
             animateHandView(secondHand, second, CGFloat(duration))
         }
         self.performBlockOnMainQueue({
             if let minute = theHandAngles.minuteHandAngle, let oldMinute = self.oldHandAngles?.minuteHandAngle {
-                let big_change = fabs(minute - oldMinute) > .pi/4
+                let big_change = abs(minute - oldMinute) > .pi/4
                 let duration = big_change ? 0.6 : 0.3
                 self.animateHandView(self.minuteHand, minute, CGFloat(duration))
             }
             
             if let hour = theHandAngles.hourHandAngle, let oldHour = self.oldHandAngles?.hourHandAngle {
-                let big_change = fabs(hour - oldHour) > .pi/4
+                let big_change = abs(hour - oldHour) > .pi/4
                 let duration = big_change ? 0.6 : 0.3
                 self.animateHandView(self.hourHand, hour, CGFloat(duration))
             }
