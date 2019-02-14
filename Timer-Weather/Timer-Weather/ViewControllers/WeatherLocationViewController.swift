@@ -14,7 +14,7 @@ class WeatherLocationViewController: BaseViewController {
     @IBOutlet weak var refreshButton: UIButton?
     @IBOutlet weak var weatherView: UIView?
     @IBOutlet weak var weatherStackView: UIStackView?
-    @IBOutlet var dailyViews: [DailyCollectionViewCell]?
+    @IBOutlet var dailyViews: [DailyWeatherView]?
     @IBOutlet weak var cityNameLabel: UILabel?
 
     var viewModel: MainViewModel = MainViewModel() {
@@ -102,7 +102,7 @@ class WeatherLocationViewController: BaseViewController {
                 dailyData.enumerated().forEach({ (index, detail) in
                     if let dailyViews = self.dailyViews {
                         let dailyView = dailyViews[index]
-                        dailyView.configureCell(detail)
+//                        dailyView.configureCell(detail)
                     }
                 })
             }

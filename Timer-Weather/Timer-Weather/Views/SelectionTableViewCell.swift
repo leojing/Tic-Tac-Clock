@@ -55,7 +55,7 @@ class SelectionTableViewCell: UITableViewCell {
                 contentLabel.isHidden = true
                 clockView.isHidden = true
                 flipClockView.isHidden = false
-                flipClockView.setTimeToDate(Date(), false)
+                flipClockView.setTimeToDate(Date(), animated: false)
             } else if let content = content {
                 contentLabel.isHidden = true
                 clockView.isHidden = false

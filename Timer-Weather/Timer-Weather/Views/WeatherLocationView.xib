@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherLocationView" customModule="Timer_Weather" customModuleProvider="target">
+            <connections>
+                <outlet property="loadingActivityView" destination="bvJ-vD-YZv" id="qdw-aq-MWB"/>
+                <outlet property="locationLabel" destination="Erh-GS-wuS" id="nZg-OJ-4FG"/>
+                <outlet property="weatherView" destination="xyL-AG-Zt7" id="rhR-1q-aeO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="KDa-fn-WLL">
+            <rect key="frame" x="0.0" y="0.0" width="538" height="134"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xE2-0E-Lz6">
+                    <rect key="frame" x="0.0" y="0.0" width="538" height="134"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvQ-hW-idb">
+                            <rect key="frame" x="0.0" y="0.0" width="538" height="107"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-AG-Zt7">
+                                    <rect key="frame" x="0.0" y="0.0" width="538" height="107"/>
+                                </stackView>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-vD-YZv">
+                                    <rect key="frame" x="250.5" y="35" width="37" height="37"/>
+                                </activityIndicatorView>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWV-T8-iOB">
+                                    <rect key="frame" x="256" y="38.5" width="26" height="30"/>
+                                    <state key="normal" image="refresh">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="xyL-AG-Zt7" firstAttribute="leading" secondItem="DvQ-hW-idb" secondAttribute="leading" id="0wC-9y-24r"/>
+                                <constraint firstAttribute="bottom" secondItem="xyL-AG-Zt7" secondAttribute="bottom" id="SEa-cH-Phd"/>
+                                <constraint firstItem="bvJ-vD-YZv" firstAttribute="centerX" secondItem="DvQ-hW-idb" secondAttribute="centerX" id="VuH-Xy-juv"/>
+                                <constraint firstItem="UWV-T8-iOB" firstAttribute="centerX" secondItem="DvQ-hW-idb" secondAttribute="centerX" id="WTY-HT-7bT"/>
+                                <constraint firstAttribute="trailing" secondItem="xyL-AG-Zt7" secondAttribute="trailing" id="bmS-z0-mEL"/>
+                                <constraint firstItem="UWV-T8-iOB" firstAttribute="centerY" secondItem="DvQ-hW-idb" secondAttribute="centerY" id="cF7-hz-2uV"/>
+                                <constraint firstItem="bvJ-vD-YZv" firstAttribute="centerY" secondItem="DvQ-hW-idb" secondAttribute="centerY" id="d9c-zv-iJg"/>
+                                <constraint firstItem="xyL-AG-Zt7" firstAttribute="top" secondItem="DvQ-hW-idb" secondAttribute="top" id="xlx-RI-Fkb"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sydney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erh-GS-wuS">
+                            <rect key="frame" x="0.0" y="117" width="538" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="xE2-0E-Lz6" firstAttribute="leading" secondItem="KDa-fn-WLL" secondAttribute="leading" id="DMl-Za-j7Q"/>
+                <constraint firstAttribute="bottom" secondItem="xE2-0E-Lz6" secondAttribute="bottom" id="Gkd-Ao-6BJ"/>
+                <constraint firstAttribute="trailing" secondItem="xE2-0E-Lz6" secondAttribute="trailing" id="QcB-vu-fqo"/>
+                <constraint firstItem="xE2-0E-Lz6" firstAttribute="top" secondItem="KDa-fn-WLL" secondAttribute="top" id="RTb-7P-9Rr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="4hH-gg-kG5"/>
+            <point key="canvasLocation" x="777.60000000000002" y="-89.955022488755631"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="refresh" width="26" height="30"/>
+    </resources>
+</document>

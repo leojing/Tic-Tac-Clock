@@ -47,9 +47,9 @@ class FlipClockViewController: BaseViewController {
     fileprivate func setupViewModelBinds() {
         viewModel.currentDateDidUpdate = { date in
             if self.isLandscape {
-                self.landscapeFlipClockView?.setTimeToDate(date, false)
+                self.landscapeFlipClockView?.setTimeToDate(date, animated: false)
             } else {
-                self.portraitFlipClockView?.setTimeToDate(date, false)
+                self.portraitFlipClockView?.setTimeToDate(date, animated: false)
             }
         }
     }

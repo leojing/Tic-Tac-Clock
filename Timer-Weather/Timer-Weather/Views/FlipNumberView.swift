@@ -8,21 +8,48 @@
 
 import UIKit
 
-class FlipNumberView: UIView {
+@IBDesignable
+class FlipNumberView: NibView {
     
-    @IBOutlet weak var separatorView: UIView!
-    @IBOutlet weak var numberImageView: UIImageView!
-    @IBOutlet weak var AImageView: UIImageView?
-    @IBOutlet weak var BImageView: UIImageView?
-    @IBOutlet weak var CImageView: UIImageView?
-
+    @IBOutlet private weak var separatorView: UIView?
+    @IBOutlet private weak var numberImageView: UIImageView?
+    @IBOutlet private weak var AImageView: UIImageView?
+    @IBOutlet private weak var BImageView: UIImageView?
+    @IBOutlet private weak var CImageView: UIImageView?
+    
+    struct Configuration {
+        let background: UIColor?
+        let number: String?
+        let transitA: String?
+        let transitB: String?
+        let transitC: String?
+        let separatorColor: UIColor?
+    }
+    
+    var configuration: FlipNumberView.Configuration? {
+        didSet {
+            populateView()
+        }
+    }
+    
+    convenience init(configuration: FlipNumberView.Configuration?) {
+        self.init()
+        self.configuration = configuration
+    }
+    
+    private func populateView() {
+        numberImageView?.backgroundColor = backgroundColor ?? .clear
+        setUpTransitView(a: UIImage(named: configuration?.transitA ?? ""), b: UIImage(named: configuration?.transitB ?? ""), c: UIImage(named: configuration?.transitC ?? ""))
+        separatorView?.backgroundColor = configuration?.separatorColor ?? .clear
+    }
+    
     @objc func initializeABC() {
         AImageView?.alpha = 0
         BImageView?.alpha = 0
         CImageView?.alpha = 0
     }
     
-    func setUpTransitView(a: UIImage, b: UIImage, c: UIImage) {
+    func setUpTransitView(a: UIImage?, b: UIImage?, c: UIImage?) {
         AImageView?.image = a
         BImageView?.image = b
         CImageView?.image = c
@@ -45,7 +72,7 @@ class FlipNumberView: UIView {
         //initializeABC函数设置A/B/C隐藏
     }
     
-    fileprivate func rotationFirst(view: UIView){
+    private func rotationFirst(view: UIView){
         //旧值标签，先出来
         let animation = CABasicAnimation(keyPath: "transform.rotation.x")
         animation.fromValue = (-10/360)*Double.pi
@@ -57,7 +84,7 @@ class FlipNumberView: UIView {
         view.alpha = 1
     }
     
-    fileprivate func rotationSecond(view: UIView) {
+    private func rotationSecond(view: UIView) {
         //新值标签，后
         let animation = CABasicAnimation(keyPath: "transform.rotation.x")
         animation.fromValue = (355/360) * Double.pi

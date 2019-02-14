@@ -8,14 +8,35 @@
 
 import UIKit
 
-class FlipClockView: UIView {
+@IBDesignable
+class FlipClockView: NibView {
     
-    @IBOutlet weak var number0View: FlipNumberView!
-    @IBOutlet weak var number1View: FlipNumberView!
-    @IBOutlet weak var number2View: FlipNumberView!
-    @IBOutlet weak var number3View: FlipNumberView!
+    enum Axis: Int {
+        case horizontal
+        case vertical
+    }
     
-    func setTimeToDate(_ date: Date, _ animated: Bool) {
+    @IBOutlet private weak var containerStackView: UIStackView?
+
+    @IBOutlet private weak var number0View: FlipNumberView?
+    @IBOutlet private weak var number1View: FlipNumberView?
+    @IBOutlet private weak var number2View: FlipNumberView?
+    @IBOutlet private weak var number3View: FlipNumberView?
+    
+    @IBInspectable var axisValue: Int = 0 {
+        didSet {
+            axis = FlipClockView.Axis(rawValue: axisValue) ?? .horizontal
+        }
+    }
+    
+    private var axis: FlipClockView.Axis = .horizontal {
+        didSet {
+            containerStackView?.axis = NSLayoutConstraint.Axis(rawValue: axis.rawValue) ?? .horizontal
+            containerStackView?.layoutIfNeeded()
+        }
+    }
+    
+    func setTimeToDate(_ date: Date, animated: Bool) {
         let dateString = date.timeOfCounter()
         var index1 = dateString.index(dateString.startIndex, offsetBy: 1)
         let hour1 = String(dateString.prefix(upTo: index1))
@@ -31,78 +52,50 @@ class FlipClockView: UIView {
         let bgColor = UIColor().hexStringToUIColor(hex: Preferences.sharedInstance.getBackground(), r: 20, g: 10, b: 0, alpha: 1.0)
         if let first = Preferences.sharedInstance.getFlipNumber(key: .firstNumber) {
             if first != hour1 {
-                let lowerFirstImage = UIImage(named: flipImageForNumberLower(first))!
-                let upperFirstImage = UIImage(named: flipImageForNumberUpper(first))!
-                let hour1LowerImage = UIImage(named: flipImageForNumberLower(hour1))!
-                number0View.setUpTransitView(a: lowerFirstImage, b: upperFirstImage, c: hour1LowerImage)
-                number0View.rotation()
-                
-                number0View.numberImageView.image = UIImage(named: flipImageForNumber(hour1))
+                number0View?.configuration = FlipNumberView.Configuration(background: nil, number: flipImageForNumber(hour1), transitA: flipImageForNumberLower(first), transitB: flipImageForNumberUpper(first), transitC: flipImageForNumberLower(hour1), separatorColor: separatorColor)
+                number0View?.rotation()
                 
                 Preferences.sharedInstance.setFlipNumber(hour1, key: .firstNumber)
             }
         } else {
             Preferences.sharedInstance.setFlipNumber(hour1, key: .firstNumber)
-            number0View.numberImageView.image = UIImage(named: flipImageForNumber(hour1))
-            number0View.backgroundColor = bgColor
-            number0View.separatorView.backgroundColor = separatorColor
+            number0View?.configuration = FlipNumberView.Configuration(background: bgColor, number: flipImageForNumber(hour1), transitA: nil, transitB: nil, transitC: nil, separatorColor: separatorColor)
         }
         
         if let second = Preferences.sharedInstance.getFlipNumber(key: .secondNumber) {
             if second != hour2 {
-                let lowerSecondImage = UIImage(named: flipImageForNumberLower(second))!
-                let upperSecondImage = UIImage(named: flipImageForNumberUpper(second))!
-                let hour2LowerImage = UIImage(named: flipImageForNumberLower(hour2))!
-                number1View.setUpTransitView(a: lowerSecondImage, b: upperSecondImage, c: hour2LowerImage)
-                number1View.rotation()
+                number1View?.configuration = FlipNumberView.Configuration(background: nil, number: flipImageForNumber(hour2), transitA: flipImageForNumberLower(second), transitB: flipImageForNumberUpper(second), transitC: flipImageForNumberLower(hour2), separatorColor: separatorColor)
+                number1View?.rotation()
 
-                number1View.numberImageView.image = UIImage(named: flipImageForNumber(hour2))!
-                
                 Preferences.sharedInstance.setFlipNumber(hour2, key: .secondNumber)
             }
         } else {
             Preferences.sharedInstance.setFlipNumber(hour2, key: .secondNumber)
-            number1View.numberImageView.image = UIImage(named: flipImageForNumber(hour2))
-            number1View.backgroundColor = bgColor
-            number1View.separatorView.backgroundColor = separatorColor
+            number1View?.configuration = FlipNumberView.Configuration(background: bgColor, number: flipImageForNumber(hour2), transitA: nil, transitB: nil, transitC: nil, separatorColor: separatorColor)
         }
         
         if let third = Preferences.sharedInstance.getFlipNumber(key: .thirdNumber) {
             if third != min1 {
-                let lowerThirdImage = UIImage(named: flipImageForNumberLower(third))!
-                let upperThirdImage = UIImage(named: flipImageForNumberUpper(third))!
-                let min1LowerImage = UIImage(named: flipImageForNumberLower(min1))!
-                number2View.setUpTransitView(a: lowerThirdImage, b: upperThirdImage, c: min1LowerImage)
-                number2View.rotation()
+                number2View?.configuration = FlipNumberView.Configuration(background: nil, number: flipImageForNumber(min1), transitA: flipImageForNumberLower(third), transitB: flipImageForNumberUpper(third), transitC: flipImageForNumberLower(min1), separatorColor: separatorColor)
+                number2View?.rotation()
                 
-                number2View.numberImageView.image = UIImage(named: flipImageForNumber(min1))!
-
                 Preferences.sharedInstance.setFlipNumber(min1, key: .thirdNumber)
             }
         } else {
             Preferences.sharedInstance.setFlipNumber(min1, key: .thirdNumber)
-            number2View.numberImageView.image = UIImage(named: flipImageForNumber(min1))
-            number2View.backgroundColor = bgColor
-            number2View.separatorView.backgroundColor = separatorColor
+            number2View?.configuration = FlipNumberView.Configuration(background: bgColor, number: flipImageForNumber(min1), transitA: nil, transitB: nil, transitC: nil, separatorColor: separatorColor)
         }
         
         if let forth = Preferences.sharedInstance.getFlipNumber(key: .forthNumber) {
             if forth != min2 {
-                let lowerForthImage = UIImage(named: flipImageForNumberLower(forth))!
-                let upperForthImage = UIImage(named: flipImageForNumberUpper(forth))!
-                let min2LowerImage = UIImage(named: flipImageForNumberLower(min2))!
-                number3View.setUpTransitView(a: lowerForthImage, b: upperForthImage, c: min2LowerImage)
-                number3View.rotation()
+                number3View?.configuration = FlipNumberView.Configuration(background: nil, number: flipImageForNumber(min2), transitA: flipImageForNumberLower(forth), transitB: flipImageForNumberUpper(forth), transitC: flipImageForNumberLower(min2), separatorColor: separatorColor)
+                number3View?.rotation()
                 
-                number3View.numberImageView.image = UIImage(named: flipImageForNumber(min2))!
-
                 Preferences.sharedInstance.setFlipNumber(min2, key: .forthNumber)
             }
         } else {
             Preferences.sharedInstance.setFlipNumber(min2, key: .forthNumber)
-            number3View.numberImageView.image = UIImage(named: flipImageForNumber(min2))
-            number3View.backgroundColor = bgColor
-            number3View.separatorView.backgroundColor = separatorColor
+            number3View?.configuration = FlipNumberView.Configuration(background: bgColor, number: flipImageForNumber(min2), transitA: nil, transitB: nil, transitC: nil, separatorColor: separatorColor)
         }
     }
     

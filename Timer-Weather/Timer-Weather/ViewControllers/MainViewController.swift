@@ -11,29 +11,27 @@ import HGCircularSlider
 
 class MainViewController: BaseViewController {
     
-    @IBOutlet private weak var flipClockContainer: UIView!
-    @IBOutlet private weak var circleTimerView: UIView!
+    @IBOutlet private weak var flipClockView: FlipClockView?
+    @IBOutlet private weak var circleTimerView: UIView?
     
-    @IBOutlet private weak var clockViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var clockView: AnalogClockView!
-    @IBOutlet private weak var smallClockView: AnalogClockView!
-    @IBOutlet private weak var dateInWatchLabel: UILabel!
+    @IBOutlet private weak var clockViewTopConstraint: NSLayoutConstraint?
+    @IBOutlet private weak var clockView: AnalogClockView?
     
-    @IBOutlet private weak var digitalTimerView: UIView!
-    @IBOutlet private weak var digitalTimerHourLabel: UILabel!
-    @IBOutlet private weak var digitalTimerMinLabel: UILabel!
-    @IBOutlet private weak var digitalTimerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var digitalTimerView: UIView?
+    @IBOutlet private weak var digitalTimerHourLabel: UILabel?
+    @IBOutlet private weak var digitalTimerMinLabel: UILabel?
+    @IBOutlet private weak var digitalTimerHeightConstraint: NSLayoutConstraint?
 
-    @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var dateLabelTopConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var dateLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var dateLabel: UILabel?
+    @IBOutlet private weak var dateLabelTopConstraint: NSLayoutConstraint?
+    @IBOutlet private weak var dateLabelHeightConstraint: NSLayoutConstraint?
     
-    @IBOutlet private weak var weatherLocationView: UIView!
+    @IBOutlet private weak var weatherLocationView: UIView?
 
-    @IBOutlet private weak var countDownTimerContainer: UIView!
-    @IBOutlet private weak var guideView: UIView!
+    @IBOutlet private weak var countDownTimerContainer: UIView?
+    @IBOutlet private weak var guideView: UIView?
     
-    var viewModel: MainViewModel = MainViewModel() {
+    var viewModel: MainViewModel? {
         didSet {
             setupViewModel()
         }
@@ -58,7 +56,8 @@ class MainViewController: BaseViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: UIApplication.didBecomeActiveNotification, object: nil)
         
-        adjustFontByDevice(viewModel.isPad)
+        viewModel = MainViewModel()
+        adjustFontByDevice(viewModel?.isPad ?? false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +66,7 @@ class MainViewController: BaseViewController {
         rotateDevice()
         
         let isShowGuiderView = Preferences.sharedInstance.getIsShowGuideView()
-        guideView.isHidden = !isShowGuiderView
+        guideView?.isHidden = !isShowGuiderView
         
         if Preferences.sharedInstance.getDisabelIdleTimer() {
             UIApplication.shared.isIdleTimerDisabled = Preferences.sharedInstance.getDisabelIdleTimer()
@@ -91,14 +90,14 @@ class MainViewController: BaseViewController {
     }
     
     private func rotateDevice() {
-        if viewModel.isPad { return }
+        if viewModel?.isPad ?? false { return }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
         
         if UIDevice.current.orientation.isLandscape {
-            clockViewTopConstraint.constant = -70
+            clockViewTopConstraint?.constant = -70
         } else {
-            clockViewTopConstraint.constant = 30
+            clockViewTopConstraint?.constant = 30
         }
         view.layoutIfNeeded()
     }
@@ -106,14 +105,14 @@ class MainViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "flipClock":
-                if let vc = segue.destination as? FlipClockViewController {
-                    vc.viewModel = viewModel
-                }
+//            case "flipClock":
+//                if let vc = segue.destination as? FlipClockViewController {
+//                    vc.viewModel = viewModel
+//                }
                 
             case "weatherLocation":
                 if let vc = segue.destination as? WeatherLocationViewController {
-                    vc.viewModel = viewModel
+                    vc.viewModel = viewModel ?? MainViewModel()
                 }
                 
             default:
@@ -123,43 +122,38 @@ class MainViewController: BaseViewController {
     }
     
     // MARK: UI update
-    fileprivate func updateWatchFace() {
+    func updateWatchFace() {
         
         let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
         if watchfaceIndex >= 8 {
-            let height = viewModel.isPad ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
-            dateLabelHeightConstraint.constant = CGFloat(Preferences.sharedInstance.getShowDate() ? height : 0)
+            let height = (viewModel?.isPad ?? false) ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
+            dateLabelHeightConstraint?.constant = CGFloat(Preferences.sharedInstance.getShowDate() ? height : 0)
         } else {
-            dateLabelHeightConstraint.constant = CGFloat(0)
+            dateLabelHeightConstraint?.constant = CGFloat(0)
         }
         
         if watchfaceIndex == 8 {
-            digitalTimerHeightConstraint.constant = CGFloat(viewModel.isPad ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
-            circleTimerView.isHidden = true
-            flipClockContainer.isHidden = true
-            digitalTimerView.isHidden = false
-            dateLabelTopConstraint.constant = 20
+            digitalTimerHeightConstraint?.constant = CGFloat((viewModel?.isPad ?? false) ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
+            circleTimerView?.isHidden = true
+            flipClockView?.isHidden = true
+            digitalTimerView?.isHidden = false
+            dateLabelTopConstraint?.constant = 20
         } else {
-            digitalTimerView.isHidden = true
+            digitalTimerView?.isHidden = true
             if watchfaceIndex == 9 {
-                flipClockContainer.isHidden = false
-                circleTimerView.isHidden = true
-                dateLabelTopConstraint.constant = 280
+                flipClockView?.isHidden = false
+                circleTimerView?.isHidden = true
+                dateLabelTopConstraint?.constant = 280
             } else {
-                circleTimerView.isHidden = false
-                flipClockContainer.isHidden = true
+                circleTimerView?.isHidden = false
+                flipClockView?.isHidden = true
             }
-            let watchFaces = SelectionType.getContentList(.watchFace)
-            let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
-            clockView.backgroundImageView.image = UIImage(named: watchFaces()![watchfaceIndex]!)
+            let watchFaces = SelectionType.getContentList(.watchFace)() ?? []
+            clockView?.watchFace = watchFaces[watchfaceIndex]
             if watchfaceIndex > 4  && watchfaceIndex < 8 {
-                clockView.smallialImageView?.image = UIImage(named: "upper-dial-light")
-                smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial-light")
-                smallClockView.secondHand.image = UIImage(named: "bottom-dial-second-light")
+                clockView?.isDarkTheme = true
             } else {
-                clockView.smallialImageView?.image = UIImage(named: "upper-dial")
-                smallClockView.smallialImageView?.image = UIImage(named: "bottom-dial")
-                smallClockView.secondHand.image = UIImage(named: "bottom-dial-second")
+                clockView?.isDarkTheme = false
             }
         }
     }
@@ -167,29 +161,29 @@ class MainViewController: BaseViewController {
     
     fileprivate func adjustFontByDevice(_ isPad: Bool) {
         if isPad {
-            digitalTimerMinLabel.font = UIFont(name: "Courier New", size: 110)
-            digitalTimerHourLabel.font = UIFont(name: "Courier New", size: 110)
-            dateLabel.font = UIFont.systemFont(ofSize: 30, weight: .light)
+            digitalTimerMinLabel?.font = UIFont(name: "Courier New", size: 110)
+            digitalTimerHourLabel?.font = UIFont(name: "Courier New", size: 110)
+            dateLabel?.font = UIFont.systemFont(ofSize: 30, weight: .light)
         } else {
-            digitalTimerMinLabel.font = UIFont(name: "Courier New", size: 64)
-            digitalTimerHourLabel.font = UIFont(name: "Courier New", size: 64)
-            dateLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
+            digitalTimerMinLabel?.font = UIFont(name: "Courier New", size: 64)
+            digitalTimerHourLabel?.font = UIFont(name: "Courier New", size: 64)
+            dateLabel?.font = UIFont.systemFont(ofSize: 20, weight: .light)
         }
     }
 
     // MARK: Bind ViewModel
     fileprivate func setupViewModel() {
         
-        viewModel.currentDigitalTimeDidUpdate = { timer in
+        viewModel?.currentDigitalTimeDidUpdate = { timer in
             DispatchQueue.main.async {
                 var index = timer.index(timer.startIndex, offsetBy: 2)
-                self.digitalTimerHourLabel.text = String(timer.prefix(upTo: index))
+                self.digitalTimerHourLabel?.text = String(timer.prefix(upTo: index))
                 index = timer.index(timer.endIndex, offsetBy: -2)
-                self.digitalTimerMinLabel.text = ":\(String(timer.suffix(from: index)))"
+                self.digitalTimerMinLabel?.text = ":\(String(timer.suffix(from: index)))"
             }
         }
         
-        viewModel.currentDateDidUpdate = { date in
+        viewModel?.currentDateDidUpdate = { date in
             DispatchQueue.main.async {
                 let attributedString = NSMutableAttributedString(string: (date.dayOfWeekShort()?.uppercased())!)
                 attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
@@ -199,16 +193,14 @@ class MainViewController: BaseViewController {
                 } else {
                     attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
                 }
-                self.dateInWatchLabel.attributedText = attributedString
+//                self.dateInWatchLabel?.attributedText = attributedString
                 
-                self.dateLabel.text = date.dayOfWeek(Preferences.sharedInstance.getDateFormat())
-                
-                self.clockView.setTimeToDate(date, false)
-                self.smallClockView.setTimeToDate(date, false)
+                self.clockView?.setClockWithDate(date, animated: false)
+                self.flipClockView?.setTimeToDate(date, animated: false)
             }
         }
 
-        viewModel.showAlert = { message in
+        viewModel?.showAlert = { message in
             let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
             alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             DispatchQueue.main.async {
@@ -223,13 +215,13 @@ class MainViewController: BaseViewController {
         // Switch off Count down feature
         return
         
-        if !guideView.isHidden {
-            guideViewTapped(nil)
-        }
-
-        countDownTimerContainer.isHidden = !countDownTimerContainer.isHidden
-        countDownTimerContainer.isHidden ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
-            : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
+//        if !guideView?.isHidden {
+//            guideViewTapped(nil)
+//        }
+//
+//        countDownTimerContainer?.isHidden = !countDownTimerContainer.isHidden
+//        countDownTimerContainer?.isHidden ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AllowRotation"), object: nil)
+//            : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotAllowRotation"), object: nil)
     }
     
     @IBAction func shareAction(_ sender: Any?) {
@@ -241,12 +233,12 @@ class MainViewController: BaseViewController {
     
     @objc
     fileprivate func triggleTimer() {
-        viewModel.currentDate = Date()
+        viewModel?.currentDate = Date()
     }
     
     @IBAction func guideViewTapped(_ sender: Any?) {
         Preferences.sharedInstance.setIsShowGuideView(false)
-        guideView.isHidden = true
+        guideView?.isHidden = true
     }
 }
 

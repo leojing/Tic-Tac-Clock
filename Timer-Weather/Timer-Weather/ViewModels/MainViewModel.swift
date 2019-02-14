@@ -92,7 +92,7 @@ class MainViewModel: NSObject {
         bindDailyData()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-            self.currentDigitalTime = Date().timeOfCounter() ?? ""
+            self.currentDigitalTime = Date().timeOfCounter()
             self.currentDate = Date()
         })
     }

@@ -15,39 +15,46 @@ struct HandAngles {
     var smallSecondHandAngle: CGFloat?
 }
 
-class AnalogClockView : UIView {
+@IBDesignable
+class AnalogClockView : NibView {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var smallialImageView: UIImageView?
+    @IBOutlet weak var upperDialBackgroundImageView: UIImageView!
+    @IBOutlet weak var bottomDialBackgroundImageView: UIImageView!
 
     @IBOutlet weak var hourHand: UIImageView!
     @IBOutlet weak var minuteHand: UIImageView!
     @IBOutlet weak var secondHand: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
 
     fileprivate var oldHandAngles: HandAngles?
     
-    fileprivate func calculateHandAnglesForDate(_ date: Date) -> HandAngles {
-        var result = HandAngles()
-        
-        let calender = Calendar(identifier: .gregorian)
-        let timeComponents = calender.dateComponents([.hour, .minute, .second], from: date)
-        let hour = (timeComponents.hour ?? 0) % 12
-        let minute = timeComponents.minute
-        let second = timeComponents.second
-        let smallSecond = (timeComponents.second ?? 0) % 30
-        
-        if let minute = minute, let second = second {
-            let fractionalHours = hour + minute/60
-            result.hourHandAngle = .pi * 2 * CGFloat(fractionalHours)/12.0
-            result.minuteHandAngle = .pi * 2 * CGFloat(minute)/60.0
-            result.secondHandAngle = .pi * 2 * CGFloat(second)/60.0
-            result.smallSecondHandAngle = .pi * 2 * CGFloat(smallSecond)/30.0
+    @IBInspectable var date: Date? {
+        didSet {
+            guard let date = date else {
+                return
+            }
+            setClockWithDate(date, animated: false)
         }
-        
-        return result
     }
     
-    func setTimeToDate(_ date: Date, _ animated: Bool) {
+    @IBInspectable var watchFace: String? {
+        didSet {
+            backgroundImageView.image = UIImage(named: watchFace ?? "")
+        }
+    }
+    
+    @IBInspectable var isDarkTheme: Bool = true {
+        didSet {
+            upperDialBackgroundImageView.image = isDarkTheme ? UIImage(named: "upper-dial-light") : UIImage(named: "upper-dial")
+            bottomDialBackgroundImageView.image = isDarkTheme ? UIImage(named: "bottom-dial-light") : UIImage(named: "bottom-dial")
+            secondHand.image = isDarkTheme ? UIImage(named: "bottom-dial-second-light") : UIImage(named: "bottom-dial-second")
+        }
+    }
+    
+    func setClockWithDate(_ date: Date, animated: Bool) {
+        dateLabel.text = date.dayOfWeek(Preferences.sharedInstance.getDateFormat())
+        
         let theHandAngles = calculateHandAnglesForDate(date)
         if !animated {
             hourHand.transform = CGAffineTransform(rotationAngle: theHandAngles.hourHandAngle!)
@@ -78,6 +85,27 @@ class AnalogClockView : UIView {
         oldHandAngles = theHandAngles
     }
     
+    fileprivate func calculateHandAnglesForDate(_ date: Date) -> HandAngles {
+        var result = HandAngles()
+        
+        let calender = Calendar(identifier: .gregorian)
+        let timeComponents = calender.dateComponents([.hour, .minute, .second], from: date)
+        let hour = (timeComponents.hour ?? 0) % 12
+        let minute = timeComponents.minute
+        let second = timeComponents.second
+        let smallSecond = (timeComponents.second ?? 0) % 30
+        
+        if let minute = minute, let second = second {
+            let fractionalHours = hour + minute/60
+            result.hourHandAngle = .pi * 2 * CGFloat(fractionalHours)/12.0
+            result.minuteHandAngle = .pi * 2 * CGFloat(minute)/60.0
+            result.secondHandAngle = .pi * 2 * CGFloat(second)/60.0
+            result.smallSecondHandAngle = .pi * 2 * CGFloat(smallSecond)/30.0
+        }
+        
+        return result
+    }
+
     fileprivate func animateHandView(_ theHandView: UIImageView, _ toAngle: CGFloat, _ duration: CGFloat) {
         var damping = 0.2
         if duration > 0.4 {
