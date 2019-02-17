@@ -11,7 +11,6 @@
 		241DD8E52073B987008B760F /* UIView+performBlockAfterDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DD8E42073B987008B760F /* UIView+performBlockAfterDelay.swift */; };
 		242194DA20B17AC100B0EBD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 242194DC20B17AC100B0EBD8 /* InfoPlist.strings */; };
 		242194F320B1B18B00B0EBD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 242194F520B1B18B00B0EBD8 /* Localizable.strings */; };
-		2445208120ECEC65004DB47B /* WeatherLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */; };
 		2448CD8020C40FEC00466830 /* FlipClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2448CD7F20C40FEC00466830 /* FlipClockView.swift */; };
 		246BC26D207E33F70051A258 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BC26C207E33F70051A258 /* Preferences.swift */; };
 		246BD10220CA470E00D132B5 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246BD10120CA470D00D132B5 /* Localizable.swift */; };
@@ -28,9 +27,12 @@
 		248DBDD3221435490025FE51 /* DailyWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248DBDD2221435490025FE51 /* DailyWeatherView.xib */; };
 		248DBDD522143DE70025FE51 /* FlipNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248DBDD422143DE70025FE51 /* FlipNumberView.xib */; };
 		248DBDD7221448E20025FE51 /* FlipClockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248DBDD6221448E20025FE51 /* FlipClockView.xib */; };
+		248DBDDC22197CB80025FE51 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DBDDB22197CB80025FE51 /* TimerSettingView.swift */; };
+		248DBDDE22197CCC0025FE51 /* TimerSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248DBDDD22197CCC0025FE51 /* TimerSettingView.xib */; };
+		248DBDE0221989750025FE51 /* DigitalClockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248DBDDF221989750025FE51 /* DigitalClockView.xib */; };
+		248DBDE2221989840025FE51 /* DigitalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DBDE1221989840025FE51 /* DigitalClockView.swift */; };
+		248DBDE622198A790025FE51 /* ClockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DBDE522198A790025FE51 /* ClockProtocol.swift */; };
 		24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */; };
-		24BA173F20E8718E00BA4A79 /* FlipClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA173E20E8718E00BA4A79 /* FlipClockViewController.swift */; };
-		24EBB24720CC2129005801F4 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBB24620CC2129005801F4 /* TimerViewController.swift */; };
 		24EBB24920CC2741005801F4 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBB24820CC2741005801F4 /* CircleProgressBar.swift */; };
 		24ED089D2061197000DCF838 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089C2061197000DCF838 /* MainViewController.swift */; };
 		24ED08AB20611C9700DCF838 /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED089F20611C9600DCF838 /* Currently.swift */; };
@@ -90,7 +92,6 @@
 		242194F420B1B18B00B0EBD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242194F620B1B18C00B0EBD8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		242194F720B1B19000B0EBD8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationViewController.swift; sourceTree = "<group>"; };
 		2448CD7F20C40FEC00466830 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		246BC26C207E33F70051A258 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		246BD10120CA470D00D132B5 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -107,9 +108,12 @@
 		248DBDD2221435490025FE51 /* DailyWeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherView.xib; sourceTree = "<group>"; };
 		248DBDD422143DE70025FE51 /* FlipNumberView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipNumberView.xib; sourceTree = "<group>"; };
 		248DBDD6221448E20025FE51 /* FlipClockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipClockView.xib; sourceTree = "<group>"; };
+		248DBDDB22197CB80025FE51 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
+		248DBDDD22197CCC0025FE51 /* TimerSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerSettingView.xib; sourceTree = "<group>"; };
+		248DBDDF221989750025FE51 /* DigitalClockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DigitalClockView.xib; sourceTree = "<group>"; };
+		248DBDE1221989840025FE51 /* DigitalClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalClockView.swift; sourceTree = "<group>"; };
+		248DBDE522198A790025FE51 /* ClockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockProtocol.swift; sourceTree = "<group>"; };
 		24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		24BA173E20E8718E00BA4A79 /* FlipClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockViewController.swift; sourceTree = "<group>"; };
-		24EBB24620CC2129005801F4 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		24EBB24820CC2741005801F4 /* CircleProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		24ED089C2061197000DCF838 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		24ED089F20611C9600DCF838 /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
@@ -183,9 +187,6 @@
 			children = (
 				246DFB3420960B66002F9D73 /* BaseViewController.swift */,
 				24ED089C2061197000DCF838 /* MainViewController.swift */,
-				2445208020ECEC65004DB47B /* WeatherLocationViewController.swift */,
-				24EBB24620CC2129005801F4 /* TimerViewController.swift */,
-				24BA173E20E8718E00BA4A79 /* FlipClockViewController.swift */,
 				24A0FD4820628A3F00DDD1F2 /* SettingViewController.swift */,
 				2403762E2095E80900818D83 /* SelectionViewController.swift */,
 			);
@@ -201,6 +202,31 @@
 				24F78841205FCE2A00712C0C /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		248DBDDA22197AE00025FE51 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				24ED08BE20626EBE00DCF838 /* Utilities */,
+				246BC26C207E33F70051A258 /* Preferences.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		248DBDE722198E430025FE51 /* Clocks */ = {
+			isa = PBXGroup;
+			children = (
+				248DBDE522198A790025FE51 /* ClockProtocol.swift */,
+				2448CD7F20C40FEC00466830 /* FlipClockView.swift */,
+				248DBDD6221448E20025FE51 /* FlipClockView.xib */,
+				248220F420D7CD6400D8DCDD /* FlipNumberView.swift */,
+				248DBDD422143DE70025FE51 /* FlipNumberView.xib */,
+				248DBDE1221989840025FE51 /* DigitalClockView.swift */,
+				248DBDDF221989750025FE51 /* DigitalClockView.xib */,
+				247B89E4206BB5E70084D7CE /* AnalogClockView.swift */,
+				248DBDC8220B067C0025FE51 /* AnalogClockView.xib */,
+			);
+			path = Clocks;
 			sourceTree = "<group>";
 		};
 		24ED089E20611C9600DCF838 /* Models */ = {
@@ -221,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				24ED08B5206120F600DCF838 /* MainViewModel.swift */,
-				246BC26C207E33F70051A258 /* Preferences.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -229,6 +254,7 @@
 		24ED08A820611C9600DCF838 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				24ED089E20611C9600DCF838 /* Models */,
 				24ED08B72061234000DCF838 /* LocationService.swift */,
 				24ED08A920611C9600DCF838 /* APIService.swift */,
 				24ED08AA20611C9600DCF838 /* ApiClient.swift */,
@@ -241,12 +267,9 @@
 			children = (
 				24EBB24820CC2741005801F4 /* CircleProgressBar.swift */,
 				246DFB302095F569002F9D73 /* SelectionTableViewCell.swift */,
-				2448CD7F20C40FEC00466830 /* FlipClockView.swift */,
-				248DBDD6221448E20025FE51 /* FlipClockView.xib */,
-				248220F420D7CD6400D8DCDD /* FlipNumberView.swift */,
-				248DBDD422143DE70025FE51 /* FlipNumberView.xib */,
-				247B89E4206BB5E70084D7CE /* AnalogClockView.swift */,
-				248DBDC8220B067C0025FE51 /* AnalogClockView.xib */,
+				248DBDE722198E430025FE51 /* Clocks */,
+				248DBDDB22197CB80025FE51 /* TimerSettingView.swift */,
+				248DBDDD22197CCC0025FE51 /* TimerSettingView.xib */,
 				248DBDD02214353C0025FE51 /* DailyWeatherView.swift */,
 				248DBDD2221435490025FE51 /* DailyWeatherView.xib */,
 				248DBDCC2212E7FC0025FE51 /* WeatherLocationView.swift */,
@@ -296,9 +319,8 @@
 				243431B7219D86CB00FD7D92 /* ViewControllers */,
 				24ED08B920626E0B00DCF838 /* Views */,
 				24ED08A620611C9600DCF838 /* ViewModels */,
-				24ED089E20611C9600DCF838 /* Models */,
 				24ED08A820611C9600DCF838 /* Networking */,
-				24ED08BE20626EBE00DCF838 /* Utilities */,
+				248DBDDA22197AE00025FE51 /* Helper */,
 				243431B8219D86EB00FD7D92 /* Resources */,
 				24F7883E205FCE2A00712C0C /* Main.storyboard */,
 				24F78843205FCE2A00712C0C /* LaunchScreen.storyboard */,
@@ -459,8 +481,10 @@
 				248DBDD3221435490025FE51 /* DailyWeatherView.xib in Resources */,
 				248DBDCF2212E8100025FE51 /* WeatherLocationView.xib in Resources */,
 				248DBDD7221448E20025FE51 /* FlipClockView.xib in Resources */,
+				248DBDDE22197CCC0025FE51 /* TimerSettingView.xib in Resources */,
 				242194DA20B17AC100B0EBD8 /* InfoPlist.strings in Resources */,
 				24F78842205FCE2A00712C0C /* Assets.xcassets in Resources */,
+				248DBDE0221989750025FE51 /* DigitalClockView.xib in Resources */,
 				24F78840205FCE2A00712C0C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,11 +645,9 @@
 				246DFB3520960B66002F9D73 /* BaseViewController.swift in Sources */,
 				246DFB33209603D9002F9D73 /* UIColor+HexValue.swift in Sources */,
 				24A0FD4920628A3F00DDD1F2 /* SettingViewController.swift in Sources */,
-				2445208120ECEC65004DB47B /* WeatherLocationViewController.swift in Sources */,
+				248DBDDC22197CB80025FE51 /* TimerSettingView.swift in Sources */,
 				24ED08B020611C9700DCF838 /* WeatherDetail.swift in Sources */,
 				24ED08AD20611C9700DCF838 /* Daily.swift in Sources */,
-				24EBB24720CC2129005801F4 /* TimerViewController.swift in Sources */,
-				24BA173F20E8718E00BA4A79 /* FlipClockViewController.swift in Sources */,
 				24ED089D2061197000DCF838 /* MainViewController.swift in Sources */,
 				248DBDD12214353C0025FE51 /* DailyWeatherView.swift in Sources */,
 				24ED08B320611C9700DCF838 /* APIService.swift in Sources */,
@@ -635,6 +657,7 @@
 				246DFB312095F569002F9D73 /* SelectionTableViewCell.swift in Sources */,
 				24ED08B120611C9700DCF838 /* Flag.swift in Sources */,
 				24ED08AB20611C9700DCF838 /* Currently.swift in Sources */,
+				248DBDE2221989840025FE51 /* DigitalClockView.swift in Sources */,
 				248220F520D7CD6400D8DCDD /* FlipNumberView.swift in Sources */,
 				246BC26D207E33F70051A258 /* Preferences.swift in Sources */,
 				24ED08AE20611C9700DCF838 /* Weather.swift in Sources */,
@@ -642,6 +665,7 @@
 				24ED08AC20611C9700DCF838 /* WeatherDisplayModel.swift in Sources */,
 				248DBDCB220B14990025FE51 /* NibView.swift in Sources */,
 				24ED08B420611C9700DCF838 /* ApiClient.swift in Sources */,
+				248DBDE622198A790025FE51 /* ClockProtocol.swift in Sources */,
 				246BD10220CA470E00D132B5 /* Localizable.swift in Sources */,
 				2448CD8020C40FEC00466830 /* FlipClockView.swift in Sources */,
 			);

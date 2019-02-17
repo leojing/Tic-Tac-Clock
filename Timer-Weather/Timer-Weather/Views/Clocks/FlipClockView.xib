@@ -20,14 +20,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="315" height="97"/>
+            <rect key="frame" x="0.0" y="0.0" width="325" height="97"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VQs-Pu-ujc">
-                    <rect key="frame" x="0.0" y="0.0" width="315" height="97"/>
+                    <rect key="frame" x="0.0" y="0.0" width="325" height="97"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oA-TI-zTn">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="97"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0oA-TI-zTn">
+                            <rect key="frame" x="0.0" y="0.0" width="155" height="97"/>
                             <subviews>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="75" placeholderIntrinsicHeight="97" translatesAutoresizingMaskIntoConstraints="NO" id="poy-9L-zUp" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
@@ -37,7 +37,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="75" placeholderIntrinsicHeight="97" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-b8-bAv" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
-                                    <rect key="frame" x="75" y="0.0" width="75" height="97"/>
+                                    <rect key="frame" x="80" y="0.0" width="75" height="97"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="XtT-b8-bAv" secondAttribute="height" multiplier="75:97" id="MsQ-mG-t46"/>
@@ -50,8 +50,8 @@
                                 <constraint firstItem="XtT-b8-bAv" firstAttribute="width" secondItem="XtT-b8-bAv" secondAttribute="height" multiplier="75:97" id="z4i-qX-K1A"/>
                             </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBp-Qs-tyH">
-                            <rect key="frame" x="165" y="0.0" width="150" height="97"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sBp-Qs-tyH">
+                            <rect key="frame" x="170" y="0.0" width="155" height="97"/>
                             <subviews>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="75" placeholderIntrinsicHeight="97" translatesAutoresizingMaskIntoConstraints="NO" id="Mc7-3g-f1u" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="97"/>
@@ -61,7 +61,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="75" placeholderIntrinsicHeight="97" translatesAutoresizingMaskIntoConstraints="NO" id="lLn-oD-d5n" customClass="FlipNumberView" customModule="Timer_Weather" customModuleProvider="target">
-                                    <rect key="frame" x="75" y="0.0" width="75" height="97"/>
+                                    <rect key="frame" x="80" y="0.0" width="75" height="97"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="lLn-oD-d5n" secondAttribute="height" multiplier="75:97" id="R8a-Sf-Vkb"/>

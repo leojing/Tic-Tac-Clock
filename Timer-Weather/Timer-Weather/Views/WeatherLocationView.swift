@@ -16,7 +16,9 @@ class WeatherLocationView: NibView {
 
     struct Configuration {
         let isLoading: Bool
+        let isShowLocation: Bool
         let location: String?
+        let isShowWeather: Bool
         let weathers: [WeatherDetail]?
     }
     
@@ -28,7 +30,11 @@ class WeatherLocationView: NibView {
     
     private func populateView() {
         (configuration?.isLoading ?? true) ? loadingActivityView?.startAnimating() : loadingActivityView?.stopAnimating()
-        locationLabel?.text = configuration?.location
+        
+        locationLabel?.isHidden = configuration?.isShowLocation ?? true
+        locationLabel?.text = configuration?.location ?? "Not found"
+        
+        weatherView?.isHidden = configuration?.isShowWeather ?? true
         weatherView?.arrangedSubviews.forEach({ view in
             weatherView?.removeArrangedSubview(view)
         })

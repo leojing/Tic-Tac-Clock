@@ -58,12 +58,6 @@ class MainViewModel: NSObject {
         }
     }
     
-    var currentDigitalTime: String? {
-        didSet {
-            currentDigitalTimeDidUpdate?(currentDigitalTime ?? Date().timeOfCounter())
-        }
-    }
-    
     var currentDate: Date? {
         didSet {
             currentDateDidUpdate?(currentDate ?? Date())
@@ -81,7 +75,6 @@ class MainViewModel: NSObject {
     var cityNameDidUpdate: ((_ city: String?) -> Void)?
     var showAlert: ((_ message: String?) -> Void)?
     var isLoadingDidUpdate: ((_ isLoading: Bool?) -> Void)?
-    var currentDigitalTimeDidUpdate: ((_ currentDigitalTime: String) -> Void)?
     var currentDateDidUpdate: ((_ currentDate: Date) -> Void)?
     
     init(_ apiService: APIService? = APIClient()) {
@@ -92,7 +85,6 @@ class MainViewModel: NSObject {
         bindDailyData()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-            self.currentDigitalTime = Date().timeOfCounter()
             self.currentDate = Date()
         })
     }

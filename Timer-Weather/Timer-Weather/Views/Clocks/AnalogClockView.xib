@@ -112,7 +112,6 @@
                 <constraint firstAttribute="trailing" secondItem="2bu-ow-g9L" secondAttribute="trailing" id="sFt-7m-bI5"/>
                 <constraint firstItem="kqy-3e-jf4" firstAttribute="centerX" secondItem="JqS-TC-4Hi" secondAttribute="centerX" id="x9H-Rb-RVv"/>
                 <constraint firstAttribute="bottom" secondItem="g3E-SB-Suy" secondAttribute="bottom" id="xLq-Cs-EEc"/>
-                <constraint firstItem="2bu-ow-g9L" firstAttribute="centerX" secondItem="JqS-TC-4Hi" secondAttribute="centerX" id="yDk-TB-sc5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="NRB-fR-LiT"/>

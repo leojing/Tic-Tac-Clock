@@ -38,7 +38,8 @@ class FlipNumberView: NibView {
     }
     
     private func populateView() {
-        numberImageView?.backgroundColor = backgroundColor ?? .clear
+        numberImageView?.backgroundColor = configuration?.background ?? .clear
+        numberImageView?.image = UIImage(named: configuration?.number ?? "")
         setUpTransitView(a: UIImage(named: configuration?.transitA ?? ""), b: UIImage(named: configuration?.transitB ?? ""), c: UIImage(named: configuration?.transitC ?? ""))
         separatorView?.backgroundColor = configuration?.separatorColor ?? .clear
     }

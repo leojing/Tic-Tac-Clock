@@ -12,23 +12,25 @@ import HGCircularSlider
 class MainViewController: BaseViewController {
     
     @IBOutlet private weak var flipClockView: FlipClockView?
-    @IBOutlet private weak var circleTimerView: UIView?
     
-    @IBOutlet private weak var clockViewTopConstraint: NSLayoutConstraint?
-    @IBOutlet private weak var clockView: AnalogClockView?
+    @IBOutlet private weak var analogClockViewTopConstraint: NSLayoutConstraint?
+    @IBOutlet private weak var analogClockView: AnalogClockView?
     
-    @IBOutlet private weak var digitalTimerView: UIView?
-    @IBOutlet private weak var digitalTimerHourLabel: UILabel?
-    @IBOutlet private weak var digitalTimerMinLabel: UILabel?
-    @IBOutlet private weak var digitalTimerHeightConstraint: NSLayoutConstraint?
+    @IBOutlet private weak var digitalClockView: DigitalClockView?
+    @IBOutlet private weak var digitalClockHeightConstraint: NSLayoutConstraint?
 
     @IBOutlet private weak var dateLabel: UILabel?
     @IBOutlet private weak var dateLabelTopConstraint: NSLayoutConstraint?
     @IBOutlet private weak var dateLabelHeightConstraint: NSLayoutConstraint?
     
-    @IBOutlet private weak var weatherLocationView: UIView?
+    @IBOutlet private weak var timerSettingView: TimerSettingView? {
+        didSet {
+            timerSettingView?.isHidden = true
+        }
+    }
 
-    @IBOutlet private weak var countDownTimerContainer: UIView?
+    @IBOutlet private weak var weatherLocationView: WeatherLocationView?
+    
     @IBOutlet private weak var guideView: UIView?
     
     var viewModel: MainViewModel? {
@@ -40,7 +42,6 @@ class MainViewController: BaseViewController {
     private enum Constants {
         static let digitalTimerHeightForPhone = 120
         static let digitalTimerHeightForPad = 190
-        static let circleTimerHeight = 200
         static let dateLabelHeightForPhone = 30
         static let dateLabelHeightForPad = 40
         static let weatherCollectionWidth = 70
@@ -95,30 +96,11 @@ class MainViewController: BaseViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
         
         if UIDevice.current.orientation.isLandscape {
-            clockViewTopConstraint?.constant = -70
+            analogClockViewTopConstraint?.constant = -70
         } else {
-            clockViewTopConstraint?.constant = 30
+            analogClockViewTopConstraint?.constant = 30
         }
         view.layoutIfNeeded()
-    }
-        
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-//            case "flipClock":
-//                if let vc = segue.destination as? FlipClockViewController {
-//                    vc.viewModel = viewModel
-//                }
-                
-            case "weatherLocation":
-                if let vc = segue.destination as? WeatherLocationViewController {
-                    vc.viewModel = viewModel ?? MainViewModel()
-                }
-                
-            default:
-                break
-            }
-        }
     }
     
     // MARK: UI update
@@ -133,27 +115,27 @@ class MainViewController: BaseViewController {
         }
         
         if watchfaceIndex == 8 {
-            digitalTimerHeightConstraint?.constant = CGFloat((viewModel?.isPad ?? false) ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
-            circleTimerView?.isHidden = true
+            digitalClockHeightConstraint?.constant = CGFloat((viewModel?.isPad ?? false) ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
+            analogClockView?.isHidden = true
             flipClockView?.isHidden = true
-            digitalTimerView?.isHidden = false
+            digitalClockView?.isHidden = false
             dateLabelTopConstraint?.constant = 20
         } else {
-            digitalTimerView?.isHidden = true
+            digitalClockView?.isHidden = true
             if watchfaceIndex == 9 {
                 flipClockView?.isHidden = false
-                circleTimerView?.isHidden = true
+                analogClockView?.isHidden = true
                 dateLabelTopConstraint?.constant = 280
             } else {
-                circleTimerView?.isHidden = false
+                analogClockView?.isHidden = false
                 flipClockView?.isHidden = true
             }
             let watchFaces = SelectionType.getContentList(.watchFace)() ?? []
-            clockView?.watchFace = watchFaces[watchfaceIndex]
+            analogClockView?.watchFace = watchFaces[watchfaceIndex]
             if watchfaceIndex > 4  && watchfaceIndex < 8 {
-                clockView?.isDarkTheme = true
+                analogClockView?.isDarkTheme = true
             } else {
-                clockView?.isDarkTheme = false
+                analogClockView?.isDarkTheme = false
             }
         }
     }
@@ -161,12 +143,8 @@ class MainViewController: BaseViewController {
     
     fileprivate func adjustFontByDevice(_ isPad: Bool) {
         if isPad {
-            digitalTimerMinLabel?.font = UIFont(name: "Courier New", size: 110)
-            digitalTimerHourLabel?.font = UIFont(name: "Courier New", size: 110)
             dateLabel?.font = UIFont.systemFont(ofSize: 30, weight: .light)
         } else {
-            digitalTimerMinLabel?.font = UIFont(name: "Courier New", size: 64)
-            digitalTimerHourLabel?.font = UIFont(name: "Courier New", size: 64)
             dateLabel?.font = UIFont.systemFont(ofSize: 20, weight: .light)
         }
     }
@@ -174,29 +152,11 @@ class MainViewController: BaseViewController {
     // MARK: Bind ViewModel
     fileprivate func setupViewModel() {
         
-        viewModel?.currentDigitalTimeDidUpdate = { timer in
-            DispatchQueue.main.async {
-                var index = timer.index(timer.startIndex, offsetBy: 2)
-                self.digitalTimerHourLabel?.text = String(timer.prefix(upTo: index))
-                index = timer.index(timer.endIndex, offsetBy: -2)
-                self.digitalTimerMinLabel?.text = ":\(String(timer.suffix(from: index)))"
-            }
-        }
-        
         viewModel?.currentDateDidUpdate = { date in
             DispatchQueue.main.async {
-                let attributedString = NSMutableAttributedString(string: (date.dayOfWeekShort()?.uppercased())!)
-                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: NSRange(location: 4, length: 2))
-                let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
-                if watchfaceIndex < 5 {
-                    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: 3))
-                } else {
-                    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
-                }
-//                self.dateInWatchLabel?.attributedText = attributedString
-                
-                self.clockView?.setClockWithDate(date, animated: false)
-                self.flipClockView?.setTimeToDate(date, animated: false)
+                self.digitalClockView?.setClockWithDate(date, animated: false)
+                self.analogClockView?.setClockWithDate(date, animated: false)
+                self.flipClockView?.setClockWithDate(date, animated: false)
             }
         }
 
