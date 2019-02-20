@@ -60,7 +60,7 @@ class SelectionTableViewCell: UITableViewCell {
                 contentLabel.isHidden = true
                 clockView.isHidden = false
                 flipClockView.isHidden = true
-                clockView.backgroundImageView.image = UIImage(named: content)
+                clockView.backgroundImageView?.image = UIImage(named: content)
             }
         }
     }

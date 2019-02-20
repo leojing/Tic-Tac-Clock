@@ -18,9 +18,9 @@ struct HandAngles {
 @IBDesignable
 class AnalogClockView : NibView {
     
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var upperDialBackgroundImageView: UIImageView!
-    @IBOutlet weak var bottomDialBackgroundImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView?
+    @IBOutlet weak var upperDialBackgroundImageView: UIImageView?
+    @IBOutlet weak var bottomDialBackgroundImageView: UIImageView?
 
     @IBOutlet weak var hourHand: UIImageView?
     @IBOutlet weak var minuteHand: UIImageView?
@@ -40,14 +40,14 @@ class AnalogClockView : NibView {
     
     @IBInspectable var watchFace: String? {
         didSet {
-            backgroundImageView.image = UIImage(named: watchFace ?? "")
+            backgroundImageView?.image = UIImage(named: watchFace ?? "Black")
         }
     }
     
     @IBInspectable var isDarkTheme: Bool = true {
         didSet {
-            upperDialBackgroundImageView.image = isDarkTheme ? UIImage(named: "upper-dial-light") : UIImage(named: "upper-dial")
-            bottomDialBackgroundImageView.image = isDarkTheme ? UIImage(named: "bottom-dial-light") : UIImage(named: "bottom-dial")
+            upperDialBackgroundImageView?.image = isDarkTheme ? UIImage(named: "upper-dial-light") : UIImage(named: "upper-dial")
+            bottomDialBackgroundImageView?.image = isDarkTheme ? UIImage(named: "bottom-dial-light") : UIImage(named: "bottom-dial")
             secondHand?.image = isDarkTheme ? UIImage(named: "bottom-dial-second-light") : UIImage(named: "bottom-dial-second")
         }
     }
@@ -98,7 +98,7 @@ class AnalogClockView : NibView {
 }
 
 
-// MARK: Conform to ClockProtocol
+// MARK: - Conform to ClockProtocol
 
 extension AnalogClockView: ClockProtocol {
     

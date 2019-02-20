@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class DigitalClockView: NibView {
     
     @IBOutlet private weak var hourLabel: UILabel?
@@ -24,13 +25,13 @@ class DigitalClockView: NibView {
     
     @IBInspectable var font: UIFont? {
         didSet {
-            hourLabel?.font = font
-            minLabel?.font = font
+            hourLabel?.font = font ?? UIFont.preferredFont(forTextStyle: .body)
+            minLabel?.font = font ?? UIFont.preferredFont(forTextStyle: .body)
         }
     }
 }
 
-// MARK: Conform to ClockProtocol
+// MARK: - Conform to ClockProtocol
 
 extension DigitalClockView: ClockProtocol {
     

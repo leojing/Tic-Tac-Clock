@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DigitalClockView" customModule="Timer_Weather" customModuleProvider="target">
+            <connections>
+                <outlet property="hourLabel" destination="q6M-Wr-s1r" id="Yqc-HV-Oz9"/>
+                <outlet property="minLabel" destination="XXj-Ys-4Wa" id="HjY-Ez-7W5"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9m-54-Gc9">
             <rect key="frame" x="0.0" y="0.0" width="322" height="262"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BVm-Gh-xfQ">
-                    <rect key="frame" x="0.0" y="0.0" width="322" height="262"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="13" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-Wr-s1r">
-                            <rect key="frame" x="0.0" y="0.0" width="322" height="131"/>
-                            <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="64"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXj-Ys-4Wa">
-                            <rect key="frame" x="0.0" y="131" width="322" height="131"/>
-                            <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="64"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="XXj-Ys-4Wa" firstAttribute="height" secondItem="q6M-Wr-s1r" secondAttribute="height" id="H8q-CR-ihj"/>
-                    </constraints>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="13" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-Wr-s1r">
+                    <rect key="frame" x="0.0" y="0.0" width="322" height="131"/>
+                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="64"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text=":24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXj-Ys-4Wa">
+                    <rect key="frame" x="0.0" y="131" width="322" height="131"/>
+                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="64"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="BVm-Gh-xfQ" firstAttribute="leading" secondItem="nhJ-uz-kqM" secondAttribute="leading" id="Z0M-rX-kFz"/>
-                <constraint firstItem="nhJ-uz-kqM" firstAttribute="trailing" secondItem="BVm-Gh-xfQ" secondAttribute="trailing" id="bRJ-FI-0cK"/>
-                <constraint firstItem="BVm-Gh-xfQ" firstAttribute="top" secondItem="nhJ-uz-kqM" secondAttribute="top" id="cGf-Gh-kzt"/>
-                <constraint firstItem="nhJ-uz-kqM" firstAttribute="bottom" secondItem="BVm-Gh-xfQ" secondAttribute="bottom" id="n2T-Po-hzV"/>
+                <constraint firstAttribute="trailing" secondItem="XXj-Ys-4Wa" secondAttribute="trailing" id="4eO-Nc-kVD"/>
+                <constraint firstItem="q6M-Wr-s1r" firstAttribute="top" secondItem="P9m-54-Gc9" secondAttribute="top" id="KN3-Qi-0oP"/>
+                <constraint firstItem="q6M-Wr-s1r" firstAttribute="leading" secondItem="P9m-54-Gc9" secondAttribute="leading" id="PRv-Ab-ZN5"/>
+                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="leading" secondItem="P9m-54-Gc9" secondAttribute="leading" id="R1u-2t-oSu"/>
+                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="height" secondItem="q6M-Wr-s1r" secondAttribute="height" id="bDP-jL-CGk"/>
+                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="top" secondItem="q6M-Wr-s1r" secondAttribute="bottom" id="eFa-FC-spA"/>
+                <constraint firstAttribute="bottom" secondItem="XXj-Ys-4Wa" secondAttribute="bottom" id="isX-CO-3UP"/>
+                <constraint firstAttribute="trailing" secondItem="q6M-Wr-s1r" secondAttribute="trailing" id="vJ4-KH-YZb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="nhJ-uz-kqM"/>
             <point key="canvasLocation" x="96" y="302.24887556221893"/>
         </view>
     </objects>

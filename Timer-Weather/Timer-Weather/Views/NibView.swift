@@ -20,7 +20,7 @@ class NibView: UIView {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         if let loadedView = Bundle.main.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {
             loadedView.frame = self.bounds
             loadedView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

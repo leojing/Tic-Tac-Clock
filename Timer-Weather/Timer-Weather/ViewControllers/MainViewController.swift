@@ -11,18 +11,11 @@ import HGCircularSlider
 
 class MainViewController: BaseViewController {
     
+    @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private weak var flipClockView: FlipClockView?
-    
-    @IBOutlet private weak var analogClockViewTopConstraint: NSLayoutConstraint?
     @IBOutlet private weak var analogClockView: AnalogClockView?
-    
     @IBOutlet private weak var digitalClockView: DigitalClockView?
-    @IBOutlet private weak var digitalClockHeightConstraint: NSLayoutConstraint?
-
     @IBOutlet private weak var dateLabel: UILabel?
-    @IBOutlet private weak var dateLabelTopConstraint: NSLayoutConstraint?
-    @IBOutlet private weak var dateLabelHeightConstraint: NSLayoutConstraint?
-    
     @IBOutlet private weak var timerSettingView: TimerSettingView? {
         didSet {
             timerSettingView?.isHidden = true
@@ -42,8 +35,6 @@ class MainViewController: BaseViewController {
     private enum Constants {
         static let digitalTimerHeightForPhone = 120
         static let digitalTimerHeightForPad = 190
-        static let dateLabelHeightForPhone = 30
-        static let dateLabelHeightForPad = 40
         static let weatherCollectionWidth = 70
         static let weatherCollectionHeight = 70
     }
@@ -58,13 +49,13 @@ class MainViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(triggleTimer), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         viewModel = MainViewModel()
-        adjustFontByDevice(viewModel?.isPad ?? false)
+        adjustDateFontByDevice(viewModel?.isPad ?? false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        rotateDevice()
+//        rotateDevice()
         
         let isShowGuiderView = Preferences.sharedInstance.getIsShowGuideView()
         guideView?.isHidden = !isShowGuiderView
@@ -79,7 +70,7 @@ class MainViewController: BaseViewController {
         let bgColor = Preferences.sharedInstance.getBackground()
         self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
 
-        updateWatchFace()
+//        updateWatchFace()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -92,40 +83,37 @@ class MainViewController: BaseViewController {
     
     private func rotateDevice() {
         if viewModel?.isPad ?? false { return }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
-        
-        if UIDevice.current.orientation.isLandscape {
-            analogClockViewTopConstraint?.constant = -70
-        } else {
-            analogClockViewTopConstraint?.constant = 30
-        }
-        view.layoutIfNeeded()
+//
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
+//
+//        if UIDevice.current.orientation.isLandscape {
+//            analogClockViewTopConstraint?.constant = -70
+//        } else {
+//            analogClockViewTopConstraint?.constant = 30
+//        }
+//        view.layoutIfNeeded()
     }
     
     // MARK: UI update
+    
     func updateWatchFace() {
         
         let watchfaceIndex = Preferences.sharedInstance.getWatchFace()
-        if watchfaceIndex >= 8 {
-            let height = (viewModel?.isPad ?? false) ? Constants.dateLabelHeightForPad : Constants.dateLabelHeightForPhone
-            dateLabelHeightConstraint?.constant = CGFloat(Preferences.sharedInstance.getShowDate() ? height : 0)
+        if watchfaceIndex < 8 {
+            dateLabel?.isHidden = true
         } else {
-            dateLabelHeightConstraint?.constant = CGFloat(0)
+            dateLabel?.isHidden = false
         }
         
         if watchfaceIndex == 8 {
-            digitalClockHeightConstraint?.constant = CGFloat((viewModel?.isPad ?? false) ? Constants.digitalTimerHeightForPad : Constants.digitalTimerHeightForPhone)
             analogClockView?.isHidden = true
             flipClockView?.isHidden = true
             digitalClockView?.isHidden = false
-            dateLabelTopConstraint?.constant = 20
         } else {
             digitalClockView?.isHidden = true
             if watchfaceIndex == 9 {
                 flipClockView?.isHidden = false
                 analogClockView?.isHidden = true
-                dateLabelTopConstraint?.constant = 280
             } else {
                 analogClockView?.isHidden = false
                 flipClockView?.isHidden = true
@@ -138,10 +126,11 @@ class MainViewController: BaseViewController {
                 analogClockView?.isDarkTheme = false
             }
         }
+        scrollView?.sizeToFit()
     }
     
     
-    fileprivate func adjustFontByDevice(_ isPad: Bool) {
+    fileprivate func adjustDateFontByDevice(_ isPad: Bool) {
         if isPad {
             dateLabel?.font = UIFont.systemFont(ofSize: 30, weight: .light)
         } else {
@@ -154,19 +143,20 @@ class MainViewController: BaseViewController {
         
         viewModel?.currentDateDidUpdate = { date in
             DispatchQueue.main.async {
+                self.dateLabel?.text = date.dayOfWeek(Preferences.sharedInstance.getDateFormat())
                 self.digitalClockView?.setClockWithDate(date, animated: false)
                 self.analogClockView?.setClockWithDate(date, animated: false)
                 self.flipClockView?.setClockWithDate(date, animated: false)
             }
         }
 
-        viewModel?.showAlert = { message in
-            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-            alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            DispatchQueue.main.async {
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+//        viewModel?.showAlert = { message in
+//            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+//            alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+//            DispatchQueue.main.async {
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
     }
     
     // MARK: Actions

@@ -50,7 +50,7 @@ class FlipClockView: NibView {
 }
 
 
-// MARK: Conform to ClockProtocol
+// MARK: - Conform to ClockProtocol
 
 extension FlipClockView: ClockProtocol {
     
