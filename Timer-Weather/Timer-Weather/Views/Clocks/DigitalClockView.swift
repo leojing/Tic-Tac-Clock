@@ -40,6 +40,6 @@ extension DigitalClockView: ClockProtocol {
         var index = timer.index(timer.startIndex, offsetBy: 2)
         hourLabel?.text = String(timer.prefix(upTo: index))
         index = timer.index(timer.endIndex, offsetBy: -2)
-        minLabel?.text = ":\(String(timer.suffix(from: index)))"
+        minLabel?.text = "\(String(timer.suffix(from: index)))"
     }
 }

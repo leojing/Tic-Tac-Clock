@@ -12,9 +12,16 @@ import HGCircularSlider
 class MainViewController: BaseViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView?
-    @IBOutlet private weak var flipClockView: FlipClockView?
+    
+    @IBOutlet private weak var analogClockContainer: UIView?
     @IBOutlet private weak var analogClockView: AnalogClockView?
+    
+    @IBOutlet private weak var digitalClockContainer: UIView?
     @IBOutlet private weak var digitalClockView: DigitalClockView?
+    
+    @IBOutlet private weak var flipClockContainer: UIView?
+    @IBOutlet private weak var flipClockView: FlipClockView?
+
     @IBOutlet private weak var dateLabel: UILabel?
     @IBOutlet private weak var timerSettingView: TimerSettingView? {
         didSet {
@@ -23,7 +30,8 @@ class MainViewController: BaseViewController {
     }
 
     @IBOutlet private weak var weatherLocationView: WeatherLocationView?
-    
+    @IBOutlet private weak var locationLabel: UILabel?
+
     @IBOutlet private weak var guideView: UIView?
     
     var viewModel: MainViewModel? {
@@ -55,8 +63,6 @@ class MainViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        rotateDevice()
-        
         let isShowGuiderView = Preferences.sharedInstance.getIsShowGuideView()
         guideView?.isHidden = !isShowGuiderView
         
@@ -70,7 +76,10 @@ class MainViewController: BaseViewController {
         let bgColor = Preferences.sharedInstance.getBackground()
         self.view.backgroundColor = UIColor().hexStringToUIColor(hex: bgColor)
 
-//        updateWatchFace()
+        locationLabel?.isHidden = !Preferences.sharedInstance.getShowLocation()
+        
+        rotateDevice()
+        updateWatchFace()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -83,15 +92,16 @@ class MainViewController: BaseViewController {
     
     private func rotateDevice() {
         if viewModel?.isPad ?? false { return }
+        
 //
 //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RotateDevice"), object: nil, userInfo: ["isLandscape": UIDevice.current.orientation.isLandscape])
 //
-//        if UIDevice.current.orientation.isLandscape {
-//            analogClockViewTopConstraint?.constant = -70
-//        } else {
-//            analogClockViewTopConstraint?.constant = 30
-//        }
-//        view.layoutIfNeeded()
+        if UIDevice.current.orientation.isLandscape {
+            flipClockView?.axisValue = 0
+        } else {
+            flipClockView?.axisValue = 1
+        }
+        view.layoutIfNeeded()
     }
     
     // MARK: UI update
@@ -106,17 +116,17 @@ class MainViewController: BaseViewController {
         }
         
         if watchfaceIndex == 8 {
-            analogClockView?.isHidden = true
-            flipClockView?.isHidden = true
-            digitalClockView?.isHidden = false
+            analogClockContainer?.isHidden = true
+            flipClockContainer?.isHidden = true
+            digitalClockContainer?.isHidden = false
         } else {
-            digitalClockView?.isHidden = true
+            digitalClockContainer?.isHidden = true
             if watchfaceIndex == 9 {
-                flipClockView?.isHidden = false
-                analogClockView?.isHidden = true
+                flipClockContainer?.isHidden = false
+                analogClockContainer?.isHidden = true
             } else {
-                analogClockView?.isHidden = false
-                flipClockView?.isHidden = true
+                analogClockContainer?.isHidden = false
+                flipClockContainer?.isHidden = true
             }
             let watchFaces = SelectionType.getContentList(.watchFace)() ?? []
             analogClockView?.watchFace = watchFaces[watchfaceIndex]
@@ -147,6 +157,12 @@ class MainViewController: BaseViewController {
                 self.digitalClockView?.setClockWithDate(date, animated: false)
                 self.analogClockView?.setClockWithDate(date, animated: false)
                 self.flipClockView?.setClockWithDate(date, animated: false)
+            }
+        }
+        
+        viewModel?.cityNameDidUpdate = { name in
+            DispatchQueue.main.async {
+                self.locationLabel?.text = name ?? "Not found"
             }
         }
 

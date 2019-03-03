@@ -20,13 +20,19 @@
             <rect key="frame" x="0.0" y="0.0" width="322" height="262"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="13" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-Wr-s1r">
-                    <rect key="frame" x="0.0" y="0.0" width="322" height="131"/>
+                    <rect key="frame" x="122.5" y="0.0" width="77" height="131"/>
                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="64"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text=":24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXj-Ys-4Wa">
-                    <rect key="frame" x="0.0" y="131" width="322" height="131"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRY-Ht-drk">
+                    <rect key="frame" x="84" y="131" width="38.5" height="131"/>
+                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="64"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXj-Ys-4Wa">
+                    <rect key="frame" x="122.5" y="131" width="77" height="131"/>
                     <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="64"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -34,14 +40,15 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="XXj-Ys-4Wa" secondAttribute="trailing" id="4eO-Nc-kVD"/>
+                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="bottom" secondItem="eRY-Ht-drk" secondAttribute="bottom" id="7te-ui-gmi"/>
+                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="leading" secondItem="eRY-Ht-drk" secondAttribute="trailing" id="Cj5-xn-r8Q"/>
                 <constraint firstItem="q6M-Wr-s1r" firstAttribute="top" secondItem="P9m-54-Gc9" secondAttribute="top" id="KN3-Qi-0oP"/>
-                <constraint firstItem="q6M-Wr-s1r" firstAttribute="leading" secondItem="P9m-54-Gc9" secondAttribute="leading" id="PRv-Ab-ZN5"/>
-                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="leading" secondItem="P9m-54-Gc9" secondAttribute="leading" id="R1u-2t-oSu"/>
+                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="centerX" secondItem="P9m-54-Gc9" secondAttribute="centerX" id="Muc-jF-U7q"/>
+                <constraint firstItem="XXj-Ys-4Wa" firstAttribute="top" secondItem="eRY-Ht-drk" secondAttribute="top" id="VI9-gm-dtz"/>
                 <constraint firstItem="XXj-Ys-4Wa" firstAttribute="height" secondItem="q6M-Wr-s1r" secondAttribute="height" id="bDP-jL-CGk"/>
                 <constraint firstItem="XXj-Ys-4Wa" firstAttribute="top" secondItem="q6M-Wr-s1r" secondAttribute="bottom" id="eFa-FC-spA"/>
                 <constraint firstAttribute="bottom" secondItem="XXj-Ys-4Wa" secondAttribute="bottom" id="isX-CO-3UP"/>
-                <constraint firstAttribute="trailing" secondItem="q6M-Wr-s1r" secondAttribute="trailing" id="vJ4-KH-YZb"/>
+                <constraint firstItem="q6M-Wr-s1r" firstAttribute="centerX" secondItem="P9m-54-Gc9" secondAttribute="centerX" id="rem-nR-gm2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="96" y="302.24887556221893"/>

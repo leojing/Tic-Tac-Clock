@@ -37,33 +37,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cqb-EZ-OV3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1018"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1170"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cME-mX-uvm">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTD-kx-lA0">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTD-kx-lA0" userLabel="share">
                                                         <rect key="frame" x="20" y="20" width="80" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="O8s-uw-Ijy"/>
                                                             <constraint firstAttribute="height" constant="60" id="hGx-Uk-E7Q"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" image="setting">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="ItR-oB-99o" kind="show" id="dH6-cC-vFq"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe7-Tq-fSp">
-                                                        <rect key="frame" x="275" y="20" width="80" height="60"/>
-                                                        <accessibility key="accessibilityConfiguration" label="Share"/>
                                                         <state key="normal" image="share">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="shareAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A0E-nF-nZp"/>
+                                                            <action selector="shareAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zFk-2n-VrN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe7-Tq-fSp" userLabel="setting">
+                                                        <rect key="frame" x="275" y="20" width="80" height="60"/>
+                                                        <accessibility key="accessibilityConfiguration" label="Share"/>
+                                                        <state key="normal" image="setting">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="ItR-oB-99o" kind="show" id="ySc-QN-bt0"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -79,12 +79,16 @@
                                                     <constraint firstItem="fe7-Tq-fSp" firstAttribute="width" secondItem="CTD-kx-lA0" secondAttribute="width" id="uTb-Pf-NcS"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04Y-ct-KJS">
-                                                <rect key="frame" x="0.0" y="100" width="375" height="128"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04Y-ct-KJS" userLabel="Analog clock">
+                                                <rect key="frame" x="0.0" y="120" width="375" height="270"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7c-Am-eQf" customClass="AnalogClockView" customModule="Timer_Weather" customModuleProvider="target">
-                                                        <rect key="frame" x="67" y="0.0" width="240" height="128"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="52.666666666666657" y="0.0" width="270" height="270"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="270" id="BBf-Vq-TCN"/>
+                                                            <constraint firstAttribute="width" secondItem="s7c-Am-eQf" secondAttribute="height" multiplier="1:1" id="hhZ-Iq-nP1"/>
+                                                        </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="watchFace" value="Black"/>
                                                         </userDefinedRuntimeAttributes>
@@ -97,24 +101,26 @@
                                                     <constraint firstAttribute="bottom" secondItem="s7c-Am-eQf" secondAttribute="bottom" id="UQq-jf-cjr"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f63-gY-IuD">
-                                                <rect key="frame" x="0.0" y="228" width="375" height="128"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f63-gY-IuD" userLabel="Digital clock">
+                                                <rect key="frame" x="0.0" y="410" width="375" height="128"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhh-xV-aah" customClass="DigitalClockView" customModule="Timer_Weather" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zhh-xV-aah" customClass="DigitalClockView" customModule="Timer_Weather" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="128" id="1HI-59-7wf"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Zhh-xV-aah" secondAttribute="trailing" id="K20-Ho-GYu"/>
+                                                    <constraint firstItem="Zhh-xV-aah" firstAttribute="centerX" secondItem="f63-gY-IuD" secondAttribute="centerX" id="DhJ-ui-8cX"/>
                                                     <constraint firstItem="Zhh-xV-aah" firstAttribute="top" secondItem="f63-gY-IuD" secondAttribute="top" id="X3r-0g-OUG"/>
                                                     <constraint firstAttribute="bottom" secondItem="Zhh-xV-aah" secondAttribute="bottom" id="Xab-HG-yWy"/>
-                                                    <constraint firstItem="Zhh-xV-aah" firstAttribute="leading" secondItem="f63-gY-IuD" secondAttribute="leading" id="Y1C-db-NGl"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stg-o3-gr4" userLabel="Flip clock">
-                                                <rect key="frame" x="0.0" y="530" width="375" height="168"/>
+                                                <rect key="frame" x="0.0" y="558" width="375" height="168"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="flw-6c-G9r" customClass="FlipClockView" customModule="Timer_Weather" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="0.0" width="335" height="168"/>
@@ -135,7 +141,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, 23 April" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="284-3f-JdY">
-                                                <rect key="frame" x="0.0" y="698" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="746" width="375" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0aZ-uv-EEs"/>
                                                 </constraints>
@@ -144,40 +150,46 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ic6-Sf-nA8" customClass="TimerSettingView" customModule="Timer_Weather" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="728" width="375" height="200"/>
+                                                <rect key="frame" x="0.0" y="796" width="375" height="200"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="LWC-tD-G4Y"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="SjF-uH-D7f">
-                                                <rect key="frame" x="0.0" y="928" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="1016" width="375" height="0.0"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="FCY-vc-frR"/>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MjY-SP-Bk4">
-                                                <rect key="frame" x="0.0" y="928" width="375" height="90"/>
+                                                <rect key="frame" x="0.0" y="1036" width="375" height="90"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="bVa-De-FKl"/>
                                                 </constraints>
                                             </containerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sydney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGL-aL-dJR">
+                                                <rect key="frame" x="0.0" y="1146" width="375" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXv-NW-SEW">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1018"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1170"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oY3-V1-Qhw">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="1018"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="1170"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="helper" translatesAutoresizingMaskIntoConstraints="NO" id="GYY-FA-c6Z">
-                                                <rect key="frame" x="175" y="493" width="25" height="32"/>
+                                                <rect key="frame" x="175" y="569" width="25" height="32"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSV-Hf-yDt">
-                                                <rect key="frame" x="20" y="545" width="335" height="40.666666666666629"/>
+                                                <rect key="frame" x="20" y="621" width="335" height="40.666666666666629"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Swipe left to show the count down  touch anywhere to dismiss">
                                                         <attributes>
@@ -223,12 +235,28 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ykc-Dy-KmS" secondAttribute="bottom" id="0BH-I4-rAB"/>
                             <constraint firstItem="cqb-EZ-OV3" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="2Bz-1r-1Li"/>
-                            <constraint firstItem="cqb-EZ-OV3" firstAttribute="height" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" id="5OX-gu-wRT"/>
-                            <constraint firstItem="ykc-Dy-KmS" firstAttribute="leading" secondItem="1UM-e9-IuA" secondAttribute="leading" id="NjW-AR-crg"/>
+                            <constraint firstItem="cqb-EZ-OV3" firstAttribute="height" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="-50" id="5OX-gu-wRT"/>
+                            <constraint firstItem="ykc-Dy-KmS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NjW-AR-crg"/>
                             <constraint firstItem="ykc-Dy-KmS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="c0R-AT-wft"/>
-                            <constraint firstItem="ykc-Dy-KmS" firstAttribute="trailing" secondItem="1UM-e9-IuA" secondAttribute="trailing" id="gI8-dv-yXS"/>
+                            <constraint firstItem="ykc-Dy-KmS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="gI8-dv-yXS"/>
+                            <constraint firstAttribute="trailing" secondItem="ykc-Dy-KmS" secondAttribute="trailing" constant="-50" id="neO-fG-g1N"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1UM-e9-IuA"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gI8-dv-yXS"/>
+                                <exclude reference="neO-fG-g1N"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="gI8-dv-yXS"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="neO-fG-g1N"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="vic-1d-Vok" appends="YES" id="mv4-oK-AdO"/>
                         </connections>
@@ -237,9 +265,12 @@
                         <barButtonItem key="rightBarButtonItem" title="Setting" id="uAM-B2-uSP"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="analogClockContainer" destination="04Y-ct-KJS" id="rBC-wt-Gpg"/>
                         <outlet property="analogClockView" destination="s7c-Am-eQf" id="b1W-wn-rxE"/>
                         <outlet property="dateLabel" destination="284-3f-JdY" id="ZNk-VL-DcR"/>
+                        <outlet property="digitalClockContainer" destination="f63-gY-IuD" id="VZJ-kw-WXJ"/>
                         <outlet property="digitalClockView" destination="Zhh-xV-aah" id="A11-yM-LFc"/>
+                        <outlet property="flipClockContainer" destination="Stg-o3-gr4" id="9ig-fF-vEU"/>
                         <outlet property="flipClockView" destination="flw-6c-G9r" id="U29-MM-a2L"/>
                         <outlet property="guideView" destination="NXv-NW-SEW" id="8Ei-CV-cjM"/>
                         <outlet property="scrollView" destination="ykc-Dy-KmS" id="6zt-Y8-Bfw"/>

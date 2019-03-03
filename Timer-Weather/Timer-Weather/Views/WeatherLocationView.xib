@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherLocationView" customModule="Timer_Weather" customModuleProvider="target">
             <connections>
                 <outlet property="loadingActivityView" destination="bvJ-vD-YZv" id="qdw-aq-MWB"/>
-                <outlet property="locationLabel" destination="Erh-GS-wuS" id="nZg-OJ-4FG"/>
                 <outlet property="weatherView" destination="xyL-AG-Zt7" id="rhR-1q-aeO"/>
             </connections>
         </placeholder>
@@ -22,50 +21,32 @@
             <rect key="frame" x="0.0" y="0.0" width="538" height="134"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xE2-0E-Lz6">
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-AG-Zt7">
                     <rect key="frame" x="0.0" y="0.0" width="538" height="134"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvQ-hW-idb">
-                            <rect key="frame" x="0.0" y="0.0" width="538" height="107"/>
-                            <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-AG-Zt7">
-                                    <rect key="frame" x="0.0" y="0.0" width="538" height="107"/>
-                                </stackView>
-                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-vD-YZv">
-                                    <rect key="frame" x="250.5" y="35" width="37" height="37"/>
-                                </activityIndicatorView>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWV-T8-iOB">
-                                    <rect key="frame" x="256" y="38.5" width="26" height="30"/>
-                                    <state key="normal" image="refresh">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="xyL-AG-Zt7" firstAttribute="leading" secondItem="DvQ-hW-idb" secondAttribute="leading" id="0wC-9y-24r"/>
-                                <constraint firstAttribute="bottom" secondItem="xyL-AG-Zt7" secondAttribute="bottom" id="SEa-cH-Phd"/>
-                                <constraint firstItem="bvJ-vD-YZv" firstAttribute="centerX" secondItem="DvQ-hW-idb" secondAttribute="centerX" id="VuH-Xy-juv"/>
-                                <constraint firstItem="UWV-T8-iOB" firstAttribute="centerX" secondItem="DvQ-hW-idb" secondAttribute="centerX" id="WTY-HT-7bT"/>
-                                <constraint firstAttribute="trailing" secondItem="xyL-AG-Zt7" secondAttribute="trailing" id="bmS-z0-mEL"/>
-                                <constraint firstItem="UWV-T8-iOB" firstAttribute="centerY" secondItem="DvQ-hW-idb" secondAttribute="centerY" id="cF7-hz-2uV"/>
-                                <constraint firstItem="bvJ-vD-YZv" firstAttribute="centerY" secondItem="DvQ-hW-idb" secondAttribute="centerY" id="d9c-zv-iJg"/>
-                                <constraint firstItem="xyL-AG-Zt7" firstAttribute="top" secondItem="DvQ-hW-idb" secondAttribute="top" id="xlx-RI-Fkb"/>
-                            </constraints>
-                        </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sydney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erh-GS-wuS">
-                            <rect key="frame" x="0.0" y="117" width="538" height="17"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                 </stackView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-vD-YZv">
+                    <rect key="frame" x="250.5" y="48.5" width="37" height="37"/>
+                </activityIndicatorView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWV-T8-iOB">
+                    <rect key="frame" x="169" y="0.0" width="200" height="134"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="UJM-ea-Uly"/>
+                    </constraints>
+                    <state key="normal" image="refresh">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="xE2-0E-Lz6" firstAttribute="leading" secondItem="KDa-fn-WLL" secondAttribute="leading" id="DMl-Za-j7Q"/>
-                <constraint firstAttribute="bottom" secondItem="xE2-0E-Lz6" secondAttribute="bottom" id="Gkd-Ao-6BJ"/>
-                <constraint firstAttribute="trailing" secondItem="xE2-0E-Lz6" secondAttribute="trailing" id="QcB-vu-fqo"/>
-                <constraint firstItem="xE2-0E-Lz6" firstAttribute="top" secondItem="KDa-fn-WLL" secondAttribute="top" id="RTb-7P-9Rr"/>
+                <constraint firstItem="bvJ-vD-YZv" firstAttribute="centerY" secondItem="KDa-fn-WLL" secondAttribute="centerY" id="28s-pZ-CWE"/>
+                <constraint firstItem="4hH-gg-kG5" firstAttribute="bottom" secondItem="xyL-AG-Zt7" secondAttribute="bottom" id="366-RS-CLr"/>
+                <constraint firstItem="xyL-AG-Zt7" firstAttribute="leading" secondItem="4hH-gg-kG5" secondAttribute="leading" id="LnT-MD-Fr4"/>
+                <constraint firstItem="xyL-AG-Zt7" firstAttribute="trailing" secondItem="4hH-gg-kG5" secondAttribute="trailing" id="abz-Rb-lwb"/>
+                <constraint firstItem="UWV-T8-iOB" firstAttribute="centerX" secondItem="KDa-fn-WLL" secondAttribute="centerX" id="ad3-oR-evN"/>
+                <constraint firstItem="UWV-T8-iOB" firstAttribute="top" secondItem="4hH-gg-kG5" secondAttribute="top" id="la2-3W-eLf"/>
+                <constraint firstItem="bvJ-vD-YZv" firstAttribute="centerX" secondItem="KDa-fn-WLL" secondAttribute="centerX" id="mag-lz-uqX"/>
+                <constraint firstItem="4hH-gg-kG5" firstAttribute="bottom" secondItem="UWV-T8-iOB" secondAttribute="bottom" id="obB-sH-Pne"/>
+                <constraint firstItem="xyL-AG-Zt7" firstAttribute="top" secondItem="4hH-gg-kG5" secondAttribute="top" id="whu-Tq-x3n"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="4hH-gg-kG5"/>
